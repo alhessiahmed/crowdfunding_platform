@@ -1,0 +1,67 @@
+import 'package:crowdfunding_platform/controller/getx/bindings/auth/forgot_password_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/auth/verification_binding.dart';
+import 'package:crowdfunding_platform/view/screens/auth/forgot_password_screen.dart';
+import 'package:crowdfunding_platform/view/screens/auth/reset_password_success_screen.dart';
+import 'package:crowdfunding_platform/view/screens/auth/verification_screen.dart';
+import 'package:crowdfunding_platform/view/screens/intro/welcome_screen.dart';
+import 'package:get/get.dart';
+import '../../../view/screens/auth/reset_password_screen.dart';
+import '../../../view/screens/auth/sign_in_screen.dart';
+import '../../../view/screens/auth/sign_up_screen.dart';
+import '../../../view/screens/intro/launch_screen.dart';
+import '../../../view/screens/intro/onboarding_screen.dart';
+import '../../getx/bindings/auth/reset_password_binding.dart';
+import '../../getx/bindings/auth/sign_in_binding.dart';
+import '../../getx/bindings/auth/sign_up_binding.dart';
+import 'routes_manager.dart';
+
+final List<GetPage<dynamic>> getPages = [
+  GetPage(name: RoutesManager.launchScreen, page: () => const LaunchScreen()),
+  GetPage(
+    name: RoutesManager.onboardingScreen,
+    page: () => const OnboardingScreen(),
+  ),
+  GetPage(name: RoutesManager.welcomeScreen, page: () => const WelcomeScreen()),
+  GetPage(
+    name: RoutesManager.signUpScreen,
+    page: () => const SignUpScreen(),
+    binding: SignUpBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.signInScreen,
+    page: () => const SignInScreen(),
+    binding: SignInBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.forgotPasswordScreen,
+    page: () => const ForgotPasswordScreen(),
+    binding: ForgotPasswordBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.verificationScreen,
+    page: () => const VerificationScreen(),
+    binding: VerificationBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.resetPasswordScreen,
+    page: () => const ResetPasswordScreen(),
+    binding: ResetPasswordBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.resetPasswordSuccessScreen,
+    page: () => const ResetPasswordSuccessScreen(),
+  ),
+  // GetPage(
+  //   name: RoutesManager.homeScreen,
+  //   page: () => const HomeScreen(),
+  //   bindings: [
+  //     HomeBinding(),
+  //     CategoryBinding(),
+  //   ],
+  // ),
+  // GetPage(
+  //   name: RoutesManager.subCategoryScreen,
+  //   page: () => const SubCategoriesScreen(),
+  //   binding: SubCategoryBinding(),
+  // ),
+];
