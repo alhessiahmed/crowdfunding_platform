@@ -31,6 +31,7 @@ class AppTheme {
             ),
           ),
       colorScheme: const ColorScheme.light(
+        onSecondaryContainer : ColorsManager.primaryLight, 
         primary: ColorsManager.primaryLight,
         surface: ColorsManager.lightBg,
         onPrimary: Colors.white,
@@ -65,6 +66,8 @@ class AppTheme {
             bodySmall: TextStyle(color: ColorsManager.grey, fontSize: 12.sp),
           ),
       colorScheme: ColorScheme.dark(
+                onSecondaryContainer : ColorsManager.white, 
+
         primary: ColorsManager.primaryLight,
         surface: ColorsManager.darkBg,
         onPrimary: Colors.white,

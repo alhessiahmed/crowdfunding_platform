@@ -64,4 +64,6 @@ Map<String, String> arLocale = {
   'go_to_login': 'الانتقال إلى تسجيل الدخول',
   'login_safely': 'يمكنك الاّن تسجيل الدخول بأمان',
   'password_changed': '✅ تم تحديث كلمة المرور بنجاح',
+  'every_star_makes_a_difference' : 'كل نجمة تصنع فرقًا',
+  'title_campaigns_list' : 'حملة ضمن تعليم',
 };
