@@ -1,4 +1,5 @@
 // import 'package:get/get.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 enum UserInfo {
@@ -18,7 +19,8 @@ enum UserInfo {
 
 enum Providers { google, phone }
 
-class SharedPrefController {
+class SharedPrefController extends GetxService{
+  static SharedPrefController get to =>   Get.find();
   static SharedPrefController? _instance;
   late SharedPreferences _sharedPreferences;
 
@@ -27,9 +29,18 @@ class SharedPrefController {
   factory SharedPrefController() {
     return _instance ??= SharedPrefController._();
   }
-
-  Future<void> initPreferences() async {
+ 
+  Future<SharedPrefController> initPreferences() async {
     _sharedPreferences = await SharedPreferences.getInstance();
+    return this;
+  }
+
+  // onboarding
+  bool get hasSeenOnboarding =>
+      _sharedPreferences.getBool('hasSeenOnboarding') ?? false;
+
+   Future<void> setSeenOnboarding() async {
+    await _sharedPreferences.setBool('hasSeenOnboarding', true);
   }
 
   // Future<void> loginForFirstTime() async {
