@@ -48,6 +48,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Widget _BottomBar() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return SafeArea(
       bottom: false,
       minimum: const EdgeInsets.only(bottom: 18 , right: 18 , left: 18 ,),
@@ -55,7 +56,7 @@ class _MainScreenState extends State<MainScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 16 ,),
         child: Container(
           decoration: BoxDecoration(
-            color: Get.isDarkMode ?  ColorsManager.bgGoogle
+            color:isDark ?  ColorsManager.bgGoogle
                 : ColorsManager.white,
             borderRadius: BorderRadius.circular(74.r),
             boxShadow: [
@@ -89,6 +90,7 @@ class _MainScreenState extends State<MainScreen> {
 
   Widget _TabItem({required String icon, required int index}) {
     final isSelected = currentIndex == index;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return InkWell(
       onTap: () {
@@ -101,7 +103,7 @@ class _MainScreenState extends State<MainScreen> {
         color: 
         isSelected
             ? ColorsManager.primaryCTA
-            : Get.isDarkMode ? ColorsManager.secondaryDark: ColorsManager.secondaryLight,
+            : isDark ? ColorsManager.secondaryDark: ColorsManager.secondaryLight,
       ),
     );
   }
