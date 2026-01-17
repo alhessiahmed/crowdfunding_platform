@@ -81,7 +81,20 @@ class TextFieldWidget extends StatelessWidget {
                 fontSize: 12.sp,
                 color: Theme.of(context).colorScheme.onSurfaceVariant,
               ),
-              suffixIcon: suffixIcon,
+              suffixIcon: suffixIcon == null
+                  ? null
+                  : Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      child: SizedBox(
+                        width: 24.w,
+                        height: 24.w,
+                        child: Center(child: suffixIcon),
+                      ),
+                    ),
+              suffixIconConstraints: const BoxConstraints(
+                minWidth: 0,
+                minHeight: 0,
+              ),
               errorStyle: const TextStyle(height: 0),
               helperStyle: const TextStyle(height: 0),
               filled: true,
