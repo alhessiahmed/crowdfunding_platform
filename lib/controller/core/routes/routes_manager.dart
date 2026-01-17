@@ -14,4 +14,5 @@ class RoutesManager {
 
   static const homeScreen = '/home_screen';
   static const mainScreen = '/main_screen';
+  static const campaignDetailsScreen = '/campaign_details_screen';
 }
