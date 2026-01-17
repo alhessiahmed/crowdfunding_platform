@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
           themeMode: ThemeController.to.themeMode,
           // themeMode: ThemeMode.dark,
           initialRoute: RoutesManager.launchScreen,
+          // initialRoute: RoutesManager.setupSuccessScreen,
           getPages: getPages,
           unknownRoute: GetPage(
             name: RoutesManager.launchScreen,
@@ -57,18 +58,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-/*
-IconButton(
-  icon: const Icon(Icons.dark_mode),
-  onPressed: () {
-    ThemeController.to.toggleTheme();
-  },
-)
-
-or 
-
-ThemeController.to.setTheme(ThemeMode.dark);
-
-*/

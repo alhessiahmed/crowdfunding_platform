@@ -1,18 +1,24 @@
 import 'package:crowdfunding_platform/controller/getx/bindings/auth/forgot_password_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/auth/user_type_selection_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/auth/verification_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/home_binding.dart';
 import 'package:crowdfunding_platform/view/screens/auth/forgot_password_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/reset_password_success_screen.dart';
+import 'package:crowdfunding_platform/view/screens/auth/setup_success_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/verification_screen.dart';
 import 'package:crowdfunding_platform/view/screens/home_screen.dart';
 import 'package:crowdfunding_platform/view/screens/intro/welcome_screen.dart';
 import 'package:crowdfunding_platform/view/screens/main_screen.dart';
 import 'package:get/get.dart';
+import '../../../view/screens/auth/onboarding_shell_screen.dart';
 import '../../../view/screens/auth/reset_password_screen.dart';
 import '../../../view/screens/auth/sign_in_screen.dart';
 import '../../../view/screens/auth/sign_up_screen.dart';
+import '../../../view/screens/auth/user_type_selection_screen.dart';
+import '../../../view/screens/auth/user_welcome_screen.dart';
 import '../../../view/screens/intro/launch_screen.dart';
 import '../../../view/screens/intro/onboarding_screen.dart';
+import '../../getx/bindings/auth/creator_onboarding_binding.dart';
 import '../../getx/bindings/auth/reset_password_binding.dart';
 import '../../getx/bindings/auth/sign_in_binding.dart';
 import '../../getx/bindings/auth/sign_up_binding.dart';
@@ -54,6 +60,7 @@ final List<GetPage<dynamic>> getPages = [
     name: RoutesManager.resetPasswordSuccessScreen,
     page: () => const ResetPasswordSuccessScreen(),
   ),
+<<<<<<< HEAD
    GetPage(
     name: RoutesManager.mainScreen,
     page: () => const MainScreen(),
@@ -67,6 +74,38 @@ final List<GetPage<dynamic>> getPages = [
      // CategoryBinding(),
     ],
   ),
+=======
+  GetPage(
+    name: RoutesManager.userTypeSelectionScreen,
+    page: () => UserTypeSelectionScreen(),
+    binding: UserTypeSelectionBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.userWelcomeScreen,
+    page: () => UserWelcomeScreen(),
+  ),
+  GetPage(
+    name: RoutesManager.onboardingShellScreen,
+    page: () => const OnboardingShellScreen(),
+    binding: CreatorOnboardingBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.setupSuccessScreen,
+    page: () => SetupSuccessScreen(),
+  ),
+  // GetPage(
+  //   name: AppRoutes.createAccount,
+  //   page: () => const CreateAccountScreen(),
+  // ),
+  // GetPage(
+  //   name: RoutesManager.homeScreen,
+  //   page: () => const HomeScreen(),
+  //   bindings: [
+  //     HomeBinding(),
+  //     CategoryBinding(),
+  //   ],
+  // ),
+>>>>>>> af6c838a959f3b2a897e682c5175c4c09b93e6fb
   // GetPage(
   //   name: RoutesManager.subCategoryScreen,
   //   page: () => const SubCategoriesScreen(),

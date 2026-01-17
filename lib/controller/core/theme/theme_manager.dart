@@ -12,6 +12,7 @@ class AppTheme {
       useMaterial3: true,
       fontFamily: 'Almarai',
       brightness: Brightness.light,
+      scaffoldBackgroundColor: ColorsManager.scaffoldBgLight,
       textTheme: ThemeData.light().textTheme
           .apply(fontFamily: 'Almarai')
           .copyWith(
@@ -51,6 +52,7 @@ class AppTheme {
       useMaterial3: true,
       fontFamily: 'Almarai',
       brightness: Brightness.dark,
+      scaffoldBackgroundColor: ColorsManager.scaffoldBgDark,
       textTheme: ThemeData.dark().textTheme
           .apply(fontFamily: 'Almarai')
           .copyWith(
