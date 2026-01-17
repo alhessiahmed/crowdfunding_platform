@@ -11,6 +11,10 @@ class RoutesManager {
   static const changePasswordScreen = '/change_password_screen';
   static const verificationScreen = '/verification_screen';
   static const resetPasswordSuccessScreen = '/reset_password_success_screen';
-
+  static const userTypeSelectionScreen = '/user_type_selection_screen';
+  static const userWelcomeScreen = '/user_welcome_screen';
+  static const onboardingShellScreen = '/onboarding_shell_screen';
+  static const accountTypeScreen = '/account_type_screen';
+  static const setupSuccessScreen = '/setup_success_screen';
   static const homeScreen = '/home_screen';
 }

@@ -19,6 +19,8 @@ class ColorsManager {
   static const Color dividerColorDark = Color(0xFF333333);
   static const Color iconDefaultDark = Color(0xFFB6C4D8);
   static const Color iconDefaultLight = Color(0xFF2F5A8C);
+  static const Color scaffoldBgDark = Color(0xFF121212);
+  static const Color scaffoldBgLight = Color(0xFFFBFCFF);
 
   // OLD COLORS DONT USE
   static const Color textColor = Color(0xFF111827);
@@ -26,7 +28,7 @@ class ColorsManager {
   static const Color disabled = Color(0xFFB9B9B9);
   static const Color bgColor = Color(0xFFFAFAFA);
   static const Color buttonBg = Color(0xFFF6F6F6);
-  static const Color scaffoldBg = Color(0xFFFDFDFD);
+
   // static const Color dividerColor = Color(0xFFF3F4F6);
 
   static const Color white = Color(0xFFFFFFFF);
