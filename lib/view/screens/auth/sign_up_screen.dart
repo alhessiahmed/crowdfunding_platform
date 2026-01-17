@@ -100,7 +100,12 @@ class SignUpScreen extends GetView<SignUpController> {
                   ),
                 ),
                 SizedBox(height: 16.h),
-                ElevatedButton(onPressed: () {}, child: Text('create_acc'.tr)),
+                ElevatedButton(
+                  onPressed: () {
+                    Get.toNamed(RoutesManager.userTypeSelectionScreen);
+                  },
+                  child: Text('create_acc'.tr),
+                ),
                 SizedBox(height: 4.h),
                 TransparentButton(
                   text: 'have_acc'.tr,
