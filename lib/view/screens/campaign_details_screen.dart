@@ -13,9 +13,7 @@ class CampaignDetailsScreen extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       extendBody: true,
-      backgroundColor: isDark
-          ? ColorsManager.darkBg
-          : ColorsManager.lightBg,
+      backgroundColor: isDark ? ColorsManager.darkBg : ColorsManager.lightBg,
       body: CustomScrollView(
         slivers: [
           _HeaderSliver(),
@@ -41,13 +39,13 @@ class _HeaderSliver extends StatelessWidget {
       actionsPadding: EdgeInsets.symmetric(horizontal: 20.w),
       leading: Padding(
         padding: EdgeInsets.only(right: 16.w),
-        child: iconWitBackGround(ImagesManager.arrowCircleRight , context),
+        child: iconWitBackGround(ImagesManager.arrowCircleRight, context),
       ),
 
       actions: [
         Padding(
           padding: EdgeInsets.only(right: 16.w),
-          child: iconWitBackGround(ImagesManager.share , context),
+          child: iconWitBackGround(ImagesManager.share, context),
         ),
       ],
 
@@ -55,21 +53,26 @@ class _HeaderSliver extends StatelessWidget {
         background: Stack(
           clipBehavior: Clip.none,
           children: [
-            Image.asset(ImagesManager.test , fit: BoxFit.cover, width: double.infinity, height: 334.h,),
+            Image.asset(
+              ImagesManager.test,
+              fit: BoxFit.cover,
+              width: double.infinity,
+              height: 334.h,
+            ),
             Positioned(
               child: Container(
                 height: 334.h,
                 decoration: BoxDecoration(
-                
-                 // color: Colors.black,
+                  // color: Colors.black,
                   gradient: LinearGradient(
-        begin: Alignment.bottomCenter,
-        end: Alignment.topCenter,
-        colors: [
-          Colors.black.withOpacity(0.85),
-          Colors.black.withOpacity(0.4),
-          Colors.transparent,
-        ],)
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [
+                      Colors.black.withOpacity(0.85),
+                      Colors.black.withOpacity(0.4),
+                      Colors.transparent,
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -90,8 +93,7 @@ class _HeaderSliver extends StatelessWidget {
                           vertical: 4.h,
                         ),
                         decoration: BoxDecoration(
-                          color: 
-                               ColorsManager.primaryCTA,
+                          color: ColorsManager.primaryCTA,
                           borderRadius: BorderRadius.circular(14.r),
                         ),
                         child: Text(
@@ -111,14 +113,16 @@ class _HeaderSliver extends StatelessWidget {
                           vertical: 4.h,
                         ),
                         decoration: BoxDecoration(
-                          color: 
-                               ColorsManager.iconDefaultLight,
+                          color: ColorsManager.iconDefaultLight,
                           borderRadius: BorderRadius.circular(14.r),
                         ),
                         child: Row(
                           spacing: 3.w,
                           children: [
-                            SvgPicture.asset(ImagesManager.location , color: ColorsManager.white,),
+                            SvgPicture.asset(
+                              ImagesManager.location,
+                              color: ColorsManager.white,
+                            ),
                             Text(
                               'الأولوية القصوى',
                               style: TextStyle(
@@ -136,7 +140,9 @@ class _HeaderSliver extends StatelessWidget {
                   ),
                   Text(
                     "قطرة حياة:\n مياه نظيفة لأطفال غزة",
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).colorScheme.onPrimary),
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.onPrimary,
+                    ),
                   ),
                 ],
               ),
@@ -154,7 +160,7 @@ class _HeaderSliver extends StatelessWidget {
     );
   }
 
-  Widget iconWitBackGround(String icon , BuildContext context) {
+  Widget iconWitBackGround(String icon, BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       width: 44,
@@ -185,7 +191,7 @@ class _TopCampaignCard extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.all( 30.w),
+          padding: EdgeInsets.all(30.w),
           decoration: BoxDecoration(
             color: cardColor,
             borderRadius: BorderRadius.circular(32.r),
@@ -213,85 +219,85 @@ class _TopCampaignCard extends StatelessWidget {
                     ),
                   ),
                   Spacer(),
-                     Text(
-                'الهدف: 10,000 نجمة',
-                style: TextStyle(
-                  color: Get.isDarkMode
-                      ? ColorsManager.primaryTextLight
-                      : ColorsManager.primaryLight,
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
+                  Text(
+                    'الهدف: 10,000 نجمة',
+                    style: TextStyle(
+                      color: Get.isDarkMode
+                          ? ColorsManager.secondaryDark
+                          : ColorsManager.primaryLight,
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                 ],
               ),
               SizedBox(height: 12.h),
-             LayoutBuilder(
-  builder: (context, constraints) {
-   
-      
-    return Container(
-      height: 10.h,
-      decoration: BoxDecoration(
-        color: ColorsManager.white,
-        borderRadius: BorderRadius.circular(12.r),
-      ),
-      child: Stack(
-        children: [
-          Container(
-      height: 8.h,
-      decoration: BoxDecoration(
-        boxShadow: [BoxShadow( color: Colors.black12,
-            blurRadius: 12,
-            offset: const Offset(0, 4),)],
-        color: ColorsManager.white,
-        borderRadius: BorderRadius.circular(12.r),
-      ),),
-          AnimatedContainer(
-            duration: const Duration(milliseconds: 900),
-            curve: Curves.easeInOut,
-            width: constraints.maxWidth * .5,
-            decoration: BoxDecoration(
-              color: ColorsManager.primaryCTA,
-              borderRadius: BorderRadius.circular(12.r), 
-            ),
-          ),
-        ],
-      ),
-    );
-  },
-),
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  return Container(
+                    height: 10.h,
+                    decoration: BoxDecoration(
+                      color: ColorsManager.white,
+                      borderRadius: BorderRadius.circular(12.r),
+                    ),
+                    child: Stack(
+                      children: [
+                        Container(
+                          height: 8.h,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 12,
+                                offset: const Offset(0, 4),
+                              ),
+                            ],
+                            color: ColorsManager.white,
+                            borderRadius: BorderRadius.circular(12.r),
+                          ),
+                        ),
+                        AnimatedContainer(
+                          duration: const Duration(milliseconds: 900),
+                          curve: Curves.easeInOut,
+                          width: constraints.maxWidth * .5,
+                          decoration: BoxDecoration(
+                            color: ColorsManager.primaryCTA,
+                            borderRadius: BorderRadius.circular(12.r),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
 
               SizedBox(height: 16.h),
               Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SvgPicture.asset(
-                  ImagesManager.trendUp,
-                  
-                  color: Get.isDarkMode
-                      ? ColorsManager.white
-                      : ColorsManager.secondaryLight,
-                ),
-                SizedBox(width: 6.w),
-              Text(
-                  '135 داعمًا حتى الآن (هذا الأسبوع)',
-                  style: TextStyle(
-                    fontSize: 11.sp,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SvgPicture.asset(
+                    ImagesManager.trendUp,
+
                     color: Get.isDarkMode
                         ? ColorsManager.white
-                        : ColorsManager.primaryLight,
-                    fontWeight: FontWeight.w600,
+                        : ColorsManager.secondaryLight,
                   ),
-                ),
-              ],
-            ),
-               
-               
+                  SizedBox(width: 6.w),
+                  Text(
+                    '135 داعمًا حتى الآن (هذا الأسبوع)',
+                    style: TextStyle(
+                      fontSize: 11.sp,
+                      color: Get.isDarkMode
+                          ? ColorsManager.secondaryDark
+                          : ColorsManager.primaryLight,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
-       
       ],
     );
   }
@@ -322,21 +328,23 @@ class _BodyContent extends StatelessWidget {
   }
 }
 
-
 class _StatsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-   
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: const [
-        _StatItem(value: '21', label: 'أيام الحملة', icon: ImagesManager.calender2),
-        _StatItem(value: '400', label: 'عدد الداعمين', icon:ImagesManager.profile2user),
         _StatItem(
-          value: '10k',
-          label: 'أثر المبادرة',
-          icon: ImagesManager.cup,
+          value: '21',
+          label: 'أيام الحملة',
+          icon: ImagesManager.calender2,
         ),
+        _StatItem(
+          value: '400',
+          label: 'عدد الداعمين',
+          icon: ImagesManager.profile2user,
+        ),
+        _StatItem(value: '10k', label: 'أثر المبادرة', icon: ImagesManager.cup),
       ],
     );
   }
@@ -355,18 +363,17 @@ class _StatItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final cardColor = Get.isDarkMode
-        ? ColorsManager.bgGoogle
-        : ColorsManager.white;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final cardColor = isDark ? ColorsManager.bgGoogle : ColorsManager.white;
     return Container(
       width: 105.w,
       height: 127.h,
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
 
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(32.r),
         color: cardColor,
-         boxShadow: [
+        boxShadow: [
           BoxShadow(
             color: Colors.black12,
             blurRadius: 12,
@@ -384,11 +391,15 @@ class _StatItem extends StatelessWidget {
                   ? ColorsManager.dividerColorDark
                   : ColorsManager.dividerColorLight,
               //borderRadius: BorderRadius.circular(14.r),
-              shape: BoxShape.circle
+              shape: BoxShape.circle,
             ),
-            child: SvgPicture.asset(icon, color:Get.isDarkMode
+            child: SvgPicture.asset(
+              icon,
+              color: Get.isDarkMode
                   ? ColorsManager.iconDefaultDark
-                  : ColorsManager.iconDefaultLight ,fit: BoxFit.scaleDown, ),
+                  : ColorsManager.iconDefaultLight,
+              fit: BoxFit.scaleDown,
+            ),
           ),
           SizedBox(height: 6.h),
           Text(
@@ -396,8 +407,7 @@ class _StatItem extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.w700,
               fontSize: 14.sp,
-              color: 
-                   ColorsManager.primaryCTA,
+              color: ColorsManager.primaryCTA,
             ),
           ),
           SizedBox(height: 2.h),
@@ -406,7 +416,7 @@ class _StatItem extends StatelessWidget {
             style: TextStyle(
               fontSize: 11.sp,
               color: Get.isDarkMode
-                  ? ColorsManager.primaryTextLight
+                  ? ColorsManager.secondaryDark
                   : ColorsManager.secondaryLight,
             ),
           ),
@@ -419,7 +429,7 @@ class _StatItem extends StatelessWidget {
 class _WhyDonateSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final cardColor = Get.isDarkMode
+    final cardColor = Theme.of(context).brightness == Brightness.dark
         ? ColorsManager.bgGoogle
         : ColorsManager.white;
     final checkIcon = Get.isDarkMode
@@ -427,10 +437,7 @@ class _WhyDonateSection extends StatelessWidget {
         : ImagesManager.checkIconLight;
     return Container(
       padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.r),
-        
-      ),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.r)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -439,7 +446,7 @@ class _WhyDonateSection extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               fontWeight: FontWeight.w700,
               color: Get.isDarkMode
-                  ? ColorsManager.white
+                  ? ColorsManager.secondaryDark
                   : ColorsManager.primaryLight,
             ),
           ),
@@ -478,7 +485,13 @@ class _BulletItem extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 10.h),
       child: Row(
         children: [
-          SvgPicture.asset(icon, width: 18.w , color: ColorsManager.primaryLight,),
+          SvgPicture.asset(
+            icon,
+            width: 18.w,
+            color: Get.isDarkMode
+                ? ColorsManager.lightBg
+                : ColorsManager.primaryLight,
+          ),
           SizedBox(width: 8.w),
           Expanded(
             child: Text(
@@ -487,7 +500,7 @@ class _BulletItem extends StatelessWidget {
               style: TextStyle(
                 fontSize: 12.sp,
                 color: Get.isDarkMode
-                    ? ColorsManager.primaryTextLight
+                    ? ColorsManager.secondaryDark
                     : ColorsManager.secondaryLight,
                 fontWeight: FontWeight.w600,
               ),
@@ -502,7 +515,7 @@ class _BulletItem extends StatelessWidget {
 class _TabsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final cardColor = Get.isDarkMode
+    final cardColor = Theme.of(context).brightness == Brightness.dark
         ? ColorsManager.bgSectionDark
         : ColorsManager.bgSectionLight;
     return Container(
@@ -510,7 +523,6 @@ class _TabsRow extends StatelessWidget {
       decoration: BoxDecoration(
         color: cardColor,
         borderRadius: BorderRadius.circular(30.r),
-      
       ),
       child: Row(
         children: [
@@ -531,16 +543,17 @@ class _TabChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Expanded(
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 10.h),
         margin: EdgeInsets.symmetric(horizontal: 4.w),
         decoration: BoxDecoration(
-          color: isSelected 
-          ? Get.isDarkMode
-                  ? ColorsManager.bgGoogle
-                  : ColorsManager.white
-                   : Colors.transparent,
+          color: isSelected
+              ? Get.isDarkMode
+                    ? ColorsManager.bgGoogle
+                    : ColorsManager.white
+              : Colors.transparent,
           borderRadius: BorderRadius.circular(22.r),
         ),
         child: Text(
@@ -548,13 +561,13 @@ class _TabChip extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
             color: isSelected
-               
-                ? Get.isDarkMode
-                ? ColorsManager.primaryTextLight
-                : ColorsManager.primaryLight 
-                :
-                ColorsManager.primaryLight,
-            fontWeight:isSelected ? FontWeight.w700: FontWeight.w500,
+                ? isDark
+                      ? ColorsManager.primaryTextLight
+                      : ColorsManager.primaryLight
+                : isDark
+                ? ColorsManager.white
+                : ColorsManager.primaryLight,
+            fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
             fontSize: 16.sp,
           ),
         ),
@@ -566,44 +579,46 @@ class _TabChip extends StatelessWidget {
 class _StorySection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     final cardColor = Get.isDarkMode
         ? ColorsManager.bgGoogle
         : ColorsManager.white;
     return Container(
-      padding: EdgeInsets.symmetric(horizontal:  12.w , vertical: 10.h),
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
       decoration: BoxDecoration(
         //color: cardColor,
         borderRadius: BorderRadius.circular(20.r),
-       
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-       
           Text(
             'تعاني العديد من الأسر من صعوبة الوصول إلى مياه نظيفة وآمنة، مما يعرّض صحتهم وحياتهم اليومية للخطر. من خلال هذه الحملة، نعمل على توفير مصادر مياه آمنة تساعد العائلات على تلبية احتياجاتهم الأساسية بكرامة وأمان.',
             textAlign: TextAlign.right,
             style: TextStyle(
               fontSize: 12.sp,
-              color: Get.isDarkMode
-                  ? ColorsManager.primaryTextLight
+              color: isDark
+                  ? ColorsManager.secondaryDark
                   : ColorsManager.secondaryLight,
             ),
           ),
           SizedBox(height: 12.h),
           Container(
-                          height: 160.h,
+            height: 160.h,
 
-            decoration: BoxDecoration( 
-            borderRadius: BorderRadius.circular(32.r),
-boxShadow: [BoxShadow( 
-  color: Colors.black38, 
-  offset: Offset(0, 0),
-  blurRadius: 8
-)]
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(32.r),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black38,
+                  offset: Offset(0, 0),
+                  blurRadius: 8,
+                ),
+              ],
             ),
             child: ClipRRect(
-                          borderRadius: BorderRadius.circular(32.r),
+              borderRadius: BorderRadius.circular(32.r),
 
               child: Image.asset(
                 ImagesManager.test,
@@ -612,15 +627,15 @@ boxShadow: [BoxShadow(
               ),
             ),
           ),
-                    SizedBox(height: 12.h),
+          SizedBox(height: 12.h),
 
-           Text(
+          Text(
             'الأمر لا يتعلق فقط بالماء؛ بل يتعلق بمنحهم الحق في الحياة. كن سبباً في ري عطشهم اليوم.',
             textAlign: TextAlign.right,
             style: TextStyle(
               fontSize: 12.sp,
-              color: Get.isDarkMode
-                  ? ColorsManager.primaryTextLight
+              color: isDark
+                  ? ColorsManager.secondaryDark
                   : ColorsManager.secondaryLight,
             ),
           ),
@@ -633,7 +648,7 @@ boxShadow: [BoxShadow(
 class _CommentSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final cardColor = Get.isDarkMode
+    final cardColor = Theme.of(context).brightness == Brightness.dark
         ? ColorsManager.bgGoogle
         : ColorsManager.white;
     return Container(
@@ -677,7 +692,7 @@ class _CommentSection extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 11.sp,
                     color: Get.isDarkMode
-                        ? ColorsManager.primaryTextLight
+                        ? ColorsManager.secondaryDark
                         : ColorsManager.secondaryLight,
                   ),
                 ),
@@ -700,8 +715,11 @@ class _CommentSection extends StatelessWidget {
                     color: ColorsManager.white,
                   ),
                 ),
-                SizedBox(width: 4.w,),
-                SvgPicture.asset(ImagesManager.notificationBing , color: Colors.white,)
+                SizedBox(width: 4.w),
+                SvgPicture.asset(
+                  ImagesManager.notificationBing,
+                  color: Colors.white,
+                ),
               ],
             ),
           ),
@@ -738,16 +756,19 @@ class _DonateButton extends StatelessWidget {
                 fontSize: 16.sp,
               ),
             ),
-            SizedBox(width: 10,),
-            Container( 
+            SizedBox(width: 10),
+            Container(
               padding: EdgeInsets.all(5.w),
-              decoration: BoxDecoration( 
-                              color: Colors.white, 
-                              shape: BoxShape.circle
-
+              decoration: BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
               ),
-              child: SvgPicture.asset(ImagesManager.star , color: ColorsManager.primaryCTA,))
-          //  Icon(Icons.stars , size: 24.r, color: ColorsManager.white,)
+              child: SvgPicture.asset(
+                ImagesManager.star,
+                color: ColorsManager.primaryCTA,
+              ),
+            ),
+            //  Icon(Icons.stars , size: 24.r, color: ColorsManager.white,)
           ],
         ),
       ),
