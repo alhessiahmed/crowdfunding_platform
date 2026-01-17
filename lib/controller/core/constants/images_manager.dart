@@ -45,7 +45,7 @@ class ImagesManager {
   static const String share = '$iconsPath/ic_share.svg';
   static const String arrowCircleRight = '$iconsPath/ic_arrow-circle-right.svg';
   static const String location = '$iconsPath/ic_location.svg';
-
+  static const String discover = '$iconsPath/ic_discover.svg';
   static const String trendUp = '$iconsPath/ic_trend_up.svg';
   static const String cup = '$iconsPath/ic_cup.svg';
   static const String calender2 = '$iconsPath/ic_calendar-2.svg';
