@@ -1,5 +1,6 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
+import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
 import 'package:crowdfunding_platform/controller/getx/controllers/home_controller.dart';
 import 'package:crowdfunding_platform/view/widgets/secondary_button.dart';
 import 'package:flutter/material.dart';
@@ -316,7 +317,9 @@ LayoutBuilder(
       borderRadius: BorderRadius.circular(8.r),
     ),
                         ),
-                        onPressed: () {},
+                        onPressed: () { 
+                          Get.toNamed(RoutesManager.campaignDetailsScreen);
+                        },
                         child: Text( 'مشاهدة التفاصيل'),
                       ),
                      
