@@ -23,5 +23,6 @@ class ImagesManager {
     static const String home = '$iconsPath/ic_home.svg';
     static const String explore = '$iconsPath/ic_explore.svg';
     static const String profile = '$iconsPath/ic_profile.svg';
+    static const String discover = '$iconsPath/ic_discover.svg';
 
 }

@@ -77,7 +77,7 @@ class _MainScreenState extends State<MainScreen> {
                 children: [
                   _TabItem(icon: ImagesManager.home, index: 2),
 
-                  _TabItem(icon: ImagesManager.explore, index: 1),
+                  _TabItem(icon: ImagesManager.discover, index: 1),
                   _TabItem(icon: ImagesManager.profile, index: 0),
                 ],
               ),
@@ -96,14 +96,21 @@ class _MainScreenState extends State<MainScreen> {
       onTap: () {
         setState(() => currentIndex = index);
       },
-      child: SvgPicture.asset(
-        icon,
-        width: isSelected ? 54 : 24,
-        height: isSelected ? 54 : 24,
-        color: 
-        isSelected
-            ? ColorsManager.primaryCTA
-            : isDark ? ColorsManager.secondaryDark: ColorsManager.secondaryLight,
+      child: Container(
+padding: isSelected ? EdgeInsets.all(10.w) : EdgeInsets.zero,
+        decoration: BoxDecoration(
+          border: isSelected ? Border.all(color: ColorsManager.primaryCTA, width: 1.5) : null,
+          borderRadius: BorderRadius.circular(30.r),
+        ),
+        child: SvgPicture.asset(
+          icon,
+          width:  24,
+          height: 24,
+          color: 
+          isSelected
+              ? ColorsManager.primaryCTA
+              : isDark ? ColorsManager.secondaryDark: ColorsManager.secondaryLight,
+        ),
       ),
     );
   }
