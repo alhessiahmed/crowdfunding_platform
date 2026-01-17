@@ -60,7 +60,6 @@ final List<GetPage<dynamic>> getPages = [
     name: RoutesManager.resetPasswordSuccessScreen,
     page: () => const ResetPasswordSuccessScreen(),
   ),
-<<<<<<< HEAD
    GetPage(
     name: RoutesManager.mainScreen,
     page: () => const MainScreen(),
@@ -74,7 +73,6 @@ final List<GetPage<dynamic>> getPages = [
      // CategoryBinding(),
     ],
   ),
-=======
   GetPage(
     name: RoutesManager.userTypeSelectionScreen,
     page: () => UserTypeSelectionScreen(),
@@ -105,7 +103,6 @@ final List<GetPage<dynamic>> getPages = [
   //     CategoryBinding(),
   //   ],
   // ),
->>>>>>> af6c838a959f3b2a897e682c5175c4c09b93e6fb
   // GetPage(
   //   name: RoutesManager.subCategoryScreen,
   //   page: () => const SubCategoriesScreen(),

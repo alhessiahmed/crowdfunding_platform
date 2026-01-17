@@ -64,10 +64,8 @@ Map<String, String> arLocale = {
   'go_to_login': 'الانتقال إلى تسجيل الدخول',
   'login_safely': 'يمكنك الاّن تسجيل الدخول بأمان',
   'password_changed': '✅ تم تحديث كلمة المرور بنجاح',
-<<<<<<< HEAD
   'every_star_makes_a_difference' : 'كل نجمة تصنع فرقًا',
   'title_campaigns_list' : 'حملة ضمن تعليم',
-=======
   'how_to_use': 'كيف ترغب باستخدام Starry؟',
   'how_to_use_info': 'اختر الطريقة التي تناسبك، يمكنك تغييرها لاحقًا',
   'donator': 'متبرع',
@@ -125,5 +123,4 @@ Map<String, String> arLocale = {
   'ready_to_go': 'أصبحت جاهزًا لإطلاق حملتك الأولى وجمع النجوم بكل وضوح وثقة.',
   'create_first_campaign': 'إنشاء اول حملة',
   'discover_dashboard': 'استكشاف لوحة التحكم',
->>>>>>> af6c838a959f3b2a897e682c5175c4c09b93e6fb
 };
