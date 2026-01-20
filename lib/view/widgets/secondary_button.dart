@@ -9,13 +9,14 @@ class SecondaryButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final double height;
   final double borderRadius;
-
+  final Color? color;
   const SecondaryButton({
     super.key,
     required this.label,
     this.onPressed,
     this.height = 56,
     this.borderRadius = 16,
+    this.color,
   });
 
   @override
@@ -31,7 +32,7 @@ class SecondaryButton extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           elevation: 0, // critical: remove shadow
-          backgroundColor: colorScheme.surface, // matches background
+          backgroundColor: color ?? colorScheme.surface, // matches background
           foregroundColor: isDark
               ? ColorsManager.primaryTextDark
               : ColorsManager.primaryLight,
