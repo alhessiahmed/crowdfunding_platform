@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../controller/core/constants/colors_manager.dart';
@@ -21,6 +22,8 @@ class TextFieldWidget extends StatelessWidget {
     this.onEditingComplete,
     this.onSubmitted,
     required this.label,
+    this.inputFormatters,
+    this.maxLength,
   }) : super(key: key);
   final String label;
   final TextEditingController controller;
@@ -37,6 +40,8 @@ class TextFieldWidget extends StatelessWidget {
   final Function(String)? onChange;
   final Function()? onEditingComplete;
   final Function(String)? onSubmitted;
+  final List<TextInputFormatter>? inputFormatters;
+  final int? maxLength;
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +72,8 @@ class TextFieldWidget extends StatelessWidget {
             obscureText: obscureText,
             onChanged: onChange,
             onFieldSubmitted: onSubmitted,
+            maxLength: maxLength,
+            inputFormatters: inputFormatters,
             // minLines: null,
             // maxLines: null,
             // expands: true,
@@ -81,6 +88,7 @@ class TextFieldWidget extends StatelessWidget {
                 fontSize: 12.sp,
                 color: Theme.of(context).colorScheme.onSurfaceVariant,
               ),
+
               suffixIcon: suffixIcon == null
                   ? null
                   : Padding(

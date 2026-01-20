@@ -17,4 +17,8 @@ class RoutesManager {
   static const accountTypeScreen = '/account_type_screen';
   static const setupSuccessScreen = '/setup_success_screen';
   static const homeScreen = '/home_screen';
+  static const paymentScreen = '/payment_screen';
+  static const creditCardPaymentScreen = '/credit_card_payment_screen';
+  static const confirmPaymentScreen = '/confirm_payment_screen';
+  static const thanksForPaymentScreen = '/thanks_for_payment_screen';
 }

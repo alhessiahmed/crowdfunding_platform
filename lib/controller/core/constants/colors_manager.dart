@@ -21,6 +21,7 @@ class ColorsManager {
   static const Color iconDefaultLight = Color(0xFF2F5A8C);
   static const Color scaffoldBgDark = Color(0xFF121212);
   static const Color scaffoldBgLight = Color(0xFFFBFCFF);
+  static const Color secondaryThanksColor = Color(0xFF2358B3);
 
   // OLD COLORS DONT USE
   static const Color textColor = Color(0xFF111827);
