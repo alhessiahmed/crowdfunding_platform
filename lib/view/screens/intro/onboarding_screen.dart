@@ -1,3 +1,4 @@
+import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -5,12 +6,31 @@ import '../../../controller/core/constants/colors_manager.dart';
 import '../../../controller/core/constants/images_manager.dart';
 import '../../../controller/core/routes/routes_manager.dart';
 
-class OnboardingScreen extends StatelessWidget {
+class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
   @override
+  State<OnboardingScreen> createState() => _OnboardingScreenState();
+}
+
+class _OnboardingScreenState extends State<OnboardingScreen> {
+ late PageController pageController ;
+
+   
+
+    @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    pageController =PageController();
+
+  }
+ 
+   Future<void> _finishOnboarding() async {
+ }
+  @override
   Widget build(BuildContext context) {
-    PageController pageController = PageController();
+    
     return Scaffold(
       body: PageView.builder(
         physics: const BouncingScrollPhysics(),
@@ -100,6 +120,7 @@ class OnboardingScreen extends StatelessWidget {
                               child: ElevatedButton(
                                 onPressed: () {
                                   Get.offNamed(RoutesManager.welcomeScreen);
+                                  SharedPrefController.to.setSeenOnboarding(); 
                                 },
                                 child: Text('start_now'.tr),
                               ),
@@ -157,6 +178,8 @@ class OnboardingScreen extends StatelessWidget {
                                         ),
                                         curve: Curves.easeIn,
                                       );
+                                     SharedPrefController.to.setSeenOnboarding(); 
+                                      
                                     },
                                     child: Text(
                                       'skip'.tr,
