@@ -48,7 +48,7 @@ class DonationSummaryCard extends StatelessWidget {
                       ),
                       SizedBox(width: 4.w),
                       SvgPicture.asset(
-                        ImagesManager.starIcon,
+                        ImagesManager.backIcon,
                         fit: BoxFit.cover,
                       ),
                       SizedBox(width: 4.w),

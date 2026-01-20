@@ -56,7 +56,7 @@ class DetailsCard extends StatelessWidget {
                 textDirection: TextDirection.ltr,
                 children: [
                   SvgPicture.asset(
-                    ImagesManager.starIcon,
+                    ImagesManager.backIcon,
                     fit: BoxFit.contain,
                     height: 16.h,
                     width: 16.w,
