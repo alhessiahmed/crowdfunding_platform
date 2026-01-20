@@ -24,7 +24,10 @@ class OnboardingShellScreen extends GetView<CreatorOnboardingController> {
               children: [
                 Row(
                   children: [
-                    SvgPicture.asset(ImagesManager.clockIcon),
+                    InkWell(
+                      onTap: () => controller.previousStep(),
+                      child: SvgPicture.asset(ImagesManager.backIcon),
+                    ),
                     Spacer(),
                     Text(
                       '${'step'.tr} ${controller.currentPage.value + 1} ${'of'.tr} 4',

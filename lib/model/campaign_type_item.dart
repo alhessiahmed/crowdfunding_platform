@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import '../controller/getx/controllers/auth/creator_onboarding_controller.dart';
 
 class CampaignTypeItem {
