@@ -1,6 +1,8 @@
+import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../controller/core/constants/images_manager.dart';
 import '../../../controller/core/routes/routes_manager.dart';
@@ -16,12 +18,23 @@ class _LaunchScreenState extends State<LaunchScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
-      Get.offNamed(
-        (true) ? RoutesManager.onboardingScreen : RoutesManager.homeScreen,
-      );
-    });
+   _initAndNavigate();
   }
+
+   Future<void> _initAndNavigate() async {
+
+    await Future.delayed(const Duration(seconds: 3));
+
+    final hasSeenOnboarding =
+        SharedPrefController.to.hasSeenOnboarding ;
+
+    if (hasSeenOnboarding) {
+      Get.offAllNamed(RoutesManager.mainScreen);
+    } else {
+      Get.offAllNamed(RoutesManager.onboardingScreen);
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
