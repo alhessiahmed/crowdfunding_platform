@@ -42,6 +42,14 @@ class ImagesManager {
   static const String environmentIcon = '$iconsPath/ic_environment.svg';
   static const String linkIcon = '$iconsPath/ic_link.svg';
   static const String locationIcon = '$iconsPath/ic_location.svg';
+  static const String visaLogo = '$iconsPath/ic_visa_logo.svg';
+  static const String applePayIcon = '$iconsPath/ic_apple_pay.svg';
+  static const String visaCardIcon = '$iconsPath/ic_card.svg';
+  static const String visaCardsIcon = '$iconsPath/ic_cards.svg';
+  static const String lockIcon = '$iconsPath/ic_lock.svg';
+  static const String paypalPaymentIcon = '$iconsPath/ic_paypal_payment.svg';
+  static const String starIcon = '$iconsPath/ic_star.svg';
+  static const String visaPaymentIcon = '$iconsPath/ic_visa.svg';
   static const String visa = '$iconsPath/ic_visa.svg';
   static const String search = '$iconsPath/ic_search.svg';
   static const String star = '$iconsPath/ic_star.svg';
@@ -57,14 +65,4 @@ class ImagesManager {
   static const String calender2 = '$iconsPath/ic_calendar-2.svg';
   static const String profile2user = '$iconsPath/ic_profile-2user.svg';
   static const String notificationBing = '$iconsPath/ic_notification-bing.svg';
- 
-}
-  static const String visaLogo = '$iconsPath/ic_visa_logo.svg';
-  static const String applePayIcon = '$iconsPath/ic_apple_pay.svg';
-  static const String visaCardIcon = '$iconsPath/ic_card.svg';
-  static const String visaCardsIcon = '$iconsPath/ic_cards.svg';
-  static const String lockIcon = '$iconsPath/ic_lock.svg';
-  static const String paypalPaymentIcon = '$iconsPath/ic_paypal_payment.svg';
-  static const String starIcon = '$iconsPath/ic_star.svg';
-  static const String visaPaymentIcon = '$iconsPath/ic_visa.svg';
 }
