@@ -19,4 +19,8 @@ class RoutesManager {
   static const homeScreen = '/home_screen';
   static const mainScreen = '/main_screen';
   static const campaignDetailsScreen = '/campaign_details_screen';
+  static const paymentScreen = '/payment_screen';
+  static const creditCardPaymentScreen = '/credit_card_payment_screen';
+  static const confirmPaymentScreen = '/confirm_payment_screen';
+  static const thanksForPaymentScreen = '/thanks_for_payment_screen';
 }
