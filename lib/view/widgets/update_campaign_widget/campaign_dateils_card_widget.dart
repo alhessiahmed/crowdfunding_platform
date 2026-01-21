@@ -1,5 +1,4 @@
-import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
-import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
+import 'package:crowdfunding_platform/view/widgets/update_campaign_widget/app_card.dart';
 import 'package:crowdfunding_platform/view/widgets/update_campaign_widget/campaing_progress_info_widget.dart';
 import 'package:crowdfunding_platform/view/widgets/update_campaign_widget/image_withe_badge.dart';
 import 'package:flutter/material.dart';
@@ -27,21 +26,7 @@ class CampaignDateilsCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.onInverseSurface,
-        borderRadius: BorderRadius.circular(24.r),
-        border: BoxBorder.all(width: 0.5, color: ColorsManager.disabled),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black12,
-
-            // blurRadius: 10,
-            offset: Offset(0, 1),
-          ),
-        ],
-      ),
+    return AppCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -60,10 +45,13 @@ class CampaignDateilsCardWidget extends StatelessWidget {
             ),
           ),
           SizedBox(height: 12.h),
-          CampaignProgressInfoWidget(currentStars: 2500, totalStars: 5000),
+          CampaignProgressInfoWidget(
+            currentStars: currentStars,
+            totalStars: totalStars,
+          ),
           SizedBox(height: 12.h),
           Text(
-            'It_ends_within_days'.trParams({'days': '$endDuring'}).tr,
+            'It_ends_within_days'.trParams({'days': '$endDuring'}),
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: Theme.of(context).colorScheme.primary,
             ),
