@@ -65,4 +65,6 @@ class ImagesManager {
   static const String calender2 = '$iconsPath/ic_calendar-2.svg';
   static const String profile2user = '$iconsPath/ic_profile-2user.svg';
   static const String notificationBing = '$iconsPath/ic_notification-bing.svg';
+  static const String pushIcon = '$iconsPath/ic_pause.svg';
+  static const String trashIcon = '$iconsPath/ic_trash.svg';
 }
