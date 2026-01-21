@@ -163,7 +163,7 @@ Map<String, String> arLocale = {
   'Share': 'مشاركة',
   'Edit': 'تعديل',
   'Performance_Overview': 'نظرة عامة على الأداء',
-  'Total_stars_collected': 'المجمعة',
+  'Total_stars_collected': 'إجمالي النجوم المجمعة',
   'Supporters': 'الداعمين',
   'Days_remaining': 'أيام متبقية',
   'Latest_updates': 'آخر التحديثات',
@@ -171,4 +171,5 @@ Map<String, String> arLocale = {
   'Campaign_temporarily_suspended': 'ايقاف الحملة مؤقتاً',
   'Delete_the_campaign_permanently': 'حذف الحملة نهائياً',
   'star': 'نجمة',
+  'Active': 'نشطة',
 };

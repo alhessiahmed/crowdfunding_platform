@@ -67,4 +67,6 @@ class ImagesManager {
   static const String notificationBing = '$iconsPath/ic_notification-bing.svg';
   static const String pushIcon = '$iconsPath/ic_pause.svg';
   static const String trashIcon = '$iconsPath/ic_trash.svg';
+  static const String addIcon = '$iconsPath/ic_add.svg';
+  static const String settingIcon = '$iconsPath/Ic_setting.svg';
 }
