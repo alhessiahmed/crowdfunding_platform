@@ -6,7 +6,7 @@ import '../../controller/core/constants/colors_manager.dart';
 
 class TextFieldWidget extends StatelessWidget {
   const TextFieldWidget({
-    Key? key,
+    super.key,
     required this.controller,
     required this.hintText,
     this.suffixIcon,
@@ -24,7 +24,7 @@ class TextFieldWidget extends StatelessWidget {
     required this.label,
     this.inputFormatters,
     this.maxLength,
-  }) : super(key: key);
+  });
   final String label;
   final TextEditingController controller;
   final Widget? suffixIcon;
@@ -55,71 +55,67 @@ class TextFieldWidget extends StatelessWidget {
           ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
         ),
         SizedBox(height: 4.h),
-        SizedBox(
-          height: 56.h,
-          child: TextFormField(
-            controller: controller,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) {
-              return null;
-            },
-            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-              fontSize: 12.sp,
-              color: Theme.of(context).colorScheme.onSurfaceVariant,
-            ),
-            textInputAction: textInputAction,
-            keyboardType: isPhone ? TextInputType.phone : keyboardType,
-            obscureText: obscureText,
-            onChanged: onChange,
-            onFieldSubmitted: onSubmitted,
-            maxLength: maxLength,
-            inputFormatters: inputFormatters,
-            // minLines: null,
-            // maxLines: null,
-            // expands: true,
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.symmetric(
-                vertical: 22.h,
-                horizontal: 16.w,
-              ),
-
-              hintText: hintText,
-              hintStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                fontSize: 12.sp,
-                color: Theme.of(context).colorScheme.onSurfaceVariant,
-              ),
-
-              suffixIcon: suffixIcon == null
-                  ? null
-                  : Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.w),
-                      child: SizedBox(
-                        width: 24.w,
-                        height: 24.w,
-                        child: Center(child: suffixIcon),
-                      ),
-                    ),
-              suffixIconConstraints: const BoxConstraints(
-                minWidth: 0,
-                minHeight: 0,
-              ),
-              errorStyle: const TextStyle(height: 0),
-              helperStyle: const TextStyle(height: 0),
-              filled: true,
-              fillColor: Get.isDarkMode
-                  ? ColorsManager.bgSectionDark
-                  : ColorsManager.bgSectionLight,
-              // isDense: true,
-              border: textFieldBorder(),
-              focusedBorder: textFieldBorder(),
-              focusedErrorBorder: textFieldBorder(),
-              enabledBorder: textFieldBorder(),
-              errorBorder: textFieldBorder(),
-            ),
-          ),
-        ),
+        _buildTextField(context),
       ],
     );
+  }
+
+  Widget _buildTextField(BuildContext context) {
+    final field = TextFormField(
+      controller: controller,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      validator: (value) {
+        return null;
+      },
+      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+        fontSize: 12.sp,
+        color: Theme.of(context).colorScheme.onSurfaceVariant,
+      ),
+      textInputAction: textInputAction,
+      keyboardType: isPhone ? TextInputType.phone : keyboardType,
+      obscureText: obscureText,
+      onChanged: onChange,
+      onFieldSubmitted: onSubmitted,
+      maxLength: maxLength,
+      inputFormatters: inputFormatters,
+      minLines: minLines,
+      maxLines: maxLines,
+      decoration: InputDecoration(
+        contentPadding: EdgeInsets.symmetric(vertical: 22.h, horizontal: 16.w),
+        hintText: hintText,
+        hintStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
+          fontSize: 12.sp,
+          color: Theme.of(context).colorScheme.onSurfaceVariant,
+        ),
+        suffixIcon: suffixIcon == null
+            ? null
+            : Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: SizedBox(
+                  width: 24.w,
+                  height: 24.w,
+                  child: Center(child: suffixIcon),
+                ),
+              ),
+        suffixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
+        errorStyle: const TextStyle(height: 0),
+        helperStyle: const TextStyle(height: 0),
+        filled: true,
+        fillColor: Get.isDarkMode
+            ? ColorsManager.bgSectionDark
+            : ColorsManager.bgSectionLight,
+        border: textFieldBorder(),
+        focusedBorder: textFieldBorder(),
+        focusedErrorBorder: textFieldBorder(),
+        enabledBorder: textFieldBorder(),
+        errorBorder: textFieldBorder(),
+      ),
+    );
+
+    if (maxLines > 1 || minLines > 1) {
+      return field;
+    }
+    return SizedBox(height: 56.h, child: field);
   }
 
   OutlineInputBorder textFieldBorder() {

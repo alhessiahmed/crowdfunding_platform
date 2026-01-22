@@ -24,4 +24,5 @@ class RoutesManager {
   static const confirmPaymentScreen = '/confirm_payment_screen';
   static const thanksForPaymentScreen = '/thanks_for_payment_screen';
   static const controlCampaignScreen = '/control_campaign_screen';
+  static const addUpdateToCampaignScreen = '/add_update_to_campaign_screen';
 }

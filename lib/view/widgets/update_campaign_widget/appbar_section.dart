@@ -4,17 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class AppbarSection extends StatelessWidget {
-  const AppbarSection({super.key});
-
+  const AppbarSection({super.key, this.title, this.subTitle, this.onBack});
+  final String? title;
+  final String? subTitle;
+  final VoidCallback? onBack;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomAppBar(title: 'Campaign_Management'.tr),
+        CustomAppBar(title: title ?? '', onIconTap: onBack),
         SizedBox(height: 8),
         Text(
-          'Control_the_details_of_your_campaign_and_monitor_its_performance.'
-              .tr,
+          subTitle ?? '',
           style: Theme.of(
             context,
           ).textTheme.bodySmall?.copyWith(color: ColorsManager.secondaryLight),

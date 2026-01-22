@@ -44,8 +44,10 @@ class LastUpdatesCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
+                      flex: 3,
                       child: FittedBox(
                         fit: BoxFit.scaleDown,
                         child: Text(
@@ -57,7 +59,12 @@ class LastUpdatesCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 12.w),
-                    Text(update.timeLabel, style: timeStyle),
+                    Expanded(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(update.timeLabel, style: timeStyle),
+                      ),
+                    ),
                   ],
                 ),
                 SizedBox(height: 6.h),

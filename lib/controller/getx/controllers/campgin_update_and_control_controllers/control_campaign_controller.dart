@@ -1,4 +1,5 @@
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
+import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
 import 'package:crowdfunding_platform/controller/core/utils/show_snackbar.dart';
 import 'package:crowdfunding_platform/model/control_campaign.dart';
 import 'package:get/get.dart';
@@ -43,6 +44,7 @@ class ControlCampaignController extends GetxController {
           description:
               'شاهد المرحلة الاولى من توزيع المياه النظيفة الصحية على مخيمات النزوح في مدينة غزة',
           timeLabel: 'منذ ساعة',
+          isLiked: true,
         ),
         CampaignUpdate(
           title: 'شكرًا لأول 100 داعمك 💙',
@@ -91,7 +93,7 @@ class ControlCampaignController extends GetxController {
         showSnackbar(message: 'Share campaign');
         break;
       case ControlActionType.addUpdate:
-        showSnackbar(message: 'Add a new update');
+        Get.toNamed(RoutesManager.addUpdateToCampaignScreen);
         break;
     }
   }
