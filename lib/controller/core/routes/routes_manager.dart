@@ -23,4 +23,7 @@ class RoutesManager {
   static const creditCardPaymentScreen = '/credit_card_payment_screen';
   static const confirmPaymentScreen = '/confirm_payment_screen';
   static const thanksForPaymentScreen = '/thanks_for_payment_screen';
+  static const creatorVerificationScreen = '/creator_verification_screen';
+  static const creatorVerificationSuccessScreen =
+      '/creator_verification_success_screen';
 }
