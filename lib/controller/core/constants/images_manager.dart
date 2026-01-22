@@ -9,11 +9,12 @@ class ImagesManager {
   static const String likeLight = '$mainPath/like_light.png';
   static const String likeDark = '$mainPath/like_dark.png';
   static const String test = '$mainPath/test.png';
-
-  /////////////// icons ///////////////
   static const String starLight = '$mainPath/star_light.png';
   static const String starDark = '$mainPath/star_dark.png';
   static const String placeHolder = '$mainPath/place_holder.png';
+  static const String bankOfPalestine = '$mainPath/bank_of_palestine.png';
+  static const String clockDark = '$mainPath/clock_dark.png';
+  static const String clockLight = '$mainPath/clock_light.png';
 
   // Icons
   static const String iconsPath = 'assets/images/icons';
@@ -25,7 +26,7 @@ class ImagesManager {
   static const String donatorIconDark = '$iconsPath/ic_donator_dark.svg';
   static const String creatorIconLight = '$iconsPath/ic_creator.svg';
   static const String creatorIconDark = '$iconsPath/ic_creator_dark.svg';
-  static const String backIcon = '$iconsPath/ic_clock.svg';
+  static const String backIcon = '$iconsPath/ic_back.svg';
   static const String individualIcon = '$iconsPath/ic_individual.svg';
   static const String individualIconDark = '$iconsPath/ic_individual_dark.svg';
   static const String organizationIcon = '$iconsPath/ic_organization.svg';
@@ -65,4 +66,9 @@ class ImagesManager {
   static const String calender2 = '$iconsPath/ic_calendar-2.svg';
   static const String profile2user = '$iconsPath/ic_profile-2user.svg';
   static const String notificationBing = '$iconsPath/ic_notification-bing.svg';
+  static const String galleryIcon = '$iconsPath/ic_gallery.svg';
+  static const String cameraIcon = '$iconsPath/ic_camera.svg';
+  static const String lightIcon = '$iconsPath/ic_light.svg';
+  static const String clockIcon = '$iconsPath/ic_clock.svg';
+  static const String shieldIcon = '$iconsPath/ic_shield.svg';
 }
