@@ -32,19 +32,23 @@ class ControlCampaignController extends GetxController {
       actions: [
         CampaignAction(type: ControlActionType.edit, labelKey: 'Edit'),
         CampaignAction(type: ControlActionType.share, labelKey: 'Share'),
-        CampaignAction(type: ControlActionType.addUpdate, labelKey: 'Add_Update'),
+        CampaignAction(
+          type: ControlActionType.addUpdate,
+          labelKey: 'Add_Update',
+        ),
       ],
       updates: [
         CampaignUpdate(
-          title: 'Started the first delivery',
-          description: 'Clean water reached 50 families in need.',
-          timeLabel: '3 hours ago',
-          isLiked: true,
+          title: 'بدأنا الخطوة الأولى بفضل دعمكم',
+          description:
+              'شاهد المرحلة الاولى من توزيع المياه النظيفة الصحية على مخيمات النزوح في مدينة غزة',
+          timeLabel: 'منذ ساعة',
         ),
         CampaignUpdate(
-          title: 'Reached 1,000 stars',
-          description: 'Thanks to supporters for the early momentum.',
-          timeLabel: '1 day ago',
+          title: 'شكرًا لأول 100 داعمك 💙',
+          description:
+              'لقد وصلنا الى اول محطة هامة في رحلتنا . دعمكم يعني العالم بالنسبة لنا وسنبدأ العمل على...',
+          timeLabel: 'منذ يومين',
         ),
       ],
     );

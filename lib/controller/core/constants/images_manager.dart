@@ -69,4 +69,6 @@ class ImagesManager {
   static const String trashIcon = '$iconsPath/ic_trash.svg';
   static const String addIcon = '$iconsPath/ic_add.svg';
   static const String settingIcon = '$iconsPath/Ic_setting.svg';
+  static const String remainingDaysIcon = '$iconsPath/ic_remaining_days.svg';
+  static const String lastUpdatesIcon = '$iconsPath/ic_last_updates.svg';
 }
