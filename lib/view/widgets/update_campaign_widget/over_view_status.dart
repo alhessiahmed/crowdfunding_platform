@@ -23,7 +23,7 @@ class OverViewStatus extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final labelStyle = Theme.of(
       context,
-    ).textTheme.bodySmall?.copyWith(color: colorScheme.primary);
+    ).textTheme.bodySmall?.copyWith(color: ColorsManager.secondaryLight);
     final valueStyle = Theme.of(context).textTheme.headlineSmall?.copyWith(
       color: colorScheme.primary,
       fontWeight: FontWeight.bold,
@@ -84,7 +84,7 @@ class OverViewStatus extends StatelessWidget {
             SizedBox(width: 12.w),
             Expanded(
               child: _MiniStatCard(
-                iconPath: ImagesManager.calender2,
+                iconPath: ImagesManager.remainingDaysIcon,
                 label: 'Days_remaining'.tr,
                 value: daysRemaining.toString(),
                 labelStyle: labelStyle,
@@ -118,29 +118,36 @@ class _MiniStatCard extends StatelessWidget {
     final iconColor = Theme.of(context).colorScheme.primary;
     return AppCard(
       padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 8.w),
-      child: Column(
+      child: Row(
         children: [
-          Row(
-            mainAxisSize: MainAxisSize.min,
+          SizedBox(width: 40.w),
+
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SvgPicture.asset(
-                iconPath,
-                width: 18.w,
-                height: 18.w,
-                colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SvgPicture.asset(
+                    iconPath,
+                    width: 16.w,
+                    height: 16.h,
+                    colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
+                  ),
+                  SizedBox(width: 6.w),
+                  Flexible(
+                    child: Text(
+                      label,
+                      style: labelStyle,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(width: 6.w),
-              Flexible(
-                child: Text(
-                  label,
-                  style: labelStyle,
-                  textAlign: TextAlign.center,
-                ),
-              ),
+              SizedBox(height: 8.h),
+              Text(value, style: valueStyle),
             ],
           ),
-          SizedBox(height: 8.h),
-          Text(value, style: valueStyle),
         ],
       ),
     );
