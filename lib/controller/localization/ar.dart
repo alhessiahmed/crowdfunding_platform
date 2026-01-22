@@ -172,4 +172,17 @@ Map<String, String> arLocale = {
   'Delete_the_campaign_permanently': 'حذف الحملة نهائياً',
   'star': 'نجمة',
   'Active': 'نشطة',
+  'Add_campaign_update': 'إضافة تحديث للحملة',
+  'Keep_donors_informed_about_your_campaign_update_and_progress.':
+      'أطلع المتبرعين على تحديثات حملتك وانجاز تقدمها',
+  'Complete_campaign': 'حملة مكتملة',
+  'Example:Thank_you_for_your_support': 'مثال: شكرا لدعمكم',
+  'Update_content': 'محتوى التحديث',
+  'Write_a_short_description_that_explains_the_goal_of_the_campaign_update.':
+      'اكتب وصفًا قصيرًا يوضح هدف تحديث الحملة',
+  'Add_a_photo_or_video_(optional)': 'أضف صورة أو مقطع فيديو (اختياري)',
+  'Click_to_download': 'انقر للتحميل',
+  'Post the update': 'نشر التحديث',
+  'cancel': 'إلغاء',
+  'Update_Title': 'عنوان التحديث',
 };
