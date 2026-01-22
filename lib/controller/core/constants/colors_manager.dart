@@ -22,6 +22,7 @@ class ColorsManager {
   static const Color scaffoldBgDark = Color(0xFF121212);
   static const Color scaffoldBgLight = Color(0xFFFBFCFF);
   static const Color secondaryThanksColor = Color(0xFF2358B3);
+  static const Color dottodBorderColor = Color(0xFF2F5A8C);
 
   // OLD COLORS DONT USE
   static const Color textColor = Color(0xFF111827);

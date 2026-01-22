@@ -14,9 +14,11 @@ import 'controller/localization/app_translations.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Get.put(ThemeController());
-  await Get.putAsync<SharedPrefController> (()async => await SharedPrefController().initPreferences());
+  await Get.putAsync<SharedPrefController>(
+    () async => await SharedPrefController().initPreferences(),
+  );
   // await DbController().initDatabase();
-   //await SharedPrefController().initPreferences();
+  //await SharedPrefController().initPreferences();
   // await Firebase.initializeApp(
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );
@@ -40,10 +42,10 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: AppTheme.light(),
           darkTheme: AppTheme.dark(),
-          themeMode: ThemeController.to.themeMode,
-          // themeMode: ThemeMode.dark,
+          // themeMode: ThemeController.to.themeMode,
+          themeMode: ThemeMode.dark,
           // initialRoute: RoutesManager.launchScreen,
-          initialRoute: RoutesManager.thanksForPaymentScreen,
+          initialRoute: RoutesManager.creatorVerificationScreen,
           getPages: getPages,
           unknownRoute: GetPage(
             name: RoutesManager.launchScreen,
