@@ -2,41 +2,36 @@ import 'package:crowdfunding_platform/controller/getx/bindings/auth/forgot_passw
 import 'package:crowdfunding_platform/controller/getx/bindings/auth/user_type_selection_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/auth/verification_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/campaign_details_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/creator/creator_verfication_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/home_binding.dart';
 import 'package:crowdfunding_platform/view/screens/auth/forgot_password_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/reset_password_success_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/setup_success_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/verification_screen.dart';
 import 'package:crowdfunding_platform/view/screens/campaign_details_screen.dart';
+import 'package:crowdfunding_platform/view/screens/creator/creator_verfication_screen.dart';
+import 'package:crowdfunding_platform/view/screens/creator/creator_verification_success_screen.dart';
 import 'package:crowdfunding_platform/view/screens/home_screen.dart';
 import 'package:crowdfunding_platform/view/screens/intro/welcome_screen.dart';
 import 'package:crowdfunding_platform/view/screens/main_screen.dart';
 import 'package:get/get.dart';
 
-import '../../../view/screens/auth/forgot_password_screen.dart';
 import '../../../view/screens/auth/onboarding_shell_screen.dart';
 import '../../../view/screens/auth/reset_password_screen.dart';
-import '../../../view/screens/auth/reset_password_success_screen.dart';
-import '../../../view/screens/auth/setup_success_screen.dart';
 import '../../../view/screens/auth/sign_in_screen.dart';
 import '../../../view/screens/auth/sign_up_screen.dart';
 import '../../../view/screens/auth/user_type_selection_screen.dart';
 import '../../../view/screens/auth/user_welcome_screen.dart';
-import '../../../view/screens/auth/verification_screen.dart';
 import '../../../view/screens/intro/launch_screen.dart';
 import '../../../view/screens/intro/onboarding_screen.dart';
-import '../../../view/screens/intro/welcome_screen.dart';
 import '../../../view/screens/payment/confirm_payment_screen.dart';
 import '../../../view/screens/payment/credit_card_payment_screen.dart';
 import '../../../view/screens/payment/payment_method_screens.dart';
 import '../../../view/screens/payment/thanks_for_payment_screen.dart';
 import '../../getx/bindings/auth/creator_onboarding_binding.dart';
-import '../../getx/bindings/auth/forgot_password_binding.dart';
 import '../../getx/bindings/auth/reset_password_binding.dart';
 import '../../getx/bindings/auth/sign_in_binding.dart';
 import '../../getx/bindings/auth/sign_up_binding.dart';
-import '../../getx/bindings/auth/user_type_selection_binding.dart';
-import '../../getx/bindings/auth/verification_binding.dart';
 import '../../getx/bindings/payment/confirm_payment_binding.dart';
 import '../../getx/bindings/payment/payment_method_binding.dart';
 import '../../getx/bindings/payment/thanks_for_payment_binding.dart';
@@ -133,6 +128,15 @@ final List<GetPage<dynamic>> getPages = [
     name: RoutesManager.thanksForPaymentScreen,
     page: () => const ThanksForPaymentScreen(),
     binding: ThanksForPaymentBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.creatorVerificationScreen,
+    page: () => const CreatorVerficationScreen(),
+    binding: CreatorVerficationBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.creatorVerificationSuccessScreen,
+    page: () => const CreatorVerificationSuccessScreen(),
   ),
 
   // GetPage(
