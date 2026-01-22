@@ -26,7 +26,12 @@ class ControlCampaignScreen extends GetView<ControlCampaignController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const AppbarSection(),
+              AppbarSection(
+                title: 'Campaign_Management'.tr,
+                subTitle:
+                    'Control_the_details_of_your_campaign_and_monitor_its_performance.'
+                        .tr,
+              ),
               SizedBox(height: 24.h),
               CampaignDateilsCardWidget(
                 campaignTitle: summary.titleKey.tr,

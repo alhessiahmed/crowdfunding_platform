@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class OverViewStatus extends StatelessWidget {
   const OverViewStatus({
@@ -20,6 +21,8 @@ class OverViewStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final numberFormatter = NumberFormat('#,###');
+
     final colorScheme = Theme.of(context).colorScheme;
     final labelStyle = Theme.of(
       context,
@@ -47,7 +50,7 @@ class OverViewStatus extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        totalStars.toString(),
+                        numberFormatter.format(totalStars),
                         style: Theme.of(context).textTheme.headlineSmall
                             ?.copyWith(
                               color: ColorsManager.primaryCTA,
@@ -75,7 +78,7 @@ class OverViewStatus extends StatelessWidget {
               child: _MiniStatCard(
                 iconPath: ImagesManager.profile2user,
                 label: 'Supporters'.tr,
-                value: supporters.toString(),
+                value: numberFormatter.format(supporters),
                 labelStyle: labelStyle,
                 valueStyle: valueStyle,
               ),
@@ -86,7 +89,7 @@ class OverViewStatus extends StatelessWidget {
               child: _MiniStatCard(
                 iconPath: ImagesManager.remainingDaysIcon,
                 label: 'Days_remaining'.tr,
-                value: daysRemaining.toString(),
+                value: numberFormatter.format(daysRemaining),
                 labelStyle: labelStyle,
                 valueStyle: valueStyle,
               ),
