@@ -12,6 +12,7 @@ import 'package:crowdfunding_platform/view/screens/auth/setup_success_screen.dar
 import 'package:crowdfunding_platform/view/screens/auth/verification_screen.dart';
 import 'package:crowdfunding_platform/view/screens/campaign_details_screen.dart';
 import 'package:crowdfunding_platform/view/screens/discover_screen.dart';
+import 'package:crowdfunding_platform/view/screens/home_screen.dart';
 import 'package:crowdfunding_platform/view/screens/intro/welcome_screen.dart';
 import 'package:crowdfunding_platform/view/screens/main_screen.dart';
 import 'package:crowdfunding_platform/view/screens/my_campaigns.dart';
@@ -107,10 +108,10 @@ final List<GetPage<dynamic>> getPages = [
     binding: MainBinding(),
   ),
   GetPage(
-    name: RoutesManager.homeScreen,
-    page: () => const HomeScreen(),
+    name: RoutesManager.discoverScreen,
+    page: () => const DiscoverScreen(),
     bindings: [
-      HomeBinding(),
+      DiscoverBinding(),
       // CategoryBinding(),
     ],
   ),
@@ -148,6 +149,11 @@ final List<GetPage<dynamic>> getPages = [
     name: RoutesManager.myCampaignsScreen,
     page: () => const MyCampaignsScreen(),
     binding: MyCampaginsBinding(),
+  ),
+   GetPage(
+    name: RoutesManager.homeScreen,
+    page: () => const HomeScreen(),
+    binding: DiscoverBinding(),
   ),
 
   // GetPage(

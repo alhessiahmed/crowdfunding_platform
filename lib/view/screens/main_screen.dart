@@ -21,7 +21,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final screens = [
     const ProfileScreen(),
-    const HomeScreen(),
+    const DiscoverScreen(),
     const MyCampaignsScreen(),
     const Scaffold(body: Center(child: Text("home"))),
   ];

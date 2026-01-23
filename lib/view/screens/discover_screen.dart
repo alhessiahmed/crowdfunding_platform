@@ -12,8 +12,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/utils.dart';
 
-class HomeScreen extends GetView<HomeController> {
-  const HomeScreen({super.key});
+class DiscoverScreen extends GetView<DiscoverController> {
+  const DiscoverScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
