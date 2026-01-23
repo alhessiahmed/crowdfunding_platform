@@ -1,5 +1,5 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
-import 'package:crowdfunding_platform/controller/getx/controllers/home_controller.dart';
+import 'package:crowdfunding_platform/controller/getx/controllers/discover_controller.dart';
 import 'package:crowdfunding_platform/controller/getx/controllers/my_campagins_controller.dart';
 import 'package:crowdfunding_platform/model/filter_item.dart';
 import 'package:flutter/material.dart';
