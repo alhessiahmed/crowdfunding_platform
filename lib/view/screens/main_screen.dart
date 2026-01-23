@@ -1,6 +1,8 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/view/screens/home_screen.dart';
+import 'package:crowdfunding_platform/view/screens/my_campaigns.dart';
+import 'package:crowdfunding_platform/view/screens/profile_sreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,8 +20,9 @@ class _MainScreenState extends State<MainScreen> {
   int currentIndex = 1;
 
   final screens = [
-    const Scaffold(body: Center(child: Text("profile"))),
+    const ProfileScreen(),
     const HomeScreen(),
+    const MyCampaignsScreen(),
     const Scaffold(body: Center(child: Text("home"))),
   ];
 
@@ -75,8 +78,8 @@ class _MainScreenState extends State<MainScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  _TabItem(icon: ImagesManager.home, index: 2),
-
+                  _TabItem(icon: ImagesManager.home, index: 3),
+                  _TabItem(icon: ImagesManager.clipboard, index: 2),
                   _TabItem(icon: ImagesManager.discover, index: 1),
                   _TabItem(icon: ImagesManager.profile, index: 0),
                 ],

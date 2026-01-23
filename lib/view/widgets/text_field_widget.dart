@@ -103,6 +103,20 @@ class TextFieldWidget extends StatelessWidget {
                 minWidth: 0,
                 minHeight: 0,
               ),
+              prefixIcon: prefixIcon == null
+                  ? null
+                  : Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      child: SizedBox(
+                        width: 24.w,
+                        height: 24.w,
+                        child: Center(child: prefixIcon),
+                      ),
+                    ),
+              prefixIconConstraints: const BoxConstraints(
+                minWidth: 0,
+                minHeight: 0,
+              ),
               errorStyle: const TextStyle(height: 0),
               helperStyle: const TextStyle(height: 0),
               filled: true,

@@ -1,18 +1,22 @@
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
+import 'package:crowdfunding_platform/model/campagin_model.dart';
+import 'package:crowdfunding_platform/model/filter_item.dart';
 import 'package:get/state_manager.dart';
 
 class HomeController extends GetxController{
 
   List<FilterItem>  filtersMock =[];
-  int?  selectedFilterIndex;
-  List<CampaignMock> campaignsMock = [];
+   RxInt selectedFilterIndex = 0.obs;
+  List<campaignModel> campaignsMock = [];
   @override
   void onInit() {
     // TODO: implement onInit
     super.onInit();
     getHomeData();
   }
-
+void selectFilter(int index){ 
+  selectedFilterIndex.value = index ;
+}
   getHomeData(){ 
     //api request 
      filtersMock = [
@@ -26,7 +30,7 @@ class HomeController extends GetxController{
 
 
  campaignsMock = [
-  CampaignMock(
+  campaignModel(
     id: '1',
     title: 'دعم تعليم الأطفال المحتاجين',
     description: 'ساهم في توفير التعليم للأطفال في المناطق المتضررة.',
@@ -35,7 +39,7 @@ class HomeController extends GetxController{
     target: 100,
     category: 'تعليم',
   ),
-  CampaignMock(
+  campaignModel(
     id: '2',
     title: 'حملة توفير مياه نظيفة',
     description: 'مشروع لتوفير مياه صالحة للشرب للأسر المحتاجة.',
@@ -44,7 +48,7 @@ class HomeController extends GetxController{
     target: 120,
     category: 'مياه',
   ),
-  CampaignMock(
+  campaignModel(
     id: '3',
     title: 'إغاثة عاجلة للأسر المتضررة',
     description: 'دعم فوري للأسر المتضررة من الأزمات.',
@@ -59,36 +63,4 @@ class HomeController extends GetxController{
 
     
   }
-}
-
-class FilterItem {
-  final String id;
-  final String title;
-  final int count;
-
-  const FilterItem({
-    required this.id,
-    required this.title,
-    required this.count,
-  });
-}
-
-class CampaignMock {
-  final String id;
-  final String title;
-  final String description;
-  final String image;
-  final int raised;
-  final int target;
-  final String category;
-
-  const CampaignMock({
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.image,
-    required this.raised,
-    required this.target,
-    required this.category,
-  });
 }
