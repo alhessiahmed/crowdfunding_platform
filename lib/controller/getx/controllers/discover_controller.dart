@@ -3,7 +3,7 @@ import 'package:crowdfunding_platform/model/campagin_model.dart';
 import 'package:crowdfunding_platform/model/filter_item.dart';
 import 'package:get/state_manager.dart';
 
-class HomeController extends GetxController{
+class DiscoverController extends GetxController{
 
   List<FilterItem>  filtersMock =[];
    RxInt selectedFilterIndex = 0.obs;

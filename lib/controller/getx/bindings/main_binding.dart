@@ -7,8 +7,10 @@ import 'package:get/instance_manager.dart';
 class MainBinding implements Bindings{
   @override
   void dependencies() {
-    Get.lazyPut(()=>HomeController());
+    Get.lazyPut(()=>DiscoverController());
     Get.lazyPut(()=>MyCampaginsController());
     Get.lazyPut(()=>ProfileController());
+        Get.lazyPut(()=> DiscoverController());
+
   }
 }
