@@ -167,5 +167,15 @@ Map<String, String> arLocale = {
   'wallet' : 'المحفظة' ,
   'help _and_support' : 'المساعدة والدعم',
   'logout' :'تسجيل الخروج',
-  'delete_account' : 'حذف الحساب'
-};
+  'delete_account' : 'حذف الحساب',
+  'my_campaigns' : 'حملاتي',
+  'manage_campaigns_and_track' : 'هنا يمكنك إدارة جميع حملاتك وتتبع تقدمها', 
+  'progress_achieved': 'التقدم المنجز',
+  'edit_campaign' : 'تعديل الحملة', 
+  'campaign_management' : 'إدارة الحملة', 
+  'add_update': 'اضف تحديث',
+  'delete_campagin': 'حذف الحملة',
+  'stop_compagin' : 'ايقاف الحملة',
+  'repost_the_campaign' : 'اعادة نشرالحملة'
+
+  };
