@@ -2,7 +2,7 @@ import 'package:crowdfunding_platform/controller/getx/bindings/auth/forgot_passw
 import 'package:crowdfunding_platform/controller/getx/bindings/auth/user_type_selection_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/auth/verification_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/campaign_details_binding.dart';
-import 'package:crowdfunding_platform/controller/getx/bindings/home_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/discover_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/main_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/my_campagins_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/profile_binding.dart';
@@ -11,7 +11,7 @@ import 'package:crowdfunding_platform/view/screens/auth/reset_password_success_s
 import 'package:crowdfunding_platform/view/screens/auth/setup_success_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/verification_screen.dart';
 import 'package:crowdfunding_platform/view/screens/campaign_details_screen.dart';
-import 'package:crowdfunding_platform/view/screens/home_screen.dart';
+import 'package:crowdfunding_platform/view/screens/discover_screen.dart';
 import 'package:crowdfunding_platform/view/screens/intro/welcome_screen.dart';
 import 'package:crowdfunding_platform/view/screens/main_screen.dart';
 import 'package:crowdfunding_platform/view/screens/my_campaigns.dart';

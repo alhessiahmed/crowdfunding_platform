@@ -1,6 +1,6 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
-import 'package:crowdfunding_platform/view/screens/home_screen.dart';
+import 'package:crowdfunding_platform/view/screens/discover_screen.dart';
 import 'package:crowdfunding_platform/view/screens/my_campaigns.dart';
 import 'package:crowdfunding_platform/view/screens/profile_sreen.dart';
 import 'package:flutter/material.dart';
