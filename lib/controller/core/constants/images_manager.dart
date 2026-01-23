@@ -65,4 +65,18 @@ class ImagesManager {
   static const String calender2 = '$iconsPath/ic_calendar-2.svg';
   static const String profile2user = '$iconsPath/ic_profile-2user.svg';
   static const String notificationBing = '$iconsPath/ic_notification-bing.svg';
+  static const String magicPin = '$iconsPath/ic_magic_pin.svg';
+  static const String lampCharge = '$iconsPath/ic_lamp-charge.svg';
+  static const String verified = '$iconsPath/ic_verified.svg';
+  static const String contactSupport = '$iconsPath/ic_contact_support_rounded.svg';
+  static const String notification = '$iconsPath/ic_notification.svg';
+  static const String moneys = '$iconsPath/ic_moneys.svg';
+  static const String hisrotyRounded = '$iconsPath/ic_history_rounded.svg';
+    static const String profile2 = '$iconsPath/ic_profile2.svg';
+    static const String emptyWallet = '$iconsPath/ic_empty_wallet.svg';
+    static const String logout = '$iconsPath/ic_logout.svg';
+
+
+  
+  // assets\images\icons\ic_contact_support_rounded.svg
 }

@@ -154,4 +154,18 @@ Map<String, String> arLocale = {
   'Your_donation': 'تبرعك بـ',
   'Donation_impact_description': 'يساهم في توفير مياه نظيفة للأسر المحتاجة.',
   'Campaign_title_sample': 'قطرة حياة: مياه نظيفة لأطفال غزة',
+  'details_info' : 'المعلومات الشخصية',
+  'how_many_stars' : '⭐كم نجمة تود أن تهدي؟',
+  'safe_and secure_donation' : 'تبرع امن ومضمون',
+  'account_settings': 'إعدادات الحساب', 
+  'manage_your_account_here': 'تدير بياناتك وأمان حسابك من هنا', 
+  'security_and_privacy' : 'الأمان والخصوصية',
+  'notification_preferences' : 'تفضيلات الاشعارات',
+  'donation_record' : 'سجل التبرعات', 
+  'account_verification' : 'توثيق الحساب', 
+  'bank_account_management' : 'إدارة الحساب البنكي',
+  'wallet' : 'المحفظة' ,
+  'help _and_support' : 'المساعدة والدعم',
+  'logout' :'تسجيل الخروج',
+  'delete_account' : 'حذف الحساب'
 };

@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 class DonateButton extends StatelessWidget {
-  const DonateButton();
-
+   DonateButton(this.onPressed, {super.key});
+void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -20,7 +20,7 @@ class DonateButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.r),
           ),
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
