@@ -1,7 +1,10 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
-import 'package:crowdfunding_platform/controller/getx/controllers/home_controller.dart';
+import 'package:crowdfunding_platform/controller/getx/controllers/discover_controller.dart';
+import 'package:crowdfunding_platform/model/campagin_model.dart';
+import 'package:crowdfunding_platform/view/widgets/filter_section.dart';
+import 'package:crowdfunding_platform/view/widgets/header_with_search.dart';
 import 'package:crowdfunding_platform/view/widgets/secondary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,8 +21,8 @@ class HomeScreen extends GetView<HomeController> {
       body: SafeArea(
         child: Column(
           children: [
-            _Header(context),
-            _Filters(controller.filtersMock),
+            HeaderWithSearch(title: 'every_star_makes_a_difference'.tr,),
+            Obx(()=> FilterSection(filters: controller.filtersMock , selectedIndex: controller.selectedFilterIndex.value , onSelect: controller.selectFilter,),),
             SizedBox(height: 12.h),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -37,127 +40,20 @@ class HomeScreen extends GetView<HomeController> {
               ),
             ),
             SizedBox(height: 10.h),
-            Expanded(child: _CampaignsList(context, controller.campaignsMock)),
+            Expanded(child: CampaignsList(context, controller.campaignsMock)),
           ],
         ),
       ),
     );
   }
 
-  Widget _Header(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 24.w),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: Text(
-              'every_star_makes_a_difference'.tr,
-              textAlign: TextAlign.right,
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              // handle search tap
-            },
-            child: CircleAvatar(
-              backgroundColor: Theme.of(context).colorScheme.onSurface,
-              radius: 22.r,
-              child: SvgPicture.asset(
-                ImagesManager.search,
-                fit: BoxFit.scaleDown,
-                color: 
-                 Get.isDarkMode
-                    ? ColorsManager.primaryLight
-                    : ColorsManager.primaryDark,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  
 
-  Widget _Filters(List<FilterItem> filters) {
-    return SizedBox(
-      height: 34.h,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
-        itemCount: filters.length,
-        separatorBuilder: (_, __) => SizedBox(width: 10.w),
-        itemBuilder: (context, index) {
-          final item = filters[index];
-          final isSelected = index == 0;
+  
 
-          return ChoiceChip(
-            // showCheckmark: false,
-            selected: isSelected,
-            labelStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
-              color: isSelected
-                  ? ColorsManager.white
-                  : Theme.of(context).colorScheme.onSecondaryContainer,
-            ),
-            showCheckmark: false,
-            onSelected: (bool value) {},
-            padding: EdgeInsets.symmetric(vertical: 0.h),
-            shape: RoundedRectangleBorder(
-              side: !isSelected
-                  ? BorderSide(color: ColorsManager.primaryLight)
-                  : BorderSide.none,
-              borderRadius: BorderRadius.circular(48.r),
-            ),
-            backgroundColor: Get.isDarkMode
-                ? ColorsManager.dividerColorDark
-                : ColorsManager.dividerColorLight,
-            selectedColor: ColorsManager.primaryCTA,
-            disabledColor: Get.isDarkMode
-                ? ColorsManager.dividerColorDark
-                : ColorsManager.dividerColorLight,
-            label: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  item.title,
-                  // style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                  //       color: Get.isDarkMode ?ColorsManager.primaryTextDark : ColorsManager.primaryLight.withOpacity(.9)
-
-                  //     ),
-                ),
-                SizedBox(width: 8.w),
-                Container(
-                  height: 22,
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: isSelected
-                        ? Colors.white54
-                        : Get.isDarkMode
-                        ? ColorsManager.iconDefaultDark
-                        : ColorsManager.iconDefaultLight,
-                    borderRadius: BorderRadius.circular(20.r),
-                  ),
-                  child: Text(
-                    item.count.toString(),
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                      color: isSelected
-                          ? Colors.black
-                          : Theme.of(context).colorScheme.onPrimary,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
-    );
-  }
-
-  Widget _CampaignsList(
+  Widget CampaignsList(
     BuildContext context,
-    List<CampaignMock> campaignsMock,
+    List<campaignModel> campaignsMock,
   ) {
     return ListView.builder(
       padding: EdgeInsets.only(left: 16.w ,right: 16.w , bottom: 130.h ),
