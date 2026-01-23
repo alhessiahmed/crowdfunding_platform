@@ -16,7 +16,7 @@ class RoutesManager {
   static const onboardingShellScreen = '/onboarding_shell_screen';
   static const accountTypeScreen = '/account_type_screen';
   static const setupSuccessScreen = '/setup_success_screen';
-  static const homeScreen = '/home_screen';
+  static const discoverScreen = '/discover_screen';
   static const mainScreen = '/main_screen';
   static const campaignDetailsScreen = '/campaign_details_screen';
   static const paymentScreen = '/payment_screen';
@@ -25,5 +25,6 @@ class RoutesManager {
   static const thanksForPaymentScreen = '/thanks_for_payment_screen';
   static const profileScreen = '/profile_screen';
   static const myCampaignsScreen = '/my_campaigns_screen';
+  static const homeScreen = '/home_screen';
 
 }
