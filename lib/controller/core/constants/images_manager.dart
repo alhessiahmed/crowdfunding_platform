@@ -75,6 +75,7 @@ class ImagesManager {
     static const String profile2 = '$iconsPath/ic_profile2.svg';
     static const String emptyWallet = '$iconsPath/ic_empty_wallet.svg';
     static const String logout = '$iconsPath/ic_logout.svg';
+    static const String clipboard = '$iconsPath/ic_clipboard.svg';
 
 
   

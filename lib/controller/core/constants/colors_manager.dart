@@ -24,6 +24,7 @@ class ColorsManager {
   static const Color secondaryThanksColor = Color(0xFF2358B3);
   static const Color grey2 = Color(0xFFD9D9D9);
   static const Color danger2 = Color(0xFFD64545);
+  static const Color blueButton = Color(0xFF5999FF);
 
   // OLD COLORS DONT USE
   static const Color textColor = Color(0xFF111827);
