@@ -30,7 +30,7 @@ final String? subTitle;
                  Text(
                   subTitle!,
                   textAlign: TextAlign.right,
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(color: ColorsManager.secondaryLight),
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(color:Get.isDarkMode?ColorsManager.secondaryDark: ColorsManager.secondaryLight),
                 ): SizedBox.shrink()
               ],
             ),
