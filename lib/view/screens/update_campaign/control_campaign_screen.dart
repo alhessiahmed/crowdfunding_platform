@@ -94,7 +94,7 @@ class ControlCampaignScreen extends GetView<ControlCampaignController> {
                     child: Text(
                       'View_all'.tr,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: ColorsManager.secondaryLight,
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
                     ),
                   ),
@@ -121,7 +121,7 @@ class ControlCampaignScreen extends GetView<ControlCampaignController> {
                   ),
                 );
               }),
-              CardDivider(height: 2, color: ColorsManager.dividerColor),
+              CardDivider(height: 2, color: Theme.of(context).dividerColor),
               SizedBox(height: 16.h),
               ElevatedButton.icon(
                 onPressed: () {},
