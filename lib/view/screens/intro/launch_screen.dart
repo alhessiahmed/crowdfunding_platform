@@ -18,15 +18,13 @@ class _LaunchScreenState extends State<LaunchScreen> {
   @override
   void initState() {
     super.initState();
-   _initAndNavigate();
+    _initAndNavigate();
   }
 
-   Future<void> _initAndNavigate() async {
-
+  Future<void> _initAndNavigate() async {
     await Future.delayed(const Duration(seconds: 3));
 
-    final hasSeenOnboarding =
-        SharedPrefController.to.hasSeenOnboarding ;
+    final hasSeenOnboarding = SharedPrefController.to.hasSeenOnboarding;
 
     if (hasSeenOnboarding) {
       Get.offAllNamed(RoutesManager.mainScreen);
@@ -34,7 +32,6 @@ class _LaunchScreenState extends State<LaunchScreen> {
       Get.offAllNamed(RoutesManager.onboardingScreen);
     }
   }
-
 
   @override
   Widget build(BuildContext context) {

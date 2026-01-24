@@ -154,4 +154,56 @@ Map<String, String> arLocale = {
   'Your_donation': 'تبرعك بـ',
   'Donation_impact_description': 'يساهم في توفير مياه نظيفة للأسر المحتاجة.',
   'Campaign_title_sample': 'قطرة حياة: مياه نظيفة لأطفال غزة',
+  'campaign_title': 'عنوان الحملة',
+  'campaign_type': 'نوع الحملة',
+  'campaign_title_hint': 'مثال: مياه نظيفة للعائلات المحتاجة',
+  'description': 'وصف مختصر للحملة',
+  'description_hint': 'اكتب وصفًا قصيرًا يوضح هدف الحملة وتأثيرها',
+  'campaign_info': 'معلومات الحملة الأساسية',
+  'campaign_define': 'ابدأ بتعريف حملتك، يمكنك تعديل التفاصيل لاحقًا.',
+  'cancel': "الغاء",
+  'step_of': 'خطوة @current من @total',
+  'The number of stars is used to measure progress,\n not as a monetary amount':
+      ' يُستخدم عدد النجوم لقياس التقدم وليس كمبلغ مالي',
+  'campaign_aim': 'هدف الحملة (عدد النجوم)',
+  'campaign_aim_hint': 'مثال: 5,000 نجمة',
+  'campaign_photo': 'صورة الحملة',
+  'add_campaign_image': 'إضافة صورة للحملة',
+  'campaign_image_hint': 'يفضل صورة واضحة و بسيطة تعبر عن هدف الحملة.',
+  'image_optional': 'يمكنك إضافة الصورة لاحقا',
+  'This description is shown to donors and helps them make\n a decision.':
+      'هذا الوصف يظهر للمتبرعين ويساعدهم في اتخاذ القرار.',
+  'under_review': 'حملتك قيد المراجعة الآن ',
+  'thank_you_for_your_submission':
+      'شكرًا لك! تم إرسال حملتك لمراجعتها من قبل فريق Starry.',
+  'go_to_dashboard': 'الانتقال إلى لوحة التحكم',
+  'display_campaign_details': 'عرض تفاصيل الحملة',
+  'review_info1':
+      'نقوم بمراجعة الحملات للتأكد من وضوح الهدف ومصداقية المحتوى قبل نشرها',
+  'review_info2': 'تستغرق المراجعة عادة من 24 إلى 48 ساعة.',
+  'aim_details': ' تفاصيل الهدف والتقدّم',
+  'aim_interval': 'حدّد مدة حملتك وكيف سيتم تتبّع التقدّم بالنجوم.',
+  'campaign_interval': 'مدة الحملة',
+  'campaign_endDate': 'تاريخ انتهاء الحملة',
+  'extend_duration': 'يمكنك تمديد المدة لاحقًا إذا لزم الأمر.',
+  'continue_process': 'كيف يتم تتبّع التقدّم؟',
+  'progress': 'يتم قياس تقدّم الحملة بناءً على عدد النجوم التي يتم جمعها.',
+  'vendor_message': 'رسالة التقدّم للداعمين',
+  'vendor_message_hint': 'مثال: كل 100 نجمة تقرّبنا خطوة من هدفنا',
+  'This message appears below the progress bar.':
+      'تظهر هذه الرسالة أسفل شريط التقدّم.',
+  'optional': 'اختياري',
+  'campaign_rev': 'مراجعة الحملة قبل النشر',
+  'check_details': 'تأكّد من صحة التفاصيل قبل نشر حملتك. يمكنك التعديل لاحقًا.',
+
+  'send_campaign': 'إرسال الحملة للمراجعة',
+  'save_campaign': 'حفظ كمسودة',
+  "campaign_name": 'اسم الحملة',
+  "campaign_name_value": 'دعم تعليم الأطفال المحتاجين',
+  "description_value":
+      'تبرّع بالنجوم لدعم الحملات الإنسانية ومتابعة أثر تبرعك بكل شفافية.',
+  "alert":
+      'ستظهر هذه المعلومات للمتبرعين كما هي , يرجى التأكد من خلوها من الأخطاء الإملائية.',
+  "confirm":
+      ' أؤكد أن المعلومات المقدّمة صحيحة، وأن الحملة تهدف لأثر إنساني حقيقي..',
 };
