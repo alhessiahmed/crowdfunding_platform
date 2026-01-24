@@ -88,8 +88,12 @@ class ImagesManager {
     static const String settings2 = '$iconsPath/ic_setting-2.svg';
     static const String addCircle = '$iconsPath/ic_add-circle.svg';
     static const String videoCircle = '$iconsPath/ic_video-circle.svg';
-    static const String edit = '$iconsPath/ic_edit.svg';
     static const String send = '$iconsPath/ic_send.svg';
+    static const String activeHome = '$iconsPath/ic_active_home.svg';
+    static const String edit = '$iconsPath/ic_edit.svg';
+    static const String unActiveClipboard = '$iconsPath/ic_unactive_clipboard.svg';
+    static const String unActiveDiscover = '$iconsPath/ic_unactive_discover.svg';
+    static const String activeProfile = '$iconsPath/ic_active_profile.svg';
 //assets\images\icons\assets\images\icons\ic_active_status.dart.svg
   
   // assets\images\icons\ic_contact_support_rounded.svg
