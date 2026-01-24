@@ -23,4 +23,9 @@ class RoutesManager {
   static const creditCardPaymentScreen = '/credit_card_payment_screen';
   static const confirmPaymentScreen = '/confirm_payment_screen';
   static const thanksForPaymentScreen = '/thanks_for_payment_screen';
+  static const CampaignStepOneScreen = '/campaign_step_one_screen';
+  static const CampaignStepTwoScreen = '/campaign_step_two_screen';
+  static const CampaignStepFiveScreen = '/campaign_step_five_screen';
+  static const CampaignStepThreeScreen = '/campaign_step_three_screen';
+  static const CampaignStepFourScreen = '/campaign_step_four_screen';
 }
