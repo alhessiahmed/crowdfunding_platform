@@ -74,4 +74,6 @@ class ImagesManager {
   static const String completeIcon = '$iconsPath/ic_complete.svg';
   static const String sendIcon = '$iconsPath/ic_send.svg';
   static const String uploadImageIcon = '$iconsPath/ic_uploadImage.svg';
+  static const String targetCampaignIcon = '$iconsPath/ic_target_campaign.svg';
+  static const String closeIcon = '$iconsPath/ic_close.svg';
 }

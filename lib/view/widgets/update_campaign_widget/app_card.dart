@@ -1,4 +1,3 @@
-import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,7 +21,10 @@ class AppCard extends StatelessWidget {
         color:
             backGroundColor ?? Theme.of(context).colorScheme.onInverseSurface,
         borderRadius: BorderRadius.circular(24.r),
-        border: Border.all(width: 0.5, color: ColorsManager.disabled),
+        border: Border.all(
+          width: 0.5,
+          color: Theme.of(context).colorScheme.outline,
+        ),
         boxShadow: const [
           //  BoxShadow(color: Colors.black12, offset: Offset(0, 1)),
         ],

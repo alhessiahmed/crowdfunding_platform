@@ -1,4 +1,3 @@
-import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/model/control_campaign.dart';
 import 'package:crowdfunding_platform/view/widgets/update_campaign_widget/app_card.dart';
@@ -15,9 +14,7 @@ class LastUpdatesCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final secondaryTextColor = theme.brightness == Brightness.dark
-        ? ColorsManager.secondaryDark
-        : ColorsManager.secondaryLight;
+    final secondaryTextColor = theme.colorScheme.onSurfaceVariant;
     final titleStyle = theme.textTheme.bodyMedium?.copyWith(
       color: theme.colorScheme.primary,
       fontWeight: FontWeight.bold,
@@ -91,13 +88,8 @@ class _LikeBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-    final backgroundColor = isDark
-        ? ColorsManager.bgSectionDark
-        : ColorsManager.bgSectionLight;
     return SvgPicture.asset(
-      isDark ? ImagesManager.lastUpdatesIcon : ImagesManager.lastUpdatesIcon,
+      ImagesManager.lastUpdatesIcon,
       width: 44.w,
       height: 44.w,
       fit: BoxFit.contain,

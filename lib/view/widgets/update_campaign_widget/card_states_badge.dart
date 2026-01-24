@@ -1,4 +1,3 @@
-import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,12 +17,13 @@ class CardStatesBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: ColorsManager.dividerColorLight,
+        color: Theme.of(context).colorScheme.surfaceVariant,
         borderRadius: BorderRadius.circular(radius ?? 8.r),
       ),
-      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
       child: Row(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           icon ??
               Container(
@@ -34,14 +34,19 @@ class CardStatesBadge extends StatelessWidget {
                   color: statusColor,
                 ),
               ),
-          SizedBox(width: 4.w),
+          SizedBox(width: 6.w),
           Text(
             statusText,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              color: ColorsManager.primaryLight,
+              color: Theme.of(context).colorScheme.onSurface,
               fontWeight: FontWeight.bold,
+              height: 1,
             ),
-          ),
+            textHeightBehavior: const TextHeightBehavior(
+              applyHeightToFirstAscent: false,
+              applyHeightToLastDescent: false,
+            ),
+           ),
         ],
       ),
     );

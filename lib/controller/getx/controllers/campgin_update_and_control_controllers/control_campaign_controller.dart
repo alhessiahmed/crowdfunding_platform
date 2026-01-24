@@ -87,13 +87,19 @@ class ControlCampaignController extends GetxController {
   void onActionTap(ControlActionType type) {
     switch (type) {
       case ControlActionType.edit:
-        showSnackbar(message: 'Edit campaign');
+        Get.toNamed(
+          RoutesManager.editCampaignDetailsScreen,
+          arguments: campaign.summary,
+        );
         break;
       case ControlActionType.share:
         showSnackbar(message: 'Share campaign');
         break;
       case ControlActionType.addUpdate:
-        Get.toNamed(RoutesManager.addUpdateToCampaignScreen);
+        Get.toNamed(
+          RoutesManager.addUpdateToCampaignScreen,
+          arguments: campaign.summary,
+        );
         break;
     }
   }

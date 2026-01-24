@@ -1,4 +1,3 @@
-import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/view/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
@@ -18,7 +17,9 @@ class AppbarSection extends StatelessWidget {
           subTitle ?? '',
           style: Theme.of(
             context,
-          ).textTheme.bodySmall?.copyWith(color: ColorsManager.secondaryLight),
+          ).textTheme.bodySmall?.copyWith(
+            color: Theme.of(context).colorScheme.onSurfaceVariant,
+          ),
         ),
       ],
     );
