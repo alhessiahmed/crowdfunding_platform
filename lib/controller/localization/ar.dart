@@ -176,6 +176,7 @@ Map<String, String> arLocale = {
   'add_update': 'اضف تحديث',
   'delete_campagin': 'حذف الحملة',
   'stop_compagin' : 'ايقاف الحملة',
-  'repost_the_campaign' : 'اعادة نشرالحملة'
+  'repost_the_campaign' : 'اعادة نشرالحملة', 
+  'resume_the campaign': 'استئناف الحملة '
 
   };
