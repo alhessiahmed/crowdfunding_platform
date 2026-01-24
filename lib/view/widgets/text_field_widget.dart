@@ -24,6 +24,7 @@ class TextFieldWidget extends StatelessWidget {
     required this.label,
     this.inputFormatters,
     this.maxLength,
+    this.labelWidget,
   }) : super(key: key);
   final String label;
   final TextEditingController controller;
@@ -42,18 +43,25 @@ class TextFieldWidget extends StatelessWidget {
   final Function(String)? onSubmitted;
   final List<TextInputFormatter>? inputFormatters;
   final int? maxLength;
+  final Widget? labelWidget;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: Theme.of(
-            context,
-          ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
+        Row(
+          children: [
+            Text(
+              label,
+              style: Theme.of(
+                context,
+              ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
+            ),
+            if (labelWidget != null) ...[SizedBox(width: 8.w), labelWidget!],
+          ],
         ),
+
         SizedBox(height: 4.h),
         SizedBox(
           height: 56.h,

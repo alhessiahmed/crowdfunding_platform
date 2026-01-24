@@ -9,6 +9,24 @@ class ImagesManager {
   static const String likeLight = '$mainPath/like_light.png';
   static const String likeDark = '$mainPath/like_dark.png';
   static const String test = '$mainPath/test.png';
+  static const String clockLight = '$mainPath/clock_light.png';
+  static const String clockDark = '$mainPath/clock_dark.png';
+  static const String secureLight = '$mainPath/secureLight.png';
+  static const String secureDark = '$mainPath/secureDark.png';
+  static const String clokDark = '$mainPath/clokDark.png';
+  static const String clokLight = '$mainPath/clokLight.png';
+  static const String materialDark = '$mainPath/materialDark.png';
+  static const String materialLight = '$mainPath/materialLight.png';
+  static const String frameDark = '$mainPath/FrameDark.png';
+  static const String frameLight = '$mainPath/FrameLight.png';
+  static const String campaignReview = '$mainPath/campaign_review.png';
+  static const String editLight = '$mainPath/editLight.png';
+  static const String editDark = '$mainPath/editDark.png';
+  static const String calendarDark = '$mainPath/calendarDark.png';
+  static const String calendarLight = '$mainPath/calendarLight.png';
+  static const String staryLight = '$mainPath/staryLight.png';
+  static const String staryDark = '$mainPath/staryDark.png';
+  static const String back = '$mainPath/back.png';
 
   /////////////// icons ///////////////
   static const String starLight = '$mainPath/star_light.png';

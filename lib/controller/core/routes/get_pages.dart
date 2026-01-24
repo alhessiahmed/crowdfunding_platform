@@ -1,12 +1,22 @@
 import 'package:crowdfunding_platform/controller/getx/bindings/auth/forgot_password_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/auth/user_type_selection_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/auth/verification_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/campaign/campaign_step_five_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/campaign/campaign_step_four_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/campaign/campaign_step_one_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/campaign/campaign_step_three_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/campaign/campaign_step_two_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/campaign_details_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/home_binding.dart';
 import 'package:crowdfunding_platform/view/screens/auth/forgot_password_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/reset_password_success_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/setup_success_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/verification_screen.dart';
+import 'package:crowdfunding_platform/view/screens/campaign_create_screens/campaign_step_five_screen.dart';
+import 'package:crowdfunding_platform/view/screens/campaign_create_screens/campaign_step_four_screen.dart';
+import 'package:crowdfunding_platform/view/screens/campaign_create_screens/campaign_step_one_screen.dart';
+import 'package:crowdfunding_platform/view/screens/campaign_create_screens/campaign_step_three_screen.dart';
+import 'package:crowdfunding_platform/view/screens/campaign_create_screens/campaign_step_two_screen.dart';
 import 'package:crowdfunding_platform/view/screens/campaign_details_screen.dart';
 import 'package:crowdfunding_platform/view/screens/home_screen.dart';
 import 'package:crowdfunding_platform/view/screens/intro/welcome_screen.dart';
@@ -133,6 +143,31 @@ final List<GetPage<dynamic>> getPages = [
     name: RoutesManager.thanksForPaymentScreen,
     page: () => const ThanksForPaymentScreen(),
     binding: ThanksForPaymentBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.CampaignStepOneScreen,
+    page: () => CampaignStepOneScreen(),
+    binding: CampaignStepOneBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.CampaignStepTwoScreen,
+    page: () => CampaignStepTwoScreen(),
+    binding: CampaignStepTwoBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.CampaignStepFiveScreen,
+    page: () => CampaignStepFiveScreen(),
+    binding: CampaignStepFiveBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.CampaignStepThreeScreen,
+    page: () => CampaignStepThreeScreen(),
+    binding: CampaignStepThreeBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.CampaignStepFourScreen,
+    page: () => CampaignStepFourScreen(),
+    binding: CampaignStepFourBinding(),
   ),
 
   // GetPage(
