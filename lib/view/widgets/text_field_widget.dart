@@ -24,6 +24,7 @@ class TextFieldWidget extends StatelessWidget {
     required this.label,
     this.inputFormatters,
     this.maxLength,
+    this.validator,
   });
   final String label;
   final TextEditingController controller;
@@ -42,6 +43,7 @@ class TextFieldWidget extends StatelessWidget {
   final Function(String)? onSubmitted;
   final List<TextInputFormatter>? inputFormatters;
   final int? maxLength;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -64,9 +66,7 @@ class TextFieldWidget extends StatelessWidget {
     final field = TextFormField(
       controller: controller,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      validator: (value) {
-        return null;
-      },
+      validator: validator,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
         fontSize: 12.sp,
         color: Theme.of(context).colorScheme.onSurfaceVariant,
@@ -87,6 +87,17 @@ class TextFieldWidget extends StatelessWidget {
           fontSize: 12.sp,
           color: Theme.of(context).colorScheme.onSurfaceVariant,
         ),
+        prefixIcon: prefixIcon == null
+            ? null
+            : Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: SizedBox(
+                  width: 24.w,
+                  height: 24.w,
+                  child: Center(child: prefixIcon),
+                ),
+              ),
+        prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
         suffixIcon: suffixIcon == null
             ? null
             : Padding(

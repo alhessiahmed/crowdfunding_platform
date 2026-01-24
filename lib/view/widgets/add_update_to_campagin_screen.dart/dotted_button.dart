@@ -1,4 +1,3 @@
-import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -69,7 +68,7 @@ class DottedButton extends StatelessWidget {
                   Text(
                     formatsText,
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: ColorsManager.secondaryLight,
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
                       fontWeight: FontWeight.bold,
                     ),
                     textAlign: TextAlign.center,

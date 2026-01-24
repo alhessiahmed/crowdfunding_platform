@@ -4,6 +4,7 @@ import 'package:crowdfunding_platform/controller/getx/bindings/auth/verification
 import 'package:crowdfunding_platform/controller/getx/bindings/add_update_to_campaign_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/campaign_details_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/control_campaign_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/edit_campaign_details_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/home_binding.dart';
 import 'package:crowdfunding_platform/view/screens/auth/forgot_password_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/reset_password_success_screen.dart';
@@ -15,6 +16,7 @@ import 'package:crowdfunding_platform/view/screens/intro/welcome_screen.dart';
 import 'package:crowdfunding_platform/view/screens/main_screen.dart';
 import 'package:crowdfunding_platform/view/screens/update_campaign/add_update_to_campagin_screen.dart';
 import 'package:crowdfunding_platform/view/screens/update_campaign/control_campaign_screen.dart';
+import 'package:crowdfunding_platform/view/screens/update_campaign/edit_campaign_details_screen.dart';
 import 'package:get/get.dart';
 
 import '../../../view/screens/auth/forgot_password_screen.dart';
@@ -127,6 +129,11 @@ final List<GetPage<dynamic>> getPages = [
     name: RoutesManager.addUpdateToCampaignScreen,
     page: () => const AddUpdateToCampaign(),
     binding: AddUpdateToCampaignBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.editCampaignDetailsScreen,
+    page: () => const EditCampaignDetailsScreen(),
+    binding: EditCampaignDetailsBinding(),
   ),
 
   GetPage(

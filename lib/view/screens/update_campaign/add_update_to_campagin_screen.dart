@@ -34,7 +34,15 @@ class AddUpdateToCampaign extends GetView<AddUpdateToCampaignController> {
                     onBack: controller.onBack,
                   ),
                   SizedBox(height: 24.h),
-                  const CampaignCardWitheStates(),
+                  CampaignCardWitheStates(
+                    title: 'قطرة حياة : مياه نظيفة لأطفال غزة',
+                    statusText: 'Complete_campaign'.tr,
+                    icon: SvgPicture.asset(
+                      ImagesManager.completeIcon,
+                      width: 16.w,
+                      height: 16.h,
+                    ),
+                  ),
                   SizedBox(height: 24.h),
                   TextFieldWidget(
                     controller: controller.titleController,
@@ -71,7 +79,9 @@ class AddUpdateToCampaign extends GetView<AddUpdateToCampaignController> {
                     child: ElevatedButton.icon(
                       onPressed: controller.validateAndPublish,
                       label: Text('Post the update'.tr),
-                      icon: SvgPicture.asset(ImagesManager.sendIcon),
+                      icon: SvgPicture.asset(
+                        ImagesManager.sendIcon,
+                      ),
                     ),
                   ),
                   SizedBox(height: 12.h),

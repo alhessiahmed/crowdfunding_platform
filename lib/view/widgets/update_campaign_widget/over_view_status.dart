@@ -24,9 +24,9 @@ class OverViewStatus extends StatelessWidget {
     final numberFormatter = NumberFormat('#,###');
 
     final colorScheme = Theme.of(context).colorScheme;
-    final labelStyle = Theme.of(
-      context,
-    ).textTheme.bodySmall?.copyWith(color: ColorsManager.secondaryLight);
+    final labelStyle = Theme.of(context).textTheme.bodySmall?.copyWith(
+      color: Theme.of(context).colorScheme.onSurfaceVariant,
+    );
     final valueStyle = Theme.of(context).textTheme.headlineSmall?.copyWith(
       color: colorScheme.primary,
       fontWeight: FontWeight.bold,
@@ -118,7 +118,6 @@ class _MiniStatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final iconColor = Theme.of(context).colorScheme.primary;
     return AppCard(
       padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 8.w),
       child: Row(
@@ -135,7 +134,6 @@ class _MiniStatCard extends StatelessWidget {
                     iconPath,
                     width: 16.w,
                     height: 16.h,
-                    colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
                   ),
                   SizedBox(width: 6.w),
                   Flexible(

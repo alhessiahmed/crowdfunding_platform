@@ -51,9 +51,10 @@ class CampaignStarsInfo extends StatelessWidget {
           ),
           child: Text(
             ' % $percentage ',
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium?.copyWith(color: ColorsManager.bgColor),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Theme.of(context).colorScheme.onPrimary,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ],

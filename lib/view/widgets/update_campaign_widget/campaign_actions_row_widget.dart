@@ -1,10 +1,9 @@
-import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/view/widgets/update_campaign_widget/app_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class CampaignActionsRowWidget extends StatelessWidget {
   const CampaignActionsRowWidget({super.key, this.actions});
@@ -56,12 +55,9 @@ class _ActionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final isDark = Get.isDarkMode;
-    final iconColor = isDark
-        ? ColorsManager.iconDefaultDark
-        : ColorsManager.iconDefaultLight;
+    final labelColor = colorScheme.primary;
     final labelStyle = Theme.of(context).textTheme.bodySmall?.copyWith(
-      color: iconColor,
+      color: labelColor,
       fontWeight: FontWeight.bold,
     );
 
@@ -78,7 +74,6 @@ class _ActionCard extends StatelessWidget {
               item.iconPath,
               width: 24.w,
               height: 24.h,
-              colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
             ),
             SizedBox(height: 4.h),
             FittedBox(
