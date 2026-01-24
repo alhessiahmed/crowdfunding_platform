@@ -20,6 +20,7 @@ class FilterSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness ==Brightness.dark ;
     return SizedBox(
       height: 34.h,
       child: ListView.separated(
@@ -49,7 +50,7 @@ class FilterSection extends StatelessWidget {
                   : BorderSide(color: ColorsManager.primaryLight),
               borderRadius: BorderRadius.circular(48.r),
             ),
-            backgroundColor: Get.isDarkMode
+            backgroundColor: isDark
                 ? ColorsManager.dividerColorDark
                 : ColorsManager.dividerColorLight,
             selectedColor: ColorsManager.primaryCTA,
@@ -65,7 +66,7 @@ class FilterSection extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: isSelected
                         ? Colors.white54
-                        : Get.isDarkMode
+                        :isDark
                         ? ColorsManager.iconDefaultDark
                         : ColorsManager.iconDefaultLight,
                     borderRadius: BorderRadius.circular(20.r),

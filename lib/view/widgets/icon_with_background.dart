@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class IconWithBackground extends StatelessWidget {
-   IconWithBackground({super.key , required this.icon , this.onTap , this.darkColor , this.lightColor});
+   IconWithBackground({super.key , required this.icon , this.onTap , this.darkColor , this.lightColor , this.withShadow =false});
 final String icon ;
 void Function()? onTap;
 Color? darkColor;
 Color? lightColor;
+bool withShadow;
   @override
   Widget build(BuildContext context) {
         bool isDark = Theme.of(context).brightness == Brightness.dark;
@@ -21,6 +22,11 @@ Color? lightColor;
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: isDark ? (darkColor ?? ColorsManager.dividerColorDark) : (lightColor?? ColorsManager.white),
+        boxShadow: [BoxShadow( 
+          color:  Colors.black26 ,
+          blurRadius:withShadow? 4 : 0, 
+          offset: Offset(0, 0) 
+        )]
         ),
         child: SvgPicture.asset(
           fit: BoxFit.scaleDown,

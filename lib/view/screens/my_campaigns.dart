@@ -1,7 +1,7 @@
 import 'package:crowdfunding_platform/controller/getx/controllers/my_campagins_controller.dart';
 import 'package:crowdfunding_platform/view/widgets/filter_section.dart';
 import 'package:crowdfunding_platform/view/widgets/header_with_search.dart';
-import 'package:crowdfunding_platform/view/widgets/my_campagins_card.dart';
+import 'package:crowdfunding_platform/view/widgets/my_campagine_widgets/my_campagins_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
