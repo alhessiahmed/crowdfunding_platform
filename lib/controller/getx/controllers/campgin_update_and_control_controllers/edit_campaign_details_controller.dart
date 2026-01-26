@@ -21,6 +21,8 @@ class EditCampaignDetailsController extends GetxController {
   final RxList<XFile> mediaFiles = <XFile>[].obs;
   final RxMap<String, Uint8List> videoThumbnails =
       <String, Uint8List>{}.obs;
+  final RxMap<String, bool> customVideoThumbnails =
+      <String, bool>{}.obs;
 
   late final CampaignSummary summary;
   final ImagePicker _picker = ImagePicker();
@@ -130,6 +132,7 @@ class EditCampaignDetailsController extends GetxController {
     final path = mediaFiles[index].path;
     mediaFiles.removeAt(index);
     videoThumbnails.remove(path);
+    customVideoThumbnails.remove(path);
   }
 
   void onBack() {
@@ -172,10 +175,12 @@ class EditCampaignDetailsController extends GetxController {
         final bytes = await pickedThumbnail.readAsBytes();
         if (bytes.isNotEmpty) {
           videoThumbnails[videoPath] = bytes;
+          customVideoThumbnails[videoPath] = true;
           return;
         }
       }
     }
+    customVideoThumbnails[videoPath] = false;
     await _attachVideoThumbnail(videoPath);
   }
 

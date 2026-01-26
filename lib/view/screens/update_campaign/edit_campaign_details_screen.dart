@@ -141,11 +141,15 @@ class EditCampaignDetailsScreen extends GetView<EditCampaignDetailsController> {
                     final files = controller.mediaFiles;
                     final _ = files.length;
                     final thumbnails = controller.videoThumbnails;
+                    final __ = thumbnails.length;
+                    final customThumbnails = controller.customVideoThumbnails;
+                    final ___ = customThumbnails.length;
                     return _MediaPreviewGrid(
                       files: files,
                       fallbackAssets: controller.defaultMediaAssets,
                       onRemove: controller.removeMediaAt,
                       videoThumbnails: thumbnails,
+                      customVideoThumbnails: customThumbnails,
                     );
                   }),
                   SizedBox(height: 16.h),
@@ -334,12 +338,14 @@ class _MediaPreviewGrid extends StatelessWidget {
     required this.fallbackAssets,
     required this.onRemove,
     required this.videoThumbnails,
+    required this.customVideoThumbnails,
   });
 
   final List<XFile> files;
   final List<String> fallbackAssets;
   final ValueChanged<int> onRemove;
   final Map<String, Uint8List> videoThumbnails;
+  final Map<String, bool> customVideoThumbnails;
 
   @override
   Widget build(BuildContext context) {
@@ -361,7 +367,11 @@ class _MediaPreviewGrid extends StatelessWidget {
       runSpacing: 12.h,
       children: items
           .map(
-            (item) => _MediaTile(item: item, videoThumbnails: videoThumbnails),
+            (item) => _MediaTile(
+              item: item,
+              videoThumbnails: videoThumbnails,
+              customVideoThumbnails: customVideoThumbnails,
+            ),
           )
           .toList(),
     );
@@ -385,10 +395,15 @@ class _MediaItem {
 }
 
 class _MediaTile extends StatelessWidget {
-  const _MediaTile({required this.item, required this.videoThumbnails});
+  const _MediaTile({
+    required this.item,
+    required this.videoThumbnails,
+    required this.customVideoThumbnails,
+  });
 
   final _MediaItem item;
   final Map<String, Uint8List> videoThumbnails;
+  final Map<String, bool> customVideoThumbnails;
 
   @override
   Widget build(BuildContext context) {
@@ -399,6 +414,8 @@ class _MediaTile extends StatelessWidget {
     final isVideo = _isVideoPath(filePath);
     final hasThumbnail =
         !isVideo || (videoThumbnails[filePath]?.isNotEmpty ?? false);
+    final hasCustomThumbnail = customVideoThumbnails[filePath] ?? false;
+    final showVideoBadge = isVideo && hasThumbnail && !hasCustomThumbnail;
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(16.r),
@@ -447,6 +464,30 @@ class _MediaTile extends StatelessWidget {
                       height: 20.h,
                       fit: BoxFit.cover,
                     ),
+                  ),
+                ),
+              ),
+            if (showVideoBadge)
+              Positioned(
+                left: 6.w,
+                bottom: 6.h,
+                child: Container(
+                  padding: EdgeInsets.all(4.r),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.primary.withValues(alpha: .85),
+                    borderRadius: BorderRadius.circular(8.r),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: .2),
+                        blurRadius: 6,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Icon(
+                    Icons.play_arrow_rounded,
+                    size: 16.r,
+                    color: theme.colorScheme.onPrimary,
                   ),
                 ),
               ),
