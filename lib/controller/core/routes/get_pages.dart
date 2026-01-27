@@ -7,7 +7,6 @@ import 'package:crowdfunding_platform/controller/getx/bindings/main_binding.dart
 import 'package:crowdfunding_platform/controller/getx/bindings/my_campagins_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/profile_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/creator/creator_verfication_binding.dart';
-import 'package:crowdfunding_platform/controller/getx/bindings/home_binding.dart';
 import 'package:crowdfunding_platform/view/screens/auth/forgot_password_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/reset_password_success_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/setup_success_screen.dart';
@@ -26,7 +25,6 @@ import 'package:crowdfunding_platform/view/screens/main_screen.dart';
 import 'package:crowdfunding_platform/view/screens/my_campaigns.dart';
 import 'package:crowdfunding_platform/view/screens/profile_sreen.dart';
 import 'package:get/get.dart';
-
 import '../../../view/screens/auth/onboarding_shell_screen.dart';
 import '../../../view/screens/auth/reset_password_screen.dart';
 import '../../../view/screens/auth/sign_in_screen.dart';
@@ -152,10 +150,12 @@ final List<GetPage<dynamic>> getPages = [
     page: () => const MyCampaignsScreen(),
     binding: MyCampaginsBinding(),
   ),
-   GetPage(
+  GetPage(
     name: RoutesManager.homeScreen,
     page: () => const HomeScreen(),
     binding: DiscoverBinding(),
+  ),
+  GetPage(
     name: RoutesManager.creatorVerificationScreen,
     page: () => const CreatorVerficationScreen(),
     binding: CreatorVerficationBinding(),
@@ -190,10 +190,5 @@ final List<GetPage<dynamic>> getPages = [
   //     HomeBinding(),
   //     CategoryBinding(),
   //   ],
-  // ),
-  // GetPage(
-  //   name: RoutesManager.subCategoryScreen,
-  //   page: () => const SubCategoriesScreen(),
-  //   binding: SubCategoryBinding(),
   // ),
 ];

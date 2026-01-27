@@ -1,13 +1,13 @@
-
-
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+// ignore: must_be_immutable
 class DonateButton extends StatelessWidget {
-   DonateButton(this.onPressed, {super.key});
-void Function()? onPressed;
+  DonateButton(this.onPressed, {super.key});
+  void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return SafeArea(

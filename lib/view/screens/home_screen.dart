@@ -1,8 +1,11 @@
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/controller/getx/controllers/home_controller.dart';
+import 'package:crowdfunding_platform/view/widgets/icon_with_background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends GetView<HomeController> {
   const HomeScreen({super.key});
@@ -14,130 +17,85 @@ class HomeScreen extends GetView<HomeController> {
           ? ColorsManager.scaffoldBgDark
           : ColorsManager.scaffoldBgLight,
       body: SafeArea(
-        child: Column(
-          children: [
-            _Header(context),
-            _Filters(controller.filtersMock),
-            SizedBox(height: 12.h),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              child: Align(
-                alignment: Alignment.topRight,
-                child: Text(
-                  '${controller.campaignsMock.length} ${'title_campaigns_list'.tr} ',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Get.isDarkMode
-                        ? ColorsManager.white
-                        : ColorsManager.primaryLight,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 30),
+          child: Column(
+            children: [
+              HomeHeader(
+                userName: 'مرحباً محمد 👋',
+                subtitle:
+                    'لإنشاء حملات وجمع التبرعات، نحتاج أولًا إلى توثيق حسابك.',
+                avatar: ImagesManager.test,
+                onNotificationTap: () {
+                  // navigate to notifications
+                },
               ),
               SizedBox(height: 80.h),
               Stack(
                 children: [
-       Container(
-  height: 224.h,
-  width: 345.w,
-  decoration: BoxDecoration(
-    borderRadius: BorderRadius.circular(16.r),
-    boxShadow: const [
-      BoxShadow(
-        color: Colors.black26,
-        blurRadius: 2,
-        offset: Offset(0, 0),
-      ),
-    );
-  }
-
-  Widget _Header(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 24.w),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: Text(
-              'every_star_makes_a_difference'.tr,
-              textAlign: TextAlign.right,
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              // handle search tap
-            },
-            child: CircleAvatar(
-              backgroundColor: Theme.of(context).colorScheme.onSurface,
-              radius: 22.r,
-              child: SvgPicture.asset(
-                ImagesManager.search,
-                fit: BoxFit.scaleDown,
-                color: Get.isDarkMode
-                    ? ColorsManager.primaryLight
-                    : ColorsManager.primaryDark,
-              ),
-            ),
-          ),
-        ],
-      ),
-
-      Positioned.fill(
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: RadialGradient(
-              center: Alignment.topLeft,
-              radius: 1.3,
-              colors: [
-                 ColorsManager.iconDefaultLight.withOpacity(0.7),
-                 Color(0xFF8A97A8).withOpacity(.9), 
-                
-              ],
-              stops: const [1.0, 1.0],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _CampaignsList(
-    BuildContext context,
-    List<CampaignMock> campaignsMock,
-  ) {
-    return ListView.builder(
-      padding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 130.h),
-      itemCount: campaignsMock.length,
-      itemBuilder: (_, index) {
-        final campain = campaignsMock[index];
-
-        return Padding(
-          padding: EdgeInsets.only(bottom: 10.h, top: 10),
-          child: Container(
-            padding: EdgeInsets.all(16.h),
-            decoration: BoxDecoration(
-              color: Get.isDarkMode
-                  ? ColorsManager.bgGoogle
-                  : ColorsManager.white,
-              borderRadius: BorderRadius.circular(20.r),
-              boxShadow: [BoxShadow(blurRadius: 8, color: Colors.black12)],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 180.h,
-                  child: Stack(
-                    fit: StackFit.expand,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(16.r),
-                        child: Image.asset(
-                          campain.image,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
+                  Container(
+                    height: 224.h,
+                    width: 345.w,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16.r),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 2,
+                          offset: Offset(0, 0),
                         ),
-                       
+                      ],
+                    ),
+                    clipBehavior: Clip.antiAlias,
+                    child: Stack(
+                      children: [
+                        Positioned.fill(
+                          child: Image.asset(
+                            ImagesManager.bgAccountNotVerified,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+
+                        Positioned.fill(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              gradient: RadialGradient(
+                                center: Alignment.topLeft,
+                                radius: 1.3,
+                                colors: [
+                                  ColorsManager.iconDefaultLight.withOpacity(
+                                    0.7,
+                                  ),
+                                  Color(0xFF8A97A8).withOpacity(.9),
+                                ],
+                                stops: const [1.0, 1.0],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    top: 80,
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 59.h,
+                          width: 59.w,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white.withOpacity(.6),
+                          ),
+                          child: SvgPicture.asset(
+                            ImagesManager.closeIcone,
+                            fit: BoxFit.scaleDown,
+                          ),
+                        ),
+
                         SizedBox(height: 14.h),
                         Container(
                           padding: EdgeInsets.symmetric(
@@ -146,33 +104,23 @@ class HomeScreen extends GetView<HomeController> {
                           ),
                           decoration: BoxDecoration(
                             color: Get.isDarkMode
-                                ? ColorsManager.bgGoogle
-                                : ColorsManager.dividerColorLight,
-                            borderRadius: BorderRadius.circular(12.r),
+                                ? ColorsManager.bgSectionDark
+                                : ColorsManager.bgSectionLight,
+                            borderRadius: BorderRadius.circular(20.r),
                           ),
                           child: Text(
-                            campain.category,
-                            style: Theme.of(context).textTheme.bodySmall
-                                ?.copyWith(
-                                  color: Get.isDarkMode
-                                      ? ColorsManager.white
-                                      : ColorsManager.primaryLight,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                            'حسابك غير موثق',
+                            style: TextStyle(
+                              color: Get.isDarkMode
+                                  ? ColorsManager.primaryTextDark
+                                  : ColorsManager.primaryLight,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 12.sp,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 8.h),
-                Text(
-                  campain.title,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: Get.isDarkMode
-                        ? ColorsManager.white
-                        : ColorsManager.primaryLight,
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -199,126 +147,116 @@ class HomeScreen extends GetView<HomeController> {
                   'ابدأ توثيق الحساب',
                   style: TextStyle(color: Colors.white),
                 ),
-                SizedBox(height: 8.h),
-                Text(
-                  campain.description,
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: Get.isDarkMode
-                        ? ColorsManager.secondaryDark
-                        : ColorsManager.secondaryLight,
+              ),
+              SizedBox(height: 14.h),
+
+              Container(
+                height: 80.h,
+                width: 345.w,
+                constraints: BoxConstraints(maxWidth: 345),
+                decoration: BoxDecoration(
+                  color: Get.isDarkMode ? ColorsManager.bgGoogle : Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(16.r)),
+                  border: Border.all(
+                    color: ColorsManager.grey2.withOpacity(
+                      Get.isDarkMode ? 0 : .2,
+                    ),
                   ),
                 ),
                 child: Row(
                   children: [
-                    Row(
-                      spacing: 3.w,
-                      children: [
-                        SvgPicture.asset(ImagesManager.star),
-                        Text(
-                          '${campain.raised} نجمة',
-                          style: TextStyle(
-                            color: Get.isDarkMode
-                                ? ColorsManager.primaryTextLight
-                                : ColorsManager.primaryLight,
-                          ),
-                        ),
-                      ],
+                    SizedBox(width: 6.w),
+                    IconWithBackground(
+                      icon: ImagesManager.lampOn,
+                      lightColor: ColorsManager.dividerColorLight,
                     ),
-                    Text(
-                      "الهدف : ${campain.target} نجمة",
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: Get.isDarkMode
-                            ? ColorsManager.primaryTextLight
-                            : ColorsManager.primaryLight,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 8.h),
-                LayoutBuilder(
-                  builder: (context, constraints) {
-                    final progress = (campain.raised / campain.target).clamp(
-                      0.0,
-                      1.0,
-                    );
-
-                    return Container(
-                      height: 8.h,
-                      decoration: BoxDecoration(
-                        color: ColorsManager.dividerColorLight,
-                        borderRadius: BorderRadius.circular(12.r),
-                      ),
-                      child: Stack(
-                        children: [
-                          Container(
-                            height: 8.h,
-                            decoration: BoxDecoration(
-                              color: Get.isDarkMode
-                                  ? ColorsManager.dividerColorDark
-                                  : ColorsManager.dividerColorLight,
-                              borderRadius: BorderRadius.circular(12.r),
-                            ),
-                          ),
-                          AnimatedContainer(
-                            duration: const Duration(milliseconds: 900),
-                            curve: Curves.easeInOut,
-                            width: constraints.maxWidth * progress,
-                            decoration: BoxDecoration(
-                              color: ColorsManager.primaryCTA,
-                              borderRadius: BorderRadius.circular(12.r),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-
-                SizedBox(height: 12.h),
-                Row(
-                  children: [
+                    SizedBox(width: 7.w),
                     Expanded(
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(vertical: 15.h),
-                          minimumSize: Size(152.w, 40.h),
-                          foregroundColor: Get.isDarkMode
+                      child: Text(
+                        maxLines: 2,
+                        'لضمان الثقة , يرجى توثيق هويتك لتتمكن من إنشاء الحملات وسحب التبرعات',
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w700,
+                          color: Get.isDarkMode
                               ? ColorsManager.white
-                              : ColorsManager.primaryLight,
-                          backgroundColor: Get.isDarkMode
-                              ? ColorsManager.bgGoogle
-                              : ColorsManager.white,
-                          side: BorderSide(
-                            color: Get.isDarkMode
-                                ? ColorsManager.iconDefaultLight
-                                : ColorsManager.primaryLight,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.r),
-                          ),
+                              : ColorsManager.secondaryLight,
                         ),
-                        onPressed: () {
-                          Get.toNamed(RoutesManager.campaignDetailsScreen);
-                        },
-                        child: Text('مشاهدة التفاصيل'),
-                      ),
-                    ),
-                    SizedBox(width: 8.w),
-
-                    Expanded(
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(vertical: 15.h),
-                          minimumSize: Size(152.w, 40.h),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.r),
-                          ),
-                        ),
-                        onPressed: () {},
-                        child: Text('تبرع فورًا'),
                       ),
                     ),
                   ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class HomeHeader extends StatelessWidget {
+  const HomeHeader({
+    super.key,
+    required this.userName,
+    required this.subtitle,
+    required this.avatar,
+    this.onNotificationTap,
+  });
+
+  final String userName;
+  final String subtitle;
+  final String avatar;
+  final VoidCallback? onNotificationTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      // padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+      // decoration: BoxDecoration(
+      //   color: Get.isDarkMode
+      //       ? ColorsManager.bgSectionDark
+      //       : ColorsManager.bgSectionLight,
+      //   borderRadius: BorderRadius.circular(20.r),
+      // ),
+      child: Row(
+        children: [
+          ///  User avatar
+          ClipRRect(
+            borderRadius: BorderRadius.circular(30.r),
+            child: Image.asset(
+              avatar,
+              height: 60.h,
+              width: 60.h,
+              fit: BoxFit.cover,
+            ),
+          ),
+
+          SizedBox(width: 12.w),
+
+          ///  Greeting text
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  userName,
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    color: Get.isDarkMode
+                        ? ColorsManager.primaryTextDark
+                        : ColorsManager.primaryLight,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                SizedBox(height: 4.h),
+                Text(
+                  subtitle,
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                    color: Get.isDarkMode
+                        ? ColorsManager.secondaryDark
+                        : ColorsManager.secondaryLight,
+                    fontSize: 10.sp,
+                  ),
                 ),
               ],
             ),

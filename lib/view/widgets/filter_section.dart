@@ -1,10 +1,7 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
-import 'package:crowdfunding_platform/controller/getx/controllers/discover_controller.dart';
-import 'package:crowdfunding_platform/controller/getx/controllers/my_campagins_controller.dart';
 import 'package:crowdfunding_platform/model/filter_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
 class FilterSection extends StatelessWidget {
   const FilterSection({
@@ -20,7 +17,7 @@ class FilterSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness ==Brightness.dark ;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return SizedBox(
       height: 34.h,
       child: ListView.separated(
@@ -33,12 +30,12 @@ class FilterSection extends StatelessWidget {
           final isSelected = selectedIndex == index;
 
           return ChoiceChip(
-                        padding: EdgeInsets.symmetric(vertical: 0.h),
-           
+            padding: EdgeInsets.symmetric(vertical: 0.h),
+
             showCheckmark: false,
             selected: isSelected,
             onSelected: (_) => onSelect(index),
-            
+
             labelStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
               color: isSelected
                   ? ColorsManager.white
@@ -66,7 +63,7 @@ class FilterSection extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: isSelected
                         ? Colors.white54
-                        :isDark
+                        : isDark
                         ? ColorsManager.iconDefaultDark
                         : ColorsManager.iconDefaultLight,
                     borderRadius: BorderRadius.circular(20.r),

@@ -52,7 +52,7 @@ class _MainScreenState extends State<MainScreen> {
         child: Container(
           decoration: BoxDecoration(
             color: isDark ? ColorsManager.bgGoogle : ColorsManager.white,
-            borderRadius: BorderRadius.circular(74.r),
+            borderRadius: BorderRadius.circular(40.r),
             boxShadow: [
               BoxShadow(
                 color: Colors.black38,
@@ -69,12 +69,28 @@ class _MainScreenState extends State<MainScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                                    _TabItem(activeIcon: ImagesManager.activeHome,unActiveIcon:ImagesManager.home , index: 3),
-                  _TabItem(activeIcon: ImagesManager.clipboard,unActiveIcon:ImagesManager.unActiveClipboard , index: 2),
+                  _TabItem(
+                    activeIcon: ImagesManager.activeHome,
+                    unActiveIcon: ImagesManager.home,
+                    index: 3,
+                  ),
+                  _TabItem(
+                    activeIcon: ImagesManager.clipboard,
+                    unActiveIcon: ImagesManager.unActiveClipboard,
+                    index: 2,
+                  ),
                   _CenterActionButton(isDark: isDark),
-                  _TabItem(activeIcon: ImagesManager.discover,unActiveIcon:ImagesManager.unActiveDiscover , index: 1),
+                  _TabItem(
+                    activeIcon: ImagesManager.discover,
+                    unActiveIcon: ImagesManager.unActiveDiscover,
+                    index: 1,
+                  ),
 
-                  _TabItem(activeIcon: ImagesManager.activeProfile,unActiveIcon:ImagesManager.profile , index: 0),
+                  _TabItem(
+                    activeIcon: ImagesManager.activeProfile,
+                    unActiveIcon: ImagesManager.profile,
+                    index: 0,
+                  ),
                 ],
               ),
             ),
@@ -84,7 +100,11 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  Widget _TabItem({required String activeIcon,required String unActiveIcon, required int index}) {
+  Widget _TabItem({
+    required String activeIcon,
+    required String unActiveIcon,
+    required int index,
+  }) {
     final isSelected = currentIndex == index;
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
@@ -93,22 +113,46 @@ class _MainScreenState extends State<MainScreen> {
         setState(() => currentIndex = index);
       },
       child: Container(
-        padding: isSelected ? EdgeInsets.all(10.w) : EdgeInsets.zero,
-        decoration: BoxDecoration(
-          border: isSelected
-              ? Border.all(color: ColorsManager.primaryCTA, width: 1.5)
-              : null,
-          borderRadius: BorderRadius.circular(30.r),
+        height: 42.w,
+        width: 42.w,
+        decoration: BoxDecoration(shape: BoxShape.circle),
+        child: Center(
+          child: SvgPicture.asset(
+            isSelected ? activeIcon : unActiveIcon,
+            //fit: BoxFit.contain,
+            width: 24,
+            height: 24,
+            color: isSelected
+                ? ColorsManager.primaryCTA
+                : isDark
+                ? ColorsManager.secondaryDark
+                : ColorsManager.secondaryLight,
+          ),
         ),
-        child: SvgPicture.asset(
-          icon,
-          width: 24,
-          height: 24,
-          color: isSelected
-              ? ColorsManager.primaryCTA
-              : isDark
-              ? ColorsManager.secondaryDark
-              : ColorsManager.secondaryLight,
+      ),
+    );
+  }
+
+  Widget _CenterActionButton({required bool isDark}) {
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        height: 54.w,
+        width: 54.w,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: isDark ? ColorsManager.bgGoogle : ColorsManager.white,
+          border: Border.all(color: ColorsManager.secondaryLight, width: 1.5),
+        ),
+        child: Center(
+          child: SvgPicture.asset(
+            ImagesManager.addCircle,
+            width: 24,
+            height: 24,
+            color: isDark
+                ? ColorsManager.secondaryDark
+                : ColorsManager.secondaryLight,
+          ),
         ),
       ),
     );
