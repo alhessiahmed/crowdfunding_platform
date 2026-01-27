@@ -1,34 +1,31 @@
+import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import '../../controller/core/constants/colors_manager.dart';
-
-class InformationWIdget extends StatelessWidget {
-  const InformationWIdget({
-    required this.text,
-    required this.height,
-    required this.width,
-    required this.imgPath,
-    this.padding = 16,
+class InformationCard extends StatelessWidget {
+  const InformationCard({
     super.key,
+    required this.title,
+    required this.subTitle,
+    required this.imgPath,
   });
-  final String text;
-  final double height;
-  final double width;
+
+  final String title;
+  final String subTitle;
   final String imgPath;
-  final double padding;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height,
-      padding: EdgeInsets.all(padding.r),
+      height: 76.h,
+      padding: EdgeInsets.all(16.r),
       decoration: BoxDecoration(
         color: Get.isDarkMode ? ColorsManager.bgGoogle : ColorsManager.white,
         borderRadius: BorderRadius.circular(16.r),
         boxShadow: [
-          BoxShadow(color: Colors.black.withOpacity(0.25), blurRadius: 1),
+          BoxShadow(color: Colors.black.withOpacity(0.25), blurRadius: 2),
         ],
       ),
       child: Row(
@@ -56,16 +53,24 @@ class InformationWIdget extends StatelessWidget {
             ),
           ),
           SizedBox(width: 10.w),
-          SizedBox(
-            width: width,
-            // height: 72.h,
-            child: Text(
-              text,
-              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                fontSize: 12.sp,
-                fontWeight: FontWeight.bold,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                title,
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
               ),
-            ),
+              SizedBox(height: 4.h),
+              Text(
+                subTitle,
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyMedium!.copyWith(fontSize: 10.sp),
+              ),
+            ],
           ),
         ],
       ),

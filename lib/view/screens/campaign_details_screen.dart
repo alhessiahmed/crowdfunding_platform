@@ -1,5 +1,4 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
-import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/comment_section.dart';
 import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/donation_button.dart';
 import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/header.dart';
@@ -9,8 +8,6 @@ import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/tabs_
 import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/why_donation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 
 class CampaignDetailsScreen extends StatelessWidget {
   const CampaignDetailsScreen({super.key});
@@ -21,16 +18,10 @@ class CampaignDetailsScreen extends StatelessWidget {
     return Scaffold(
       extendBody: true,
       backgroundColor: isDark ? ColorsManager.darkBg : ColorsManager.lightBg,
-      body: ListView( 
-        children: [ 
-           const HeaderWidget(),
-          _BodyContent(),
-          DonateButton()
-          
-        ],
+      body: ListView(
+        children: [const HeaderWidget(), _BodyContent(), DonateButton()],
       ),
     );
-    
   }
 }
 
@@ -43,7 +34,7 @@ class _BodyContent extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: Column(
         children: [
-         // SizedBox(height: 14.h),
+          // SizedBox(height: 14.h),
           StatsRow(),
           SizedBox(height: 18.h),
           WhyDonateSection(),
@@ -58,4 +49,3 @@ class _BodyContent extends StatelessWidget {
     );
   }
 }
-

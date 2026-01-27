@@ -15,6 +15,7 @@ class ImagesManager {
   static const String bankOfPalestine = '$mainPath/bank_of_palestine.png';
   static const String clockDark = '$mainPath/clock_dark.png';
   static const String clockLight = '$mainPath/clock_light.png';
+  static const String userImg = '$mainPath/user_img.png';
 
   // Icons
   static const String iconsPath = 'assets/images/icons';
@@ -71,4 +72,9 @@ class ImagesManager {
   static const String lightIcon = '$iconsPath/ic_light.svg';
   static const String clockIcon = '$iconsPath/ic_clock.svg';
   static const String shieldIcon = '$iconsPath/ic_shield.svg';
+  static const String secureIcon = '$iconsPath/ic_secure.svg';
+  static const String supportIcon = '$iconsPath/ic_support.svg';
+  static const String verifiedIcon = '$iconsPath/ic_verified.svg';
+  static const String doneIcon = '$iconsPath/ic_done.svg';
+  static const String editIcon = '$iconsPath/ic_edit.svg';
 }
