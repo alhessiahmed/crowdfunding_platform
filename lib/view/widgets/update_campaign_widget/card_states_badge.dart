@@ -18,7 +18,7 @@ class CardStatesBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: ColorsManager.boarder.withValues(alpha: 0.29),
+        color: ColorsManager.dividerColorLight,
         borderRadius: BorderRadius.circular(radius ?? 8.r),
       ),
       padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),

@@ -88,4 +88,6 @@ class ImagesManager {
       '$iconsPath/ic_three_dotes_setting.svg';
   static const String bankIcon = '$iconsPath/ic_bank.svg';
   static const String verifiedIcon = '$iconsPath/ic_verified.svg';
+  static const String rightArrowIcon = '$iconsPath/ic_arrow-circle-right_2.svg';
+  static const String rushStarIcon = '$iconsPath/ic_rush_star.svg';
 }

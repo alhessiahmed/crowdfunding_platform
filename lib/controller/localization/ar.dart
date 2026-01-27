@@ -226,15 +226,17 @@ Map<String, String> arLocale = {
       'هنا يمكنك متابعة أثرك ودعم حملات جديدة بالنجوم',
   'Your_current_impact': 'أثرك الحالي',
   'You_are_in_the_top_%_of_star_donors!':
-      'أنت من بين أعلى @peploepresnt٪ من المتبرعين هذا الشهر!',
+      'أنت من بين أعلى @peploepresnt٪ من المتبرعين هذا الشهر',
   'Life_affected': 'حياة تأثرت',
   'Sponsored_campaigns': 'حملات مدعومة',
   'Latest_donations': 'آخر التبرعات',
   'Campaign_Offer': 'عرض الحملة',
   'Explore_new_campaigns': 'استكشف حملات جديدة',
+  'Suggested_campaigns_for_you': 'حملات مقترحة لك',
   'View_details': 'مشاهدة التفاصيل',
   'Relief': 'إغاثي',
   'Every_star_contributes_to_making_a_real_difference':
       'كل نجمة تساهم في إحداث فرق حقيقي',
-      
+  'Goal': 'الهدف : @Number نجمة',
+  'Donate_immediately': 'تبرع فوراً',
 };
