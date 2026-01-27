@@ -6,6 +6,8 @@ import 'package:crowdfunding_platform/controller/getx/bindings/campaign_details_
 import 'package:crowdfunding_platform/controller/getx/bindings/control_campaign_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/edit_campaign_details_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/home_binding.dart';
+import 'package:crowdfunding_platform/view/screens/add_pymaent_method/add_payment_method_page.dart';
+import 'package:crowdfunding_platform/view/screens/add_pymaent_method/choose_payment_method_page.dart';
 import 'package:crowdfunding_platform/view/screens/auth/forgot_password_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/reset_password_success_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/setup_success_screen.dart';
@@ -43,6 +45,8 @@ import '../../getx/bindings/auth/sign_in_binding.dart';
 import '../../getx/bindings/auth/sign_up_binding.dart';
 import '../../getx/bindings/auth/user_type_selection_binding.dart';
 import '../../getx/bindings/auth/verification_binding.dart';
+import '../../getx/bindings/payment/add_payment_method_binding.dart';
+import '../../getx/bindings/payment/choose_payment_method_binding.dart';
 import '../../getx/bindings/payment/confirm_payment_binding.dart';
 import '../../getx/bindings/payment/payment_method_binding.dart';
 import '../../getx/bindings/payment/thanks_for_payment_binding.dart';
@@ -140,6 +144,16 @@ final List<GetPage<dynamic>> getPages = [
     name: RoutesManager.paymentScreen,
     page: () => const PaymentMethodScreens(),
     binding: PaymentBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.choosePaymentMethodScreen,
+    page: () => const ChoosePaymentMethodPage(),
+    binding: ChoosePaymentMethodBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.addPaymentMethodScreen,
+    page: () => const AddPaymentMethodPage(),
+    binding: AddPaymentMethodBinding(),
   ),
   GetPage(
     name: RoutesManager.creditCardPaymentScreen,

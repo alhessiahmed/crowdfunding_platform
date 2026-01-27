@@ -76,4 +76,9 @@ class ImagesManager {
   static const String uploadImageIcon = '$iconsPath/ic_uploadImage.svg';
   static const String targetCampaignIcon = '$iconsPath/ic_target_campaign.svg';
   static const String closeIcon = '$iconsPath/ic_close.svg';
+  static const String infoIcon = '$iconsPath/ic_info.svg';
+  static const String threeDotesSettingsIcon =
+      '$iconsPath/ic_three_dotes_setting.svg';
+  static const String bankIcon = '$iconsPath/ic_bank.svg';
+  static const String verifiedIcon = '$iconsPath/ic_verified.svg';
 }

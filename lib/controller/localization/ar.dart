@@ -209,5 +209,17 @@ Map<String, String> arLocale = {
   'Add_thumbnail_question': 'هل تريد رفع صورة مصغّرة مخصصة للفيديو؟',
   'Choose_thumbnail': 'اختيار',
   'Skip': 'تخطي',
-  
+  'Payment_methods': 'طرق الدفع',
+  'Choose_the_most_convenient_way_to_buy_stars_and_donate_easily.':
+      'اختر الطريقة الأنسب لشراء النجوم والتبرع بسهوله',
+  'Saved_cards': 'البطاقات المحفوظة',
+  'hypothetical': 'افتراضي',
+  'It_ends_in': ' تنتهي في @date',
+  'Add_a_new_card': 'اضافة بطاقة جديدة',
+  'Fast_payment': 'دفع سريع',
+  'Apple_pay': 'Apple pay',
+  'paypal': 'paypal',
+  'Save_card': 'حفظ البطاقة',
+  'bank_accounts': 'الحسابات البنكية',
+  'Verified': 'متحقق',
 };

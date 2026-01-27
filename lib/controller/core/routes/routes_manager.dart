@@ -20,6 +20,8 @@ class RoutesManager {
   static const mainScreen = '/main_screen';
   static const campaignDetailsScreen = '/campaign_details_screen';
   static const paymentScreen = '/payment_screen';
+  static const choosePaymentMethodScreen = '/choose_payment_method_screen';
+  static const addPaymentMethodScreen = '/add_payment_method_screen';
   static const creditCardPaymentScreen = '/credit_card_payment_screen';
   static const confirmPaymentScreen = '/confirm_payment_screen';
   static const thanksForPaymentScreen = '/thanks_for_payment_screen';
