@@ -1,16 +1,28 @@
 import 'package:crowdfunding_platform/controller/getx/bindings/auth/forgot_password_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/auth/user_type_selection_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/auth/verification_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/campaign/campaign_step_five_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/campaign/campaign_step_four_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/campaign/campaign_step_one_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/campaign/campaign_step_three_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/campaign/campaign_step_two_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/campaign_details_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/donation_history/donation_history_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/discover_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/main_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/my_campagins_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/profile_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/creator/creator_verfication_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/notification/notification_binding.dart';
 import 'package:crowdfunding_platform/view/screens/auth/forgot_password_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/reset_password_success_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/setup_success_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/verification_screen.dart';
+import 'package:crowdfunding_platform/view/screens/campaign_create_screens/campaign_step_five_screen.dart';
+import 'package:crowdfunding_platform/view/screens/campaign_create_screens/campaign_step_four_screen.dart';
+import 'package:crowdfunding_platform/view/screens/campaign_create_screens/campaign_step_one_screen.dart';
+import 'package:crowdfunding_platform/view/screens/campaign_create_screens/campaign_step_three_screen.dart';
+import 'package:crowdfunding_platform/view/screens/campaign_create_screens/campaign_step_two_screen.dart';
 import 'package:crowdfunding_platform/view/screens/campaign_details_screen.dart';
 import 'package:crowdfunding_platform/view/screens/discover_screen.dart';
 import 'package:crowdfunding_platform/view/screens/creator/creator_verfication_screen.dart';
@@ -19,11 +31,13 @@ import 'package:crowdfunding_platform/view/screens/donor/donor_personal_info_scr
 import 'package:crowdfunding_platform/view/screens/donor/verification/donor_acc_verification_screen.dart';
 import 'package:crowdfunding_platform/view/screens/donor/verification/donor_verification_shell_screen.dart';
 import 'package:crowdfunding_platform/view/screens/donor/verification/donor_verification_success_screen.dart';
+import 'package:crowdfunding_platform/view/screens/donation_history/donation_history_screen.dart';
 import 'package:crowdfunding_platform/view/screens/home_screen.dart';
 import 'package:crowdfunding_platform/view/screens/intro/welcome_screen.dart';
 import 'package:crowdfunding_platform/view/screens/main_screen.dart';
 import 'package:crowdfunding_platform/view/screens/my_campaigns.dart';
 import 'package:crowdfunding_platform/view/screens/profile_sreen.dart';
+import 'package:crowdfunding_platform/view/screens/notification/notification_screen.dart';
 import 'package:get/get.dart';
 import '../../../view/screens/auth/onboarding_shell_screen.dart';
 import '../../../view/screens/auth/reset_password_screen.dart';
@@ -139,6 +153,41 @@ final List<GetPage<dynamic>> getPages = [
     name: RoutesManager.thanksForPaymentScreen,
     page: () => const ThanksForPaymentScreen(),
     binding: ThanksForPaymentBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.CampaignStepOneScreen,
+    page: () => CampaignStepOneScreen(),
+    binding: CampaignStepOneBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.CampaignStepTwoScreen,
+    page: () => CampaignStepTwoScreen(),
+    binding: CampaignStepTwoBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.CampaignStepFiveScreen,
+    page: () => CampaignStepFiveScreen(),
+    binding: CampaignStepFiveBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.CampaignStepThreeScreen,
+    page: () => CampaignStepThreeScreen(),
+    binding: CampaignStepThreeBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.CampaignStepFourScreen,
+    page: () => CampaignStepFourScreen(),
+    binding: CampaignStepFourBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.donationHistoryScreen,
+    page: () => DonationHistoryScreen(),
+    binding: DonationHistoryBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.notificationScreen,
+    page: () => NotificationsScreen(),
+    binding: NotificationBinding(),
   ),
   GetPage(
     name: RoutesManager.profileScreen,
