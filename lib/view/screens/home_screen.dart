@@ -1,9 +1,6 @@
-import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
-import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
 import 'package:crowdfunding_platform/controller/getx/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -13,6 +10,9 @@ class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Get.isDarkMode
+          ? ColorsManager.scaffoldBgDark
+          : ColorsManager.scaffoldBgLight,
       body: SafeArea(
         child: Column(
           children: [
@@ -33,11 +33,19 @@ class HomeScreen extends GetView<HomeController> {
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 10.h),
-            Expanded(child: _CampaignsList(context, controller.campaignsMock)),
-          ],
-        ),
+              SizedBox(height: 80.h),
+              Stack(
+                children: [
+       Container(
+  height: 224.h,
+  width: 345.w,
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(16.r),
+    boxShadow: const [
+      BoxShadow(
+        color: Colors.black26,
+        blurRadius: 2,
+        offset: Offset(0, 0),
       ),
     );
   }
@@ -73,81 +81,22 @@ class HomeScreen extends GetView<HomeController> {
           ),
         ],
       ),
-    );
-  }
 
-  Widget _Filters(List<FilterItem> filters) {
-    return SizedBox(
-      height: 34.h,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
-        itemCount: filters.length,
-        separatorBuilder: (_, __) => SizedBox(width: 10.w),
-        itemBuilder: (context, index) {
-          final item = filters[index];
-          final isSelected = index == 0;
-
-          return ChoiceChip(
-            // showCheckmark: false,
-            selected: isSelected,
-            labelStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
-              color: isSelected
-                  ? ColorsManager.white
-                  : Theme.of(context).colorScheme.onSecondaryContainer,
-            ),
-            showCheckmark: false,
-            onSelected: (bool value) {},
-            padding: EdgeInsets.symmetric(vertical: 0.h),
-            shape: RoundedRectangleBorder(
-              side: !isSelected
-                  ? BorderSide(color: ColorsManager.primaryLight)
-                  : BorderSide.none,
-              borderRadius: BorderRadius.circular(48.r),
-            ),
-            backgroundColor: Get.isDarkMode
-                ? ColorsManager.dividerColorDark
-                : ColorsManager.dividerColorLight,
-            selectedColor: ColorsManager.primaryCTA,
-            disabledColor: Get.isDarkMode
-                ? ColorsManager.dividerColorDark
-                : ColorsManager.dividerColorLight,
-            label: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  item.title,
-                  // style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                  //       color: Get.isDarkMode ?ColorsManager.primaryTextDark : ColorsManager.primaryLight.withOpacity(.9)
-
-                  //     ),
-                ),
-                SizedBox(width: 8.w),
-                Container(
-                  height: 22,
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: isSelected
-                        ? Colors.white54
-                        : Get.isDarkMode
-                        ? ColorsManager.iconDefaultDark
-                        : ColorsManager.iconDefaultLight,
-                    borderRadius: BorderRadius.circular(20.r),
-                  ),
-                  child: Text(
-                    item.count.toString(),
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                      color: isSelected
-                          ? Colors.black
-                          : Theme.of(context).colorScheme.onPrimary,
-                    ),
-                  ),
-                ),
+      Positioned.fill(
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: RadialGradient(
+              center: Alignment.topLeft,
+              radius: 1.3,
+              colors: [
+                 ColorsManager.iconDefaultLight.withOpacity(0.7),
+                 Color(0xFF8A97A8).withOpacity(.9), 
+                
               ],
+              stops: const [1.0, 1.0],
             ),
-          );
-        },
+          ),
+        ),
       ),
     );
   }
@@ -188,14 +137,12 @@ class HomeScreen extends GetView<HomeController> {
                           width: double.infinity,
                           fit: BoxFit.cover,
                         ),
-                      ),
-                      Positioned(
-                        top: 18.h,
-                        right: 15.w,
-                        child: Container(
+                       
+                        SizedBox(height: 14.h),
+                        Container(
                           padding: EdgeInsets.symmetric(
-                            horizontal: 8.w,
-                            vertical: 4.h,
+                            horizontal: 12.w,
+                            vertical: 6.h,
                           ),
                           decoration: BoxDecoration(
                             color: Get.isDarkMode
@@ -227,6 +174,30 @@ class HomeScreen extends GetView<HomeController> {
                         ? ColorsManager.white
                         : ColorsManager.primaryLight,
                   ),
+                ],
+              ),
+              SizedBox(height: 14.h),
+
+              Text(
+                'لا يمكنك إنشاء حملة بعد',
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              SizedBox(height: 12.h),
+
+              Text(
+                textAlign: TextAlign.center,
+                'يتطلّب إنشاء الحملات حسابًا موثّقًا لضمان الموثوقية وحماية المتبرعين.',
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyMedium!.copyWith(fontSize: 11.sp),
+              ),
+              SizedBox(height: 16.h),
+
+              ElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  'ابدأ توثيق الحساب',
+                  style: TextStyle(color: Colors.white),
                 ),
                 SizedBox(height: 8.h),
                 Text(
@@ -237,9 +208,7 @@ class HomeScreen extends GetView<HomeController> {
                         : ColorsManager.secondaryLight,
                   ),
                 ),
-                SizedBox(height: 8.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: Row(
                   children: [
                     Row(
                       spacing: 3.w,
@@ -354,8 +323,18 @@ class HomeScreen extends GetView<HomeController> {
               ],
             ),
           ),
-        );
-      },
+
+          SizedBox(width: 12.w),
+
+          ///  Notification button
+          IconWithBackground(
+            icon: ImagesManager.notification,
+            lightColor: ColorsManager.dividerColorLight,
+            darkColor: ColorsManager.dividerColorDark,
+            withShadow: true,
+          ),
+        ],
+      ),
     );
   }
 }
