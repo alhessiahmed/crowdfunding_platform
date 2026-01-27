@@ -1,9 +1,10 @@
-import 'package:crowdfunding_platform/controller/getx/controllers/home_controller.dart';
-import 'package:get/instance_manager.dart';
+import 'package:crowdfunding_platform/controller/getx/controllers/discover_controller.dart';
+import 'package:get/get.dart';
 
-class HomeBinding implements Bindings{
+class HomeBinding extends Bindings{
   @override
   void dependencies() {
-    Get.put(HomeController());
-  }
+    Get.lazyPut(()=> DiscoverController());
+  } 
+
 }

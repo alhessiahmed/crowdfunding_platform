@@ -2,6 +2,7 @@ import 'package:crowdfunding_platform/controller/core/constants/colors_manager.d
 import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/comment_section.dart';
 import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/donation_button.dart';
 import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/header.dart';
+import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/popup_to_donate.dart';
 import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/stats_row.dart';
 import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/story_section.dart';
 import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/tabs_row.dart';

@@ -9,6 +9,9 @@ class ImagesManager {
   static const String likeLight = '$mainPath/like_light.png';
   static const String likeDark = '$mainPath/like_dark.png';
   static const String test = '$mainPath/test.png';
+  static const String bgAccountNotVerified = '$mainPath/bg_account_not_verified.png';
+//assets\images\bg_account_not_verified.png
+  /////////////// icons ///////////////
   static const String starLight = '$mainPath/star_light.png';
   static const String starDark = '$mainPath/star_dark.png';
   static const String placeHolder = '$mainPath/place_holder.png';
@@ -67,6 +70,37 @@ class ImagesManager {
   static const String calender2 = '$iconsPath/ic_calendar-2.svg';
   static const String profile2user = '$iconsPath/ic_profile-2user.svg';
   static const String notificationBing = '$iconsPath/ic_notification-bing.svg';
+  static const String magicPin = '$iconsPath/ic_magic_pin.svg';
+  static const String lampCharge = '$iconsPath/ic_lamp-charge.svg';
+  static const String verified = '$iconsPath/ic_verified.svg';
+  static const String contactSupport = '$iconsPath/ic_contact_support_rounded.svg';
+  static const String notification = '$iconsPath/ic_notification.svg';
+  static const String moneys = '$iconsPath/ic_moneys.svg';
+  static const String hisrotyRounded = '$iconsPath/ic_history_rounded.svg';
+    static const String profile2 = '$iconsPath/ic_profile2.svg';
+    static const String emptyWallet = '$iconsPath/ic_empty_wallet.svg';
+    static const String logout = '$iconsPath/ic_logout.svg';
+    static const String clipboard = '$iconsPath/ic_clipboard.svg';
+    static const String closeIcone = '$iconsPath/ic_close.svg';
+    static const String lampOn = '$iconsPath/ic_lamp-on.svg';
+    static const String trash = '$iconsPath/ic_trash.svg';
+    static const String pauseCircle = '$iconsPath/ic_pause-circle.svg';
+    static const String note2 = '$iconsPath/ic_note-2.svg';
+
+    static const String completedStatus = '$iconsPath/ic_completed_status.svg';
+    static const String activeStatus = '$iconsPath/ic_active_status.svg';
+    static const String settings2 = '$iconsPath/ic_setting-2.svg';
+    static const String addCircle = '$iconsPath/ic_add-circle.svg';
+    static const String videoCircle = '$iconsPath/ic_video-circle.svg';
+    static const String send = '$iconsPath/ic_send.svg';
+    static const String activeHome = '$iconsPath/ic_active_home.svg';
+    static const String edit = '$iconsPath/ic_edit.svg';
+    static const String unActiveClipboard = '$iconsPath/ic_unactive_clipboard.svg';
+    static const String unActiveDiscover = '$iconsPath/ic_unactive_discover.svg';
+    static const String activeProfile = '$iconsPath/ic_active_profile.svg';
+//assets\images\icons\assets\images\icons\ic_active_status.dart.svg
+  
+  // assets\images\icons\ic_contact_support_rounded.svg
   static const String galleryIcon = '$iconsPath/ic_gallery.svg';
   static const String cameraIcon = '$iconsPath/ic_camera.svg';
   static const String lightIcon = '$iconsPath/ic_light.svg';
