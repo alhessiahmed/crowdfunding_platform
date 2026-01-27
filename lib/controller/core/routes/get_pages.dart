@@ -6,6 +6,7 @@ import 'package:crowdfunding_platform/controller/getx/bindings/campaign_details_
 import 'package:crowdfunding_platform/controller/getx/bindings/control_campaign_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/edit_campaign_details_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/home_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/donar_home_binding.dart';
 import 'package:crowdfunding_platform/view/screens/add_pymaent_method/add_payment_method_page.dart';
 import 'package:crowdfunding_platform/view/screens/add_pymaent_method/choose_payment_method_page.dart';
 import 'package:crowdfunding_platform/view/screens/auth/forgot_password_screen.dart';
@@ -13,6 +14,7 @@ import 'package:crowdfunding_platform/view/screens/auth/reset_password_success_s
 import 'package:crowdfunding_platform/view/screens/auth/setup_success_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/verification_screen.dart';
 import 'package:crowdfunding_platform/view/screens/campaign_details_screen.dart';
+import 'package:crowdfunding_platform/view/screens/doner_home/donar_home_screen.dart';
 import 'package:crowdfunding_platform/view/screens/home_screen.dart';
 import 'package:crowdfunding_platform/view/screens/intro/welcome_screen.dart';
 import 'package:crowdfunding_platform/view/screens/main_screen.dart';
@@ -118,6 +120,11 @@ final List<GetPage<dynamic>> getPages = [
       HomeBinding(),
       // CategoryBinding(),
     ],
+  ),
+  GetPage(
+    name: RoutesManager.donarHomeScreen,
+    page: () => const DonarHomeScreen(),
+    binding: DonarHomeBinding(),
   ),
   GetPage(
     name: RoutesManager.campaignDetailsScreen,

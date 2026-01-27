@@ -222,4 +222,19 @@ Map<String, String> arLocale = {
   'Save_card': 'حفظ البطاقة',
   'bank_accounts': 'الحسابات البنكية',
   'Verified': 'متحقق',
+  'Here_you_can_track_your_impact_and_support_new_campaigns_with_stars':
+      'هنا يمكنك متابعة أثرك ودعم حملات جديدة بالنجوم',
+  'Your_current_impact': 'أثرك الحالي',
+  'You_are_in_the_top_%_of_star_donors!':
+      'أنت من بين أعلى @peploepresnt٪ من المتبرعين هذا الشهر!',
+  'Life_affected': 'حياة تأثرت',
+  'Sponsored_campaigns': 'حملات مدعومة',
+  'Latest_donations': 'آخر التبرعات',
+  'Campaign_Offer': 'عرض الحملة',
+  'Explore_new_campaigns': 'استكشف حملات جديدة',
+  'View_details': 'مشاهدة التفاصيل',
+  'Relief': 'إغاثي',
+  'Every_star_contributes_to_making_a_real_difference':
+      'كل نجمة تساهم في إحداث فرق حقيقي',
+      
 };

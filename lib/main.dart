@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
           themeMode: ThemeController.to.themeMode,
           // themeMode: ThemeMode.dark,
           // initialRoute: RoutesManager.launchScreen,
-          initialRoute: RoutesManager.choosePaymentMethodScreen,
+          initialRoute: RoutesManager.donarHomeScreen,
           getPages: getPages,
           unknownRoute: GetPage(
             name: RoutesManager.launchScreen,
