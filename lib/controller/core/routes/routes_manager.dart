@@ -28,4 +28,6 @@ class RoutesManager {
   static const CampaignStepFiveScreen = '/campaign_step_five_screen';
   static const CampaignStepThreeScreen = '/campaign_step_three_screen';
   static const CampaignStepFourScreen = '/campaign_step_four_screen';
+  static const donationHistoryScreen = '/donation_history_screen';
+  static const notificationScreen = '/notification_screen';
 }

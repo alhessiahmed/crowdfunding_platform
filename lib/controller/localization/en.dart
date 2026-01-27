@@ -61,6 +61,22 @@ Map<String, String> enLocale = {
       'This information will appear to donors as is, please make sure it is free of spelling errors.',
   "confirm":
       'I confirm that the information provided is correct and that the campaign aims for a real humanitarian impact.',
+  "donation_history": "Donation History",
+  'donation_history_description':
+      "Here you can view all the donations you have made and track their impact.",
+  'supported_campaigns': 'Supported Campaigns: @count',
+  'no_donations_yet': "No donations yet",
+  'start_campaign': "Start supporting a campaign to make an impact",
+  'donation_list': "Donation List",
+  'view_campaign': "View Campaign",
+  'explore_campaigns': "Explore New Campaigns",
+  "notifications_title": "Notifications",
+  "mark_all_read": "Mark all as read",
+  "notifications_subtitle":
+      "Latest updates related to your impact within the platform",
+  "no_notifications_yet": 'No notifications yet',
+  "new_label": 'New',
+  "yesterday_label": 'Yesterday',
 
   // '': '',
   // '': '',

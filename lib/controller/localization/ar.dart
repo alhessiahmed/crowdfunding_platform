@@ -206,4 +206,19 @@ Map<String, String> arLocale = {
       'ستظهر هذه المعلومات للمتبرعين كما هي , يرجى التأكد من خلوها من الأخطاء الإملائية.',
   "confirm":
       ' أؤكد أن المعلومات المقدّمة صحيحة، وأن الحملة تهدف لأثر إنساني حقيقي..',
+  "donation_history": "سجل التبرعات",
+  'donation_history_description':
+      " هنا يمكنك الاطلاع على جميع التبرعات التي قمت بها وتتبع أثرها.",
+  'supported_campaigns': '@count الحملات المدعومة ',
+  'no_donations_yet': "لا توجد تبرعات بعد",
+  'start_campaign': "ابدأ بدعم حملة لإحداث أثر",
+  'donation_list': "قائمة التبرعات",
+  'view_campaign': "عرض الحملة",
+  'explore_campaigns': "استكشف حملات جديدة",
+  "notifications_title": "الاشعارات",
+  "mark_all_read": "تحديد كمقروء",
+  "notifications_subtitle": "آخر التحديثات المتعلّقة بأثرك داخل المنصة",
+  "no_notifications_yet": 'لا توجد إشعارات بعد',
+  "new_label": 'الجديدة',
+  "yesterday_label": 'الأمس',
 };
