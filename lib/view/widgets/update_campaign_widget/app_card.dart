@@ -7,14 +7,30 @@ class AppCard extends StatelessWidget {
     required this.child,
     this.padding,
     this.backGroundColor,
+    this.shadow = false,
   });
 
   final Widget child;
   final EdgeInsetsGeometry? padding;
   final Color? backGroundColor;
-
+  final bool shadow;
   @override
   Widget build(BuildContext context) {
+    final shadows = shadow
+        ? [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: .08),
+              blurRadius: 16,
+              offset: const Offset(0, 6),
+            ),
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.04),
+              blurRadius: 4,
+              offset: const Offset(0, 1),
+            ),
+          ]
+        : <BoxShadow>[];
+
     return Container(
       padding: padding ?? EdgeInsets.all(16.r),
       decoration: BoxDecoration(
@@ -25,9 +41,7 @@ class AppCard extends StatelessWidget {
           width: 0.5,
           color: Theme.of(context).colorScheme.outline,
         ),
-        boxShadow: const [
-          //  BoxShadow(color: Colors.black12, offset: Offset(0, 1)),
-        ],
+        boxShadow: shadows,
       ),
       child: child,
     );
