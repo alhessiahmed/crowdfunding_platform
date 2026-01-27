@@ -2,6 +2,7 @@ import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_control
 import 'package:crowdfunding_platform/view/screens/intro/launch_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+// import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'controller/core/routes/get_pages.dart';
@@ -14,9 +15,11 @@ import 'controller/localization/app_translations.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Get.put(ThemeController());
-  await Get.putAsync<SharedPrefController> (()async => await SharedPrefController().initPreferences());
+  await Get.putAsync<SharedPrefController>(
+    () async => await SharedPrefController().initPreferences(),
+  );
   // await DbController().initDatabase();
-   //await SharedPrefController().initPreferences();
+  //await SharedPrefController().initPreferences();
   // await Firebase.initializeApp(
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );
@@ -42,8 +45,8 @@ class MyApp extends StatelessWidget {
           darkTheme: AppTheme.dark(),
           themeMode: ThemeController.to.themeMode,
           // themeMode: ThemeMode.dark,
-           initialRoute: RoutesManager.launchScreen,
-          //initialRoute: RoutesManager.thanksForPaymentScreen,
+          // initialRoute: RoutesManager.launchScreen,
+          initialRoute: RoutesManager.donorPersonalInfoScreen,
           getPages: getPages,
           unknownRoute: GetPage(
             name: RoutesManager.launchScreen,
@@ -51,7 +54,14 @@ class MyApp extends StatelessWidget {
           ),
           translations: AppTranslations(),
           locale: Locale('ar'),
+
           // locale: Locale(SharedPrefController().lang),
+          // supportedLocales: const [Locale('en'), Locale('ar')],
+          // localizationsDelegates: const [
+          //   GlobalMaterialLocalizations.delegate,
+          //   GlobalWidgetsLocalizations.delegate,
+          //   GlobalCupertinoLocalizations.delegate,
+          // ],
           fallbackLocale: const Locale('ar'),
         );
       },

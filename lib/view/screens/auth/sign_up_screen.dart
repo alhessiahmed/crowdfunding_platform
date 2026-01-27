@@ -152,5 +152,5 @@ class SignUpScreen extends GetView<SignUpController> {
     );
   }
 
-  Future<void> _performSignUp() async {}
+  // Future<void> _performSignUp() async {}
 }

@@ -27,4 +27,13 @@ class RoutesManager {
   static const myCampaignsScreen = '/my_campaigns_screen';
   static const homeScreen = '/home_screen';
 
+  static const creatorVerificationScreen = '/creator_verification_screen';
+  static const creatorVerificationSuccessScreen =
+      '/creator_verification_success_screen';
+  static const donorAccVerificationScreen = '/donor_acc_verification_screen';
+  static const donorVerificationShellScreen =
+      '/donor_verification_shell_screen';
+  static const donorVerificationSuccessScreen =
+      '/donor_verification_success_screen';
+  static const donorPersonalInfoScreen = '/donor_personal_info_screen';
 }

@@ -7,8 +7,6 @@ import 'package:crowdfunding_platform/view/screens/profile_sreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -32,22 +30,15 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       extendBody: true,
       body: Stack(
-      children: [
-       
-        screens[currentIndex],
+        children: [
+          screens[currentIndex],
 
-       
-        Positioned(
-          left: 0,
-          right: 0,
-          bottom: 12, 
-          child: _BottomBar(),
-        ),
-      ],
-    ),
+          Positioned(left: 0, right: 0, bottom: 12, child: _BottomBar()),
+        ],
+      ),
+
       // screens[currentIndex],
       // bottomNavigationBar: _BottomBar(),
-    
     );
   }
 
@@ -61,7 +52,7 @@ class _MainScreenState extends State<MainScreen> {
         child: Container(
           decoration: BoxDecoration(
             color: isDark ? ColorsManager.bgGoogle : ColorsManager.white,
-            borderRadius: BorderRadius.circular(40.r),
+            borderRadius: BorderRadius.circular(74.r),
             boxShadow: [
               BoxShadow(
                 color: Colors.black38,
@@ -102,51 +93,24 @@ class _MainScreenState extends State<MainScreen> {
         setState(() => currentIndex = index);
       },
       child: Container(
-        height: 42.w,
-        width: 42.w,
+        padding: isSelected ? EdgeInsets.all(10.w) : EdgeInsets.zero,
         decoration: BoxDecoration(
-          shape: BoxShape.circle,
+          border: isSelected
+              ? Border.all(color: ColorsManager.primaryCTA, width: 1.5)
+              : null,
+          borderRadius: BorderRadius.circular(30.r),
         ),
-        child: Center(
-          child: SvgPicture.asset(
-           isSelected? activeIcon : unActiveIcon,
-            //fit: BoxFit.contain,
-            width: 24,
-            height: 24,
-            color: isSelected
-                ? ColorsManager.primaryCTA
-                : isDark
-                    ? ColorsManager.secondaryDark
-                    : ColorsManager.secondaryLight,
-          ),
+        child: SvgPicture.asset(
+          icon,
+          width: 24,
+          height: 24,
+          color: isSelected
+              ? ColorsManager.primaryCTA
+              : isDark
+              ? ColorsManager.secondaryDark
+              : ColorsManager.secondaryLight,
         ),
       ),
     );
   }
-
-  Widget _CenterActionButton({required bool isDark}) {
-    return InkWell(
-      onTap: () {},
-      child: Container(
-        height: 54.w,
-        width: 54.w,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: isDark ? ColorsManager.bgGoogle : ColorsManager.white,
-          border: Border.all(color: ColorsManager.secondaryLight, width: 1.5),
-        ),
-        child: Center(
-          child: SvgPicture.asset(
-            ImagesManager.addCircle,
-            width: 24,
-            height: 24,
-            color: isDark
-                ? ColorsManager.secondaryDark
-                : ColorsManager.secondaryLight,
-          ),
-        ),
-      ),
-    );
-  }
- 
 }
