@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../controller/core/constants/images_manager.dart';
+import '../../../model/account_type.dart';
 import '../../widgets/selection_card.dart';
 
 class AccountTypeScreen extends GetView<CreatorOnboardingController> {
