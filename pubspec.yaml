@@ -23,7 +23,6 @@ dependencies:
   http: ^1.6.0
   shared_preferences: ^2.5.3
   image_picker: ^1.2.1
-  dotted_border: ^2.1.0
   country_picker: ^2.0.26
 
 dev_dependencies:

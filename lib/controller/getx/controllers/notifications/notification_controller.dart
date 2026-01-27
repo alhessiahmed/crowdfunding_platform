@@ -1,6 +1,6 @@
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/model/notification_model.dart';
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class NotificationsController extends GetxController {
@@ -30,29 +30,29 @@ class NotificationsController extends GetxController {
     }
   }
 
-  void _loadMockNotifications() {
-    notifications.assignAll([
-      NotificationModel(
-        title: "تحقق أثر جديد لتبرعك",
-        body: "تبرعك ساعد في توفير مياه نظيفة لعائلة كاملة لمدة أسبوع.",
-        time: DateTime.now().subtract(const Duration(hours: 2)),
-        icon: Icons.star_rounded,
-        isNew: true,
-      ),
-      NotificationModel(
-        title: "تحديث على حسابك",
-        body: "تم تغيير إعدادات الأمان بنجاح.",
-        time: DateTime.now().subtract(const Duration(hours: 5)),
-        icon: Icons.lock_outline,
-        isNew: true,
-      ),
-      NotificationModel(
-        title: "شكراً لمساهمتك 💙",
-        body: "كل نجمة منك تصنع فرقاً حقيقياً.",
-        time: DateTime.now().subtract(const Duration(days: 1)),
-        icon: Icons.favorite_border,
-        isNew: false,
-      ),
-    ]);
-  }
+  // void _loadMockNotifications() {
+  //   notifications.assignAll([
+  //     NotificationModel(
+  //       title: "تحقق أثر جديد لتبرعك",
+  //       body: "تبرعك ساعد في توفير مياه نظيفة لعائلة كاملة لمدة أسبوع.",
+  //       time: DateTime.now().subtract(const Duration(hours: 2)),
+  //       icon: Icons.star_rounded,
+  //       isNew: true,
+  //     ),
+  //     NotificationModel(
+  //       title: "تحديث على حسابك",
+  //       body: "تم تغيير إعدادات الأمان بنجاح.",
+  //       time: DateTime.now().subtract(const Duration(hours: 5)),
+  //       icon: Icons.lock_outline,
+  //       isNew: true,
+  //     ),
+  //     NotificationModel(
+  //       title: "شكراً لمساهمتك 💙",
+  //       body: "كل نجمة منك تصنع فرقاً حقيقياً.",
+  //       time: DateTime.now().subtract(const Duration(days: 1)),
+  //       icon: Icons.favorite_border,
+  //       isNew: false,
+  //     ),
+  //   ]);
+  // }
 }

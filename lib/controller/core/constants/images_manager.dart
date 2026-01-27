@@ -42,8 +42,6 @@ class ImagesManager {
   static const String starDark = '$mainPath/star_dark.png';
   static const String placeHolder = '$mainPath/place_holder.png';
   static const String bankOfPalestine = '$mainPath/bank_of_palestine.png';
-  static const String clockDark = '$mainPath/clock_dark.png';
-  static const String clockLight = '$mainPath/clock_light.png';
   static const String userImg = '$mainPath/user_img.png';
 
   // Icons
