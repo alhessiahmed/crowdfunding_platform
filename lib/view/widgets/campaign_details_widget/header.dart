@@ -1,4 +1,3 @@
-
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/top_campaign_card.dart';
@@ -6,7 +5,6 @@ import 'package:crowdfunding_platform/view/widgets/icon_with_background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({super.key});
@@ -61,18 +59,15 @@ class HeaderWidget extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(right: 16.w),
                     child: IconWithBackground(
-                    icon:  ImagesManager.arrowCircleRight,
-                    onTap: () => Navigator.pop(context),
-                    // onTap:()=> Get.back,
-                    
+                      icon: ImagesManager.arrowCircleRight,
+                      onTap: () => Navigator.pop(context),
+
+                      // onTap:()=> Get.back,
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(right: 16.w),
-                    child: IconWithBackground(
-                     icon: ImagesManager.share,
-                      
-                    ),
+                    child: IconWithBackground(icon: ImagesManager.share),
                   ),
                 ],
               ),
@@ -140,8 +135,8 @@ class HeaderWidget extends StatelessWidget {
                 Text(
                   "قطرة حياة:\n مياه نظيفة لأطفال غزة",
                   style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                      ),
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
                 ),
               ],
             ),
@@ -158,5 +153,4 @@ class HeaderWidget extends StatelessWidget {
       ),
     );
   }
-
 }

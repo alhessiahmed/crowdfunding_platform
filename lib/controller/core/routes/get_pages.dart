@@ -11,6 +11,10 @@ import 'package:crowdfunding_platform/view/screens/auth/verification_screen.dart
 import 'package:crowdfunding_platform/view/screens/campaign_details_screen.dart';
 import 'package:crowdfunding_platform/view/screens/creator/creator_verfication_screen.dart';
 import 'package:crowdfunding_platform/view/screens/creator/creator_verification_success_screen.dart';
+import 'package:crowdfunding_platform/view/screens/donor/donor_personal_info_screen.dart';
+import 'package:crowdfunding_platform/view/screens/donor/verification/donor_acc_verification_screen.dart';
+import 'package:crowdfunding_platform/view/screens/donor/verification/donor_verification_shell_screen.dart';
+import 'package:crowdfunding_platform/view/screens/donor/verification/donor_verification_success_screen.dart';
 import 'package:crowdfunding_platform/view/screens/home_screen.dart';
 import 'package:crowdfunding_platform/view/screens/intro/welcome_screen.dart';
 import 'package:crowdfunding_platform/view/screens/main_screen.dart';
@@ -32,6 +36,8 @@ import '../../getx/bindings/auth/creator_onboarding_binding.dart';
 import '../../getx/bindings/auth/reset_password_binding.dart';
 import '../../getx/bindings/auth/sign_in_binding.dart';
 import '../../getx/bindings/auth/sign_up_binding.dart';
+import '../../getx/bindings/donor/donor_personal_info_binding.dart';
+import '../../getx/bindings/donor/donor_verification_binding.dart';
 import '../../getx/bindings/payment/confirm_payment_binding.dart';
 import '../../getx/bindings/payment/payment_method_binding.dart';
 import '../../getx/bindings/payment/thanks_for_payment_binding.dart';
@@ -139,10 +145,24 @@ final List<GetPage<dynamic>> getPages = [
     page: () => const CreatorVerificationSuccessScreen(),
   ),
 
-  // GetPage(
-  //   name: AppRoutes.createAccount,
-  //   page: () => const CreateAccountScreen(),
-  // ),
+  GetPage(
+    name: RoutesManager.donorAccVerificationScreen,
+    page: () => const DonorAccVerificationScreen(),
+  ),
+  GetPage(
+    name: RoutesManager.donorVerificationShellScreen,
+    page: () => const DonorVerificationShellScreen(),
+    binding: DonorVerificationBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.donorVerificationSuccessScreen,
+    page: () => const DonorVerificationSuccessScreen(),
+  ),
+  GetPage(
+    name: RoutesManager.donorPersonalInfoScreen,
+    page: () => const DonorPersonalInfoScreen(),
+    binding: DonorPersonalInfoBinding(),
+  ),
   // GetPage(
   //   name: RoutesManager.homeScreen,
   //   page: () => const HomeScreen(),
