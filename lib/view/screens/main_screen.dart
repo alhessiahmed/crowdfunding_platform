@@ -4,8 +4,6 @@ import 'package:crowdfunding_platform/view/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -28,22 +26,15 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       extendBody: true,
       body: Stack(
-      children: [
-       
-        screens[currentIndex],
+        children: [
+          screens[currentIndex],
 
-       
-        Positioned(
-          left: 0,
-          right: 0,
-          bottom: 12, 
-          child: _BottomBar(),
-        ),
-      ],
-    ),
+          Positioned(left: 0, right: 0, bottom: 12, child: _BottomBar()),
+        ],
+      ),
+
       // screens[currentIndex],
       // bottomNavigationBar: _BottomBar(),
-    
     );
   }
 
@@ -51,13 +42,12 @@ class _MainScreenState extends State<MainScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return SafeArea(
       bottom: false,
-      minimum: const EdgeInsets.only(bottom: 18 , right: 18 , left: 18 ,),
+      minimum: const EdgeInsets.only(bottom: 18, right: 18, left: 18),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16 ,),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Container(
           decoration: BoxDecoration(
-            color:isDark ?  ColorsManager.bgGoogle
-                : ColorsManager.white,
+            color: isDark ? ColorsManager.bgGoogle : ColorsManager.white,
             borderRadius: BorderRadius.circular(74.r),
             boxShadow: [
               BoxShadow(
@@ -97,23 +87,24 @@ class _MainScreenState extends State<MainScreen> {
         setState(() => currentIndex = index);
       },
       child: Container(
-padding: isSelected ? EdgeInsets.all(10.w) : EdgeInsets.zero,
+        padding: isSelected ? EdgeInsets.all(10.w) : EdgeInsets.zero,
         decoration: BoxDecoration(
-          border: isSelected ? Border.all(color: ColorsManager.primaryCTA, width: 1.5) : null,
+          border: isSelected
+              ? Border.all(color: ColorsManager.primaryCTA, width: 1.5)
+              : null,
           borderRadius: BorderRadius.circular(30.r),
         ),
         child: SvgPicture.asset(
           icon,
-          width:  24,
+          width: 24,
           height: 24,
-          color: 
-          isSelected
+          color: isSelected
               ? ColorsManager.primaryCTA
-              : isDark ? ColorsManager.secondaryDark: ColorsManager.secondaryLight,
+              : isDark
+              ? ColorsManager.secondaryDark
+              : ColorsManager.secondaryLight,
         ),
       ),
     );
   }
-
- 
 }
