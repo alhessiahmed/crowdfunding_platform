@@ -27,6 +27,13 @@ class ImagesManager {
   static const String staryLight = '$mainPath/staryLight.png';
   static const String staryDark = '$mainPath/staryDark.png';
   static const String back = '$mainPath/back.png';
+  static const String streamlineDark = '$mainPath/streamlineDark.png';
+  static const String streamlineLight = '$mainPath/streamlineLight.png';
+  static const String viewCampArrow = '$mainPath/viewCampArrow.png';
+  static const String discoverButton = '$mainPath/discoverButton.png';
+  static const String check = '$mainPath/check.png';
+  static const String notificationLight = '$mainPath/notificationLight.png';
+  static const String notificationDark = '$mainPath/notificationDark.png';
 
   /////////////// icons ///////////////
   static const String starLight = '$mainPath/star_light.png';

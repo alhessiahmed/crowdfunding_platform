@@ -7,7 +7,9 @@ import 'package:crowdfunding_platform/controller/getx/bindings/campaign/campaign
 import 'package:crowdfunding_platform/controller/getx/bindings/campaign/campaign_step_three_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/campaign/campaign_step_two_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/campaign_details_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/donation_history/donation_history_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/home_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/notification/notification_binding.dart';
 import 'package:crowdfunding_platform/view/screens/auth/forgot_password_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/reset_password_success_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/setup_success_screen.dart';
@@ -18,9 +20,11 @@ import 'package:crowdfunding_platform/view/screens/campaign_create_screens/campa
 import 'package:crowdfunding_platform/view/screens/campaign_create_screens/campaign_step_three_screen.dart';
 import 'package:crowdfunding_platform/view/screens/campaign_create_screens/campaign_step_two_screen.dart';
 import 'package:crowdfunding_platform/view/screens/campaign_details_screen.dart';
+import 'package:crowdfunding_platform/view/screens/donation_history/donation_history_screen.dart';
 import 'package:crowdfunding_platform/view/screens/home_screen.dart';
 import 'package:crowdfunding_platform/view/screens/intro/welcome_screen.dart';
 import 'package:crowdfunding_platform/view/screens/main_screen.dart';
+import 'package:crowdfunding_platform/view/screens/notification/notification_screen.dart';
 import 'package:get/get.dart';
 
 import '../../../view/screens/auth/forgot_password_screen.dart';
@@ -168,6 +172,16 @@ final List<GetPage<dynamic>> getPages = [
     name: RoutesManager.CampaignStepFourScreen,
     page: () => CampaignStepFourScreen(),
     binding: CampaignStepFourBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.donationHistoryScreen,
+    page: () => DonationHistoryScreen(),
+    binding: DonationHistoryBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.notificationScreen,
+    page: () => NotificationsScreen(),
+    binding: NotificationBinding(),
   ),
 
   // GetPage(
