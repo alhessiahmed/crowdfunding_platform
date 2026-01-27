@@ -28,6 +28,7 @@ class TextFieldWidget extends StatelessWidget {
     this.labelImgPath,
     this.readOnly = false,
     this.onTap,
+    this.labelWidget,
   }) : super(key: key);
   final String label;
   final TextEditingController controller;
@@ -49,6 +50,8 @@ class TextFieldWidget extends StatelessWidget {
   final String? labelImgPath;
   final bool readOnly;
   final void Function()? onTap;
+  final Widget? labelWidget;
+
   @override
   Widget build(BuildContext context) {
     return Column(

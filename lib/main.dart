@@ -1,4 +1,5 @@
 import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_controller.dart';
+import 'package:crowdfunding_platform/view/screens/campaign_create_screens/campaign_step_one_screen.dart';
 import 'package:crowdfunding_platform/view/screens/intro/launch_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +16,9 @@ import 'controller/localization/app_translations.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Get.put(ThemeController());
+  await Get.putAsync<SharedPrefController>(
+    () async => await SharedPrefController().initPreferences(),
+  );
   await Get.putAsync<SharedPrefController>(
     () async => await SharedPrefController().initPreferences(),
   );
@@ -41,7 +45,7 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           textDirection: TextDirection.rtl,
           debugShowCheckedModeBanner: false,
-          theme: AppTheme.light(),
+          theme: AppTheme.dark(),
           darkTheme: AppTheme.dark(),
           themeMode: ThemeController.to.themeMode,
           // themeMode: ThemeMode.dark,
