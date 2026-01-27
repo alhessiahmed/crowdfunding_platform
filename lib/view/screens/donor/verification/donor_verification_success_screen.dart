@@ -3,11 +3,12 @@ import 'package:crowdfunding_platform/view/widgets/information_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../controller/core/routes/routes_manager.dart';
-import '../../widgets/alternative_button.dart';
 
-class CreatorVerificationSuccessScreen extends StatelessWidget {
-  const CreatorVerificationSuccessScreen({super.key});
+import '../../../../controller/core/routes/routes_manager.dart';
+import '../../../widgets/alternative_button.dart';
+
+class DonorVerificationSuccessScreen extends StatelessWidget {
+  const DonorVerificationSuccessScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class CreatorVerificationSuccessScreen extends StatelessWidget {
                   : ImagesManager.clockLight,
             ),
             Text(
-              'confirmation_recieved'.tr,
+              'information_rec'.tr,
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             SizedBox(height: 32.h),
@@ -39,33 +40,27 @@ class CreatorVerificationSuccessScreen extends StatelessWidget {
               width: 231.w,
               imgPath: ImagesManager.shieldIcon,
             ),
-            SizedBox(height: 16.h),
+            SizedBox(height: 12.h),
             InformationWIdget(
               text: 'review_duration'.tr,
               height: 72.h,
               width: 231.w,
               imgPath: ImagesManager.clockIcon,
             ),
-            SizedBox(height: 16.h),
-            InformationWIdget(
-              text: 'msg_will_be_rec'.tr,
-              height: 72.h,
-              width: 231.w,
-              imgPath: ImagesManager.lightIcon,
-            ),
+
             SizedBox(height: 24.h),
             ElevatedButton(
               onPressed: () {
                 Get.offAllNamed(RoutesManager.homeScreen);
               },
-              child: Text('discover_campains'.tr),
+              child: Text('go_to_dash'.tr),
             ),
             SizedBox(height: 10.h),
             AlternativeButton(
               onPressed: () {
                 Get.offAllNamed(RoutesManager.homeScreen);
               },
-              text: 'contact_support'.tr,
+              text: 'discover_campains'.tr,
             ),
           ],
         ),
