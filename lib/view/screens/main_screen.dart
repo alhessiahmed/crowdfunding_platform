@@ -1,6 +1,9 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
+import 'package:crowdfunding_platform/view/screens/discover_screen.dart';
 import 'package:crowdfunding_platform/view/screens/home_screen.dart';
+import 'package:crowdfunding_platform/view/screens/my_campaigns.dart';
+import 'package:crowdfunding_platform/view/screens/profile_sreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,9 +19,10 @@ class _MainScreenState extends State<MainScreen> {
   int currentIndex = 1;
 
   final screens = [
-    const Scaffold(body: Center(child: Text("profile"))),
+    const ProfileScreen(),
+    const DiscoverScreen(),
+    const MyCampaignsScreen(),
     const HomeScreen(),
-    const Scaffold(body: Center(child: Text("home"))),
   ];
 
   @override
@@ -61,14 +65,16 @@ class _MainScreenState extends State<MainScreen> {
             color: Colors.transparent,
             elevation: 0,
             child: SizedBox(
-              height: 64,
+              height: 72,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  _TabItem(icon: ImagesManager.home, index: 2),
+                                    _TabItem(activeIcon: ImagesManager.activeHome,unActiveIcon:ImagesManager.home , index: 3),
+                  _TabItem(activeIcon: ImagesManager.clipboard,unActiveIcon:ImagesManager.unActiveClipboard , index: 2),
+                  _CenterActionButton(isDark: isDark),
+                  _TabItem(activeIcon: ImagesManager.discover,unActiveIcon:ImagesManager.unActiveDiscover , index: 1),
 
-                  _TabItem(icon: ImagesManager.discover, index: 1),
-                  _TabItem(icon: ImagesManager.profile, index: 0),
+                  _TabItem(activeIcon: ImagesManager.activeProfile,unActiveIcon:ImagesManager.profile , index: 0),
                 ],
               ),
             ),
@@ -78,7 +84,7 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  Widget _TabItem({required String icon, required int index}) {
+  Widget _TabItem({required String activeIcon,required String unActiveIcon, required int index}) {
     final isSelected = currentIndex == index;
     final isDark = Theme.of(context).brightness == Brightness.dark;
 

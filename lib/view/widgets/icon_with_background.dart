@@ -19,7 +19,12 @@ class IconWithBackground extends StatelessWidget {
         height: 44,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: isDark ? ColorsManager.dividerColorDark : ColorsManager.white,
+          color: isDark ? (darkColor ?? ColorsManager.dividerColorDark) : (lightColor?? ColorsManager.white),
+        boxShadow: [BoxShadow( 
+          color:  Colors.black26 ,
+          blurRadius:withShadow? 4 : 0, 
+          offset: Offset(0, 0) 
+        )]
         ),
         child: SvgPicture.asset(
           fit: BoxFit.scaleDown,
