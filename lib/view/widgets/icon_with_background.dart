@@ -2,18 +2,19 @@ import 'package:crowdfunding_platform/controller/core/constants/colors_manager.d
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+// ignore: must_be_immutable
 class IconWithBackground extends StatelessWidget {
-   IconWithBackground({super.key , required this.icon , this.onTap});
-final String icon ;
-void Function()? onTap;
+  IconWithBackground({super.key, required this.icon, this.onTap});
+  final String icon;
+  void Function()? onTap;
+
   @override
   Widget build(BuildContext context) {
-        bool isDark = Theme.of(context).brightness == Brightness.dark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GestureDetector(
       onTap: onTap,
       child: Container(
-      
         width: 44,
         height: 44,
         decoration: BoxDecoration(
@@ -30,4 +31,4 @@ void Function()? onTap;
       ),
     );
   }
-  }
+}

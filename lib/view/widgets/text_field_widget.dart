@@ -26,6 +26,8 @@ class TextFieldWidget extends StatelessWidget {
     this.inputFormatters,
     this.maxLength,
     this.labelImgPath,
+    this.readOnly = false,
+    this.onTap,
   }) : super(key: key);
   final String label;
   final TextEditingController controller;
@@ -45,7 +47,8 @@ class TextFieldWidget extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final int? maxLength;
   final String? labelImgPath;
-
+  final bool readOnly;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -86,6 +89,8 @@ class TextFieldWidget extends StatelessWidget {
           child: TextFormField(
             controller: controller,
             autovalidateMode: AutovalidateMode.onUserInteraction,
+            readOnly: readOnly,
+            onTap: onTap,
             validator: (value) {
               return null;
             },
@@ -141,6 +146,7 @@ class TextFieldWidget extends StatelessWidget {
               focusedErrorBorder: textFieldBorder(),
               enabledBorder: textFieldBorder(),
               errorBorder: textFieldBorder(),
+              counterText: '',
             ),
           ),
         ),
