@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../model/account_type.dart';
 import '../../../core/routes/routes_manager.dart';
-
-enum AccountType { individual, organization, team }
 
 enum CampaignType {
   water,
@@ -24,7 +23,8 @@ class CreatorOnboardingController extends GetxController {
   final totalSteps = 4;
 
   // Step 1
-  final accountType = AccountType.individual.obs;
+  final _accountType = AccountType.individual.obs;
+  Rx<AccountType> get accountType => _accountType;
   // Step 2
   // final campaignType = CampaignType.medical.obs;
   final campaignTypes = <CampaignType>[].obs;

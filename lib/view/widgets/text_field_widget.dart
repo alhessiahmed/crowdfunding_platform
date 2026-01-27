@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../../controller/core/constants/colors_manager.dart';
 
@@ -24,6 +25,9 @@ class TextFieldWidget extends StatelessWidget {
     required this.label,
     this.inputFormatters,
     this.maxLength,
+    this.labelImgPath,
+    this.readOnly = false,
+    this.onTap,
   }) : super(key: key);
   final String label;
   final TextEditingController controller;
@@ -42,24 +46,51 @@ class TextFieldWidget extends StatelessWidget {
   final Function(String)? onSubmitted;
   final List<TextInputFormatter>? inputFormatters;
   final int? maxLength;
-
+  final String? labelImgPath;
+  final bool readOnly;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: Theme.of(
-            context,
-          ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
-        ),
+        labelImgPath != null
+            ? Row(
+                children: [
+                  Text(
+                    label,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
+                  ),
+                  SvgPicture.asset(
+                    labelImgPath!,
+                    height: 24.h,
+                    width: 24.w,
+                    fit: BoxFit.scaleDown,
+                    colorFilter: ColorFilter.mode(
+                      Get.isDarkMode
+                          ? ColorsManager.iconDefaultDark
+                          : ColorsManager.iconDefaultLight,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                ],
+              )
+            : Text(
+                label,
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
+              ),
         SizedBox(height: 4.h),
         SizedBox(
           height: 56.h,
           child: TextFormField(
             controller: controller,
             autovalidateMode: AutovalidateMode.onUserInteraction,
+            readOnly: readOnly,
+            onTap: onTap,
             validator: (value) {
               return null;
             },
@@ -129,6 +160,7 @@ class TextFieldWidget extends StatelessWidget {
               focusedErrorBorder: textFieldBorder(),
               enabledBorder: textFieldBorder(),
               errorBorder: textFieldBorder(),
+              counterText: '',
             ),
           ),
         ),

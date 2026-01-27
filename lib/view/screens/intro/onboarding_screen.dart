@@ -14,23 +14,18 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
- late PageController pageController ;
+  late PageController pageController;
 
-   
-
-    @override
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    pageController =PageController();
-
+    pageController = PageController();
   }
- 
-   Future<void> _finishOnboarding() async {
- }
+
+  // Future<void> _finishOnboarding() async {}
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       body: PageView.builder(
         physics: const BouncingScrollPhysics(),
@@ -120,7 +115,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               child: ElevatedButton(
                                 onPressed: () {
                                   Get.offNamed(RoutesManager.welcomeScreen);
-                                  SharedPrefController.to.setSeenOnboarding(); 
+                                  SharedPrefController.to.setSeenOnboarding();
                                 },
                                 child: Text('start_now'.tr),
                               ),
@@ -178,8 +173,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                         ),
                                         curve: Curves.easeIn,
                                       );
-                                     SharedPrefController.to.setSeenOnboarding(); 
-                                      
+                                      SharedPrefController.to
+                                          .setSeenOnboarding();
                                     },
                                     child: Text(
                                       'skip'.tr,
