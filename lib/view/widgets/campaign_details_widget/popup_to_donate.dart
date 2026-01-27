@@ -73,11 +73,11 @@ class PopupToDonate extends GetView<CampaignDetailsController> {
                     color: Get.isDarkMode
                         ? ColorsManager.bgGoogle
                         : Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(10.r))
+                    borderRadius: BorderRadius.all(Radius.circular(10.r)),
                   ),
                   child: Row(
                     children: [
-                       SizedBox(width: 2.w,),
+                      SizedBox(width: 2.w),
                       SvgPicture.asset(
                         ImagesManager.lampCharge,
                         colorFilter: ColorFilter.mode(
@@ -87,15 +87,15 @@ class PopupToDonate extends GetView<CampaignDetailsController> {
                           BlendMode.srcIn,
                         ),
                       ),
-                      SizedBox(width: 7.w,),
+                      SizedBox(width: 7.w),
                       Text(
                         'تبرعك ب50 نجمة = توفر مياه نقية لعائلة لمدة أسبوع',
-                        style: Theme.of(
-                          context,
-                        ).textTheme.bodyMedium!.copyWith(fontSize: 12.sp , fontWeight: FontWeight.w700 ,
-                         color: Get.isDarkMode
-                        ? ColorsManager.white
-                        : Colors.black,
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w700,
+                          color: Get.isDarkMode
+                              ? ColorsManager.white
+                              : Colors.black,
                         ),
                       ),
                     ],
@@ -111,10 +111,10 @@ class PopupToDonate extends GetView<CampaignDetailsController> {
                 Text(
                   'safe_and secure_donation'.tr,
                   style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: Get.isDarkMode
-                            ? ColorsManager.primaryDark
-                            : ColorsManager.primaryLight,
-                      ),
+                    color: Get.isDarkMode
+                        ? ColorsManager.primaryDark
+                        : ColorsManager.primaryLight,
+                  ),
                 ),
               ],
             ),
@@ -155,9 +155,7 @@ class DonateStarRow extends GetView<CampaignDetailsController> {
             padding: EdgeInsets.all(isSelected ? 1.w : 0),
             decoration: BoxDecoration(
               border: Border.all(
-                color: isSelected
-                    ? ColorsManager.primaryCTA
-                    : unselectedBorder,
+                color: isSelected ? ColorsManager.primaryCTA : unselectedBorder,
                 width: isSelected ? 2 : 1,
               ),
               borderRadius: BorderRadius.circular(16.r),
@@ -176,7 +174,7 @@ class DonateStarRow extends GetView<CampaignDetailsController> {
                 children: [
                   Text(
                     controller.stars[index].toString(),
-                    style: Theme.of(context).textTheme!.bodyMedium!.copyWith(
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       fontWeight: FontWeight.w700,
                       color: isSelected
                           ? selectedTextColor

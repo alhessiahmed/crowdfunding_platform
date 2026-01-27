@@ -5,12 +5,10 @@ import 'package:crowdfunding_platform/controller/getx/controllers/discover_contr
 import 'package:crowdfunding_platform/model/campagin_model.dart';
 import 'package:crowdfunding_platform/view/widgets/filter_section.dart';
 import 'package:crowdfunding_platform/view/widgets/header_with_search.dart';
-import 'package:crowdfunding_platform/view/widgets/secondary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/utils.dart';
 
 class DiscoverScreen extends GetView<DiscoverController> {
   const DiscoverScreen({super.key});
@@ -21,8 +19,14 @@ class DiscoverScreen extends GetView<DiscoverController> {
       body: SafeArea(
         child: Column(
           children: [
-            HeaderWithSearch(title: 'every_star_makes_a_difference'.tr,),
-            Obx(()=> FilterSection(filters: controller.filtersMock , selectedIndex: controller.selectedFilterIndex.value , onSelect: controller.selectFilter,),),
+            HeaderWithSearch(title: 'every_star_makes_a_difference'.tr),
+            Obx(
+              () => FilterSection(
+                filters: controller.filtersMock,
+                selectedIndex: controller.selectedFilterIndex.value,
+                onSelect: controller.selectFilter,
+              ),
+            ),
             SizedBox(height: 12.h),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -31,9 +35,9 @@ class DiscoverScreen extends GetView<DiscoverController> {
                 child: Text(
                   '${controller.campaignsMock.length} ${'title_campaigns_list'.tr} ',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                   color: Get.isDarkMode
-                ? ColorsManager.white
-                : ColorsManager.primaryLight,
+                    color: Get.isDarkMode
+                        ? ColorsManager.white
+                        : ColorsManager.primaryLight,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -47,28 +51,24 @@ class DiscoverScreen extends GetView<DiscoverController> {
     );
   }
 
-  
-
-  
-
   Widget CampaignsList(
     BuildContext context,
     List<campaignModel> campaignsMock,
   ) {
     return ListView.builder(
-      padding: EdgeInsets.only(left: 16.w ,right: 16.w , bottom: 130.h ),
+      padding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 130.h),
       itemCount: campaignsMock.length,
       itemBuilder: (_, index) {
         final campain = campaignsMock[index];
 
         return Padding(
-          padding: EdgeInsets.only(bottom: 10.h , top:10),
+          padding: EdgeInsets.only(bottom: 10.h, top: 10),
           child: Container(
             padding: EdgeInsets.all(16.h),
             decoration: BoxDecoration(
               color: Get.isDarkMode
-                ? ColorsManager.bgGoogle
-                : ColorsManager.white,
+                  ? ColorsManager.bgGoogle
+                  : ColorsManager.white,
               borderRadius: BorderRadius.circular(20.r),
               boxShadow: [BoxShadow(blurRadius: 8, color: Colors.black12)],
             ),
@@ -98,8 +98,8 @@ class DiscoverScreen extends GetView<DiscoverController> {
                           ),
                           decoration: BoxDecoration(
                             color: Get.isDarkMode
-                ? ColorsManager.bgGoogle
-                : ColorsManager.dividerColorLight,
+                                ? ColorsManager.bgGoogle
+                                : ColorsManager.dividerColorLight,
                             borderRadius: BorderRadius.circular(12.r),
                           ),
                           child: Text(
@@ -107,8 +107,8 @@ class DiscoverScreen extends GetView<DiscoverController> {
                             style: Theme.of(context).textTheme.bodySmall
                                 ?.copyWith(
                                   color: Get.isDarkMode
-                ? ColorsManager.white
-                : ColorsManager.primaryLight,
+                                      ? ColorsManager.white
+                                      : ColorsManager.primaryLight,
                                   fontWeight: FontWeight.w600,
                                 ),
                           ),
@@ -122,19 +122,18 @@ class DiscoverScreen extends GetView<DiscoverController> {
                   campain.title,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color:Get.isDarkMode
-                ? ColorsManager.white
-                : ColorsManager.primaryLight, 
+                    color: Get.isDarkMode
+                        ? ColorsManager.white
+                        : ColorsManager.primaryLight,
                   ),
                 ),
                 SizedBox(height: 8.h),
                 Text(
                   campain.description,
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color:
-                    Get.isDarkMode
-                ? ColorsManager.secondaryDark
-                : ColorsManager.secondaryLight,
+                    color: Get.isDarkMode
+                        ? ColorsManager.secondaryDark
+                        : ColorsManager.secondaryLight,
                   ),
                 ),
                 SizedBox(height: 8.h),
@@ -145,93 +144,108 @@ class DiscoverScreen extends GetView<DiscoverController> {
                       spacing: 3.w,
                       children: [
                         SvgPicture.asset(ImagesManager.star),
-                        Text('${campain.raised} نجمة'  , style: TextStyle( 
-                        color:  Get.isDarkMode
-                ? ColorsManager.primaryTextLight
-                : ColorsManager.primaryLight,
-                        ),),
+                        Text(
+                          '${campain.raised} نجمة',
+                          style: TextStyle(
+                            color: Get.isDarkMode
+                                ? ColorsManager.primaryTextLight
+                                : ColorsManager.primaryLight,
+                          ),
+                        ),
                       ],
                     ),
                     Text(
                       "الهدف : ${campain.target} نجمة",
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: Get.isDarkMode
-                ? ColorsManager.primaryTextLight
-                : ColorsManager.primaryLight,
+                            ? ColorsManager.primaryTextLight
+                            : ColorsManager.primaryLight,
                       ),
                     ),
                   ],
                 ),
                 SizedBox(height: 8.h),
-LayoutBuilder(
-  builder: (context, constraints) {
-    final progress =
-        (campain.raised / campain.target).clamp(0.0, 1.0);
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    final progress = (campain.raised / campain.target).clamp(
+                      0.0,
+                      1.0,
+                    );
 
-    return Container(
-      height: 8.h,
-      decoration: BoxDecoration(
-        color: ColorsManager.dividerColorLight,
-        borderRadius: BorderRadius.circular(12.r),
-      ),
-      child: Stack(
-        children: [
-          Container(
-      height: 8.h,
-      decoration: BoxDecoration(
-        color: Get.isDarkMode ? ColorsManager.dividerColorDark: ColorsManager.dividerColorLight,
-        borderRadius: BorderRadius.circular(12.r),
-      ),),
-          AnimatedContainer(
-            duration: const Duration(milliseconds: 900),
-            curve: Curves.easeInOut,
-            width: constraints.maxWidth * progress,
-            decoration: BoxDecoration(
-              color: ColorsManager.primaryCTA,
-              borderRadius: BorderRadius.circular(12.r), 
-            ),
-          ),
-        ],
-      ),
-    );
-  },
-),
+                    return Container(
+                      height: 8.h,
+                      decoration: BoxDecoration(
+                        color: ColorsManager.dividerColorLight,
+                        borderRadius: BorderRadius.circular(12.r),
+                      ),
+                      child: Stack(
+                        children: [
+                          Container(
+                            height: 8.h,
+                            decoration: BoxDecoration(
+                              color: Get.isDarkMode
+                                  ? ColorsManager.dividerColorDark
+                                  : ColorsManager.dividerColorLight,
+                              borderRadius: BorderRadius.circular(12.r),
+                            ),
+                          ),
+                          AnimatedContainer(
+                            duration: const Duration(milliseconds: 900),
+                            curve: Curves.easeInOut,
+                            width: constraints.maxWidth * progress,
+                            decoration: BoxDecoration(
+                              color: ColorsManager.primaryCTA,
+                              borderRadius: BorderRadius.circular(12.r),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
 
                 SizedBox(height: 12.h),
                 Row(
                   children: [
-                  
                     Expanded(
                       child: ElevatedButton(
-                        style: ElevatedButton.styleFrom( 
+                        style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.symmetric(vertical: 15.h),
                           minimumSize: Size(152.w, 40.h),
-                          foregroundColor: Get.isDarkMode ? ColorsManager.white : ColorsManager.primaryLight ,
-                          backgroundColor: Get.isDarkMode ?ColorsManager.bgGoogle :ColorsManager.white
-                          , side: BorderSide(color: Get.isDarkMode ?ColorsManager.iconDefaultLight :ColorsManager.primaryLight), 
-                        shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(8.r),
-    ),
+                          foregroundColor: Get.isDarkMode
+                              ? ColorsManager.white
+                              : ColorsManager.primaryLight,
+                          backgroundColor: Get.isDarkMode
+                              ? ColorsManager.bgGoogle
+                              : ColorsManager.white,
+                          side: BorderSide(
+                            color: Get.isDarkMode
+                                ? ColorsManager.iconDefaultLight
+                                : ColorsManager.primaryLight,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.r),
+                          ),
                         ),
-                        onPressed: () { 
+                        onPressed: () {
                           Get.toNamed(RoutesManager.campaignDetailsScreen);
                         },
-                        child: Text( 'مشاهدة التفاصيل'),
+                        child: Text('مشاهدة التفاصيل'),
                       ),
-                     
                     ),
-                                        SizedBox(width: 8.w),
+                    SizedBox(width: 8.w),
 
-                      Expanded(
+                    Expanded(
                       child: ElevatedButton(
-                        style: ElevatedButton.styleFrom( 
+                        style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.symmetric(vertical: 15.h),
                           minimumSize: Size(152.w, 40.h),
                           shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(8.r),
-                        ),),
+                            borderRadius: BorderRadius.circular(8.r),
+                          ),
+                        ),
                         onPressed: () {},
-                        child: Text( 'تبرع فورًا'),
+                        child: Text('تبرع فورًا'),
                       ),
                     ),
                   ],
