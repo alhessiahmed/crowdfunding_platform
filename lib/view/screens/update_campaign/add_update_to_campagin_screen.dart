@@ -1,8 +1,8 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/controller/getx/controllers/campgin_update_and_control_controllers/add_update_to_campaign_controller.dart';
-import 'package:crowdfunding_platform/view/widgets/add_update_to_campagin_screen.dart/campagin_card_withe_stutes.dart';
-import 'package:crowdfunding_platform/view/widgets/add_update_to_campagin_screen.dart/dotted_button.dart';
+import 'package:crowdfunding_platform/view/widgets/add_update_to_campagin_screen_widget/campagin_card_withe_stutes.dart';
+import 'package:crowdfunding_platform/view/widgets/add_update_to_campagin_screen_widget/dotted_button.dart';
 import 'package:crowdfunding_platform/view/widgets/secondary_button.dart';
 import 'package:crowdfunding_platform/view/widgets/text_field_widget.dart';
 import 'package:crowdfunding_platform/view/widgets/update_campaign_widget/appbar_section.dart';

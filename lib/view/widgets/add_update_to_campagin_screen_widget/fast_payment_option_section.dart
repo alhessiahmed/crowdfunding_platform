@@ -1,5 +1,5 @@
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
-import 'package:crowdfunding_platform/view/widgets/add_update_to_campagin_screen.dart/fast_payment_option.dart';
+import 'package:crowdfunding_platform/view/widgets/add_update_to_campagin_screen_widget/fast_payment_option.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
