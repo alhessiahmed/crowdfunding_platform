@@ -26,7 +26,7 @@ class ImagesManager {
   static const String donatorIconDark = '$iconsPath/ic_donator_dark.svg';
   static const String creatorIconLight = '$iconsPath/ic_creator.svg';
   static const String creatorIconDark = '$iconsPath/ic_creator_dark.svg';
-  static const String backIcon = '$iconsPath/ic_clock.svg';
+  static const String backIcon = '$iconsPath/ic_Back.svg';
   static const String individualIcon = '$iconsPath/ic_individual.svg';
   static const String individualIconDark = '$iconsPath/ic_individual_dark.svg';
   static const String organizationIcon = '$iconsPath/ic_organization.svg';
@@ -90,4 +90,8 @@ class ImagesManager {
   static const String verifiedIcon = '$iconsPath/ic_verified.svg';
   static const String rightArrowIcon = '$iconsPath/ic_arrow-circle-right_2.svg';
   static const String rushStarIcon = '$iconsPath/ic_rush_star.svg';
+  static const String shieldIcon = '$iconsPath/ic_shield.svg';
+  static const String phoneIcon = '$iconsPath/ic_phone.svg';
+  static const String clockIcon = '$iconsPath/ic_clock.svg';
+  static const String logoutIcon = '$iconsPath/ic_logout.svg';
 }
