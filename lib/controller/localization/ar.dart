@@ -239,4 +239,11 @@ Map<String, String> arLocale = {
       'كل نجمة تساهم في إحداث فرق حقيقي',
   'Goal': 'الهدف : @Number نجمة',
   'Donate_immediately': 'تبرع فوراً',
+  'Active_now': 'نشط الآن',
+  'Offline': 'غير متصل',
+  'Login_activity': 'نشاط تسجيل الدخول',
+  'Here_you_can_see_the_latest_logins_to_your_account.':
+      'هنا يمكنك الاطلاع على آخر عمليات تسجيل الدخول إلى حسابك.',
+  'We_monitor_your_account_activity_to_ensure_your_security._You_can_review_your_connected_devices_below.':
+      'نحن نراقب نشاط حسابك للتأكد من أمانك يمكنك مراجعة الأجهزة المتصلة أدناه',
 };
