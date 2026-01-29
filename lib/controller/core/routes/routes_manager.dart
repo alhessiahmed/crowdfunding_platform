@@ -19,6 +19,7 @@ class RoutesManager {
   static const homeScreen = '/home_screen';
   static const donarHomeScreen = '/donar_home_screen';
   static const mainScreen = '/main_screen';
+  static const loginActivityScreen = '/login_activity_screen';
   static const campaignDetailsScreen = '/campaign_details_screen';
   static const paymentScreen = '/payment_screen';
   static const choosePaymentMethodScreen = '/choose_payment_method_screen';

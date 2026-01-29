@@ -17,6 +17,7 @@ import 'package:crowdfunding_platform/view/screens/campaign_details_screen.dart'
 import 'package:crowdfunding_platform/view/screens/doner_home/donar_home_screen.dart';
 import 'package:crowdfunding_platform/view/screens/home_screen.dart';
 import 'package:crowdfunding_platform/view/screens/intro/welcome_screen.dart';
+import 'package:crowdfunding_platform/view/screens/login_activity/login_activity_screen.dart';
 import 'package:crowdfunding_platform/view/screens/main_screen.dart';
 import 'package:crowdfunding_platform/view/screens/update_campaign/add_update_to_campagin_screen.dart';
 import 'package:crowdfunding_platform/view/screens/update_campaign/control_campaign_screen.dart';
@@ -47,6 +48,7 @@ import '../../getx/bindings/auth/sign_in_binding.dart';
 import '../../getx/bindings/auth/sign_up_binding.dart';
 import '../../getx/bindings/auth/user_type_selection_binding.dart';
 import '../../getx/bindings/auth/verification_binding.dart';
+import '../../getx/bindings/login_activity_binding.dart';
 import '../../getx/bindings/payment/add_payment_method_binding.dart';
 import '../../getx/bindings/payment/choose_payment_method_binding.dart';
 import '../../getx/bindings/payment/confirm_payment_binding.dart';
@@ -112,6 +114,11 @@ final List<GetPage<dynamic>> getPages = [
     name: RoutesManager.mainScreen,
     page: () => const MainScreen(),
     binding: HomeBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.loginActivityScreen,
+    page: () => const LoginActivityScreen(),
+    binding: LoginActivityBinding(),
   ),
   GetPage(
     name: RoutesManager.homeScreen,

@@ -246,4 +246,9 @@ Map<String, String> arLocale = {
       'هنا يمكنك الاطلاع على آخر عمليات تسجيل الدخول إلى حسابك.',
   'We_monitor_your_account_activity_to_ensure_your_security._You_can_review_your_connected_devices_below.':
       'نحن نراقب نشاط حسابك للتأكد من أمانك يمكنك مراجعة الأجهزة المتصلة أدناه',
+  'Current_session': 'الجلسة الحالية',
+  'Other_sessions': 'جلسات أخرى',
+  'Starry_app_for': 'تطبيق Starry لنظام @OSName',
+  'End_session': 'إنهاء الجلسة',
+  'Logout_form_All_Devices': 'تسجيل الخروج من كل الأجهزة',
 };
