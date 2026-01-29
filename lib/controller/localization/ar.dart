@@ -322,4 +322,14 @@ Map<String, String> arLocale = {
   "no_notifications_yet": 'لا توجد إشعارات بعد',
   "new_label": 'الجديدة',
   "yesterday_label": 'الأمس',
+  'verification_account': 'توثيق الحساب',
+  'verification_account_description': 'يساعد التوثيق في تعزيز ثقة الآخرين بتفاعلك داخل المنصة.',
+  'account_verified': 'حسابك موثق',
+  'account_under_review': 'تم استلام معلوماتك وجارٍ مراجعتها.', 
+  'expected_time': 'الوقت المتوقع',
+  'expected_time_description': 'عادة خلال 24–48 ساعة',
+  'verified_account_benefits': 'ما الذي يتيحه الحساب الموثق ؟',
+  'notification_when_verified': 'سيتم إشعارك فور توثيق حسابك أو في حال فشل التوثيق',
+  'retry_verification': 'إعادة المحاولة', 
+  'contact_wit_support': 'التواصل مع الدعم'
 };
