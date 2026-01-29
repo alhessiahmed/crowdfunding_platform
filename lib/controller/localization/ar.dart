@@ -331,5 +331,12 @@ Map<String, String> arLocale = {
   'verified_account_benefits': 'ما الذي يتيحه الحساب الموثق ؟',
   'notification_when_verified': 'سيتم إشعارك فور توثيق حسابك أو في حال فشل التوثيق',
   'retry_verification': 'إعادة المحاولة', 
-  'contact_wit_support': 'التواصل مع الدعم'
-};
+  'contact_wit_support': 'التواصل مع الدعم', 
+  'security_privacy_settings': 'تتحكم هنا بأمان حسابك وخصوصية بياناتك',
+  'account_security': 'أمان الحساب', 
+  'change_password': 'تغيير كلمة المرور',
+  'login_activity': 'نشاط تسجيل الدخول',
+  'two_factor_authentication': 'المصادقة الثنائية', 
+  'two_factor_authentication_description': 'قم بتأمين حسابك باستخدام رمز إضافي عند تسجيل الدخول لزيادة مستوى الحماية',
+  'update_password_description': 'تحديث كلمة المرور بسكل دوري يساعد في حماية حسابك من الاختراقات المحتملة'
+  };

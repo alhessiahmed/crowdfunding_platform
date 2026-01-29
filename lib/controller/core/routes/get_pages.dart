@@ -1,3 +1,5 @@
+
+
 import 'index.dart';
 
 final List<GetPage<dynamic>> getPages = [
@@ -174,6 +176,11 @@ final List<GetPage<dynamic>> getPages = [
     name: RoutesManager.statusDonorverificationScreen,
     page: () => const StatusDonorVerificationScreen(),
     binding: StatusDonorVerificationBinding(),
+  ),
+   GetPage(
+    name: RoutesManager.securityPrivacyScreen,
+    page: () => const SecurityPrivacy(),
+    binding: SecurityPrivactBinding(),
   ),
   // GetPage(
   //   name: RoutesManager.homeScreen,
