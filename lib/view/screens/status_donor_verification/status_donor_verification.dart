@@ -2,6 +2,7 @@ import 'package:crowdfunding_platform/controller/core/constants/colors_manager.d
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/view/widgets/alternative_button.dart';
 import 'package:crowdfunding_platform/view/widgets/icon_with_background.dart';
+import 'package:crowdfunding_platform/view/widgets/idea_box_app.dart';
 import 'package:crowdfunding_platform/view/widgets/information_card.dart';
 import 'package:crowdfunding_platform/view/widgets/status_donor_verification/expected_time_box.dart';
 import 'package:crowdfunding_platform/view/widgets/status_donor_verification/status_card.dart';
@@ -86,45 +87,7 @@ class StatusDonorVerificationScreen extends StatelessWidget {
               imgPath: ImagesManager.supportIcon,
             ),
             SizedBox(height: 24.h),
-            Container(
-              height: 80.h,
-              width: 345.w,
-              padding: EdgeInsets.all(16.r),
-              // constraints: BoxConstraints(maxWidth: 345),
-              decoration: BoxDecoration(
-                color: Get.isDarkMode ? ColorsManager.bgGoogle : Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(16.r)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.25),
-                    blurRadius: 2,
-                  ),
-                ],
-              ),
-              child: Row(
-                children: [
-                  SizedBox(width: 6.w),
-                  IconWithBackground(
-                    icon: ImagesManager.lampOn,
-                    lightColor: ColorsManager.lightBg,
-                  ),
-                  SizedBox(width: 7.w),
-                  Expanded(
-                    child: Text(
-                      maxLines: 2,
-                      'notification_when_verified'.tr,
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w700,
-                        color: Get.isDarkMode
-                            ? ColorsManager.secondaryDark
-                            : ColorsManager.secondaryLight,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            IdeaBoxApp(text: 'notification_when_verified'.tr,),
             SizedBox(height: 24.h),
 
             //faild verified buttons
