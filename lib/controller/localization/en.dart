@@ -77,6 +77,31 @@ Map<String, String> enLocale = {
   "no_notifications_yet": 'No notifications yet',
   "new_label": 'New',
   "yesterday_label": 'Yesterday',
+  'notification_settings': "Notification Settings",
+  'notification_settings_subtitle':
+      'Choose what you would like to receive from updates and news from Al Athar.',
+  'impact_notification': "Impact Notifications",
+  'contribution_notification': "Contribution Notifications",
+  'security_notification': "Security Notifications",
+  'donation_updates': 'Updates on the Impact of Your Donations',
+  'donation_updates_desc':
+      'Receive notifications when a real impact from your donation is made or new results appear.',
+  'campaign_progress': 'The campaigns that were supported',
+  'campaign_progress_desc':
+      'Receive notifications when the campaign reaches important milestones or is close to achieving its goal.',
+  'new_campaigns_interests': 'New campaigns that match your interests',
+  'new_campaigns_interests_desc':
+      'Notification about campaigns related to the fields that interest you, if you wish.',
+  'closing_campaigns': 'Campaigns close to completion',
+  'closing_campaigns_desc':
+      'A notification when a campaign is about to reach its goal, to be part of its final moments.',
+  'security_notifications': 'Security Notifications',
+  'account_security_alerts': 'Account and Security Alerts',
+  'account_security_alerts_desc':
+      'Important notifications related to login or security changes on your account.',
+  'account_updates': 'Account Updates',
+  'accouunt_updates_desc':
+      'We will inform you of any necessary updates related to your account or its settings.',
 
   // '': '',
   // '': '',

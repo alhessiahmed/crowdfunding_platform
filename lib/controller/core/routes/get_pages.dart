@@ -11,6 +11,7 @@ import 'package:crowdfunding_platform/controller/getx/bindings/donation_history/
 import 'package:crowdfunding_platform/controller/getx/bindings/discover_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/main_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/my_campagins_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/notification/notification_setting_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/profile_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/creator/creator_verfication_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/notification/notification_binding.dart';
@@ -36,6 +37,7 @@ import 'package:crowdfunding_platform/view/screens/home_screen.dart';
 import 'package:crowdfunding_platform/view/screens/intro/welcome_screen.dart';
 import 'package:crowdfunding_platform/view/screens/main_screen.dart';
 import 'package:crowdfunding_platform/view/screens/my_campaigns.dart';
+import 'package:crowdfunding_platform/view/screens/notification/notification_setting_screen.dart';
 import 'package:crowdfunding_platform/view/screens/profile_sreen.dart';
 import 'package:crowdfunding_platform/view/screens/notification/notification_screen.dart';
 import 'package:get/get.dart';
@@ -232,6 +234,12 @@ final List<GetPage<dynamic>> getPages = [
     page: () => const DonorPersonalInfoScreen(),
     binding: DonorPersonalInfoBinding(),
   ),
+  GetPage(
+    name: RoutesManager.notificationSettingsScreen,
+    page: () => NotificationSettingsScreen(),
+    binding: NotificationSettingBinding(),
+  ),
+
   // GetPage(
   //   name: RoutesManager.homeScreen,
   //   page: () => const HomeScreen(),

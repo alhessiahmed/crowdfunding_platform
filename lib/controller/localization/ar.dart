@@ -322,4 +322,29 @@ Map<String, String> arLocale = {
   "no_notifications_yet": 'لا توجد إشعارات بعد',
   "new_label": 'الجديدة',
   "yesterday_label": 'الأمس',
+  'notification_settings': "تفضيلات الإشعارات",
+  'notification_settings_subtitle':
+      "اختر ما تحب أن يصلك من تحديثات وأخبار الأثر",
+  'impact_notification': "إشعارات الأثر",
+  'contribution_notification': "إشعارات الحملات",
+  'security_notification': "إشعارات النظام",
+  'donation_updates': "تحديثات أثر تبرعاتك",
+  'donation_updates_desc':
+      "تلقى إشعارات عندما يتحقق أثر حقيقي لتبرعك أو تظهر نتائج جديدة.",
+  'campaign_progress': "تقدم الحملات التي دعمتها",
+  'campaign_progress_desc':
+      "تلقى إشعارات عند وصول الحملة إلى مراحل مهمة أو اقترابها من تحقيق هدفها.",
+  'new_campaigns_interests': "حملات جديدة تناسب اهتماماتك",
+  'new_campaigns_interests_desc':
+      "إشعار عن حملات قريبة من المجالات التي تهمك في حال رغبت بذلك.",
+  'closing_campaigns': "حملات قريبة من الاكتمال",
+  'closing_campaigns_desc':
+      "إشعار عند اقتراب حملة من تحقيق هدفها لتكون جزءاً من لحظاتها الأخيرة.",
+  'security_notifications': "إشعارات النظام",
+  'account_security_alerts': "تنبيهات الحساب والأمان",
+  'account_security_alerts_desc':
+      '"إشعارات مهمة متعلقة بتسجيل الدخول أو تغييرات الأمان في حسابك."',
+  'account_updates': "تحديثات الحساب",
+  'accouunt_updates_desc':
+      "نخبرك بأي تحديثات ضرورية متعلقة بحسابك أو إعداداته.",
 };
