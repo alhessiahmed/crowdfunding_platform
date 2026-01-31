@@ -38,7 +38,6 @@ import 'package:crowdfunding_platform/view/screens/intro/welcome_screen.dart';
 import 'package:crowdfunding_platform/view/screens/main_screen.dart';
 import 'package:crowdfunding_platform/view/screens/my_campaigns.dart';
 import 'package:crowdfunding_platform/view/screens/notification/notification_setting_screen.dart';
-import 'package:crowdfunding_platform/view/screens/profile_sreen.dart';
 import 'package:crowdfunding_platform/view/screens/notification/notification_screen.dart';
 import 'package:get/get.dart';
 import '../../../view/screens/auth/onboarding_shell_screen.dart';
@@ -63,7 +62,6 @@ import '../../getx/bindings/payment/confirm_payment_binding.dart';
 import '../../getx/bindings/payment/payment_method_binding.dart';
 import '../../getx/bindings/payment/thanks_for_payment_binding.dart';
 import 'routes_manager.dart';
-
 
 import 'index.dart';
 
@@ -242,12 +240,12 @@ final List<GetPage<dynamic>> getPages = [
     page: () => NotificationSettingsScreen(),
     binding: NotificationSettingBinding(),
   ),
-
+  GetPage(
     name: RoutesManager.statusDonorverificationScreen,
     page: () => const StatusDonorVerificationScreen(),
     binding: StatusDonorVerificationBinding(),
   ),
-   GetPage(
+  GetPage(
     name: RoutesManager.securityPrivacyScreen,
     page: () => const SecurityPrivacy(),
     binding: SecurityPrivactBinding(),
