@@ -1,10 +1,12 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart'
     show ColorsManager;
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
+import 'package:crowdfunding_platform/controller/core/routes/index.dart';
 import 'package:crowdfunding_platform/controller/getx/controllers/campagin_details_controller.dart';
 import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/donation_button.dart';
 import 'package:crowdfunding_platform/view/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -13,6 +15,11 @@ class PopupToDonate extends GetView<CampaignDetailsController> {
   const PopupToDonate({super.key});
 
   void openBottomSheet(BuildContext context) {
+    final wasRegistered = Get.isRegistered<CampaignDetailsController>();
+    if (!wasRegistered) {
+      Get.put(CampaignDetailsController());
+    }
+
     Get.bottomSheet(
       Container(
         height: 480.h,
@@ -55,6 +62,8 @@ class PopupToDonate extends GetView<CampaignDetailsController> {
                   controller: controller.controller!,
                   hintText: "رقم اخر ...",
                   label: '',
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   prefixIcon: SvgPicture.asset(
                     ImagesManager.magicPin,
                     colorFilter: ColorFilter.mode(
@@ -103,7 +112,19 @@ class PopupToDonate extends GetView<CampaignDetailsController> {
                 ),
                 SizedBox(height: 30.h),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    final manualText =
+                        controller.controller?.text.trim() ?? '';
+                    final manualValue = int.tryParse(manualText);
+                    final selectedStars =
+                        (manualValue != null && manualValue > 0)
+                            ? manualValue
+                            : controller.stars[controller.selectedIndex.value];
+                    Get.toNamed(
+                      RoutesManager.paymentScreen,
+                      arguments: selectedStars,
+                    );
+                  },
                   child: Text('Payment_tracking'.tr),
                 ),
                 SizedBox(height: 20.h),
@@ -121,7 +142,11 @@ class PopupToDonate extends GetView<CampaignDetailsController> {
           ),
         ),
       ),
-    );
+    ).whenComplete(() {
+      if (!wasRegistered) {
+        Get.delete<CampaignDetailsController>();
+      }
+    });
   }
 
   @override
@@ -150,45 +175,50 @@ class DonateStarRow extends GetView<CampaignDetailsController> {
               ? ColorsManager.primaryDark
               : ColorsManager.primaryLight;
           final selectedTextColor = Colors.white;
-          return Container(
-            margin: EdgeInsets.only(left: 2.w),
-            padding: EdgeInsets.all(isSelected ? 1.w : 0),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: isSelected ? ColorsManager.primaryCTA : unselectedBorder,
-                width: isSelected ? 2 : 1,
-              ),
-              borderRadius: BorderRadius.circular(16.r),
-            ),
+          return InkWell(
+            onTap: (){ 
+              controller.selectStarIndex(index);
+            },
             child: Container(
-              height: 68.h,
-              width: 83.w,
-              //padding: EdgeInsets.symmetric( vertical: 12.w , horizontal: 10.w),
+              margin: EdgeInsets.only(left: 2.w),
+              padding: EdgeInsets.all(isSelected ? 1.w : 0),
               decoration: BoxDecoration(
+                border: Border.all(
+                  color: isSelected ? ColorsManager.primaryCTA : unselectedBorder,
+                  width: isSelected ? 2 : 1,
+                ),
                 borderRadius: BorderRadius.circular(16.r),
-                color: isSelected ? ColorsManager.primaryCTA : unselectedBg,
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                spacing: 3.w,
-                children: [
-                  Text(
-                    controller.stars[index].toString(),
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      fontWeight: FontWeight.w700,
-                      color: isSelected
-                          ? selectedTextColor
-                          : unselectedTextColor,
+              child: Container(
+                height: 68.h,
+                width: 83.w,
+                //padding: EdgeInsets.symmetric( vertical: 12.w , horizontal: 10.w),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16.r),
+                  color: isSelected ? ColorsManager.primaryCTA : unselectedBg,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  spacing: 3.w,
+                  children: [
+                    Text(
+                      controller.stars[index].toString(),
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        fontWeight: FontWeight.w700,
+                        color: isSelected
+                            ? selectedTextColor
+                            : unselectedTextColor,
+                      ),
                     ),
-                  ),
-                  SvgPicture.asset(
-                    ImagesManager.star,
-                    colorFilter: ColorFilter.mode(
-                      isSelected ? selectedTextColor : unselectedTextColor,
-                      BlendMode.srcIn,
+                    SvgPicture.asset(
+                      ImagesManager.star,
+                      colorFilter: ColorFilter.mode(
+                        isSelected ? selectedTextColor : unselectedTextColor,
+                        BlendMode.srcIn,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           );
