@@ -15,7 +15,6 @@ class CampaignStepFourController extends GetxController {
     isAgreed.value = !isAgreed.value;
   }
 
-  // List<CampaignMock> campaignsMock = [];
   final formKey = GlobalKey<FormState>();
   var currentStep = 2.obs;
   final selectedImage = Rx<File?>(null);
