@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
           themeMode: ThemeController.to.themeMode,
           // themeMode: ThemeMode.dark,
           // initialRoute: RoutesManager.launchScreen,
-          initialRoute: RoutesManager.launchScreen,
+          initialRoute: RoutesManager.notificationSettingsScreen,
           getPages: getPages,
           unknownRoute: GetPage(
             name: RoutesManager.launchScreen,
