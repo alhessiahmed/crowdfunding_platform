@@ -173,8 +173,8 @@ class NotificationsScreen extends GetView<NotificationsController> {
                 ? ColorsManager.bgSectionDark
                 : ColorsManager.bgSectionLight,
             child: Icon(
-              item.icon,
-              size: 20.sp,
+              // هنا ننادي الدالة ونمرر لها النوع الموجود في المودل
+              controller.getNotificationIcon(item.type),
               color: Get.isDarkMode
                   ? ColorsManager.primaryDark
                   : ColorsManager.primaryLight,
