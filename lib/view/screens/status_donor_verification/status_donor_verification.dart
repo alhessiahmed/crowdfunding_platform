@@ -55,9 +55,9 @@ class StatusDonorVerificationScreen extends StatelessWidget {
             ),
             SizedBox(height: 24.h),
             StatusCard(
-              title: 'account_verified'.tr,
-              icon: ImagesManager.verified,
-              description: 'account_under_review'.tr,
+              title: 'verification_failed'.tr,
+              icon: ImagesManager.danger,
+              description: 'verification_failed_description'.tr,
             ),
             SizedBox(height: 16.h),
             ExpectedTimeBox(),
