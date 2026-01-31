@@ -41,12 +41,12 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           textDirection: TextDirection.rtl,
           debugShowCheckedModeBanner: false,
-          theme: AppTheme.dark(),
+          theme: AppTheme.light(),
           darkTheme: AppTheme.dark(),
           themeMode: ThemeController.to.themeMode,
           // themeMode: ThemeMode.dark,
           // initialRoute: RoutesManager.launchScreen,
-          initialRoute: RoutesManager.donorPersonalInfoScreen,
+          initialRoute: RoutesManager.notificationSettingsScreen,
           getPages: getPages,
           unknownRoute: GetPage(
             name: RoutesManager.launchScreen,
