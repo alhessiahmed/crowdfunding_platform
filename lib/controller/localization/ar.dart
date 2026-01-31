@@ -347,4 +347,21 @@ Map<String, String> arLocale = {
   'account_updates': "تحديثات الحساب",
   'accouunt_updates_desc':
       "نخبرك بأي تحديثات ضرورية متعلقة بحسابك أو إعداداته.",
-};
+  'verification_account': 'توثيق الحساب',
+  'verification_account_description': 'يساعد التوثيق في تعزيز ثقة الآخرين بتفاعلك داخل المنصة.',
+  'account_verified': 'حسابك موثق',
+  'account_under_review': 'تم استلام معلوماتك وجارٍ مراجعتها.', 
+  'expected_time': 'الوقت المتوقع',
+  'expected_time_description': 'عادة خلال 24–48 ساعة',
+  'verified_account_benefits': 'ما الذي يتيحه الحساب الموثق ؟',
+  'notification_when_verified': 'سيتم إشعارك فور توثيق حسابك أو في حال فشل التوثيق',
+  'retry_verification': 'إعادة المحاولة', 
+  'contact_wit_support': 'التواصل مع الدعم', 
+  'security_privacy_settings': 'تتحكم هنا بأمان حسابك وخصوصية بياناتك',
+  'account_security': 'أمان الحساب', 
+  'change_password': 'تغيير كلمة المرور',
+  'login_activity': 'نشاط تسجيل الدخول',
+  'two_factor_authentication': 'المصادقة الثنائية', 
+  'two_factor_authentication_description': 'قم بتأمين حسابك باستخدام رمز إضافي عند تسجيل الدخول لزيادة مستوى الحماية',
+  'update_password_description': 'تحديث كلمة المرور بسكل دوري يساعد في حماية حسابك من الاختراقات المحتملة',
+  };

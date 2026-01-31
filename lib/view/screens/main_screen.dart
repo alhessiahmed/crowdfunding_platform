@@ -3,7 +3,7 @@ import 'package:crowdfunding_platform/controller/core/constants/images_manager.d
 import 'package:crowdfunding_platform/view/screens/discover_screen.dart';
 import 'package:crowdfunding_platform/view/screens/home_screen.dart';
 import 'package:crowdfunding_platform/view/screens/my_campaigns.dart';
-import 'package:crowdfunding_platform/view/screens/profile_sreen.dart';
+import 'package:crowdfunding_platform/view/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
