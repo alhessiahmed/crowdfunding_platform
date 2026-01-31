@@ -64,6 +64,9 @@ import '../../getx/bindings/payment/payment_method_binding.dart';
 import '../../getx/bindings/payment/thanks_for_payment_binding.dart';
 import 'routes_manager.dart';
 
+
+import 'index.dart';
+
 final List<GetPage<dynamic>> getPages = [
   GetPage(name: RoutesManager.launchScreen, page: () => const LaunchScreen()),
   GetPage(
@@ -240,6 +243,15 @@ final List<GetPage<dynamic>> getPages = [
     binding: NotificationSettingBinding(),
   ),
 
+    name: RoutesManager.statusDonorverificationScreen,
+    page: () => const StatusDonorVerificationScreen(),
+    binding: StatusDonorVerificationBinding(),
+  ),
+   GetPage(
+    name: RoutesManager.securityPrivacyScreen,
+    page: () => const SecurityPrivacy(),
+    binding: SecurityPrivactBinding(),
+  ),
   // GetPage(
   //   name: RoutesManager.homeScreen,
   //   page: () => const HomeScreen(),
