@@ -45,6 +45,7 @@ class RoutesManager {
   static const CampaignStepFourScreen = '/campaign_step_four_screen';
   static const donationHistoryScreen = '/donation_history_screen';
   static const notificationScreen = '/notification_screen';
+  static const notificationSettingsScreen = '/notification_settings_screen';
   static const statusDonorverificationScreen = '/status_donor_verification_screen';
   static const securityPrivacyScreen = '/security_privacy_screen';
 }
