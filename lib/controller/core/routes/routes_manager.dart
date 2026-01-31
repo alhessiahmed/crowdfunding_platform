@@ -1,3 +1,5 @@
+import 'package:crowdfunding_platform/view/screens/security_privacy_screen.dart';
+
 class RoutesManager {
   static const launchScreen = '/';
   static const onboardingScreen = '/onboarding_screen';
@@ -43,4 +45,6 @@ class RoutesManager {
   static const CampaignStepFourScreen = '/campaign_step_four_screen';
   static const donationHistoryScreen = '/donation_history_screen';
   static const notificationScreen = '/notification_screen';
+  static const statusDonorverificationScreen = '/status_donor_verification_screen';
+  static const securityPrivacyScreen = '/security_privacy_screen';
 }

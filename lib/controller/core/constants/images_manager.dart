@@ -36,6 +36,11 @@ class ImagesManager {
   static const String notificationDark = '$mainPath/notificationDark.png';
   static const String bgAccountNotVerified =
       '$mainPath/bg_account_not_verified.png';
+    static const String lightVerified = '$mainPath/light_verified.png';
+    static const String lightWarning = '$mainPath/light_warning.png';
+    static const String hourVerified = '$mainPath/hour_verified.png';
+    //assets\images\light_verified.png
+
   //assets\images\bg_account_not_verified.png
   /////////////// icons ///////////////
   static const String starLight = '$mainPath/star_light.png';
@@ -137,4 +142,5 @@ class ImagesManager {
   static const String verifiedIcon = '$iconsPath/ic_verified.svg';
   static const String doneIcon = '$iconsPath/ic_done.svg';
   static const String editIcon = '$iconsPath/ic_edit.svg';
+  static const String timerIcon = '$iconsPath/ic_timer.svg';
 }
