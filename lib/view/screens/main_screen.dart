@@ -67,7 +67,7 @@ class _MainScreenState extends State<MainScreen> {
             child: SizedBox(
               height: 72,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   _TabItem(
                     activeIcon: ImagesManager.activeHome,
@@ -79,10 +79,10 @@ class _MainScreenState extends State<MainScreen> {
                     unActiveIcon: ImagesManager.unActiveClipboard,
                     index: 2,
                   ),
-                  _CenterActionButton(isDark: isDark),
+                 _CenterActionButton(isDark: isDark),
                   _TabItem(
                     activeIcon: ImagesManager.discover,
-                    unActiveIcon: ImagesManager.unActiveDiscover,
+                    unActiveIcon: ImagesManager.discover,
                     index: 1,
                   ),
 
@@ -113,20 +113,30 @@ class _MainScreenState extends State<MainScreen> {
         setState(() => currentIndex = index);
       },
       child: Container(
-        height: 42.w,
+        height: 42.h,
         width: 42.w,
         decoration: BoxDecoration(shape: BoxShape.circle),
         child: Center(
-          child: SvgPicture.asset(
-            isSelected ? activeIcon : unActiveIcon,
-            //fit: BoxFit.contain,
-            width: 24,
-            height: 24,
-            color: isSelected
+          child: SizedBox( width: 24,
+              height: 24,
+            child: SvgPicture.asset(
+              unActiveIcon,
+             // isSelected ? activeIcon : unActiveIcon,
+               fit: BoxFit.contain,
+               colorFilter: ColorFilter.mode(
+            isSelected
                 ? ColorsManager.primaryCTA
                 : isDark
-                ? ColorsManager.secondaryDark
-                : ColorsManager.secondaryLight,
+                    ? ColorsManager.secondaryDark
+                    : ColorsManager.secondaryLight,
+            BlendMode.srcIn,
+          ),
+              color: isSelected
+                  ? ColorsManager.primaryCTA
+                  : isDark
+                  ? ColorsManager.secondaryDark
+                  : ColorsManager.secondaryLight,
+            ),
           ),
         ),
       ),
@@ -137,7 +147,7 @@ class _MainScreenState extends State<MainScreen> {
     return InkWell(
       onTap: () {},
       child: Container(
-        height: 54.w,
+        height: 54.h,
         width: 54.w,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
@@ -146,7 +156,7 @@ class _MainScreenState extends State<MainScreen> {
         ),
         child: Center(
           child: SvgPicture.asset(
-            ImagesManager.addCircle,
+            ImagesManager.addSquare,
             width: 24,
             height: 24,
             color: isDark
