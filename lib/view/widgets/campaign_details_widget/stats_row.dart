@@ -53,9 +53,8 @@ class _StatItem extends StatelessWidget {
         color: cardColor,
         boxShadow: [
           BoxShadow(
-            color: Colors.black12,
-            blurRadius: 12,
-            offset: const Offset(0, 4),
+            color: Colors.black.withOpacity(.25),
+                blurRadius: 4,
           ),
         ],
       ),

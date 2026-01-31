@@ -126,7 +126,7 @@ class PopupToDonate extends GetView<CampaignDetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    return DonateButton(() => openBottomSheet(context));
+    return DonateButton(onPressed:  () => openBottomSheet(context));
   }
 }
 

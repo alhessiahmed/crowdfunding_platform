@@ -1,4 +1,5 @@
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
+import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
 import 'package:crowdfunding_platform/controller/getx/controllers/home_controller.dart';
 import 'package:crowdfunding_platform/view/widgets/icon_with_background.dart';
 import 'package:flutter/material.dart';
@@ -142,7 +143,7 @@ class HomeScreen extends GetView<HomeController> {
               SizedBox(height: 16.h),
 
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () { Get.toNamed(RoutesManager.donorAccVerificationScreen);},
                 child: Text(
                   'ابدأ توثيق الحساب',
                   style: TextStyle(color: Colors.white),
