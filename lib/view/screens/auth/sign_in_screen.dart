@@ -84,7 +84,7 @@ class SignInScreen extends GetView<SignInController> {
                   alignment: AlignmentDirectional.topEnd,
                   child: TextButton(
                     onPressed: () {
-                      Get.offNamed(RoutesManager.forgotPasswordScreen);
+                      Get.toNamed(RoutesManager.forgotPasswordScreen);
                     },
                     child: Text(
                       'forgot_password'.tr,
