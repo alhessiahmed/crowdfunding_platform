@@ -3,6 +3,7 @@ import 'package:crowdfunding_platform/controller/core/constants/images_manager.d
 import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
 import 'package:crowdfunding_platform/controller/getx/controllers/discover_controller.dart';
 import 'package:crowdfunding_platform/model/campagin_model.dart';
+import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/popup_to_donate.dart';
 import 'package:crowdfunding_platform/view/widgets/filter_section.dart';
 import 'package:crowdfunding_platform/view/widgets/header_with_search.dart';
 import 'package:flutter/material.dart';
@@ -244,7 +245,8 @@ class DiscoverScreen extends GetView<DiscoverController> {
                             borderRadius: BorderRadius.circular(8.r),
                           ),
                         ),
-                        onPressed: () {},
+                       onPressed: (){
+          PopupToDonate().openBottomSheet(context);},
                         child: Text('تبرع فورًا'),
                       ),
                     ),

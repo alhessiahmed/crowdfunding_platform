@@ -374,4 +374,10 @@ Map<String, String> arLocale = {
   'password_required': 'كلمة المرور مطلوبة',
   'password_too_short': 'كلمة المرور اقل من 8 خانات',
   'passwords_not_match': 'كلمة المرور غير متطابقة',
-};
+  'two_factor_authentication': 'المصادقة الثنائية', 
+  'two_factor_authentication_description': 'قم بتأمين حسابك باستخدام رمز إضافي عند تسجيل الدخول لزيادة مستوى الحماية',
+  'update_password_description': 'تحديث كلمة المرور بسكل دوري يساعد في حماية حسابك من الاختراقات المحتملة',
+  'verification_failed': 'تعذّر توثيق الحساب' , 
+  'verification_failed_description': 'لم نتمكن من توثيق حسابك في الوقت الحالي بسبب نقص أو عدم وضوح بعض المعلومات.', 
+  'verification_failed_reason': 'سبب عدم التوثيق'
+  };

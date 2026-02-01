@@ -11,5 +11,15 @@ class CampaignDetailsController extends GetxController{
     super.onInit();
     controller =TextEditingController();
   }
+  void selectStarIndex(int index) {
+    selectedIndex.value = index;
+  }
+
+  @override
+  void onClose() {
+    controller?.dispose();
+    controller = null;
+    super.onClose();
+  }
 
 }
