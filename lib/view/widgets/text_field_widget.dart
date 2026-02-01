@@ -29,6 +29,7 @@ class TextFieldWidget extends StatelessWidget {
     this.readOnly = false,
     this.onTap,
     this.labelWidget,
+    this.validator,
   }) : super(key: key);
   final String label;
   final TextEditingController controller;
@@ -51,7 +52,7 @@ class TextFieldWidget extends StatelessWidget {
   final bool readOnly;
   final void Function()? onTap;
   final Widget? labelWidget;
-
+  final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -91,12 +92,12 @@ class TextFieldWidget extends StatelessWidget {
           height: 56.h,
           child: TextFormField(
             controller: controller,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
+            textAlignVertical: TextAlignVertical.center,
+            // textAlign: TextAlign.center,
+            autovalidateMode: AutovalidateMode.onUnfocus,
             readOnly: readOnly,
             onTap: onTap,
-            validator: (value) {
-              return null;
-            },
+            validator: validator,
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
               fontSize: 12.sp,
               color: Theme.of(context).colorScheme.onSurfaceVariant,
