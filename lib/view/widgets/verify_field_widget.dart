@@ -27,14 +27,17 @@ class VerifyFieldWidget extends StatelessWidget {
         controller: codeController,
         focusNode: focusNode,
         onChanged: onChanged,
+        textAlignVertical: TextAlignVertical.center,
         textInputAction: TextInputAction.next,
         keyboardType: TextInputType.number,
         style: Theme.of(context).textTheme.bodyLarge,
         textAlign: TextAlign.center,
         maxLength: 1,
+
         cursorColor: Theme.of(context).colorScheme.onSurface,
         autofocus: autofocus,
         decoration: InputDecoration(
+          contentPadding: EdgeInsets.zero,
           counterText: '',
           filled: true,
           fillColor: Get.isDarkMode

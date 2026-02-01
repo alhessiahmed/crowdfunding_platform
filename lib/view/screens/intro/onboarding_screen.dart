@@ -44,7 +44,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ? ImagesManager.onBoarding2
                       : ImagesManager.onBoarding3,
                   height: Get.height * 0.72,
-                  fit: BoxFit.fitHeight,
+                  width: Get.width,
+                  fit: BoxFit.fill,
                 ),
               ),
               Align(
