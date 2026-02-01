@@ -41,8 +41,7 @@ class WelcomeScreen extends StatelessWidget {
               width: 345.w,
               child: ElevatedButton(
                 onPressed: () {
-                  log("donate button pressed");
-                  Get.toNamed(RoutesManager.mainScreen);
+                  Get.offAllNamed(RoutesManager.mainScreen);
                 },
                 child: Text('donate_now'.tr),
               ),
