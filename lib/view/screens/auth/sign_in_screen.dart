@@ -47,12 +47,14 @@ class SignInScreen extends GetView<SignInController> {
                   controller: controller.emailController,
                   hintText: 'email'.tr,
                   label: 'email'.tr,
+                  validator: controller.email,
                 ),
                 SizedBox(height: 16.h),
                 Obx(
                   () => TextFieldWidget(
                     label: 'password'.tr,
                     hintText: 'password'.tr,
+                    validator: controller.password,
                     suffixIcon: Obx(
                       () => IconButton(
                         onPressed: () {
@@ -94,7 +96,10 @@ class SignInScreen extends GetView<SignInController> {
                   ),
                 ),
                 SizedBox(height: 16.h),
-                ElevatedButton(onPressed: () {}, child: Text('login'.tr)),
+                ElevatedButton(
+                  onPressed: controller.submit,
+                  child: Text('login'.tr),
+                ),
                 TransparentButton(
                   text: 'dont_have_acc'.tr,
                   onPressed: () {

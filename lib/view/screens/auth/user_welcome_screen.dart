@@ -45,9 +45,17 @@ class UserWelcomeScreen extends StatelessWidget {
             SizedBox(height: 16.h),
             ElevatedButton(
               onPressed: () {
-                Get.toNamed(RoutesManager.onboardingShellScreen);
+                if (userType == UserType.donator) {
+                  Get.offAllNamed(RoutesManager.discoverScreen);
+                } else {
+                  Get.toNamed(RoutesManager.onboardingShellScreen);
+                }
               },
-              child: Text('start_setting_up'.tr),
+              child: Text(
+                userType == UserType.donator
+                    ? 'explore_campaigns'.tr
+                    : 'start_setting_up'.tr,
+              ),
             ),
           ],
         ),

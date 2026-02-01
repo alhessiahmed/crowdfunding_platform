@@ -21,5 +21,7 @@ class ThanksForPaymentController extends GetxController {
 
   void onExploreCampaigns() {Get.toNamed(RoutesManager.discoverScreen);}
 
-  void onCreateAccount() {}
+  void onCreateAccount() {
+    Get.offAllNamed(RoutesManager.signUpScreen);
+  }
 }
