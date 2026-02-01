@@ -69,17 +69,17 @@ class _MainScreenState extends State<MainScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  _TabItem(
-                    activeIcon: ImagesManager.activeHome,
-                    unActiveIcon: ImagesManager.home,
-                    index: 3,
-                  ),
-                  _TabItem(
-                    activeIcon: ImagesManager.clipboard,
-                    unActiveIcon: ImagesManager.unActiveClipboard,
-                    index: 2,
-                  ),
-                 _CenterActionButton(isDark: isDark),
+                //   _TabItem(
+                //     activeIcon: ImagesManager.activeHome,
+                //     unActiveIcon: ImagesManager.home,
+                //     index: 3,
+                //   ),
+                //   _TabItem(
+                //     activeIcon: ImagesManager.clipboard,
+                //     unActiveIcon: ImagesManager.unActiveClipboard,
+                //     index: 2,
+                //   ),
+                //  _CenterActionButton(isDark: isDark),
                   _TabItem(
                     activeIcon: ImagesManager.discover,
                     unActiveIcon: ImagesManager.discover,
