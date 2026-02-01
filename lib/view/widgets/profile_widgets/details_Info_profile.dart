@@ -1,5 +1,6 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
+import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
 import 'package:crowdfunding_platform/view/widgets/icon_with_background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,6 +49,7 @@ class DetailsInfoCard extends StatelessWidget {
                   : ColorsManager.dividerColorLight,
             ),
             ListTile(
+              onTap: () => Get.toNamed(RoutesManager.securityPrivacyScreen),
               leading: IconWithBackground(
                 icon: ImagesManager.lockIcon,
                 lightColor: ColorsManager.dividerColorLight,
@@ -102,6 +104,7 @@ class DetailsInfoCard extends StatelessWidget {
                   : ColorsManager.dividerColorLight,
             ),
             ListTile(
+              onTap: () => Get.toNamed(RoutesManager.statusDonorverificationScreen),
               leading: IconWithBackground(
                 icon: ImagesManager.verified,
                 lightColor: ColorsManager.dividerColorLight,

@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 // ignore: must_be_immutable
 class DonateButton extends StatelessWidget {
-  DonateButton(this.onPressed, {super.key});
+  DonateButton( {super.key ,required this.onPressed,});
   void Function()? onPressed;
   @override
   Widget build(BuildContext context) {

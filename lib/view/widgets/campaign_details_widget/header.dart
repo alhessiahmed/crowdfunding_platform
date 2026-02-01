@@ -146,7 +146,7 @@ class HeaderWidget extends StatelessWidget {
           Positioned(
             left: 16.w,
             right: 16.w,
-            bottom: 20.h,
+            bottom: -15.h,
             child: TopCampaignCard(),
           ),
         ],

@@ -14,7 +14,7 @@ final String description ;
   Widget build(BuildContext context) {
     return  Center(
               child: Container(
-                height: 176.h,
+              //  height: 176.h,
                 width: 345.w,
                 padding: EdgeInsets.all(16.r),
                 decoration: BoxDecoration(
@@ -88,6 +88,7 @@ final String description ;
                     ),
                     SizedBox(height: 8.h),
                     Text(
+                      textAlign: TextAlign.center,
                       description,
                       style: Theme.of(
                         context,

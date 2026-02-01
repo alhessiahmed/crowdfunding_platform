@@ -143,4 +143,6 @@ class ImagesManager {
   static const String doneIcon = '$iconsPath/ic_done.svg';
   static const String editIcon = '$iconsPath/ic_edit.svg';
   static const String timerIcon = '$iconsPath/ic_timer.svg';
+  static const String addSquare = '$iconsPath/ic_add-square.svg';
+  static const String danger = '$iconsPath/ic_danger.svg';
 }

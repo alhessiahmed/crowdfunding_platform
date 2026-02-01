@@ -19,9 +19,7 @@ class ThanksForPaymentController extends GetxController {
     currency: 'Shakel'.tr,
   );
 
-  void onExploreCampaigns() {
-    Get.offAllNamed(RoutesManager.discoverScreen);
-  }
+  void onExploreCampaigns() {Get.toNamed(RoutesManager.discoverScreen);}
 
   void onCreateAccount() {
     Get.offAllNamed(RoutesManager.signUpScreen);
