@@ -113,13 +113,12 @@ class PopupToDonate extends GetView<CampaignDetailsController> {
                 SizedBox(height: 30.h),
                 ElevatedButton(
                   onPressed: () {
-                    final manualText =
-                        controller.controller?.text.trim() ?? '';
+                    final manualText = controller.controller?.text.trim() ?? '';
                     final manualValue = int.tryParse(manualText);
                     final selectedStars =
                         (manualValue != null && manualValue > 0)
-                            ? manualValue
-                            : controller.stars[controller.selectedIndex.value];
+                        ? manualValue
+                        : controller.stars[controller.selectedIndex.value];
                     Get.toNamed(
                       RoutesManager.paymentScreen,
                       arguments: selectedStars,
@@ -151,7 +150,7 @@ class PopupToDonate extends GetView<CampaignDetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    return DonateButton(onPressed:  () => openBottomSheet(context));
+    return DonateButton(onPressed: () => openBottomSheet(context));
   }
 }
 
@@ -176,7 +175,7 @@ class DonateStarRow extends GetView<CampaignDetailsController> {
               : ColorsManager.primaryLight;
           final selectedTextColor = Colors.white;
           return InkWell(
-            onTap: (){ 
+            onTap: () {
               controller.selectStarIndex(index);
             },
             child: Container(
@@ -184,14 +183,16 @@ class DonateStarRow extends GetView<CampaignDetailsController> {
               padding: EdgeInsets.all(isSelected ? 1.w : 0),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: isSelected ? ColorsManager.primaryCTA : unselectedBorder,
+                  color: isSelected
+                      ? ColorsManager.primaryCTA
+                      : unselectedBorder,
                   width: isSelected ? 2 : 1,
                 ),
                 borderRadius: BorderRadius.circular(16.r),
               ),
               child: Container(
                 height: 68.h,
-                width: 83.w,
+                width: 82.w,
                 //padding: EdgeInsets.symmetric( vertical: 12.w , horizontal: 10.w),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16.r),

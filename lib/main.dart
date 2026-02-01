@@ -37,6 +37,9 @@ class MyApp extends StatelessWidget {
     ]);
     return ScreenUtilInit(
       designSize: const Size(393, 852),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      ensureScreenSize: true,
       builder: (context, child) {
         return GetMaterialApp(
           textDirection: TextDirection.rtl,
@@ -46,7 +49,7 @@ class MyApp extends StatelessWidget {
           themeMode: ThemeController.to.themeMode,
           // themeMode: ThemeMode.dark,
           // initialRoute: RoutesManager.paymentScreen,
-           initialRoute: RoutesManager.launchScreen,
+          initialRoute: RoutesManager.launchScreen,
           //initialRoute: RoutesManager.notificationSettingsScreen,
           getPages: getPages,
           unknownRoute: GetPage(

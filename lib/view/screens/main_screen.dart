@@ -56,19 +56,19 @@ class _MainScreenState extends State<MainScreen> {
             boxShadow: [
               BoxShadow(
                 color: Colors.black38,
-                blurRadius: 12,
+                blurRadius: 12.r,
                 offset: const Offset(0, 1),
               ),
             ],
           ),
           child: BottomAppBar(
+            height: 74.h,
             color: Colors.transparent,
             elevation: 0,
-            child: SizedBox(
-              height: 72,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
                 //   _TabItem(
                 //     activeIcon: ImagesManager.activeHome,
                 //     unActiveIcon: ImagesManager.home,
@@ -80,19 +80,18 @@ class _MainScreenState extends State<MainScreen> {
                 //     index: 2,
                 //   ),
                 //  _CenterActionButton(isDark: isDark),
-                  _TabItem(
-                    activeIcon: ImagesManager.discover,
-                    unActiveIcon: ImagesManager.discover,
-                    index: 1,
-                  ),
+                _TabItem(
+                  activeIcon: ImagesManager.discover,
+                  unActiveIcon: ImagesManager.discover,
+                  index: 1,
+                ),
 
-                  _TabItem(
-                    activeIcon: ImagesManager.activeProfile,
-                    unActiveIcon: ImagesManager.profile,
-                    index: 0,
-                  ),
-                ],
-              ),
+                _TabItem(
+                  activeIcon: ImagesManager.activeProfile,
+                  unActiveIcon: ImagesManager.profile,
+                  index: 0,
+                ),
+              ],
             ),
           ),
         ),
@@ -113,24 +112,25 @@ class _MainScreenState extends State<MainScreen> {
         setState(() => currentIndex = index);
       },
       child: Container(
-        height: 42.h,
-        width: 42.w,
+        height: 54.h,
+        width: 54.w,
         decoration: BoxDecoration(shape: BoxShape.circle),
         child: Center(
-          child: SizedBox( width: 24,
-              height: 24,
+          child: SizedBox(
+            width: 24.w,
+            height: 24.h,
             child: SvgPicture.asset(
               unActiveIcon,
-             // isSelected ? activeIcon : unActiveIcon,
-               fit: BoxFit.contain,
-               colorFilter: ColorFilter.mode(
-            isSelected
-                ? ColorsManager.primaryCTA
-                : isDark
+              // isSelected ? activeIcon : unActiveIcon,
+              fit: BoxFit.contain,
+              colorFilter: ColorFilter.mode(
+                isSelected
+                    ? ColorsManager.primaryCTA
+                    : isDark
                     ? ColorsManager.secondaryDark
                     : ColorsManager.secondaryLight,
-            BlendMode.srcIn,
-          ),
+                BlendMode.srcIn,
+              ),
               color: isSelected
                   ? ColorsManager.primaryCTA
                   : isDark
@@ -157,8 +157,8 @@ class _MainScreenState extends State<MainScreen> {
         child: Center(
           child: SvgPicture.asset(
             ImagesManager.addSquare,
-            width: 24,
-            height: 24,
+            width: 24.w,
+            height: 24.h,
             color: isDark
                 ? ColorsManager.secondaryDark
                 : ColorsManager.secondaryLight,
