@@ -24,55 +24,55 @@ class HeaderProfile extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               SizedBox(height: 20.h),
-              CircleAvatar(
-                radius: 35.r,
-                backgroundImage: AssetImage(ImagesManager.apple),
-              ),
-              SizedBox(height: 10.h),
+//               CircleAvatar(
+//                 radius: 35.r,
+//                 backgroundImage: AssetImage(ImagesManager.apple),
+//               ),
+//               SizedBox(height: 10.h),
           
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('جمعية الامل ', style: Theme.of(context).textTheme.bodyLarge),
-                  SvgPicture.asset(ImagesManager.verified)
-                ],
-              ),
+//               Row(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: [
+//                   Text('جمعية الامل ', style: Theme.of(context).textTheme.bodyLarge),
+//                   SvgPicture.asset(ImagesManager.verified)
+//                 ],
+//               ),
 
-              SizedBox(height: 10.h),
-Row( 
-  mainAxisAlignment: MainAxisAlignment.center,
-  children: [
-    Container(
-  padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
-  decoration: BoxDecoration(
-    color: Get.isDarkMode? ColorsManager.bgSectionDark: ColorsManager.bgSectionLight,
-    borderRadius: BorderRadius.circular(20.r),
-  ),
-  child: Text(
-    '12 حملة',
-    style: 
-    Theme.of(context).textTheme.bodySmall
-  ),
-),
-              SizedBox(width: 10.h),
+//               SizedBox(height: 10.h),
+// Row( 
+//   mainAxisAlignment: MainAxisAlignment.center,
+//   children: [
+//     Container(
+//   padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+//   decoration: BoxDecoration(
+//     color: Get.isDarkMode? ColorsManager.bgSectionDark: ColorsManager.bgSectionLight,
+//     borderRadius: BorderRadius.circular(20.r),
+//   ),
+//   child: Text(
+//     '12 حملة',
+//     style: 
+//     Theme.of(context).textTheme.bodySmall
+//   ),
+// ),
+//               SizedBox(width: 10.h),
 
-   Container(
-  padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
-  decoration: BoxDecoration(
-    color: Get.isDarkMode? ColorsManager.bgSectionDark: ColorsManager.bgSectionLight,
-    borderRadius: BorderRadius.circular(20.r),
-  ),
-  child: Text(
-    '1.2 الف متابع',
-    style:     Theme.of(context).textTheme.bodySmall
+//    Container(
+//   padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+//   decoration: BoxDecoration(
+//     color: Get.isDarkMode? ColorsManager.bgSectionDark: ColorsManager.bgSectionLight,
+//     borderRadius: BorderRadius.circular(20.r),
+//   ),
+//   child: Text(
+//     '1.2 الف متابع',
+//     style:     Theme.of(context).textTheme.bodySmall
 
-  ),
-),
+//   ),
+// ),
  
     
 
-  ],
-)
+//   ],
+// )
 
             ],
           );
