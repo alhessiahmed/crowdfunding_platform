@@ -23,13 +23,14 @@ class _LaunchScreenState extends State<LaunchScreen> {
   Future<void> _initAndNavigate() async {
     await Future.delayed(const Duration(seconds: 3));
 
-    final hasSeenOnboarding = SharedPrefController.to.hasSeenOnboarding;
+    Get.offAllNamed(RoutesManager.onboardingScreen);
+    // final hasSeenOnboarding = SharedPrefController.to.hasSeenOnboarding;
 
-    if (hasSeenOnboarding) {
-      Get.offAllNamed(RoutesManager.mainScreen);
-    } else {
-      Get.offAllNamed(RoutesManager.onboardingScreen);
-    }
+    // if (hasSeenOnboarding) {
+    //   Get.offAllNamed(RoutesManager.mainScreen);
+    // } else {
+    //   Get.offAllNamed(RoutesManager.onboardingScreen);
+    // }
   }
 
   @override
