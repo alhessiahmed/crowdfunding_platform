@@ -16,36 +16,39 @@ class ProfileScreen extends StatelessWidget {
       child: Scaffold(
         body: Center(
           child: SingleChildScrollView(
-            child: Column( 
-              children: [ 
+            child: Column(
+              children: [
                 HeaderProfile(),
-                DetailsInfoCard(), 
+                DetailsInfoCard(),
                 Padding(
-                  padding:  EdgeInsets.symmetric(horizontal:  20.w),
-                  child: ElevatedButton(onPressed: (){}, child: Row(
-                    spacing: 10.w,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                     
-                      SvgPicture.asset(ImagesManager.logout),
-                       Text('logout'.tr),
-                    ],
-                  )),
-                ), 
-                SizedBox(height: 10.h,),
-                  Padding(
-                  padding:  EdgeInsets.symmetric(horizontal:  20.w),
-                  child: ElevatedButton(onPressed: (){}, child: Text('delete_account'.tr) , 
-                  style: ElevatedButton.styleFrom( 
-                    backgroundColor: ColorsManager.danger2
-                  ),),
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Row(
+                      spacing: 10.w,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(ImagesManager.logout),
+                        Text('logout'.tr),
+                      ],
+                    ),
+                  ),
                 ),
-                                SizedBox(height: 130.h,),
-
+                SizedBox(height: 10.h),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text('delete_account'.tr),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: ColorsManager.danger2,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 130.h),
               ],
             ),
-          )
-      
+          ),
         ),
       ),
     );

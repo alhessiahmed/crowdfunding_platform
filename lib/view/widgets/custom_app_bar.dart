@@ -1,6 +1,8 @@
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/utils.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
@@ -24,8 +26,9 @@ class CustomAppBar extends StatelessWidget {
           Align(
             alignment: AlignmentDirectional.centerStart,
             child: InkWell(
+              
               borderRadius: BorderRadius.circular(20),
-              onTap: onIconTap,
+              onTap: Get.back,
               child: SvgPicture.asset(resolvedIconPath, fit: BoxFit.contain),
             ),
           ),
