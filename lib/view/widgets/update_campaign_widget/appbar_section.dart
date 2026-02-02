@@ -13,10 +13,9 @@ class AppbarSection extends StatelessWidget {
         CustomAppBar(title: title ?? '', onIconTap: onBack),
         SizedBox(height: 8),
         Text(
+          textAlign: TextAlign.center,
           subTitle ?? '',
-          style: Theme.of(
-            context,
-          ).textTheme.bodySmall?.copyWith(
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
             color: Theme.of(context).colorScheme.onSurfaceVariant,
           ),
         ),

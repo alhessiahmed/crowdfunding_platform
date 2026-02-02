@@ -251,4 +251,11 @@ Map<String, String> arLocale = {
   'Starry_app_for': 'تطبيق Starry لنظام @OSName',
   'End_session': 'إنهاء الجلسة',
   'Logout_form_All_Devices': 'تسجيل الخروج من كل الأجهزة',
+  'wallet': 'المحفظة',
+  'Here_you_can_track_Your_donation_balance_and_manage_the_impact_transfer_with_complete_transparency.':
+      'هنا يمكنك متابعة رصيد التبرعات وإدارة تحويل\n الأثر بكل شفافية.',
+  'Available_balance': 'الرصيد المتاح',
+  'Withdrawal pending processing': 'سحب قيد المعالجة : @amount  شيكل',
+  'Request_to_withdraw_profits': 'طلب سحب الأرباح',
+  'Transfer_log': 'سجل التحويلات',
 };
