@@ -3,7 +3,6 @@ import 'package:crowdfunding_platform/controller/core/constants/images_manager.d
 import 'package:crowdfunding_platform/controller/getx/controllers/campgin_update_and_control_controllers/control_campaign_controller.dart';
 import 'package:crowdfunding_platform/model/control_campaign.dart';
 import 'package:crowdfunding_platform/view/widgets/card_divider.dart';
-import 'package:crowdfunding_platform/view/widgets/primary_button.dart';
 import 'package:crowdfunding_platform/view/widgets/update_campaign_widget/appbar_section.dart';
 import 'package:crowdfunding_platform/view/widgets/update_campaign_widget/campaign_actions_row_widget.dart';
 import 'package:crowdfunding_platform/view/widgets/update_campaign_widget/campaign_dateils_card_widget.dart';
