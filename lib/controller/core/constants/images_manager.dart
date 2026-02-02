@@ -94,4 +94,8 @@ class ImagesManager {
   static const String phoneIcon = '$iconsPath/ic_phone.svg';
   static const String clockIcon = '$iconsPath/ic_clock.svg';
   static const String logoutIcon = '$iconsPath/ic_logout.svg';
+  static const String withdrawIcon = '$iconsPath/ic_withdraw.svg';
+  static const String depositIcon = '$iconsPath/ic_deposit.svg';
+  static const String onprogressIcon = '$iconsPath/ic_onprogress.svg';
+  static const String arrowLeftIcon = '$iconsPath/ic_arrow_left.svg';
 }
