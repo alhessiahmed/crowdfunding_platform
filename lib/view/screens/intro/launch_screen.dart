@@ -2,13 +2,12 @@ import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_control
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../controller/core/constants/images_manager.dart';
 import '../../../controller/core/routes/routes_manager.dart';
 
 class LaunchScreen extends StatefulWidget {
-  const LaunchScreen({Key? key}) : super(key: key);
+  const LaunchScreen({super.key});
 
   @override
   State<LaunchScreen> createState() => _LaunchScreenState();

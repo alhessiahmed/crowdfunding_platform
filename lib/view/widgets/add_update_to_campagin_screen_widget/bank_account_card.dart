@@ -5,7 +5,6 @@ import 'package:crowdfunding_platform/view/widgets/update_campaign_widget/card_s
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/utils.dart';
 
 class BankAccountCard extends StatelessWidget {
   const BankAccountCard({super.key, required this.title, required this.subtitle, required this.statusText, required this.statusIcon});

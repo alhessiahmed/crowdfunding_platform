@@ -38,7 +38,6 @@ class MyApp extends StatelessWidget {
       designSize: const Size(393, 852),
       builder: (context, child) {
         return GetMaterialApp(
-          textDirection: TextDirection.rtl,
           debugShowCheckedModeBanner: false,
           theme: AppTheme.light(),
           darkTheme: AppTheme.dark(),
@@ -51,6 +50,12 @@ class MyApp extends StatelessWidget {
             name: RoutesManager.launchScreen,
             page: () => const LaunchScreen(),
           ),
+          builder: (context, child) {
+            return Directionality(
+              textDirection: TextDirection.rtl,
+              child: child ?? const SizedBox.shrink(),
+            );
+          },
           translations: AppTranslations(),
           locale: Locale('ar'),
           // locale: Locale(SharedPrefController().lang),

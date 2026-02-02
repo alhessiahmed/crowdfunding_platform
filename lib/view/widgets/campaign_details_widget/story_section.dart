@@ -4,9 +4,10 @@ import 'package:crowdfunding_platform/controller/core/constants/colors_manager.d
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 class StorySection extends StatelessWidget {
+  const StorySection({super.key});
+
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;

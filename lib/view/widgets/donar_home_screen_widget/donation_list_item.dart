@@ -4,7 +4,6 @@ import 'package:crowdfunding_platform/view/widgets/update_campaign_widget/app_ca
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class DonationListItem extends StatelessWidget {
