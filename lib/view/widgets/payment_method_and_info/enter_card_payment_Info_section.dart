@@ -1,4 +1,3 @@
-import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart'
     show ImagesManager;
 import 'package:crowdfunding_platform/view/widgets/text_field_widget.dart';

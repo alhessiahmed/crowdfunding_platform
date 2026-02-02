@@ -2,9 +2,7 @@ import 'package:crowdfunding_platform/controller/core/constants/colors_manager.d
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/view/widgets/step_indicator.dart';
 import 'package:crowdfunding_platform/view/widgets/update_campaign_widget/app_card.dart';
-import 'package:crowdfunding_platform/view/widgets/update_campaign_widget/card_states_badge.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';

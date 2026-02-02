@@ -1,5 +1,4 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
-import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/comment_section.dart';
 import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/donation_button.dart';
 import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/header.dart';
@@ -9,8 +8,6 @@ import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/tabs_
 import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/why_donation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 
 class CampaignDetailsScreen extends StatelessWidget {
   const CampaignDetailsScreen({super.key});

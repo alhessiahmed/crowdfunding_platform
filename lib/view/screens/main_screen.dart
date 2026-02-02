@@ -4,8 +4,6 @@ import 'package:crowdfunding_platform/view/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});

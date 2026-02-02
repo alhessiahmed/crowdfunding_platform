@@ -189,10 +189,10 @@ class EditCampaignDetailsController extends GetxController {
     final theme = context != null ? Theme.of(context) : null;
     final titleStyle = theme?.textTheme.titleMedium?.copyWith(
       fontWeight: FontWeight.bold,
-      color: theme?.colorScheme.primary,
+      color: theme.colorScheme.primary,
     );
     final contentStyle = theme?.textTheme.bodyMedium?.copyWith(
-      color: theme?.colorScheme.onSurface,
+      color: theme.colorScheme.onSurface,
       height: 1.4,
     );
 
