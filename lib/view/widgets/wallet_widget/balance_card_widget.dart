@@ -12,9 +12,13 @@ class BalanceCardWidget extends StatelessWidget {
     super.key,
     required this.totalStares,
     required this.mony,
+     this.onRequestWithdraw,
+    this.showRequestButton = false,
   });
   final int totalStares;
   final int mony;
+  final VoidCallback? onRequestWithdraw;
+  final bool showRequestButton;
   @override
   Widget build(BuildContext context) {
     final numberFormatter = NumberFormat('#,###');
@@ -58,16 +62,18 @@ class BalanceCardWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 8.h),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(28.r),
+          if (showRequestButton) ...[
+            SizedBox(height: 8.h),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(28.r),
+                ),
               ),
+              onPressed: onRequestWithdraw,
+              child: Text('Request_to_withdraw_profits'.tr),
             ),
-            onPressed: () {},
-            child: Text('Request_to_withdraw_profits'.tr),
-          ),
+          ],
         ],
       ),
     );

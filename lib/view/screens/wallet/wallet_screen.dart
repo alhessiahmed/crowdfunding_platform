@@ -1,5 +1,6 @@
 import 'package:crowdfunding_platform/controller/getx/controllers/wallet/wallet_controller.dart';
-import 'package:crowdfunding_platform/view/screens/wallet/in_processing_withdrawal_processing_list_tile.dart';
+import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
+import 'package:crowdfunding_platform/view/widgets/wallet_widget/in_processing_withdrawal_processing_list_tile.dart';
 import 'package:crowdfunding_platform/view/widgets/update_campaign_widget/appbar_section.dart';
 import 'package:crowdfunding_platform/view/widgets/wallet_widget/balance_card_widget.dart';
 import 'package:crowdfunding_platform/view/widgets/wallet_widget/wallet_transaction_tile.dart';
@@ -9,7 +10,7 @@ import 'package:get/get.dart';
 
 class WalletScreen extends GetView<WalletController> {
   const WalletScreen({super.key});
-
+    
   @override
   Widget build(BuildContext context) {
     final transactions = <_WalletTransactionItem>[
@@ -57,6 +58,11 @@ class WalletScreen extends GetView<WalletController> {
                 BalanceCardWidget(
                   totalStares: controller.totalStares,
                   mony: controller.mony,
+                  showRequestButton: true,
+                  onRequestWithdraw: () {
+                    Get.toNamed(RoutesManager.requestToWithdrawProfitsScreen);
+                    
+                  },
                 ),
                 SizedBox(height: 16.h),
                 InProcessingWithdrawalProcessingListTile(amount: 25000),
