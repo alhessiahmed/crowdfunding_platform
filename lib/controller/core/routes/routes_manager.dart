@@ -31,4 +31,6 @@ class RoutesManager {
   static const addUpdateToCampaignScreen = '/add_update_to_campaign_screen';
   static const editCampaignDetailsScreen = '/edit_campaign_details_screen';
   static const walletScreen = '/wallet_screen';
+  static const requestToWithdrawProfitsScreen =
+      '/request_to_withdraw_profits_screen';
 }
