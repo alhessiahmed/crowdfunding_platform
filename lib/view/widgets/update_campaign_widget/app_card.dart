@@ -35,7 +35,7 @@ class AppCard extends StatelessWidget {
         : <BoxShadow>[];
 
     return Container(
-      padding: padding ?? EdgeInsets.all(16.r),
+      padding: padding ?? EdgeInsets.all(16),
       decoration: BoxDecoration(
         color:
             backGroundColor ?? Theme.of(context).colorScheme.onInverseSurface,
