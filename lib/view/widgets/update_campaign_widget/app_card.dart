@@ -8,12 +8,15 @@ class AppCard extends StatelessWidget {
     this.padding,
     this.backGroundColor,
     this.shadow = false,
+    this.borderRadius 
+
   });
 
   final Widget child;
   final EdgeInsetsGeometry? padding;
   final Color? backGroundColor;
   final bool shadow;
+  final double? borderRadius;
   @override
   Widget build(BuildContext context) {
     final shadows = shadow
@@ -36,7 +39,7 @@ class AppCard extends StatelessWidget {
       decoration: BoxDecoration(
         color:
             backGroundColor ?? Theme.of(context).colorScheme.onInverseSurface,
-        borderRadius: BorderRadius.circular(24.r),
+        borderRadius: BorderRadius.circular(borderRadius?? 24.r),
         border: Border.all(
           width: 0.5,
           color: Theme.of(context).colorScheme.outline,

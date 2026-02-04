@@ -98,4 +98,7 @@ class ImagesManager {
   static const String depositIcon = '$iconsPath/ic_deposit.svg';
   static const String onprogressIcon = '$iconsPath/ic_onprogress.svg';
   static const String arrowLeftIcon = '$iconsPath/ic_arrow_left.svg';
+  static const String magicPenIcon = '$iconsPath/ic_magicpen.svg';
+  static const String checkLightCircleIcon =
+      '$iconsPath/ic_check_light.circle.svg';
 }
