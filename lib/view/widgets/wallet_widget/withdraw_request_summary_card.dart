@@ -24,16 +24,16 @@ class TextOfTheSummary extends StatelessWidget {
   const TextOfTheSummary({
     super.key,
     required this.title,
-    required this.value,
+    this.value,
     required this.thrillingText,
   });
   final String title;
-  final int value;
+  final int? value;
   final String thrillingText;
   @override
   Widget build(BuildContext context) {
     final numberFormatter = intl.NumberFormat('#,###');
-    final formattedValue = numberFormatter.format(value);
+    final formattedValue = value != null ? numberFormatter.format(value) : '';
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,4 +1,5 @@
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
+import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
 import 'package:crowdfunding_platform/controller/getx/controllers/wallet/request_to_withdraw_profits_controller.dart';
 import 'package:crowdfunding_platform/view/widgets/card_divider.dart';
 import 'package:crowdfunding_platform/view/widgets/text_field_widget.dart';
@@ -11,7 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class RequestToWithdrawProfitsScreen
     extends GetView<RequestToWithdrawProfitsController> {
@@ -103,7 +103,9 @@ class RequestToWithdrawProfitsScreen
                 ),
                 SizedBox(height: 16.h),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(RoutesManager.summerOfWithdrawScreen);
+                  },
                   child: Text('Confirm_withdrawal_request'.tr),
                 ),
                 SizedBox(height: 8.h),
