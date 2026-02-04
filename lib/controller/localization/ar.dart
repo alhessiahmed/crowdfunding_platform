@@ -258,4 +258,13 @@ Map<String, String> arLocale = {
   'Withdrawal pending processing': 'سحب قيد المعالجة : @amount  شيكل',
   'Request_to_withdraw_profits': 'طلب سحب الأرباح',
   'Transfer_log': 'سجل التحويلات',
+  'Number_of_stars_you_want_to_convert': 'عدد النجوم التي تريد تحويلها',
+  'Another_number...': 'رقم آخر...',
+  'bank_account': 'الحساب البنكي',
+  'The_stars_you_want_to_pull': 'النجوم التي تريد سحبها',
+  'Platform_fees': 'رسوم المنصة',
+  'Star_value': 'قيمة النجمة',
+  'Net_number_of_stars': 'عدد النجوم الصافي',
+  'net_amount': 'المبلغ الصافي',
+  'Confirm_withdrawal_request': 'تأكيد طلب السحب',
 };
