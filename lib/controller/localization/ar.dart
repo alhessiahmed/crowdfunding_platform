@@ -267,4 +267,14 @@ Map<String, String> arLocale = {
   'Net_number_of_stars': 'عدد النجوم الصافي',
   'net_amount': 'المبلغ الصافي',
   'Confirm_withdrawal_request': 'تأكيد طلب السحب',
+  'Confirmation_of_profit_withdrawal': 'تأكيد سحب الأرباح',
+  'Your_withdrawal_request_has_been_received_successfully!':
+      'تم استلام طلب السحب بنجاح!',
+  'Your_request_will_be_reviewed_and_the_payment_will_be_sent_to_your_bank_Saccount.':
+      'سيتم مراجعة طلبك وارسال المبلغ الى حسابك البنكي',
+  'Expected_arrival_time': 'وقت الوصول المتوقع',
+  'The_review_usually_takes_24_to_48_hours.':
+      'تستغرق المراجعة عادة من 24 إلى 48 ساعة.',
+  'Go_to_the_control_panel': 'الانتقال إلى لوحة التحكم',
+  'Return_to_wallet': 'العودة للمحفظة',
 };

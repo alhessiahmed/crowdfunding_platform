@@ -33,4 +33,5 @@ class RoutesManager {
   static const walletScreen = '/wallet_screen';
   static const requestToWithdrawProfitsScreen =
       '/request_to_withdraw_profits_screen';
+  static const summerOfWithdrawScreen = '/summer_of_withdraw_screen';
 }

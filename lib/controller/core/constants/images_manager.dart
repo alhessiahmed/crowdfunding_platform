@@ -15,6 +15,7 @@ class ImagesManager {
   static const String starLight = '$mainPath/star_light.png';
   static const String starDark = '$mainPath/star_dark.png';
   static const String placeHolder = '$mainPath/place_holder.png';
+  static const String clockImage = '$mainPath/Clock.png';
 
   // Icons
   static const String iconsPath = 'assets/images/icons';
@@ -101,4 +102,6 @@ class ImagesManager {
   static const String magicPenIcon = '$iconsPath/ic_magicpen.svg';
   static const String checkLightCircleIcon =
       '$iconsPath/ic_check_light.circle.svg';
+  static const String estimatedITimeToWithdrawIcon =
+      '$iconsPath/ic_estimated_time_to_withdraw.svg';
 }

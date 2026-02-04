@@ -8,6 +8,7 @@ import 'package:crowdfunding_platform/controller/getx/bindings/edit_campaign_det
 import 'package:crowdfunding_platform/controller/getx/bindings/home_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/donar_home_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/request_to_withdraw_profits_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/summer_of_withdraw_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/wallet_binding.dart';
 import 'package:crowdfunding_platform/view/screens/add_pymaent_method/add_payment_method_page.dart';
 import 'package:crowdfunding_platform/view/screens/add_pymaent_method/choose_payment_method_page.dart';
@@ -25,6 +26,7 @@ import 'package:crowdfunding_platform/view/screens/update_campaign/add_update_to
 import 'package:crowdfunding_platform/view/screens/update_campaign/control_campaign_screen.dart';
 import 'package:crowdfunding_platform/view/screens/update_campaign/edit_campaign_details_screen.dart';
 import 'package:crowdfunding_platform/view/screens/wallet/Request_to_withdraw_profits_screen.dart';
+import 'package:crowdfunding_platform/view/screens/wallet/summer_of_withdraw_screen.dart';
 import 'package:crowdfunding_platform/view/screens/wallet/wallet_screen.dart';
 import 'package:get/get.dart';
 
@@ -188,6 +190,11 @@ final List<GetPage<dynamic>> getPages = [
     name: RoutesManager.requestToWithdrawProfitsScreen,
     page: () => const RequestToWithdrawProfitsScreen(),
     binding: RequestToWithdrawProfitsBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.summerOfWithdrawScreen,
+    page: () => const SummerOfWithdrawScreen(),
+    binding: SummerOfWithdrawBinding(),
   ),
 
   // GetPage(
