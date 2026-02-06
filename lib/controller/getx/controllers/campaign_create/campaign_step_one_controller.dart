@@ -1,4 +1,6 @@
 import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
+import 'package:crowdfunding_platform/controller/getx/controllers/auth/creator_onboarding_controller.dart';
+import 'package:crowdfunding_platform/view/screens/campaign_create_screens/campaign_step_one_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:crowdfunding_platform/model/campaign_type.dart';
@@ -22,42 +24,46 @@ class CampaignStepOneController extends GetxController {
   // State
   final RxBool isLoading = false.obs;
   final RxInt selectedTypeIndex = (-1).obs;
-  final campaignTypes = <CampaignType>[].obs;
 
   /// Select campaign type
   void selectType(int index) {
     selectedTypeIndex.value = index;
   }
 
-  bool isCampaignSelected(CampaignType type) {
-    return campaignTypes.contains(type);
-  }
-
-  void toggleCampaignType(CampaignType type) {
-    if (campaignTypes.contains(type)) {
-      campaignTypes.remove(type);
-    } else {
-      campaignTypes.add(type);
-    }
-  }
-
   /// Go to next step
   Future<void> goToNextStep() async {
-    /*if (!formKey.currentState!.validate()) return;
-
-    if (selectedTypeIndex.value == -1) {
-      Get.snackbar('error'.tr, 'select_campaign_type'.tr);
+    // 1. التحقق البسيط
+    if (campaignNameController.text.isEmpty) {
+      Get.snackbar('error'.tr, 'title_required'.tr);
       return;
-    }*/
+    }
+    final CreatorOnboardingController controller2 =
+        Get.find<CreatorOnboardingController>();
+    final selectedItem = CampaignStepOneScreen.items.firstWhere(
+      (item) => controller2.isCampaignSelected(item.type),
+      orElse: () => CampaignStepOneScreen
+          .items
+          .first, // عنصر افتراضي في حال لم يتم الاختيار
+    );
 
-    isLoading.value = true;
+    // 2. ترجمة النص المخصص لهذا العنصر
+    String categoryName = selectedItem.labelKey.tr;
 
-    await Future.delayed(const Duration(seconds: 1)); // API later
+    // 2. تجهيز ماب البيانات (الحصيلة من الشاشة الأولى)
+    Map<String, dynamic> stepOneData = {
+      'title': campaignNameController.text,
+      'description': descriptionController.text,
+      'goal': campaignGoalController.text,
+      'category': categoryName,
+    };
 
-    isLoading.value = false;
+    // 3. الانتقال وتمرير البيانات
+    Get.toNamed(
+      RoutesManager.CampaignStepTwoScreen,
+      arguments: stepOneData, // تمرير الماب
+    );
+
     currentStep.value++;
-
-    Get.toNamed(RoutesManager.CampaignStepTwoScreen);
   }
 
   @override

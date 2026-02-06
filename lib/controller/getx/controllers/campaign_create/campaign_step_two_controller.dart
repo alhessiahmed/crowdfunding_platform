@@ -3,9 +3,21 @@ import 'package:crowdfunding_platform/controller/core/constants/images_manager.d
 import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CampaignStepTwoController extends GetxController {
+  Map<String, dynamic> allData = {};
+
+  @override
+  void onInit() {
+    super.onInit();
+    // استلام ما تم إرساله من الشاشة الأولى
+    allData = Get.arguments ?? {};
+    print("البيانات المستلمة من الشاشة 1: $allData");
+  }
+
   final formKey = GlobalKey<FormState>();
+  final ImagePicker _picker = ImagePicker();
   var currentStep = 2.obs;
   final selectedImage = Rx<File?>(null);
   String get FrameImage =>
@@ -13,6 +25,17 @@ class CampaignStepTwoController extends GetxController {
 
   void pickCampaignImage() async {
     // image picker logic
+    final XFile? image = await _picker.pickImage(
+      source: ImageSource.gallery, // يفتح الاستوديو
+      imageQuality: 80, // لتقليل حجم الصورة قبل الرفع
+    );
+
+    if (image != null) {
+      selectedImage.value = File(image.path);
+      print("Image Path: ${image.path}");
+    } else {
+      print("No image selected.");
+    }
   }
 
   void goToPreviousStep() {
@@ -22,10 +45,7 @@ class CampaignStepTwoController extends GetxController {
     Get.back();
   }
 
-  // Controllers
-  final TextEditingController campaignNameController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
-  final TextEditingController campaignGoalController = TextEditingController();
 
   // State
   final RxBool isLoading = false.obs;
@@ -38,26 +58,34 @@ class CampaignStepTwoController extends GetxController {
 
   /// Go to next step
   Future<void> goToNextStep() async {
-    /*if (!formKey.currentState!.validate()) return;
-
-    if (selectedTypeIndex.value == -1) {
-      Get.snackbar('error'.tr, 'select_campaign_type'.tr);
-      return;
-    }*/
-
     isLoading.value = true;
 
-    await Future.delayed(const Duration(seconds: 1)); // API later
+    try {
+      // 2. تحديث الماب (allData) بالبيانات الجديدة
+      // نستخدم نفس المفاتيح (Keys) المطلوبة في الـ API
+      allData['notes'] = descriptionController.text; // الملاحظات
 
-    isLoading.value = false;
-    currentStep.value++;
+      // نمرر مسار الصورة (Path) لأنه أسهل في التمرير عبر الـ Arguments
+      if (selectedImage.value != null) {
+        allData['file_path'] = selectedImage.value!.path;
+      }
 
-    Get.toNamed(RoutesManager.CampaignStepThreeScreen);
+      // 3. الانتقال للشاشة الثالثة مع الماب "المحدثة"
+      Get.toNamed(
+        RoutesManager.CampaignStepThreeScreen,
+        arguments: allData, // أصبحت تحتوي على بيانات الشاشة 1 + الشاشة 2
+      );
+
+      currentStep.value++;
+    } catch (e) {
+      print("Error: $e");
+    } finally {
+      isLoading.value = false;
+    }
   }
 
   @override
   void onClose() {
-    campaignNameController.dispose();
     descriptionController.dispose();
     super.onClose();
   }

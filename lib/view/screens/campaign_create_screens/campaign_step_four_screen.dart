@@ -1,7 +1,9 @@
+import 'dart:io';
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/constants_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/text_styles_manager.dart';
+import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
 import 'package:crowdfunding_platform/controller/getx/controllers/campaign_create/campaign_step_four_controller.dart';
 import 'package:crowdfunding_platform/view/widgets/campaign_info_widgets/custom_step_appBar_widget.dart';
 import 'package:crowdfunding_platform/view/widgets/secondary_button.dart';
@@ -65,7 +67,7 @@ class CampaignStepFourScreen extends GetView<CampaignStepFourController> {
                         _buildImageHeader(),
                         _buildDetailItem(
                           title: "campaign_name".tr,
-                          value: "campaign_name_value".tr,
+                          value: controller.allData['title'] ?? "",
                           iconPath: ImagesManager.educationIcon,
                           context: context,
                           isTitle: true,
@@ -76,7 +78,7 @@ class CampaignStepFourScreen extends GetView<CampaignStepFourController> {
                         ),
                         _buildDetailItem(
                           title: "description".tr,
-                          value: "description_value".tr,
+                          value: controller.allData['description'] ?? "",
                           context: context,
                           isTitle: false,
                         ),
@@ -126,32 +128,46 @@ class CampaignStepFourScreen extends GetView<CampaignStepFourController> {
   Widget _buildImageHeader() {
     return Stack(
       children: [
+        // 1. عرض الصورة (ديناميكية أو Asset)
         ClipRRect(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
-          child: Image.asset(
-            ImagesManager.campaignReview,
-            height: 200.h,
-            width: 313,
-            fit: BoxFit.cover,
-          ),
+          child: controller.allData['file_path'] != null
+              ? Image.file(
+                  File(controller.allData['file_path']),
+                  height: 200.h,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                )
+              : Image.asset(
+                  ImagesManager.campaignReview,
+                  height: 200.h,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
         ),
-        // زر التعديل الصغير فوق الصورة
+
+        // 2. زر التعديل (Edit Button) - تم إعادته هنا
         Positioned(
           top: 10.h,
-          right: 70.w,
-          child: Container(
-            padding: EdgeInsets.all(6.w), // المسافة حول الأيقونة
-
-            child: InkWell(
-              child: Image.asset(ImagesManager.editLight),
-              onTap: () {
-                // هون حط الكود اللي بدك إياه يتنفذ عند الضغط
-                print("Edit  pressed");
-              },
+          left: 10.w, // غيرناه لليسار عشان ما يتداخل مع الـ Tag اللي عاليمين
+          child: GestureDetector(
+            onTap: () {
+              // يرجع للشاشة الثانية (حيث توجد الصورة)
+              Get.until(
+                (route) =>
+                    Get.currentRoute == RoutesManager.CampaignStepTwoScreen,
+              );
+            },
+            child: Container(
+              decoration: BoxDecoration(color: Colors.white),
+              child: Image.asset(controller.editImage),
+              height: 30.h,
+              width: 30.w,
             ),
           ),
         ),
-        // Tag "تعليمي"
+
+        // 3. Tag التصنيف (Category)
         Positioned(
           top: 16.h,
           right: 10.w,
@@ -162,7 +178,7 @@ class CampaignStepFourScreen extends GetView<CampaignStepFourController> {
               borderRadius: BorderRadius.circular(20.r),
             ),
             child: Text(
-              "تعليمي",
+              controller.allData['category'] ?? "عام",
               style: TextStyle(
                 fontSize: 10.sp,
                 fontWeight: FontWeight.bold,
@@ -209,6 +225,10 @@ class CampaignStepFourScreen extends GetView<CampaignStepFourController> {
             child: Image.asset(controller.editImage),
             onTap: () {
               // هون حط الكود اللي بدك إياه يتنفذ عند الضغط
+              Get.until(
+                (route) =>
+                    Get.currentRoute == RoutesManager.CampaignStepOneScreen,
+              );
               print("Edit $title pressed");
             },
           ),
@@ -222,9 +242,18 @@ class CampaignStepFourScreen extends GetView<CampaignStepFourController> {
       padding: EdgeInsets.all(16.w),
       child: Row(
         children: [
-          _buildSmallMetric("الهدف", "5,000 ", true),
+          // عرض الهدف المالي
+          _buildSmallMetric(
+            "الهدف",
+            "${controller.allData['goal'] ?? 0} ",
+            true,
+          ),
           const Spacer(),
-          _buildSmallMetric("المدة", "30 ", false),
+          _buildSmallMetric(
+            "المدة",
+            "${controller.getCampaignDuration()} ",
+            false,
+          ),
         ],
       ),
     );
@@ -287,6 +316,19 @@ class CampaignStepFourScreen extends GetView<CampaignStepFourController> {
           child: Image.asset(controller.editImage),
           onTap: () {
             // هون حط الكود اللي بدك إياه يتنفذ عند الضغط
+            if (isAim) {
+              // إذا كان الهدف (isAim == true) نرجع للخطوة الأولى
+              Get.until(
+                (route) =>
+                    Get.currentRoute == RoutesManager.CampaignStepOneScreen,
+              );
+            } else {
+              // إذا كانت المدة (isAim == false) نرجع للخطوة الثالثة
+              Get.until(
+                (route) =>
+                    Get.currentRoute == RoutesManager.CampaignStepThreeScreen,
+              );
+            }
             print("Edit $title pressed");
           },
         ),

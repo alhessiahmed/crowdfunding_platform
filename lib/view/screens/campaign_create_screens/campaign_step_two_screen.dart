@@ -63,51 +63,84 @@ class CampaignStepTwoScreen extends GetView<CampaignStepTwoController> {
                               : ColorsManager.white,
                           borderRadius: BorderRadius.circular(16.r),
                         ),
-                        child: Column(
-                          children: [
-                            /// Image preview or placeholder
-                            Container(
-                              height: 80,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                color: Get.isDarkMode
-                                    ? Color(0xFF252525)
-                                    : Color(0xFFE2E8F0),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(40),
-                                ),
-                              ),
-
-                              child: Image.asset(
-                                Get.isDarkMode
-                                    ? ImagesManager.frameDark
-                                    : ImagesManager.frameLight,
-                              ),
-                            ),
-                            SizedBox(height: 8),
-
-                            /// Title
-                            Text(
-                              'add_campaign_image'.tr,
-                              style: Theme.of(context).textTheme.bodyMedium!
-                                  .copyWith(fontWeight: FontWeight.bold),
-                            ),
-
-                            SizedBox(height: 4.h),
-
-                            /// Subtitle
-                            Text(
-                              'campaign_image_hint'.tr,
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.bodySmall!
-                                  .copyWith(
-                                    color: Theme.of(
-                                      context,
-                                    ).colorScheme.onSurfaceVariant,
+                        child: Obx(() {
+                          return Column(
+                            children: [
+                              if (controller.selectedImage.value == null) ...[
+                                /// الحالة 1: لم يتم اختيار صورة (عرض الـ Placeholder)
+                                Container(
+                                  height: 80,
+                                  width: 80,
+                                  decoration: BoxDecoration(
+                                    color: Get.isDarkMode
+                                        ? const Color(0xFF252525)
+                                        : const Color(0xFFE2E8F0),
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(40),
+                                    ),
                                   ),
-                            ),
-                          ],
-                        ),
+                                  child: Image.asset(
+                                    Get.isDarkMode
+                                        ? ImagesManager.frameDark
+                                        : ImagesManager.frameLight,
+                                  ),
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  'add_campaign_image'.tr,
+                                  style: Theme.of(context).textTheme.bodyMedium!
+                                      .copyWith(fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(height: 4.h),
+                                Text(
+                                  'campaign_image_hint'.tr,
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context).textTheme.bodySmall!
+                                      .copyWith(
+                                        color: Theme.of(
+                                          context,
+                                        ).colorScheme.onSurfaceVariant,
+                                      ),
+                                ),
+                              ] else ...[
+                                /// الحالة 2: تم اختيار صورة (عرض معاينة للصورة)
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(12.r),
+                                  child: Stack(
+                                    alignment: Alignment.topRight,
+                                    children: [
+                                      Image.file(
+                                        controller.selectedImage.value!,
+                                        height: 150.h,
+                                        width: double.infinity,
+                                        fit: BoxFit.contain,
+                                      ),
+                                      // زر لحذف الصورة وإعادة اختيار غيرها
+                                      GestureDetector(
+                                        onTap: () =>
+                                            controller.selectedImage.value =
+                                                null,
+                                        child: Container(
+                                          margin: EdgeInsets.all(8.w),
+                                          padding: const EdgeInsets.all(4),
+                                          decoration: const BoxDecoration(
+                                            color: Colors.red,
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: const Icon(
+                                            Icons.close,
+                                            color: Colors.white,
+                                            size: 18,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ],
+                          );
+                        }),
                       ),
                     ),
                   ),

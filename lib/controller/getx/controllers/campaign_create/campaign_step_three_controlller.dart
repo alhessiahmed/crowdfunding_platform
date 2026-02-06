@@ -5,6 +5,16 @@ import 'package:get/get.dart';
 import 'package:crowdfunding_platform/model/campaign_type.dart';
 
 class CampaignStepThreeController extends GetxController {
+  Map<String, dynamic> allData = {};
+
+  @override
+  void onInit() {
+    super.onInit();
+    // استلام بيانات الشاشتين (1 و 2)
+    allData = Get.arguments ?? {};
+    print("البيانات المستلمة في الشاشة 3: $allData");
+  }
+
   String get calendarImage =>
       Get.isDarkMode ? ImagesManager.calendarDark : ImagesManager.calendarLight;
   String get staryImage =>
@@ -51,9 +61,9 @@ class CampaignStepThreeController extends GetxController {
   }
 
   // Controllers
-  final TextEditingController campaignNameController = TextEditingController();
-  final TextEditingController descriptionController = TextEditingController();
-  final TextEditingController campaignGoalController = TextEditingController();
+
+  final TextEditingController motivationalMessageController =
+      TextEditingController();
 
   // State
   final RxBool isLoading = false.obs;
@@ -62,27 +72,42 @@ class CampaignStepThreeController extends GetxController {
 
   /// Go to next step
   Future<void> goToNextStep() async {
-    /*if (!formKey.currentState!.validate()) return;
-
-    if (selectedTypeIndex.value == -1) {
-      Get.snackbar('error'.tr, 'select_campaign_type'.tr);
-      return;
-    }*/
-
     isLoading.value = true;
 
-    await Future.delayed(const Duration(seconds: 1)); // API later
+    try {
+      // 1. تحديد تاريخ البداية (الآن) وتاريخ النهاية
+      DateTime now = DateTime.now();
+      DateTime calculatedEndDate;
 
-    isLoading.value = false;
-    currentStep.value++;
+      if (endDate.value.isNotEmpty) {
+        // إذا اختار تاريخاً محدداً عبر الـ DatePicker
+        // ملاحظة: نحتاج لتحويل النص المخزن في endDate.value لـ DateTime
+        // أو استخدام المتغير 'picked' مباشرة إذا حفظناه.
+        // للسهولة، سنعتمد على عدد الأيام المحسوب في selectedDuration
+        calculatedEndDate = now.add(Duration(days: selectedDuration.value));
+      } else {
+        // إذا اختار 30، 60، أو 90 يوماً
+        calculatedEndDate = now.add(Duration(days: selectedDuration.value));
+      }
 
-    Get.toNamed(RoutesManager.CampaignStepFourScreen);
+      // 2. دمج البيانات الجديدة في الماب
+      allData['startDate'] = now.toIso8601String(); // الصيغة اللي بحبها الـ API
+      allData['endDate'] = calculatedEndDate.toIso8601String();
+      allData['motivationMessage'] = motivationalMessageController.text;
+
+      // 3. الانتقال للشاشة الرابعة (شاشة المراجعة غالباً)
+      Get.toNamed(RoutesManager.CampaignStepFourScreen, arguments: allData);
+
+      currentStep.value++;
+    } catch (e) {
+      Get.snackbar('error'.tr, e.toString());
+    } finally {
+      isLoading.value = false;
+    }
   }
 
   @override
   void onClose() {
-    campaignNameController.dispose();
-    descriptionController.dispose();
     super.onClose();
   }
 
