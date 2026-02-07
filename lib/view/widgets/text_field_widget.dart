@@ -170,6 +170,11 @@ class TextFieldWidget extends StatelessWidget {
         ),
       ],
     );
+
+    // if (maxLines > 1 || minLines > 1) {
+    //   return field;
+    // }
+    // return SizedBox(height: 56.h, child: field);
   }
 
   OutlineInputBorder textFieldBorder() {

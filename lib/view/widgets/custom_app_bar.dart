@@ -26,7 +26,6 @@ class CustomAppBar extends StatelessWidget {
           Align(
             alignment: AlignmentDirectional.centerStart,
             child: InkWell(
-              
               borderRadius: BorderRadius.circular(20),
               onTap: Get.back,
               child: SvgPicture.asset(resolvedIconPath, fit: BoxFit.contain),

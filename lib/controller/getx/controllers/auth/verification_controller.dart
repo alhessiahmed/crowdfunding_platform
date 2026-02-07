@@ -46,10 +46,6 @@ class VerificationController extends GetxController {
 
   void submitCode() {
     if (!isCodeComplete) {
-      // Get.snackbar(
-      //   'error'.tr,
-      //   'verification_code_incomplete'.tr,
-      // );
       return;
     }
     // Call API

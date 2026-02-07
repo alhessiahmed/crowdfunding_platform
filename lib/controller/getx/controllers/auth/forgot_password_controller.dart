@@ -8,6 +8,7 @@ class ForgotPasswordController extends GetxController with AuthValidationMixin {
   final emailController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   final isResetting = false.obs;
+
   void submit() {
     if (!formKey.currentState!.validate()) return;
     Get.offNamed(RoutesManager.verificationScreen);

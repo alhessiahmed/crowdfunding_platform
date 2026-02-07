@@ -2,7 +2,6 @@ import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_control
 import 'package:crowdfunding_platform/view/screens/intro/launch_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'controller/core/routes/get_pages.dart';
@@ -10,7 +9,6 @@ import 'controller/core/routes/routes_manager.dart';
 import 'controller/core/theme/theme_manager.dart';
 import 'controller/getx/controllers/theme_controller.dart';
 import 'controller/localization/app_translations.dart';
-// import 'controller/shared_pref/shared_pref_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,11 +17,6 @@ void main() async {
   await Get.putAsync<SharedPrefController>(
     () async => await SharedPrefController().initPreferences(),
   );
-  // await DbController().initDatabase();
-  //await SharedPrefController().initPreferences();
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
   runApp(const MyApp());
 }
 
@@ -48,25 +41,22 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.light(),
           darkTheme: AppTheme.dark(),
           themeMode: ThemeController.to.themeMode,
-          // themeMode: ThemeMode.dark,
-          // initialRoute: RoutesManager.paymentScreen,
-          initialRoute: RoutesManager.launchScreen,
-          //initialRoute: RoutesManager.notificationSettingsScreen,
+          // initialRoute: RoutesManager.launchScreen,
+          initialRoute: RoutesManager.walletScreen,
           getPages: getPages,
           unknownRoute: GetPage(
             name: RoutesManager.launchScreen,
             page: () => const LaunchScreen(),
           ),
+          builder: (context, child) {
+            return Directionality(
+              textDirection: TextDirection.rtl,
+              child: child ?? const SizedBox.shrink(),
+            );
+          },
           translations: AppTranslations(),
-          locale: Locale('ar'),
-
+          locale: const Locale('ar'),
           // locale: Locale(SharedPrefController().lang),
-          // supportedLocales: const [Locale('en'), Locale('ar')],
-          // localizationsDelegates: const [
-          //   GlobalMaterialLocalizations.delegate,
-          //   GlobalWidgetsLocalizations.delegate,
-          //   GlobalCupertinoLocalizations.delegate,
-          // ],
           fallbackLocale: const Locale('ar'),
         );
       },

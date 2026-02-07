@@ -2,7 +2,7 @@ import 'package:crowdfunding_platform/controller/core/constants/colors_manager.d
     show ColorsManager;
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/controller/core/routes/index.dart';
-import 'package:crowdfunding_platform/controller/getx/controllers/campagin_details_controller.dart';
+import 'package:crowdfunding_platform/controller/getx/controllers/campgin_update_and_control_controllers/campagin_details_controller.dart';
 import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/donation_button.dart';
 import 'package:crowdfunding_platform/view/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';

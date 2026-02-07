@@ -28,7 +28,6 @@ class CreatorOnboardingController extends GetxController
   final _accountType = AccountType.individual.obs;
   Rx<AccountType> get accountType => _accountType;
   // Step 2
-  // final campaignType = CampaignType.medical.obs;
   final campaignTypes = <CampaignType>[].obs;
   // Step 3
   final experienceLevel = ExperienceLevel.firstTime.obs;
@@ -75,6 +74,10 @@ class CreatorOnboardingController extends GetxController
 
   void nextStep() {
     if (step.value < 4) step.value++;
+  }
+
+  void previousStep() {
+    if (step.value > 1) step.value--;
   }
 
   void previous() {

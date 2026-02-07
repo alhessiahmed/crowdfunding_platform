@@ -45,11 +45,11 @@ class ResetPasswordController extends GetxController {
     if (!canSubmit) return;
 
     // TODO: API call
-    // Get.snackbar(
-    //   'نجاح',
-    //   'تم تحديث كلمة المرور',
-    //   snackPosition: SnackPosition.BOTTOM,
-    // );
+    Get.snackbar(
+      'نجاح',
+      'تم تحديث كلمة المرور',
+      snackPosition: SnackPosition.BOTTOM,
+    );
     Get.offNamed(RoutesManager.resetPasswordSuccessScreen);
   }
 

@@ -22,6 +22,7 @@ class ColorsManager {
   static const Color scaffoldBgDark = Color(0xFF121212);
   static const Color scaffoldBgLight = Color(0xFFFBFCFF);
   static const Color secondaryThanksColor = Color(0xFF2358B3);
+  static const Color dividerColor = Color(0xFF737373);
   static const Color grey2 = Color(0xFFD9D9D9);
   static const Color danger2 = Color(0xFFD64545);
   static const Color blueButton = Color(0xFF5999FF);
@@ -40,7 +41,8 @@ class ColorsManager {
   static const Color outlineBorder = Color(0xFFE6E8EB);
   static const Color shadow = Color(0x0D000000);
   static const Color shadow2 = Color(0xAD000000);
-  static const Color danger = Color(0xFFFF0000);
+  static const Color danger = Color(0xFFD64545);
+  static const Color dangerStrong = Color(0xFFFF0000);
   static const Color success = Color(0xFF4AD295);
   static const Color pink = Color(0xFFFF4074);
 
