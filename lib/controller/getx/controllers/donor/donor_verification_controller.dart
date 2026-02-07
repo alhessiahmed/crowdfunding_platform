@@ -1,12 +1,8 @@
 import 'dart:async';
-
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
-import '../../../core/constants/colors_manager.dart';
 import '../../../core/routes/routes_manager.dart';
 
 class DonorVerificationController extends GetxController {
@@ -125,77 +121,12 @@ class DonorVerificationController extends GetxController {
   final idFormKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final idController = TextEditingController();
-  final dobController = TextEditingController();
   final isId = true.obs;
   final Rxn<XFile> idFile = Rxn<XFile>();
   final ImagePicker _imagePicker = ImagePicker();
 
   void selectId(bool isId) {
     this.isId.value = isId;
-  }
-
-  void pickDate() async {
-    final selectedDate = await showDatePicker(
-      builder: (context, child) {
-        return Theme(
-          data: Theme.of(context).copyWith(
-            datePickerTheme: DatePickerThemeData(
-              headerBackgroundColor: ColorsManager.primaryCTA,
-              headerForegroundColor: ColorsManager.white,
-              dayOverlayColor: WidgetStateColor.resolveWith(
-                (states) => ColorsManager.primaryCTA,
-              ),
-              dayBackgroundColor: WidgetStateProperty.resolveWith((states) {
-                if (states.contains(WidgetState.selected)) {
-                  return ColorsManager.primaryCTA;
-                }
-                return null;
-              }),
-              dayForegroundColor: WidgetStateProperty.resolveWith((states) {
-                if (states.contains(WidgetState.selected)) {
-                  return Colors.white;
-                }
-                return null;
-              }),
-              todayBackgroundColor: WidgetStateProperty.resolveWith((states) {
-                if (states.contains(WidgetState.selected)) {
-                  return ColorsManager.primaryCTA;
-                }
-                return null;
-              }),
-              weekdayStyle: Theme.of(
-                context,
-              ).textTheme.bodyLarge!.copyWith(fontSize: 14.sp),
-              dayStyle: Theme.of(
-                context,
-              ).textTheme.bodyMedium!.copyWith(fontSize: 14.sp),
-              yearStyle: Theme.of(
-                context,
-              ).textTheme.bodyLarge!.copyWith(fontSize: 14.sp),
-              // confirmButtonStyle: ButtonStyle(
-              //   foregroundColor: WidgetStateColor.resolveWith(
-              //     (states) => ColorsManager.primaryCTA,
-              //   ),
-              // ),
-              // cancelButtonStyle: ButtonStyle(
-              //   // textStyle: ,
-              //   foregroundColor: WidgetStateColor.resolveWith(
-              //     (states) => ColorsManager.danger,
-              //   ),
-              // ),
-            ),
-          ),
-          child: child!,
-        );
-      },
-      context: Get.context!,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1900),
-      lastDate: DateTime.now(),
-    );
-    if (selectedDate != null) {
-      dobController.text = DateFormat('yyyy-MM-dd').format(selectedDate);
-    }
   }
 
   Future<void> pickImage({

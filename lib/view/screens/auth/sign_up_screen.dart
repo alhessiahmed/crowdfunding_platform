@@ -2,8 +2,8 @@ import 'package:crowdfunding_platform/view/widgets/google_button.dart';
 import 'package:crowdfunding_platform/view/widgets/transparent_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-
 import '../../../controller/core/constants/colors_manager.dart';
 import '../../../controller/core/constants/images_manager.dart';
 import '../../../controller/core/routes/routes_manager.dart';
@@ -73,6 +73,15 @@ class SignUpScreen extends GetView<SignUpController> {
                   hintText: 'email'.tr,
                   label: 'email'.tr,
                   validator: controller.email,
+                ),
+                SizedBox(height: 16.h),
+                TextFieldWidget(
+                  controller: controller.dobController,
+                  hintText: '',
+                  suffixIcon: SvgPicture.asset(ImagesManager.calender2),
+                  label: 'dob'.tr,
+                  readOnly: true,
+                  onTap: controller.pickDate,
                 ),
                 SizedBox(height: 16.h),
                 Obx(
@@ -155,6 +164,4 @@ class SignUpScreen extends GetView<SignUpController> {
       ),
     );
   }
-
-  // Future<void> _performSignUp() async {}
 }

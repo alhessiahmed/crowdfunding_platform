@@ -29,6 +29,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       body: PageView.builder(
         physics: const BouncingScrollPhysics(),
+
         controller: pageController,
         itemCount: 3,
         itemBuilder: (context, index) {
@@ -63,30 +64,33 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   child: Column(
                     children: [
                       SizedBox(height: 20.h),
-                      SizedBox(
-                        height: 8.h,
-                        child: ListView.separated(
-                          shrinkWrap: true,
-                          itemCount: 3,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, listViewIndex) {
-                            return Container(
-                              height: 8.h,
-                              width: index == listViewIndex ? 48.w : 8.w,
-                              decoration: BoxDecoration(
-                                color: index == listViewIndex
-                                    ? ColorsManager.primaryCTA
-                                    : ColorsManager.grey,
-                                borderRadius: BorderRadius.circular(3.r),
-                                border: Border.all(
-                                  // color: ColorsManager.logo,
+                      Directionality(
+                        textDirection: TextDirection.ltr,
+                        child: SizedBox(
+                          height: 8.h,
+                          child: ListView.separated(
+                            shrinkWrap: true,
+                            itemCount: 3,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, listViewIndex) {
+                              return Container(
+                                height: 8.h,
+                                width: index == listViewIndex ? 48.w : 8.w,
+                                decoration: BoxDecoration(
+                                  color: index == listViewIndex
+                                      ? ColorsManager.primaryCTA
+                                      : ColorsManager.grey,
+                                  borderRadius: BorderRadius.circular(3.r),
+                                  border: Border.all(
+                                    // color: ColorsManager.logo,
+                                  ),
                                 ),
-                              ),
-                            );
-                          },
-                          separatorBuilder: (context, index) {
-                            return SizedBox(width: 4.w);
-                          },
+                              );
+                            },
+                            separatorBuilder: (context, index) {
+                              return SizedBox(width: 4.w);
+                            },
+                          ),
                         ),
                       ),
                       SizedBox(height: 40.h),

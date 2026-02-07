@@ -46,9 +46,9 @@ class _MainScreenState extends State<MainScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return SafeArea(
       bottom: false,
-      minimum: const EdgeInsets.only(bottom: 18, right: 18, left: 18),
+      minimum: EdgeInsets.only(bottom: 18.h, right: 18.w, left: 18.w),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: Container(
           decoration: BoxDecoration(
             color: isDark ? ColorsManager.bgGoogle : ColorsManager.white,

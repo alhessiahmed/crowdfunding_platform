@@ -51,31 +51,33 @@ class FilterSection extends StatelessWidget {
                 ? ColorsManager.dividerColorDark
                 : ColorsManager.dividerColorLight,
             selectedColor: ColorsManager.primaryCTA,
-            label: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(item.title),
-                SizedBox(width: 2.w),
-                Container(
-                  height: 22,
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: isSelected
-                        ? Colors.white54
-                        : isDark
-                        ? ColorsManager.iconDefaultDark
-                        : ColorsManager.iconDefaultLight,
-                    borderRadius: BorderRadius.circular(20.r),
-                  ),
-                  child: Text(
-                    item.count.toString(),
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                      color: isSelected ? Colors.black : Colors.white,
+            label: Center(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(item.title),
+                  SizedBox(width: 2.w),
+                  Container(
+                    height: 22.h,
+                    padding: EdgeInsets.symmetric(horizontal: 10.w),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: isSelected
+                          ? Colors.white54
+                          : isDark
+                          ? ColorsManager.iconDefaultDark
+                          : ColorsManager.iconDefaultLight,
+                      borderRadius: BorderRadius.circular(20.r),
+                    ),
+                    child: Text(
+                      item.count.toString(),
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                        color: isSelected ? Colors.black : Colors.white,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },
