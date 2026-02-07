@@ -6,6 +6,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class StatsRow extends StatelessWidget {
+  const StatsRow({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Row(
