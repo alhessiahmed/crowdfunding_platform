@@ -14,27 +14,27 @@ class WalletScreen extends GetView<WalletController> {
   @override
   Widget build(BuildContext context) {
     final transactions = <_WalletTransactionItem>[
-      const _WalletTransactionItem(
-        title: 'تحويل بنكي',
-        dateText: '2025/أكتوبر/25',
+      _WalletTransactionItem(
+        title: 'bank_transfer'.tr,
+        dateText: 'wallet_sample_date'.tr,
         amount: 5000,
         type: WalletTransactionType.withdraw,
       ),
-      const _WalletTransactionItem(
-        title: 'تبرع حملة الحقيبة المدرسية',
-        dateText: '2025/أكتوبر/25',
+      _WalletTransactionItem(
+        title: 'school_bag_campaign_donation'.tr,
+        dateText: 'wallet_sample_date'.tr,
         amount: 5000,
         type: WalletTransactionType.donation,
       ),
-      const _WalletTransactionItem(
-        title: 'تبرع حملة الحقيبة المدرسية',
-        dateText: '2025/أكتوبر/25',
+      _WalletTransactionItem(
+        title: 'school_bag_campaign_donation'.tr,
+        dateText: 'wallet_sample_date'.tr,
         amount: 5000,
         type: WalletTransactionType.donation,
       ),
-      const _WalletTransactionItem(
-        title: 'تبرع حملة الحقيبة المدرسية',
-        dateText: '2025/أكتوبر/25',
+      _WalletTransactionItem(
+        title: 'school_bag_campaign_donation'.tr,
+        dateText: 'wallet_sample_date'.tr,
         amount: 5000,
         type: WalletTransactionType.donation,
       ),

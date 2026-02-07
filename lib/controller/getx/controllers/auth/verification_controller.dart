@@ -1,7 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
+import '../../../core/routes/routes_manager.dart';
 
 class VerificationController extends GetxController {
   final firstCodeTextController = TextEditingController();
@@ -40,6 +40,16 @@ class VerificationController extends GetxController {
         counter.value--;
       }
     });
+  }
+
+  bool get isCodeComplete => code.value.length == 5;
+
+  void submitCode() {
+    if (!isCodeComplete) {
+      return;
+    }
+    // Call API
+    Get.offNamed(RoutesManager.resetPasswordScreen);
   }
 
   @override

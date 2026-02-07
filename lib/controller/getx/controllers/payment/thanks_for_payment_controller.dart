@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 
 import '../../../../model/donation_summary.dart';
 import '../../../core/constants/images_manager.dart';
+import '../../../core/routes/routes_manager.dart';
 
 class ThanksForPaymentController extends GetxController {
   final int numberStars = 50;
@@ -18,7 +19,11 @@ class ThanksForPaymentController extends GetxController {
     currency: 'Shakel'.tr,
   );
 
-  void onExploreCampaigns() {}
+  void onExploreCampaigns() {
+    Get.toNamed(RoutesManager.discoverScreen);
+  }
 
-  void onCreateAccount() {}
+  void onCreateAccount() {
+    Get.offAllNamed(RoutesManager.signUpScreen);
+  }
 }

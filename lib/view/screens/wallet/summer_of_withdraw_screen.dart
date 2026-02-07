@@ -79,14 +79,14 @@ class SummerOfWithdrawScreen extends GetView<SummerOfWithdrawController> {
 
                   TextOfTheSummary(
                     title: 'bank_account'.tr,
-                    thrillingText: 'بنك فلسطين',
+                    thrillingText: 'bank_of_palestine'.tr,
                   ),
                   SizedBox(height: 4.h),
                   TextOfTheSummary(title: '', thrillingText: '2242 ****'),
                   SizedBox(height: 10.h),
                   TextOfTheSummary(
                     title: 'Expected_arrival_time'.tr,
-                    thrillingText: 'بعد يومين',
+                    thrillingText: 'after_two_days'.tr,
                   ),
                 ],
               ),

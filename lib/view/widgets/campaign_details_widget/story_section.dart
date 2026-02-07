@@ -1,9 +1,9 @@
-
-
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+// import 'package:get/get.dart';
 class StorySection extends StatelessWidget {
   const StorySection({super.key});
 
@@ -11,6 +11,9 @@ class StorySection extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
+    // final cardColor = Get.isDarkMode
+    //     ? ColorsManager.bgGoogle
+    //     : ColorsManager.white;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
       decoration: BoxDecoration(
