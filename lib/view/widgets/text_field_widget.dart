@@ -6,7 +6,7 @@ import '../../controller/core/constants/colors_manager.dart';
 
 class TextFieldWidget extends StatelessWidget {
   const TextFieldWidget({
-    Key? key,
+    super.key,
     required this.controller,
     required this.hintText,
     this.suffixIcon,
@@ -25,7 +25,7 @@ class TextFieldWidget extends StatelessWidget {
     this.inputFormatters,
     this.maxLength,
     this.labelWidget,
-  }) : super(key: key);
+  });
   final String label;
   final TextEditingController controller;
   final Widget? suffixIcon;

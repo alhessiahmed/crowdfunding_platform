@@ -9,12 +9,6 @@ class DonationHistoryController extends GetxController {
       ? ImagesManager.streamlineDark
       : ImagesManager.streamlineLight;
 
-  @override
-  void onInit() {
-    super.onInit();
-    // تجربة: فك التعليق عن السطر بالأسفل لتجربة الحالة المليانة
-    //_loadMockData();
-  }
 
   String formatTimeAgo(DateTime dateTime) {
     final duration = DateTime.now().difference(dateTime);
