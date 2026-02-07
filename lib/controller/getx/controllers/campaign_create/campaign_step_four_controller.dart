@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
-import 'package:crowdfunding_platform/controller/getx/controllers/home_controller.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +15,6 @@ class CampaignStepFourController extends GetxController {
     isAgreed.value = !isAgreed.value;
   }
 
-  List<CampaignMock> campaignsMock = [];
   final formKey = GlobalKey<FormState>();
   var currentStep = 2.obs;
   final selectedImage = Rx<File?>(null);

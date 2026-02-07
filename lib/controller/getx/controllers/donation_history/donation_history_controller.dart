@@ -28,17 +28,17 @@ class DonationHistoryController extends GetxController {
     }
   }
 
-  void _loadMockData() {
-    donations.assignAll([
-      DonationSummary(
-        title: "قطرة حياة : مياه نظيفة لأطفال غزة",
-        amount: 50,
-        currency: "شيكل",
-        campaignImage: ImagesManager.campaignReview,
-        numberStars: 50,
-        donationDate: DateTime(2025, 7, 16),
-      ),
-      // أضف المزيد هنا...
-    ]);
-  }
+  // void _loadMockData() {
+  //   donations.assignAll([
+  //     DonationSummary(
+  //       title: "قطرة حياة : مياه نظيفة لأطفال غزة",
+  //       amount: 50,
+  //       currency: "شيكل",
+  //       campaignImage: ImagesManager.campaignReview,
+  //       numberStars: 50,
+  //       donationDate: DateTime(2025, 7, 16),
+  //     ),
+  //     // أضف المزيد هنا...
+  //   ]);
+  // }
 }

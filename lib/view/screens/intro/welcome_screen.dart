@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
@@ -41,8 +40,7 @@ class WelcomeScreen extends StatelessWidget {
               width: 345.w,
               child: ElevatedButton(
                 onPressed: () {
-                  log("donate button pressed");
-                  Get.toNamed(RoutesManager.mainScreen);
+                  Get.offAllNamed(RoutesManager.mainScreen);
                 },
                 child: Text('donate_now'.tr),
               ),

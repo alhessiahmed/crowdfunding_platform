@@ -24,6 +24,19 @@ class NotificationsController extends GetxController {
     }
   }
 
+  IconData getNotificationIcon(String type) {
+    switch (type) {
+      case 'impact':
+        return Icons.auto_awesome; // أيقونة للأثر (نجوم أو شرارة)
+      case 'security':
+        return Icons.lock_outline_rounded; // أيقونة للأمان (قفل)
+      case 'contribution':
+        return Icons.volunteer_activism_outlined; // أيقونة للمساهمة (قلب أو يد)
+      default:
+        return Icons.notifications_none_rounded; // أيقونة افتراضية
+    }
+  }
+
   void _loadMockNotifications() {
     notifications.assignAll([
       NotificationModel(
@@ -31,6 +44,7 @@ class NotificationsController extends GetxController {
         body: "تبرعك ساعد في توفير مياه نظيفة لعائلة كاملة لمدة أسبوع.",
         time: DateTime.now().subtract(const Duration(hours: 2)),
         icon: Icons.star_rounded,
+        type: 'impact',
         isNew: true,
       ),
       NotificationModel(
@@ -38,6 +52,7 @@ class NotificationsController extends GetxController {
         body: "تم تغيير إعدادات الأمان بنجاح.",
         time: DateTime.now().subtract(const Duration(hours: 5)),
         icon: Icons.lock_outline,
+        type: 'security',
         isNew: true,
       ),
       NotificationModel(
@@ -45,6 +60,7 @@ class NotificationsController extends GetxController {
         body: "كل نجمة منك تصنع فرقاً حقيقياً.",
         time: DateTime.now().subtract(const Duration(days: 1)),
         icon: Icons.favorite_border,
+        type: "contribution",
         isNew: false,
       ),
     ]);

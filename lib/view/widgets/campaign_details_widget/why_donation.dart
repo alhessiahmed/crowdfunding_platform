@@ -1,19 +1,18 @@
-
-
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+
 class WhyDonateSection extends StatelessWidget {
   const WhyDonateSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final cardColor = Theme.of(context).brightness == Brightness.dark
-        ? ColorsManager.bgGoogle
-        : ColorsManager.white;
+    // final cardColor = Theme.of(context).brightness == Brightness.dark
+    //     ? ColorsManager.bgGoogle
+    //     : ColorsManager.white;
     final checkIcon = Get.isDarkMode
         ? ImagesManager.checkIconDark
         : ImagesManager.checkIconLight;

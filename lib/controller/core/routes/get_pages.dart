@@ -47,6 +47,10 @@ import '../../getx/bindings/payment/confirm_payment_binding.dart';
 import '../../getx/bindings/payment/payment_method_binding.dart';
 import '../../getx/bindings/payment/thanks_for_payment_binding.dart';
 import 'routes_manager.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/notification/notification_setting_binding.dart';
+import 'package:crowdfunding_platform/view/screens/notification/notification_setting_screen.dart';
+
+import 'index.dart';
 
 final List<GetPage<dynamic>> getPages = [
   GetPage(name: RoutesManager.launchScreen, page: () => const LaunchScreen()),
@@ -105,13 +109,13 @@ final List<GetPage<dynamic>> getPages = [
   GetPage(
     name: RoutesManager.mainScreen,
     page: () => const MainScreen(),
-    binding: HomeBinding(),
+    binding: MainBinding(),
   ),
   GetPage(
-    name: RoutesManager.homeScreen,
-    page: () => const HomeScreen(),
+    name: RoutesManager.discoverScreen,
+    page: () => const DiscoverScreen(),
     bindings: [
-      HomeBinding(),
+      DiscoverBinding(),
       // CategoryBinding(),
     ],
   ),
@@ -175,11 +179,64 @@ final List<GetPage<dynamic>> getPages = [
     page: () => NotificationsScreen(),
     binding: NotificationBinding(),
   ),
+  GetPage(
+    name: RoutesManager.profileScreen,
+    page: () => const ProfileScreen(),
+    binding: ProfileBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.myCampaignsScreen,
+    page: () => const MyCampaignsScreen(),
+    binding: MyCampaginsBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.homeScreen,
+    page: () => const HomeScreen(),
+    binding: DiscoverBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.creatorVerificationScreen,
+    page: () => const CreatorVerficationScreen(),
+    binding: CreatorVerficationBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.creatorVerificationSuccessScreen,
+    page: () => const CreatorVerificationSuccessScreen(),
+  ),
 
-  // GetPage(
-  //   name: AppRoutes.createAccount,
-  //   page: () => const CreateAccountScreen(),
-  // ),
+  GetPage(
+    name: RoutesManager.donorAccVerificationScreen,
+    page: () => const DonorAccVerificationScreen(),
+  ),
+  GetPage(
+    name: RoutesManager.donorVerificationShellScreen,
+    page: () => const DonorVerificationShellScreen(),
+    binding: DonorVerificationBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.donorVerificationSuccessScreen,
+    page: () => const DonorVerificationSuccessScreen(),
+  ),
+  GetPage(
+    name: RoutesManager.donorPersonalInfoScreen,
+    page: () => const DonorPersonalInfoScreen(),
+    binding: DonorPersonalInfoBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.notificationSettingsScreen,
+    page: () => NotificationSettingsScreen(),
+    binding: NotificationSettingBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.statusDonorverificationScreen,
+    page: () => const StatusDonorVerificationScreen(),
+    binding: StatusDonorVerificationBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.securityPrivacyScreen,
+    page: () => const SecurityPrivacy(),
+    binding: SecurityPrivactBinding(),
+  ),
   // GetPage(
   //   name: RoutesManager.homeScreen,
   //   page: () => const HomeScreen(),
@@ -187,10 +244,5 @@ final List<GetPage<dynamic>> getPages = [
   //     HomeBinding(),
   //     CategoryBinding(),
   //   ],
-  // ),
-  // GetPage(
-  //   name: RoutesManager.subCategoryScreen,
-  //   page: () => const SubCategoriesScreen(),
-  //   binding: SubCategoryBinding(),
   // ),
 ];

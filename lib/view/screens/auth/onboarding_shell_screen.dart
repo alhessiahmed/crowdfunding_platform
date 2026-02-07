@@ -25,7 +25,7 @@ class OnboardingShellScreen extends GetView<CreatorOnboardingController> {
                 Row(
                   children: [
                     InkWell(
-                      onTap: () => controller.previousStep(),
+                      onTap: controller.previous,
                       child: SvgPicture.asset(ImagesManager.backIcon),
                     ),
                     Spacer(),
