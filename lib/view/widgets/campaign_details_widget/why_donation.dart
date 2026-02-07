@@ -11,9 +11,6 @@ class WhyDonateSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cardColor = Theme.of(context).brightness == Brightness.dark
-        ? ColorsManager.bgGoogle
-        : ColorsManager.white;
     final checkIcon = Get.isDarkMode
         ? ImagesManager.checkIconDark
         : ImagesManager.checkIconLight;
