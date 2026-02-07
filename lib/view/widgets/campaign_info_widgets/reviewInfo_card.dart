@@ -6,7 +6,7 @@ class ReviewInfoCard extends StatelessWidget {
   final IconData icon;
   final String text;
 
-  const ReviewInfoCard({required this.icon, required this.text});
+  const ReviewInfoCard({super.key, required this.icon, required this.text});
 
   @override
   Widget build(BuildContext context) {
