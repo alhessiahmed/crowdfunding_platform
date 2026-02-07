@@ -1,11 +1,7 @@
-import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
-import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/view/widgets/profile_widgets/details_Info_profile.dart';
 import 'package:crowdfunding_platform/view/widgets/profile_widgets/header_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
