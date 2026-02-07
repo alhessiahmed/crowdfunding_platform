@@ -12,9 +12,9 @@ import 'package:get/get.dart';
 
 class PaymentMethodScreens extends GetView<PaymentController> {
   const PaymentMethodScreens({super.key});
-
   @override
   Widget build(BuildContext context) {
+    final int starNo = (Get.arguments is int) ? Get.arguments as int : 50;
     final paymentMethods = [
       PaymentMethod(
         type: PaymentType.visa,
@@ -51,8 +51,8 @@ class PaymentMethodScreens extends GetView<PaymentController> {
             SizedBox(height: 8.h),
             DonationSummaryCard(
               summary: DonationSummary(
-                numberStars: 50,
-                amount: 500,
+                numberStars: starNo,
+                amount: starNo *100,
                 title: 'قطرة حياة : مياه نظيفة لأطفال غزة',
                 campaignImage: ImagesManager.placeHolder,
                 currency: 'Shakel'.tr,
@@ -70,7 +70,7 @@ class PaymentMethodScreens extends GetView<PaymentController> {
             Obx(() {
               final selectedType = controller.selectedPaymentType.value;
               return Expanded(
-                flex: 3,
+                flex: 2,
                 child: ListView.builder(
                   itemCount: paymentMethods.length,
                   shrinkWrap: true,
@@ -78,13 +78,29 @@ class PaymentMethodScreens extends GetView<PaymentController> {
                   itemBuilder: (context, index) {
                     final method = paymentMethods[index];
                     final isSelected = method.type == selectedType;
-
-                    return PaymentMethodTile(
-                      title: method.title,
-                      isSelected: isSelected,
-                      iconAsset: method.assetIcon,
-                      onTap: () => controller.selectPaymentMethod(method.type),
-                    ).paddingOnly(bottom: 8.h);
+                    if (index == 0) {
+                      return PaymentMethodTile(
+                        title: method.title,
+                        isSelected: isSelected,
+                        iconAsset: method.assetIcon,
+                        onTap: () =>
+                            controller.selectPaymentMethod(method.type),
+                      ).paddingOnly(bottom: 8.h);
+                    } else {
+                      return IgnorePointer(
+                        ignoring: true,
+                        child: Opacity(
+                          opacity: 0.5,
+                          child: PaymentMethodTile(
+                            title: method.title,
+                            isSelected: isSelected,
+                            iconAsset: method.assetIcon,
+                            onTap: () =>
+                                controller.selectPaymentMethod(method.type),
+                          ).paddingOnly(bottom: 8.h),
+                        ),
+                      );
+                    }
                   },
                 ),
               );

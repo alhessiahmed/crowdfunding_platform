@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+import 'package:crowdfunding_platform/controller/core/routes/index.dart';
 
 import '../../../../model/donation_summary.dart';
 import '../../../core/constants/images_manager.dart';
@@ -18,7 +18,9 @@ class ThanksForPaymentController extends GetxController {
     currency: 'Shakel'.tr,
   );
 
-  void onExploreCampaigns() {}
+  void onExploreCampaigns() {Get.toNamed(RoutesManager.discoverScreen);}
 
-  void onCreateAccount() {}
+  void onCreateAccount() {
+    Get.offAllNamed(RoutesManager.signUpScreen);
+  }
 }

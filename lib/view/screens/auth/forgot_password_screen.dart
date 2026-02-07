@@ -3,7 +3,6 @@ import 'package:crowdfunding_platform/controller/getx/controllers/auth/forgot_pa
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../controller/core/routes/routes_manager.dart';
 import '../../widgets/loading_widget.dart';
 import '../../widgets/text_field_widget.dart';
 
@@ -43,12 +42,12 @@ class ForgotPasswordScreen extends GetView<ForgotPasswordController> {
                   controller: controller.emailController,
                   hintText: 'email'.tr,
                   label: 'email'.tr,
+                  keyboardType: TextInputType.emailAddress,
+                  validator: controller.email,
                 ),
                 SizedBox(height: 16.h),
                 ElevatedButton(
-                  onPressed: () {
-                    Get.offNamed(RoutesManager.verificationScreen);
-                  },
+                  onPressed: controller.submit,
                   child: Text('reset_password'.tr),
                 ),
                 SizedBox(height: 24.h),

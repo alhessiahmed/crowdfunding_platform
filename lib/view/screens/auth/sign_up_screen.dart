@@ -49,8 +49,9 @@ class SignUpScreen extends GetView<SignUpController> {
                       child: TextFieldWidget(
                         label: 'first_name'.tr,
                         hintText: 'first_name'.tr,
-
                         controller: controller.firstNameController,
+                        validator: (value) =>
+                            controller.requiredField(value, 'first_name'.tr),
                       ),
                     ),
                     SizedBox(width: 12.w),
@@ -59,6 +60,8 @@ class SignUpScreen extends GetView<SignUpController> {
                         label: 'last_name'.tr,
                         hintText: 'last_name'.tr,
                         controller: controller.lastNameController,
+                        validator: (value) =>
+                            controller.requiredField(value, 'last_name'.tr),
                       ),
                     ),
                   ],
@@ -66,14 +69,17 @@ class SignUpScreen extends GetView<SignUpController> {
                 SizedBox(height: 16.h),
                 TextFieldWidget(
                   controller: controller.emailController,
+                  keyboardType: TextInputType.emailAddress,
                   hintText: 'email'.tr,
                   label: 'email'.tr,
+                  validator: controller.email,
                 ),
                 SizedBox(height: 16.h),
                 Obx(
                   () => TextFieldWidget(
                     label: 'password'.tr,
                     hintText: 'password'.tr,
+                    validator: controller.password,
                     suffixIcon: Obx(
                       () => IconButton(
                         onPressed: () {
@@ -101,9 +107,7 @@ class SignUpScreen extends GetView<SignUpController> {
                 ),
                 SizedBox(height: 16.h),
                 ElevatedButton(
-                  onPressed: () {
-                    Get.toNamed(RoutesManager.userTypeSelectionScreen);
-                  },
+                  onPressed: controller.submit,
                   child: Text('create_acc'.tr),
                 ),
                 SizedBox(height: 4.h),
@@ -152,5 +156,5 @@ class SignUpScreen extends GetView<SignUpController> {
     );
   }
 
-  Future<void> _performSignUp() async {}
+  // Future<void> _performSignUp() async {}
 }
