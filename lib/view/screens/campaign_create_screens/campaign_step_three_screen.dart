@@ -290,7 +290,7 @@ class CampaignStepThreeScreen extends GetView<CampaignStepThreeController> {
                     ),
                     label: 'vendor_message'.tr,
                     hintText: 'vendor_message_hint'.tr,
-                    controller: controller.campaignGoalController,
+                    controller: controller.motivationalMessageController,
                   ),
 
                   InfoRowWidget(
