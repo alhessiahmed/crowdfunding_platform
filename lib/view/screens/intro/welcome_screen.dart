@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
+import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_controller.dart';
 import 'package:crowdfunding_platform/view/widgets/secondary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,7 +41,10 @@ class WelcomeScreen extends StatelessWidget {
             SizedBox(
               width: 345.w,
               child: ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
+                  await SharedPrefController().saveUserType(
+                    UserRole.GUEST.name,
+                  );
                   Get.offAllNamed(RoutesManager.mainScreen);
                 },
                 child: Text('donate_now'.tr),
@@ -51,7 +55,7 @@ class WelcomeScreen extends StatelessWidget {
               width: 345.w,
               child: SecondaryButton(
                 onPressed: () {
-                  Get.offAllNamed(RoutesManager.signUpScreen);
+                  Get.offAllNamed(RoutesManager.signInScreen);
                 },
                 label: 'sign_in_up'.tr,
               ),

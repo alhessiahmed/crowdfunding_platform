@@ -2,7 +2,6 @@ import 'package:crowdfunding_platform/controller/getx/controllers/donor/donor_ve
 import 'package:crowdfunding_platform/view/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../controller/core/constants/colors_manager.dart';
@@ -43,15 +42,6 @@ class DonorIdVerificationScreen extends GetView<DonorVerificationController> {
               controller: controller.idController,
               hintText: '',
               label: 'id'.tr,
-            ),
-            SizedBox(height: 16.h),
-            TextFieldWidget(
-              controller: controller.dobController,
-              hintText: '',
-              suffixIcon: SvgPicture.asset(ImagesManager.calender2),
-              label: 'dob'.tr,
-              readOnly: true,
-              onTap: controller.pickDate,
             ),
             SizedBox(height: 16.h),
             Container(

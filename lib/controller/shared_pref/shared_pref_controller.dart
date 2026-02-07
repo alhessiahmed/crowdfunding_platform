@@ -1,26 +1,31 @@
 // import 'package:get/get.dart';
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-enum UserInfo {
-  id,
-  name,
-  phone,
-  image,
-  token,
-  isLoggedIn,
-  rememberMe,
-  firstVisit,
-  lang,
-  suggestions,
-  provider,
-  email,
-}
+// enum UserInfo {
+//   id,
+//   name,
+//   phone,
+//   image,
+//   token,
+//   isLoggedIn,
+//   rememberMe,
+//   firstVisit,
+//   lang,
+//   suggestions,
+//   provider,
+//   email,
+// }
 
-enum Providers { google, phone }
+enum PrefKeys { token, user, userType }
 
-class SharedPrefController extends GetxService{
-  static SharedPrefController get to =>   Get.find();
+enum UserRole { CAMPAIGN_CREATOR, DONOR, GUEST }
+// enum Providers { google, phone }
+
+class SharedPrefController extends GetxService {
+  static SharedPrefController get to => Get.find();
   static SharedPrefController? _instance;
   late SharedPreferences _sharedPreferences;
 
@@ -29,7 +34,7 @@ class SharedPrefController extends GetxService{
   factory SharedPrefController() {
     return _instance ??= SharedPrefController._();
   }
- 
+
   Future<SharedPrefController> initPreferences() async {
     _sharedPreferences = await SharedPreferences.getInstance();
     return this;
@@ -39,8 +44,54 @@ class SharedPrefController extends GetxService{
   bool get hasSeenOnboarding =>
       _sharedPreferences.getBool('hasSeenOnboarding') ?? false;
 
-   Future<void> setSeenOnboarding() async {
+  Future<void> setSeenOnboarding() async {
     await _sharedPreferences.setBool('hasSeenOnboarding', true);
+  }
+
+  // ───────────────── TOKEN ─────────────────
+  Future<bool> saveToken(String token) async {
+    return await _sharedPreferences.setString(PrefKeys.token.name, token);
+  }
+
+  String? get token => _sharedPreferences.getString(PrefKeys.token.name);
+
+  Future<bool> clearToken() async {
+    return await _sharedPreferences.remove(PrefKeys.token.name);
+  }
+
+  // ───────────────── SAVE USER ─────────────────
+  Future<bool> saveUser(Map<String, dynamic> userJson) async {
+    return await _sharedPreferences.setString(
+      PrefKeys.user.name,
+      jsonEncode(userJson),
+    );
+  }
+
+  Map<String, dynamic>? get user {
+    final data = _sharedPreferences.getString(PrefKeys.user.name);
+    if (data == null) return null;
+    return jsonDecode(data);
+  }
+
+  Future<bool> clearUser() async {
+    return await _sharedPreferences.remove(PrefKeys.user.name);
+  }
+
+  // ───────────────── UserType ─────────────────
+  Future<bool> saveUserType(String userType) async {
+    return await _sharedPreferences.setString(PrefKeys.userType.name, userType);
+  }
+
+  String? get userType => _sharedPreferences.getString(PrefKeys.userType.name);
+
+  Future<bool> clearUserType() async {
+    return await _sharedPreferences.remove(PrefKeys.userType.name);
+  }
+  // ───────────────── LOGOUT ─────────────────
+
+  Future<void> clearAuth() async {
+    await clearToken();
+    await clearUser();
   }
 
   // Future<void> loginForFirstTime() async {
