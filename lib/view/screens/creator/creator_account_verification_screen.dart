@@ -1,0 +1,58 @@
+import 'package:crowdfunding_platform/controller/getx/controllers/creator/creator_verification_controller.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+
+import '../../../controller/core/constants/images_manager.dart';
+import '../../../model/account_type.dart';
+import '../../widgets/selection_card.dart';
+
+class CreatorAccountVerificationScreen
+    extends GetView<CreatorVerificationController> {
+  const CreatorAccountVerificationScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(
+      () => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 10.h),
+          Text(
+            'what_account_to_verify'.tr,
+            style: Theme.of(context).textTheme.bodyLarge,
+            textAlign: TextAlign.start,
+          ),
+          SizedBox(height: 16.h),
+          Text(
+            'what_account_to_verify_info'.tr,
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium!.copyWith(fontSize: 12.sp),
+          ),
+          SizedBox(height: 24.h),
+          SelectionCard(
+            iconPath: Get.isDarkMode
+                ? ImagesManager.individualIconDark
+                : ImagesManager.individualIcon,
+            title: 'individual'.tr,
+            subtitle: 'individual_info'.tr,
+            isSelected: controller.accountType.value == AccountType.individual,
+            onTap: () => controller.selectAccountType(AccountType.individual),
+          ),
+          SizedBox(height: 12.h),
+          SelectionCard(
+            iconPath: Get.isDarkMode
+                ? ImagesManager.organizationIconDark
+                : ImagesManager.organizationIcon,
+            title: 'organization'.tr,
+            subtitle: 'organization_info'.tr,
+            isSelected:
+                controller.accountType.value == AccountType.organization,
+            onTap: () => controller.selectAccountType(AccountType.organization),
+          ),
+        ],
+      ),
+    );
+  }
+}

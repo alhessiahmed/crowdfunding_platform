@@ -1,4 +1,3 @@
-import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
 import 'package:crowdfunding_platform/view/widgets/transparent_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -149,11 +148,13 @@ class VerificationScreen extends GetView<VerificationController> {
                       ),
                     ),
                     SizedBox(height: 16.h),
-                    ElevatedButton(
-                      onPressed: () {
-                        Get.offNamed(RoutesManager.resetPasswordScreen);
-                      },
-                      child: Text('confirm_code'.tr),
+                    Obx(
+                      () => ElevatedButton(
+                        onPressed: controller.isCodeComplete
+                            ? controller.submitCode
+                            : null, // disables button automatically
+                        child: Text('confirm_code'.tr),
+                      ),
                     ),
                     Obx(
                       () => TransparentButton(

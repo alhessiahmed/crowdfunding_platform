@@ -23,9 +23,8 @@ class TopCampaignCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(32.r),
             boxShadow: [
               BoxShadow(
-                color: Colors.black12,
-                blurRadius: 14,
-                offset: const Offset(0, 6),
+                color: Colors.black.withOpacity(.25),
+                blurRadius: 4,
               ),
             ],
           ),

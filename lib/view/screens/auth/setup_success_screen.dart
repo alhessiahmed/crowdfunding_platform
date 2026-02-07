@@ -35,14 +35,14 @@ class SetupSuccessScreen extends StatelessWidget {
             SizedBox(height: 24.h),
             ElevatedButton(
               onPressed: () {
-                Get.offNamed(RoutesManager.onboardingScreen);
+                Get.offNamed(RoutesManager.homeScreen);
               },
               child: Text('create_first_campaign'.tr),
             ),
             SizedBox(height: 12.h),
             ElevatedButton(
               onPressed: () {
-                Get.offNamed(RoutesManager.onboardingScreen);
+                Get.offNamed(RoutesManager.homeScreen);
               },
               style: ElevatedButton.styleFrom(
                 // textStyle: Theme.of(

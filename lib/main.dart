@@ -9,7 +9,6 @@ import 'controller/core/routes/routes_manager.dart';
 import 'controller/core/theme/theme_manager.dart';
 import 'controller/getx/controllers/theme_controller.dart';
 import 'controller/localization/app_translations.dart';
-// import 'controller/shared_pref/shared_pref_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,11 +16,6 @@ void main() async {
   await Get.putAsync<SharedPrefController>(
     () async => await SharedPrefController().initPreferences(),
   );
-  // await DbController().initDatabase();
-  //await SharedPrefController().initPreferences();
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
   runApp(const MyApp());
 }
 
@@ -36,13 +30,16 @@ class MyApp extends StatelessWidget {
     ]);
     return ScreenUtilInit(
       designSize: const Size(393, 852),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      ensureScreenSize: true,
       builder: (context, child) {
         return GetMaterialApp(
+          textDirection: TextDirection.rtl,
           debugShowCheckedModeBanner: false,
           theme: AppTheme.light(),
           darkTheme: AppTheme.dark(),
           themeMode: ThemeController.to.themeMode,
-          // themeMode: ThemeMode.dark,
           // initialRoute: RoutesManager.launchScreen,
           initialRoute: RoutesManager.walletScreen,
           getPages: getPages,
@@ -57,7 +54,7 @@ class MyApp extends StatelessWidget {
             );
           },
           translations: AppTranslations(),
-          locale: Locale('ar'),
+          locale: const Locale('ar'),
           // locale: Locale(SharedPrefController().lang),
           fallbackLocale: const Locale('ar'),
         );
