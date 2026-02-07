@@ -8,7 +8,8 @@ plugins {
 android {
     namespace = "com.example.crowdfunding_platform"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "29.0.13846066"
+
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

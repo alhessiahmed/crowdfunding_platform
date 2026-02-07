@@ -67,16 +67,16 @@ class ImagesManager {
   static const String calender2 = '$iconsPath/ic_calendar-2.svg';
   static const String profile2user = '$iconsPath/ic_profile-2user.svg';
   static const String notificationBing = '$iconsPath/ic_notification-bing.svg';
-  static const String notificationIcon = '$iconsPath/ic_notification.svg';
+  static const String notificationIcon = '$iconsPath/ic_notification2.svg';
   static const String pushIcon = '$iconsPath/ic_pause.svg';
-  static const String trashIcon = '$iconsPath/ic_trash.svg';
+  static const String trashIcon = '$iconsPath/ic_trash2.svg';
   static const String addIcon = '$iconsPath/ic_add.svg';
   static const String settingIcon = '$iconsPath/Ic_setting.svg';
   static const String remainingDaysIcon = '$iconsPath/ic_remaining_days.svg';
   static const String lastUpdatesIcon = '$iconsPath/ic_last_updates.svg';
   static const String lifeAffectedIcon = '$iconsPath/ic_life_affected.svg';
   static const String completeIcon = '$iconsPath/ic_complete.svg';
-  static const String sendIcon = '$iconsPath/ic_send.svg';
+  static const String sendIcon = '$iconsPath/ic_send2.svg';
   static const String uploadImageIcon = '$iconsPath/ic_uploadImage.svg';
   static const String targetCampaignIcon = '$iconsPath/ic_target_campaign.svg';
   static const String closeIcon = '$iconsPath/ic_close.svg';
@@ -88,13 +88,13 @@ class ImagesManager {
   static const String threeDotesSettingsIcon =
       '$iconsPath/ic_three_dotes_setting.svg';
   static const String bankIcon = '$iconsPath/ic_bank.svg';
-  static const String verifiedIcon = '$iconsPath/ic_verified.svg';
+  static const String verifiedIcon = '$iconsPath/ic_verified2.svg';
   static const String rightArrowIcon = '$iconsPath/ic_arrow-circle-right_2.svg';
   static const String rushStarIcon = '$iconsPath/ic_rush_star.svg';
-  static const String shieldIcon = '$iconsPath/ic_shield.svg';
+  static const String shieldIcon = '$iconsPath/ic_shield2.svg';
   static const String phoneIcon = '$iconsPath/ic_phone.svg';
   static const String clockIcon = '$iconsPath/ic_clock.svg';
-  static const String logoutIcon = '$iconsPath/ic_logout.svg';
+  static const String logoutIcon = '$iconsPath/ic_logout2.svg';
   static const String withdrawIcon = '$iconsPath/ic_withdraw.svg';
   static const String depositIcon = '$iconsPath/ic_deposit.svg';
   static const String onprogressIcon = '$iconsPath/ic_onprogress.svg';
