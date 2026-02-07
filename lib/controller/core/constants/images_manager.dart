@@ -123,7 +123,7 @@ class ImagesManager {
   static const String trashIcon = '$iconsPath/ic_trash2.svg';
   static const String pauseCircle = '$iconsPath/ic_pause-circle.svg';
   static const String note2 = '$iconsPath/ic_note-2.svg';
-
+ ///////////////////////
   static const String completedStatus = '$iconsPath/ic_completed_status.svg';
   static const String activeStatus = '$iconsPath/ic_active_status.svg';
   static const String settings2 = '$iconsPath/ic_setting-2.svg';
