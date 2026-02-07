@@ -6,6 +6,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class WhyDonateSection extends StatelessWidget {
+  const WhyDonateSection({super.key});
+
   @override
   Widget build(BuildContext context) {
     // final cardColor = Theme.of(context).brightness == Brightness.dark

@@ -1,18 +1,13 @@
-import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/view/widgets/alternative_button.dart';
-import 'package:crowdfunding_platform/view/widgets/icon_with_background.dart';
 import 'package:crowdfunding_platform/view/widgets/idea_box_app.dart';
 import 'package:crowdfunding_platform/view/widgets/information_card.dart';
 import 'package:crowdfunding_platform/view/widgets/status_donor_verification/expected_time_box.dart';
 import 'package:crowdfunding_platform/view/widgets/status_donor_verification/status_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:get/state_manager.dart';
 
 class StatusDonorVerificationScreen extends StatelessWidget {
   const StatusDonorVerificationScreen({super.key});
