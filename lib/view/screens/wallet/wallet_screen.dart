@@ -10,31 +10,31 @@ import 'package:get/get.dart';
 
 class WalletScreen extends GetView<WalletController> {
   const WalletScreen({super.key});
-    
+
   @override
   Widget build(BuildContext context) {
     final transactions = <_WalletTransactionItem>[
       _WalletTransactionItem(
-        title: 'bank_transfer'.tr,
-        dateText: 'wallet_sample_date'.tr,
+        title: 'تحويل بنكي ',
+        dateText: '25/أكتوبر/2025',
         amount: 5000,
         type: WalletTransactionType.withdraw,
       ),
       _WalletTransactionItem(
-        title: 'school_bag_campaign_donation'.tr,
-        dateText: 'wallet_sample_date'.tr,
+        title: 'تبرع حملة الحقيبة المدرسية',
+        dateText: '25/أكتوبر/2025',
         amount: 5000,
         type: WalletTransactionType.donation,
       ),
       _WalletTransactionItem(
-        title: 'school_bag_campaign_donation'.tr,
-        dateText: 'wallet_sample_date'.tr,
+        title: 'تبرع حملة الحقيبة المدرسية',
+        dateText: '25/أكتوبر/2025',
         amount: 5000,
         type: WalletTransactionType.donation,
       ),
       _WalletTransactionItem(
-        title: 'school_bag_campaign_donation'.tr,
-        dateText: 'wallet_sample_date'.tr,
+        title: 'تبرع حملة الحقيبة المدرسية',
+        dateText: '25/أكتوبر/2025',
         amount: 5000,
         type: WalletTransactionType.donation,
       ),
@@ -61,7 +61,6 @@ class WalletScreen extends GetView<WalletController> {
                   showRequestButton: true,
                   onRequestWithdraw: () {
                     Get.toNamed(RoutesManager.requestToWithdrawProfitsScreen);
-                    
                   },
                 ),
                 SizedBox(height: 16.h),

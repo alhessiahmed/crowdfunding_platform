@@ -15,7 +15,7 @@ class UserWelcomeScreen extends StatelessWidget {
     // final UserType? userType = Get.arguments == null
     //     ? null
     //     : Get.arguments as UserType;
-    final UserType? userType = draft?.userType;
+    final UserType? userType = draft.userType;
     print(userType?.name ?? 'empty');
 
     final String welcomeTitle = userType == UserType.donor
