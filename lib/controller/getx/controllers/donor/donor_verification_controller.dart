@@ -1,15 +1,21 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:crowdfunding_platform/controller/api/api_controllers/donor_api_controller.dart';
+import 'package:crowdfunding_platform/model/api_response.dart';
 import '../../../core/routes/routes_manager.dart';
+import '../../../shared_pref/shared_pref_controller.dart';
 
 class DonorVerificationController extends GetxController {
+  final DonorApiController _donorApiController = DonorApiController();
   final step = 1.obs;
   final pageController = PageController();
   final currentPage = 0.obs;
   final totalSteps = 4;
+  final isLoading = false.obs;
 
   /// Step 1
   /// Variables
@@ -190,8 +196,45 @@ class DonorVerificationController extends GetxController {
     super.onClose();
   }
 
-  void finish() {
-    // if (!formKey.currentState!.validate()) return;
-    Get.offAllNamed(RoutesManager.donorVerificationSuccessScreen);
+  void finish() async {
+    if (!idFormKey.currentState!.validate()) return;
+    isLoading(true);
+    final response = await verifyDonor();
+    isLoading(false);
+    if (response.success) {
+      Get.offAllNamed(RoutesManager.donorVerificationSuccessScreen);
+    } else {
+      Get.showSnackbar(
+        GetSnackBar(message: response.message, duration: Duration(seconds: 2)),
+      );
+    }
+  }
+
+  Future<ApiResponse<Map<String, dynamic>>> verifyDonor() async {
+    final user = SharedPrefController().user;
+    final userId = user?['id'] as String?;
+    print(userId);
+    if (userId == null || userId.isEmpty) {
+      return ApiResponse<Map<String, dynamic>>(
+        success: false,
+        message: 'User not found',
+        statusCode: 400,
+      );
+    }
+    return _donorApiController.patchDonorMultipart(
+      id: userId,
+      email: emailController.text.trim().isEmpty
+          ? null
+          : emailController.text.trim(),
+      phoneNumber: phoneController.text.trim().isEmpty ? null : fullPhoneNumber,
+      country: selectedCountry.value.name,
+      fullNameOnId: nameController.text.trim().isEmpty
+          ? null
+          : nameController.text.trim(),
+      idNumber: idController.text.trim().isEmpty
+          ? null
+          : idController.text.trim(),
+      idFront: idFile.value != null ? File(idFile.value!.path) : null,
+    );
   }
 }
