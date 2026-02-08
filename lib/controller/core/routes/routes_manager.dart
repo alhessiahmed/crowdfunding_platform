@@ -16,16 +16,27 @@ class RoutesManager {
   static const onboardingShellScreen = '/onboarding_shell_screen';
   static const accountTypeScreen = '/account_type_screen';
   static const setupSuccessScreen = '/setup_success_screen';
+  static const homeScreen = '/home_screen';
+  static const donarHomeScreen = '/donar_home_screen';
   static const discoverScreen = '/discover_screen';
   static const mainScreen = '/main_screen';
+  static const loginActivityScreen = '/login_activity_screen';
   static const campaignDetailsScreen = '/campaign_details_screen';
   static const paymentScreen = '/payment_screen';
+  static const choosePaymentMethodScreen = '/choose_payment_method_screen';
+  static const addPaymentMethodScreen = '/add_payment_method_screen';
   static const creditCardPaymentScreen = '/credit_card_payment_screen';
   static const confirmPaymentScreen = '/confirm_payment_screen';
   static const thanksForPaymentScreen = '/thanks_for_payment_screen';
+  static const controlCampaignScreen = '/control_campaign_screen';
+  static const addUpdateToCampaignScreen = '/add_update_to_campaign_screen';
+  static const editCampaignDetailsScreen = '/edit_campaign_details_screen';
+  static const walletScreen = '/wallet_screen';
+  static const requestToWithdrawProfitsScreen =
+      '/request_to_withdraw_profits_screen';
+  static const summerOfWithdrawScreen = '/summer_of_withdraw_screen';
   static const profileScreen = '/profile_screen';
   static const myCampaignsScreen = '/my_campaigns_screen';
-  static const homeScreen = '/home_screen';
 
   static const creatorVerificationScreen = '/creator_verification_screen';
   static const creatorVerificationSuccessScreen =

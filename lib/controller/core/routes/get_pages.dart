@@ -1,20 +1,33 @@
 import 'package:crowdfunding_platform/controller/getx/bindings/auth/forgot_password_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/auth/user_type_selection_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/auth/verification_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/add_update_to_campaign_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/control_campaign_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/campaign/campaign_step_five_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/campaign/campaign_step_four_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/campaign/campaign_step_one_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/campaign/campaign_step_three_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/campaign/campaign_step_two_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/campaign_details_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/edit_campaign_details_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/donar_home_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/donation_history/donation_history_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/discover_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/home_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/login_activity_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/main_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/my_campagins_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/notification/notification_setting_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/payment/add_payment_method_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/payment/choose_payment_method_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/profile_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/request_to_withdraw_profits_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/creator/creator_verfication_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/notification/notification_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/summer_of_withdraw_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/wallet_binding.dart';
+import 'package:crowdfunding_platform/view/screens/add_pymaent_method/add_payment_method_page.dart';
+import 'package:crowdfunding_platform/view/screens/add_pymaent_method/choose_payment_method_page.dart';
 import 'package:crowdfunding_platform/view/screens/auth/forgot_password_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/reset_password_success_screen.dart';
 import 'package:crowdfunding_platform/view/screens/auth/setup_success_screen.dart';
@@ -28,6 +41,7 @@ import 'package:crowdfunding_platform/view/screens/campaign_details_screen.dart'
 import 'package:crowdfunding_platform/view/screens/discover_screen.dart';
 import 'package:crowdfunding_platform/view/screens/creator/creator_verfication_screen.dart';
 import 'package:crowdfunding_platform/view/screens/creator/creator_verification_success_screen.dart';
+import 'package:crowdfunding_platform/view/screens/doner_home/donar_home_screen.dart';
 import 'package:crowdfunding_platform/view/screens/donor/donor_personal_info_screen.dart';
 import 'package:crowdfunding_platform/view/screens/donor/verification/donor_acc_verification_screen.dart';
 import 'package:crowdfunding_platform/view/screens/donor/verification/donor_verification_shell_screen.dart';
@@ -35,10 +49,17 @@ import 'package:crowdfunding_platform/view/screens/donor/verification/donor_veri
 import 'package:crowdfunding_platform/view/screens/donation_history/donation_history_screen.dart';
 import 'package:crowdfunding_platform/view/screens/home_screen.dart';
 import 'package:crowdfunding_platform/view/screens/intro/welcome_screen.dart';
+import 'package:crowdfunding_platform/view/screens/login_activity/login_activity_screen.dart';
 import 'package:crowdfunding_platform/view/screens/main_screen.dart';
 import 'package:crowdfunding_platform/view/screens/my_campaigns.dart';
 import 'package:crowdfunding_platform/view/screens/notification/notification_setting_screen.dart';
 import 'package:crowdfunding_platform/view/screens/notification/notification_screen.dart';
+import 'package:crowdfunding_platform/view/screens/update_campaign/add_update_to_campagin_screen.dart';
+import 'package:crowdfunding_platform/view/screens/update_campaign/control_campaign_screen.dart';
+import 'package:crowdfunding_platform/view/screens/update_campaign/edit_campaign_details_screen.dart';
+import 'package:crowdfunding_platform/view/screens/wallet/Request_to_withdraw_profits_screen.dart';
+import 'package:crowdfunding_platform/view/screens/wallet/summer_of_withdraw_screen.dart';
+import 'package:crowdfunding_platform/view/screens/wallet/wallet_screen.dart';
 import 'package:get/get.dart';
 import '../../../view/screens/auth/onboarding_shell_screen.dart';
 import '../../../view/screens/auth/reset_password_screen.dart';
@@ -125,12 +146,30 @@ final List<GetPage<dynamic>> getPages = [
     binding: MainBinding(),
   ),
   GetPage(
+    name: RoutesManager.loginActivityScreen,
+    page: () => const LoginActivityScreen(),
+    binding: LoginActivityBinding(),
+  ),
+  GetPage(
     name: RoutesManager.discoverScreen,
     page: () => const DiscoverScreen(),
     bindings: [
       DiscoverBinding(),
       // CategoryBinding(),
     ],
+  ),
+  GetPage(
+    name: RoutesManager.homeScreen,
+    page: () => const HomeScreen(),
+    bindings: [
+      DiscoverBinding(),
+      HomeBinding(),
+    ],
+  ),
+  GetPage(
+    name: RoutesManager.donarHomeScreen,
+    page: () => const DonarHomeScreen(),
+    binding: DonarHomeBinding(),
   ),
   GetPage(
     name: RoutesManager.campaignDetailsScreen,
@@ -142,6 +181,16 @@ final List<GetPage<dynamic>> getPages = [
     name: RoutesManager.paymentScreen,
     page: () => const PaymentMethodScreens(),
     binding: PaymentBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.choosePaymentMethodScreen,
+    page: () => const ChoosePaymentMethodPage(),
+    binding: ChoosePaymentMethodBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.addPaymentMethodScreen,
+    page: () => const AddPaymentMethodPage(),
+    binding: AddPaymentMethodBinding(),
   ),
   GetPage(
     name: RoutesManager.creditCardPaymentScreen,
@@ -156,6 +205,36 @@ final List<GetPage<dynamic>> getPages = [
     name: RoutesManager.thanksForPaymentScreen,
     page: () => const ThanksForPaymentScreen(),
     binding: ThanksForPaymentBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.controlCampaignScreen,
+    page: () => const ControlCampaignScreen(),
+    binding: ControlCampaignBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.addUpdateToCampaignScreen,
+    page: () => const AddUpdateToCampaign(),
+    binding: AddUpdateToCampaignBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.editCampaignDetailsScreen,
+    page: () => const EditCampaignDetailsScreen(),
+    binding: EditCampaignDetailsBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.walletScreen,
+    page: () => const WalletScreen(),
+    binding: WalletBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.requestToWithdrawProfitsScreen,
+    page: () => const RequestToWithdrawProfitsScreen(),
+    binding: RequestToWithdrawProfitsBinding(),
+  ),
+  GetPage(
+    name: RoutesManager.summerOfWithdrawScreen,
+    page: () => const SummerOfWithdrawScreen(),
+    binding: SummerOfWithdrawBinding(),
   ),
   GetPage(
     name: RoutesManager.CampaignStepOneScreen,
@@ -201,11 +280,6 @@ final List<GetPage<dynamic>> getPages = [
     name: RoutesManager.myCampaignsScreen,
     page: () => const MyCampaignsScreen(),
     binding: MyCampaginsBinding(),
-  ),
-  GetPage(
-    name: RoutesManager.homeScreen,
-    page: () => const HomeScreen(),
-    binding: DiscoverBinding(),
   ),
   GetPage(
     name: RoutesManager.creatorVerificationScreen,
