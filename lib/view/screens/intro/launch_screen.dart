@@ -1,3 +1,6 @@
+
+import 'dart:developer';
+
 import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,8 +25,18 @@ class _LaunchScreenState extends State<LaunchScreen> {
 
   Future<void> _initAndNavigate() async {
     await Future.delayed(const Duration(seconds: 3));
+if(SharedPrefController().hasSeenOnboarding){ 
+  if(SharedPrefController().user != null){ 
+    log('user data ${SharedPrefController().user.toString()}') ;
+    Get.offAllNamed(RoutesManager.mainScreen);
+  }else{ 
+    Get.offAllNamed(RoutesManager.welcomeScreen);
 
+  }
+}else{ 
     Get.offAllNamed(RoutesManager.onboardingScreen);
+
+}
     // final hasSeenOnboarding = SharedPrefController.to.hasSeenOnboarding;
 
     // if (hasSeenOnboarding) {
