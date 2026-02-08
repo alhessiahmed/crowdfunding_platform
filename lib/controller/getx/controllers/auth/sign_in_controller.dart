@@ -1,7 +1,6 @@
 import 'package:crowdfunding_platform/controller/getx/controllers/auth_validation_mixin.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 
 import '../../../api/api_controllers/auth_api_controller.dart';
 import '../../../core/routes/routes_manager.dart';

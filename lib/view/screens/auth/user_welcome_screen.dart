@@ -11,7 +11,7 @@ class UserWelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final SignUpDraft? draft = Get.arguments as SignUpDraft;
+    final SignUpDraft draft = Get.arguments as SignUpDraft;
     // final UserType? userType = Get.arguments == null
     //     ? null
     //     : Get.arguments as UserType;

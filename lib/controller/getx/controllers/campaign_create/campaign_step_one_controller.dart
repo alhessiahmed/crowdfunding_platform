@@ -3,7 +3,6 @@ import 'package:crowdfunding_platform/controller/getx/controllers/auth/creator_o
 import 'package:crowdfunding_platform/view/screens/campaign_create_screens/campaign_step_one_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:crowdfunding_platform/model/campaign_type.dart';
 
 class CampaignStepOneController extends GetxController {
   final formKey = GlobalKey<FormState>();
