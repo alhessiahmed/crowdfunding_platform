@@ -378,4 +378,5 @@ Map<String, String> arLocale = {
   'verification_failed_description':
       'لم نتمكن من توثيق حسابك في الوقت الحالي بسبب نقص أو عدم وضوح بعض المعلومات.',
   'verification_failed_reason': 'سبب عدم التوثيق',
+  'payment_way' : 'طرق الدفع'
 };

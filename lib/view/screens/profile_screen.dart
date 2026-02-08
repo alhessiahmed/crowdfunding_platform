@@ -1,5 +1,6 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
+import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_controller.dart';
 import 'package:crowdfunding_platform/view/widgets/profile_widgets/details_Info_profile.dart';
 import 'package:crowdfunding_platform/view/widgets/profile_widgets/header_profile.dart';
 import 'package:flutter/material.dart';
@@ -20,31 +21,33 @@ class ProfileScreen extends StatelessWidget {
               children: [
                 HeaderProfile(),
                 DetailsInfoCard(),
-                // Padding(
-                //   padding: EdgeInsets.symmetric(horizontal: 20.w),
-                //   child: ElevatedButton(
-                //     onPressed: () {},
-                //     child: Row(
-                //       spacing: 10.w,
-                //       mainAxisAlignment: MainAxisAlignment.center,
-                //       children: [
-                //         SvgPicture.asset(ImagesManager.logout),
-                //         Text('logout'.tr),
-                //       ],
-                //     ),
-                //   ),
-                // ),
-                // SizedBox(height: 10.h),
-                // Padding(
-                //   padding: EdgeInsets.symmetric(horizontal: 20.w),
-                //   child: ElevatedButton(
-                //     onPressed: () {},
-                //     child: Text('delete_account'.tr),
-                //     style: ElevatedButton.styleFrom(
-                //       backgroundColor: ColorsManager.danger2,
-                //     ),
-                //   ),
-                // ),
+                            if( SharedPrefController().userType != UserRole.GUEST.name)...{
+
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Row(
+                      spacing: 10.w,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(ImagesManager.logout),
+                        Text('logout'.tr),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(height: 10.h),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text('delete_account'.tr),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: ColorsManager.danger2,
+                    ),
+                  ),
+                ),},
                  SizedBox(height: 130.h),
               ],
             ),

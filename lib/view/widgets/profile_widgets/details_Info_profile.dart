@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
+import 'package:crowdfunding_platform/controller/getx/controllers/auth/user_type_selection_controller.dart';
+import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_controller.dart';
 import 'package:crowdfunding_platform/view/widgets/icon_with_background.dart';
 import 'package:crowdfunding_platform/view/widgets/secondary_button.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +16,8 @@ class DetailsInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userType = SharedPrefController().userType;
+    log('////////// user type $userType ');
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Container(
@@ -31,135 +37,174 @@ class DetailsInfoCard extends StatelessWidget {
         padding: EdgeInsets.all(8.w),
         child: Column(
           children: [
-            // ListTile(
-            //   leading: IconWithBackground(
-            //     icon: ImagesManager.profile2,
-            //     lightColor: ColorsManager.dividerColorLight,
-            //   ),
-            //   title: Text(
-            //     'details_info'.tr,
-            //     style: Theme.of(
-            //       context,
-            //     ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
-            //   ),
-            //   trailing: Icon(Icons.arrow_forward_ios, size: 16),
-            // ),
-            // Divider(
-            //   color: Get.isDarkMode
-            //       ? ColorsManager.dividerColorDark
-            //       : ColorsManager.dividerColorLight,
-            // ),
-            // ListTile(
-            //   onTap: () => Get.toNamed(RoutesManager.securityPrivacyScreen),
-            //   leading: IconWithBackground(
-            //     icon: ImagesManager.lockIcon,
-            //     lightColor: ColorsManager.dividerColorLight,
-            //   ),
-            //   title: Text(
-            //     'security_and_privacy'.tr,
-            //     style: Theme.of(
-            //       context,
-            //     ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
-            //   ),
-            //   trailing: Icon(Icons.arrow_forward_ios, size: 16),
-            // ),
-            // Divider(
-            //   color: Get.isDarkMode
-            //       ? ColorsManager.dividerColorDark
-            //       : ColorsManager.dividerColorLight,
-            // ),
-            // ListTile(
-            //   leading: IconWithBackground(
-            //     icon: ImagesManager.notification,
-            //     lightColor: ColorsManager.dividerColorLight,
-            //   ),
-            //   title: Text(
-            //     'notification_preferences'.tr,
-            //     style: Theme.of(
-            //       context,
-            //     ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
-            //   ),
-            //   trailing: Icon(Icons.arrow_forward_ios, size: 16),
-            // ),
-            // Divider(
-            //   color: Get.isDarkMode
-            //       ? ColorsManager.dividerColorDark
-            //       : ColorsManager.dividerColorLight,
-            // ),
-            // ListTile(
-            //   leading: IconWithBackground(
-            //     icon: ImagesManager.hisrotyRounded,
-            //     lightColor: ColorsManager.dividerColorLight,
-            //   ),
-            //   title: Text(
-            //     'donation_record'.tr,
-            //     style: Theme.of(
-            //       context,
-            //     ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
-            //   ),
-            //   trailing: Icon(Icons.arrow_forward_ios, size: 16),
-            // ),
-            // Divider(
-            //   color: Get.isDarkMode
-            //       ? ColorsManager.dividerColorDark
-            //       : ColorsManager.dividerColorLight,
-            // ),
-            // ListTile(
-            //   onTap: () => Get.toNamed(RoutesManager.statusDonorverificationScreen),
-            //   leading: IconWithBackground(
-            //     icon: ImagesManager.verified,
-            //     lightColor: ColorsManager.dividerColorLight,
-            //   ),
-            //   title: Text(
-            //     'account_verification'.tr,
-            //     style: Theme.of(
-            //       context,
-            //     ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
-            //   ),
-            //   trailing: Icon(Icons.arrow_forward_ios, size: 16),
-            // ),
-            // Divider(
-            //   color: Get.isDarkMode
-            //       ? ColorsManager.dividerColorDark
-            //       : ColorsManager.dividerColorLight,
-            // ),
-            // ListTile(
-            //   leading: IconWithBackground(
-            //     icon: ImagesManager.moneys,
-            //     lightColor: ColorsManager.dividerColorLight,
-            //   ),
-            //   title: Text(
-            //     'bank_account_management'.tr,
-            //     style: Theme.of(
-            //       context,
-            //     ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
-            //   ),
-            //   trailing: Icon(Icons.arrow_forward_ios, size: 16),
-            // ),
-            // Divider(
-            //   color: Get.isDarkMode
-            //       ? ColorsManager.dividerColorDark
-            //       : ColorsManager.dividerColorLight,
-            // ),
-            // ListTile(
-            //   leading: IconWithBackground(
-            //     icon: ImagesManager.emptyWallet,
-            //     lightColor: ColorsManager.dividerColorLight,
-            //   ),
-            //   title: Text(
-            //     'wallet'.tr,
-            //     style: Theme.of(
-            //       context,
-            //     ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
-            //   ),
-            //   trailing: Icon(Icons.arrow_forward_ios, size: 16),
-            // ),
-            // Divider(
-            //   color: Get.isDarkMode
-            //       ? ColorsManager.dividerColorDark
-            //       : ColorsManager.dividerColorLight,
-            // ),
+            if (userType != UserRole.GUEST.name) ...{
+              ListTile(
+                onTap: () => Get.toNamed(RoutesManager.donorPersonalInfoScreen),
+                leading: IconWithBackground(
+                  icon: ImagesManager.profile2,
+                  lightColor: ColorsManager.dividerColorLight,
+                ),
+                title: Text(
+                  'details_info'.tr,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
+                ),
+                trailing: Icon(Icons.arrow_forward_ios, size: 16),
+              ),
+              Divider(
+                color: Get.isDarkMode
+                    ? ColorsManager.dividerColorDark
+                    : ColorsManager.dividerColorLight,
+              ),
+              ListTile(
+                onTap: () => Get.toNamed(RoutesManager.securityPrivacyScreen),
+                leading: IconWithBackground(
+                  icon: ImagesManager.lockIcon,
+                  lightColor: ColorsManager.dividerColorLight,
+                ),
+                title: Text(
+                  'security_and_privacy'.tr,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
+                ),
+                trailing: Icon(Icons.arrow_forward_ios, size: 16),
+              ),
+              Divider(
+                color: Get.isDarkMode
+                    ? ColorsManager.dividerColorDark
+                    : ColorsManager.dividerColorLight,
+              ),
+              ListTile(
+                onTap: () =>
+                    Get.toNamed(RoutesManager.notificationSettingsScreen),
+                leading: IconWithBackground(
+                  icon: ImagesManager.notification,
+                  lightColor: ColorsManager.dividerColorLight,
+                ),
+                title: Text(
+                  'notification_preferences'.tr,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
+                ),
+                trailing: Icon(Icons.arrow_forward_ios, size: 16),
+              ),
+              Divider(
+                color: Get.isDarkMode
+                    ? ColorsManager.dividerColorDark
+                    : ColorsManager.dividerColorLight,
+              ),
+              ListTile(
+                onTap: () => Get.toNamed(RoutesManager.donationHistoryScreen),
+
+                leading: IconWithBackground(
+                  icon: ImagesManager.hisrotyRounded,
+                  lightColor: ColorsManager.dividerColorLight,
+                ),
+                title: Text(
+                  'donation_record'.tr,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
+                ),
+                trailing: Icon(Icons.arrow_forward_ios, size: 16),
+              ),
+              Divider(
+                color: Get.isDarkMode
+                    ? ColorsManager.dividerColorDark
+                    : ColorsManager.dividerColorLight,
+              ),
+              ListTile(
+                onTap: () => Get.toNamed(
+                  userType == UserType.donor.name
+                      ? RoutesManager.donorAccVerificationScreen
+                      : RoutesManager.creatorVerificationScreen,
+                ),
+                leading: IconWithBackground(
+                  icon: ImagesManager.verified,
+                  lightColor: ColorsManager.dividerColorLight,
+                ),
+                title: Text(
+                  'account_verification'.tr,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
+                ),
+                trailing: Icon(Icons.arrow_forward_ios, size: 16),
+              ),
+              Divider(
+                color: Get.isDarkMode
+                    ? ColorsManager.dividerColorDark
+                    : ColorsManager.dividerColorLight,
+              ),
+              if (userType == UserRole.CAMPAIGN_CREATOR.name) ...{
+                ListTile(
+                  onTap: () => Get.toNamed(RoutesManager.accountTypeScreen),
+
+                  leading: IconWithBackground(
+                    icon: ImagesManager.moneys,
+                    lightColor: ColorsManager.dividerColorLight,
+                  ),
+                  title: Text(
+                    'bank_account_management'.tr,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
+                  ),
+                  trailing: Icon(Icons.arrow_forward_ios, size: 16),
+                ),
+                Divider(
+                  color: Get.isDarkMode
+                      ? ColorsManager.dividerColorDark
+                      : ColorsManager.dividerColorLight,
+                ),
+              },
+              if (userType == UserRole.DONOR.name) ...{
+              ListTile(
+              //  onTap: () =>Get.toNamed(RoutesManager.pa) ,
+                leading: IconWithBackground(
+                  icon: ImagesManager.moneys,
+                  lightColor: ColorsManager.dividerColorLight,
+                ),
+                title: Text(
+                  'payment_way'.tr,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
+                ),
+                trailing: Icon(Icons.arrow_forward_ios, size: 16),
+              ),
+              Divider(
+                color: Get.isDarkMode
+                    ? ColorsManager.dividerColorDark
+                    : ColorsManager.dividerColorLight,
+              ),},
+              if (userType == UserRole.CAMPAIGN_CREATOR.name) ...{
+                ListTile(
+                  //  onTap: ()=> Get.toNamed(RoutesManager.wallet),
+                  leading: IconWithBackground(
+                    icon: ImagesManager.emptyWallet,
+                    lightColor: ColorsManager.dividerColorLight,
+                  ),
+                  title: Text(
+                    'wallet'.tr,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
+                  ),
+                  trailing: Icon(Icons.arrow_forward_ios, size: 16),
+                ),
+                Divider(
+                  color: Get.isDarkMode
+                      ? ColorsManager.dividerColorDark
+                      : ColorsManager.dividerColorLight,
+                ),
+              },
+            },
             ListTile(
+              //     onTap: ()=> Get.toNamed(RoutesManager.s),
               leading: IconWithBackground(
                 icon: ImagesManager.contactSupport,
                 lightColor: ColorsManager.dividerColorLight,
@@ -172,16 +217,17 @@ class DetailsInfoCard extends StatelessWidget {
               ),
               trailing: Icon(Icons.arrow_forward_ios, size: 16),
             ),
-            SizedBox(height: 20.h),
-             SecondaryButton(
-                  label: 'Create_an_account_to_track_your_progress'.tr,
-                  onPressed: () => Get.offAllNamed(RoutesManager.signUpScreen),
-                  color: ColorsManager.secondaryThanksColor.withValues(
-                    alpha: 0.10,
-                  ),
-                ),
-                            SizedBox(height: 20.h),
+            if (userType == UserRole.GUEST.name)...{
+                          SizedBox(height: 20.h),
 
+              SecondaryButton(
+                label: 'Create_an_account_to_track_your_progress'.tr,
+                onPressed: () => Get.offAllNamed(RoutesManager.signUpScreen),
+                color: ColorsManager.secondaryThanksColor.withValues(
+                  alpha: 0.10,
+                ),
+              ),},
+            SizedBox(height: 10.h),
           ],
         ),
       ),
