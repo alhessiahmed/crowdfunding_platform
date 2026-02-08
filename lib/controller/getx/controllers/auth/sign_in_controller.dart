@@ -28,7 +28,7 @@ class SignInController extends GetxController with AuthValidationMixin {
       await SharedPrefController().saveToken(response.object!.token);
       await SharedPrefController().saveUser(response.object!.user.toJson());
       await SharedPrefController().saveUserType(response.object!.user.role);
-      Get.offAllNamed(RoutesManager.discoverScreen);
+      Get.offAllNamed(RoutesManager.mainScreen);
     } else {
       Get.snackbar('Error', response.message);
     }

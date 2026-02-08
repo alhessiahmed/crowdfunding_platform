@@ -378,4 +378,58 @@ Map<String, String> arLocale = {
   'verification_failed_description':
       'لم نتمكن من توثيق حسابك في الوقت الحالي بسبب نقص أو عدم وضوح بعض المعلومات.',
   'verification_failed_reason': 'سبب عدم التوثيق',
+  'Here_you_can_track_your_impact_and_support_new_campaigns_with_stars':
+      'هنا يمكنك متابعة أثرك ودعم حملات جديدة بالنجوم',
+  'Your_current_impact': 'أثرك الحالي',
+  'You_are_in_the_top_%_of_star_donors!':
+      'أنت من بين أعلى @peploepresnt٪ من المتبرعين هذا الشهر',
+  'Life_affected': 'حياة تأثرت',
+  'Sponsored_campaigns': 'حملات مدعومة',
+  'Latest_donations': 'آخر التبرعات',
+  'Campaign_Offer': 'عرض الحملة',
+  'Explore_new_campaigns': 'استكشف حملات جديدة',
+  'Suggested_campaigns_for_you': 'حملات مقترحة لك',
+  'View_details': 'مشاهدة التفاصيل',
+  'Relief': 'إغاثي',
+  'Every_star_contributes_to_making_a_real_difference':
+      'كل نجمة تساهم في إحداث فرق حقيقي',
+  'Goal': 'الهدف : @Number نجمة',
+  'Donate_immediately': 'تبرع فوراً',
+  'Active_now': 'نشط الآن',
+  'Offline': 'غير متصل',
+  'Login_activity': 'نشاط تسجيل الدخول',
+  'Here_you_can_see_the_latest_logins_to_your_account.':
+      'هنا يمكنك الاطلاع على آخر عمليات تسجيل الدخول إلى حسابك.',
+  'We_monitor_your_account_activity_to_ensure_your_security._You_can_review_your_connected_devices_below.':
+      'نحن نراقب نشاط حسابك للتأكد من أمانك يمكنك مراجعة الأجهزة المتصلة أدناه',
+  'Current_session': 'الجلسة الحالية',
+  'Other_sessions': 'جلسات أخرى',
+  'Starry_app_for': 'تطبيق Starry لنظام @OSName',
+  'End_session': 'إنهاء الجلسة',
+  'Logout_form_All_Devices': 'تسجيل الخروج من كل الأجهزة',
+  'Here_you_can_track_Your_donation_balance_and_manage_the_impact_transfer_with_complete_transparency.':
+      'هنا يمكنك متابعة رصيد التبرعات وإدارة تحويل\n الأثر بكل شفافية.',
+  'Available_balance': 'الرصيد المتاح',
+  'Withdrawal pending processing': 'سحب قيد المعالجة : @amount  شيكل',
+  'Request_to_withdraw_profits': 'طلب سحب الأرباح',
+  'Transfer_log': 'سجل التحويلات',
+  'Number_of_stars_you_want_to_convert': 'عدد النجوم التي تريد تحويلها',
+  'Another_number...': 'رقم آخر...',
+  'bank_account': 'الحساب البنكي',
+  'The_stars_you_want_to_pull': 'النجوم التي تريد سحبها',
+  'Platform_fees': 'رسوم المنصة',
+  'Star_value': 'قيمة النجمة',
+  'Net_number_of_stars': 'عدد النجوم الصافي',
+  'net_amount': 'المبلغ الصافي',
+  'Confirm_withdrawal_request': 'تأكيد طلب السحب',
+  'Confirmation_of_profit_withdrawal': 'تأكيد سحب الأرباح',
+  'Your_withdrawal_request_has_been_received_successfully!':
+      'تم استلام طلب السحب بنجاح!',
+  'Your_request_will_be_reviewed_and_the_payment_will_be_sent_to_your_bank_Saccount.':
+      'سيتم مراجعة طلبك وارسال المبلغ الى حسابك البنكي',
+  'Expected_arrival_time': 'وقت الوصول المتوقع',
+  'The_review_usually_takes_24_to_48_hours.':
+      'تستغرق المراجعة عادة من 24 إلى 48 ساعة.',
+  'Go_to_the_control_panel': 'الانتقال إلى لوحة التحكم',
+  'Return_to_wallet': 'العودة للمحفظة',
 };

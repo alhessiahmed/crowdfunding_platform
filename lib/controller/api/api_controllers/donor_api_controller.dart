@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import '../../../model/api_response.dart';
+import '../../shared_pref/shared_pref_controller.dart';
 import '../api_helper.dart';
 import '../api_settings.dart';
 
@@ -50,7 +51,7 @@ class DonorApiController with ApiHelper {
 
   /// Generic multipart PATCH to donor base endpoint (e.g. donor verification).
   Future<ApiResponse<Map<String, dynamic>>> patchDonorMultipart({
-    required String path,
+    required String id,
     String? firstName,
     String? lastName,
     String? email,
@@ -72,7 +73,7 @@ class DonorApiController with ApiHelper {
     Map<String, String>? headers,
   }) async {
     try {
-      final url = Uri.parse('${ApiSettings.donor}/$path');
+      final url = Uri.parse('${ApiSettings.donor}/$id');
       final request = http.MultipartRequest('PATCH', url);
 
       final Map<String, String> fields = {};
@@ -105,6 +106,9 @@ class DonorApiController with ApiHelper {
       request.fields.addAll(fields);
       request.headers.addAll({
         ...acceptHeader,
+        if (SharedPrefController().token != null)
+          HttpHeaders.authorizationHeader:
+              'Bearer ${SharedPrefController().token}',
         if (headers != null) ...headers,
       });
 
