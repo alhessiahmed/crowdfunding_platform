@@ -99,7 +99,7 @@ class _MainScreenState extends State<MainScreen> {
                     // },
                   ),
                 },
-                  if (userType == UserRole.CAMPAIGN_CREATOR.name)
+                  if (userType != UserRole.DONOR.name)
                      _TabItem(
                         activeIcon: ImagesManager.discover,
                         unActiveIcon: ImagesManager.discover,

@@ -221,7 +221,7 @@ class DetailsInfoCard extends StatelessWidget {
 
               SecondaryButton(
                 label: 'Create_an_account_to_track_your_progress'.tr,
-                onPressed: () => Get.offAllNamed(RoutesManager.signUpScreen),
+                onPressed: () => Get.offAllNamed(RoutesManager.welcomeScreen),
                 color: ColorsManager.secondaryThanksColor.withValues(
                   alpha: 0.10,
                 ),
