@@ -15,4 +15,7 @@ class ApiSettings {
 
   // HOME
   // static const String home = '$_baseUrl/home';
+
+  // DONOR
+  static const String donor = '$_baseUrl/donor';
 }

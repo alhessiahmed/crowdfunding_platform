@@ -1,4 +1,5 @@
 import 'package:crowdfunding_platform/controller/getx/controllers/donor/donor_verification_controller.dart';
+import 'package:crowdfunding_platform/view/widgets/loading_widget.dart';
 import 'package:crowdfunding_platform/view/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,80 +15,91 @@ class DonorIdVerificationScreen extends GetView<DonorVerificationController> {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 10.h),
-            Text(
-              'id_info'.tr,
-              style: Theme.of(context).textTheme.bodyLarge,
-              textAlign: TextAlign.start,
-            ),
-            SizedBox(height: 16.h),
-            Text(
-              'id_info_extra'.tr,
-              style: Theme.of(
-                context,
-              ).textTheme.bodyMedium!.copyWith(fontSize: 12.sp),
-            ),
-            SizedBox(height: 16.h),
-            TextFieldWidget(
-              controller: controller.nameController,
-              hintText: '',
-              label: 'full_name_label'.tr,
-            ),
-            SizedBox(height: 16.h),
-            TextFieldWidget(
-              controller: controller.idController,
-              hintText: '',
-              label: 'id'.tr,
-            ),
-            SizedBox(height: 16.h),
-            Container(
-              padding: const EdgeInsets.all(4),
-              decoration: BoxDecoration(
-                color: Get.isDarkMode
-                    ? ColorsManager.bgSectionDark
-                    : ColorsManager.bgSectionLight,
-                borderRadius: BorderRadius.circular(100.r),
-              ),
-              child: Row(
+      () => Stack(
+        children: [
+          Form(
+            key: controller.idFormKey,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _item(
-                    label: 'personal_id'.tr,
-                    selected: controller.isId.value,
-                    onTap: () => controller.selectId(true),
-                    context: context,
+                  SizedBox(height: 10.h),
+                  Text(
+                    'id_info'.tr,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                    textAlign: TextAlign.start,
                   ),
-                  _item(
-                    label: 'passport'.tr,
-                    selected: !controller.isId.value,
-                    onTap: () => controller.selectId(false),
-                    context: context,
+                  SizedBox(height: 16.h),
+                  Text(
+                    'id_info_extra'.tr,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyMedium!.copyWith(fontSize: 12.sp),
+                  ),
+                  SizedBox(height: 16.h),
+                  TextFieldWidget(
+                    controller: controller.nameController,
+                    hintText: '',
+                    label: 'full_name_label'.tr,
+                  ),
+                  SizedBox(height: 16.h),
+                  TextFieldWidget(
+                    controller: controller.idController,
+                    hintText: '',
+                    label: 'id'.tr,
+                  ),
+                  SizedBox(height: 16.h),
+                  Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      color: Get.isDarkMode
+                          ? ColorsManager.bgSectionDark
+                          : ColorsManager.bgSectionLight,
+                      borderRadius: BorderRadius.circular(100.r),
+                    ),
+                    child: Row(
+                      children: [
+                        _item(
+                          label: 'personal_id'.tr,
+                          selected: controller.isId.value,
+                          onTap: () => controller.selectId(true),
+                          context: context,
+                        ),
+                        _item(
+                          label: 'passport'.tr,
+                          selected: !controller.isId.value,
+                          onTap: () => controller.selectId(false),
+                          context: context,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 16.h),
+                  Text(
+                    'id_pic'.tr,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
+                  ),
+                  SizedBox(height: 16.h),
+                  UploadCard(
+                    title: 'add_id'.tr,
+                    subtitle: 'add_clear_id'.tr,
+                    onTap: () => controller.pickImage(
+                      source: ImageSource.gallery,
+                      target: controller.idFile,
+                    ),
+                    imgPath: ImagesManager.galleryIcon,
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 16.h),
-            Text(
-              'id_pic'.tr,
-              style: Theme.of(
-                context,
-              ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
-            ),
-            SizedBox(height: 16.h),
-            UploadCard(
-              title: 'add_id'.tr,
-              subtitle: 'add_clear_id'.tr,
-              onTap: () => controller.pickImage(
-                source: ImageSource.gallery,
-                target: controller.idFile,
-              ),
-              imgPath: ImagesManager.galleryIcon,
-            ),
-          ],
-        ),
+          ),
+          Visibility(
+            visible: controller.isLoading.value,
+            child: LoadingWidget(),
+          ),
+        ],
       ),
     );
   }
