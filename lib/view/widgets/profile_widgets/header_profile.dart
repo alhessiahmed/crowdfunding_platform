@@ -29,7 +29,7 @@ class HeaderProfile extends StatelessWidget {
         if (SharedPrefController().userType != UserRole.GUEST.name) ...{
           CircleAvatar(
             radius: 35.r,
-            backgroundImage: AssetImage(ImagesManager.apple),
+            backgroundImage: AssetImage(ImagesManager.logo),
           ),
           SizedBox(height: 10.h),
 
