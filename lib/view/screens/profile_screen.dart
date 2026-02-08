@@ -1,5 +1,7 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
+import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
+import 'package:crowdfunding_platform/controller/getx/controllers/profile_controller.dart';
 import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_controller.dart';
 import 'package:crowdfunding_platform/view/widgets/profile_widgets/details_Info_profile.dart';
 import 'package:crowdfunding_platform/view/widgets/profile_widgets/header_profile.dart';
@@ -8,7 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends GetView<ProfileController> {
   const ProfileScreen({super.key});
 
   @override
@@ -26,7 +28,11 @@ class ProfileScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.w),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      SharedPrefController().clearUser();
+                      Get.offAllNamed(RoutesManager.welcomeScreen);
+
+                    },
                     child: Row(
                       spacing: 10.w,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -41,13 +47,17 @@ class ProfileScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.w),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () { 
+                     controller.deleteAccount();
+
+                    },
                     child: Text('delete_account'.tr),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: ColorsManager.danger2,
                     ),
                   ),
-                ),},
+                ),
+                },
                  SizedBox(height: 130.h),
               ],
             ),

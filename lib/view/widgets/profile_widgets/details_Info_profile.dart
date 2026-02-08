@@ -117,11 +117,9 @@ class DetailsInfoCard extends StatelessWidget {
                     : ColorsManager.dividerColorLight,
               ),
               ListTile(
-                onTap: () => Get.toNamed(
-                  userType == UserType.donor.name
-                      ? RoutesManager.donorAccVerificationScreen
-                      : RoutesManager.creatorVerificationScreen,
-                ),
+                onTap: () => userType == UserRole.DONOR.name
+                    ? Get.toNamed(RoutesManager.donorAccVerificationScreen)
+                    : Get.toNamed(RoutesManager.creatorVerificationScreen),
                 leading: IconWithBackground(
                   icon: ImagesManager.verified,
                   lightColor: ColorsManager.dividerColorLight,
@@ -141,8 +139,7 @@ class DetailsInfoCard extends StatelessWidget {
               ),
               if (userType == UserRole.CAMPAIGN_CREATOR.name) ...{
                 ListTile(
-                  onTap: () => Get.toNamed(RoutesManager.accountTypeScreen),
-
+                  // onTap: () => Get.toNamed(RoutesManager.accountTypeScreen),
                   leading: IconWithBackground(
                     icon: ImagesManager.moneys,
                     lightColor: ColorsManager.dividerColorLight,
@@ -162,34 +159,15 @@ class DetailsInfoCard extends StatelessWidget {
                 ),
               },
               if (userType == UserRole.DONOR.name) ...{
-              ListTile(
-              //  onTap: () =>Get.toNamed(RoutesManager.pa) ,
-                leading: IconWithBackground(
-                  icon: ImagesManager.moneys,
-                  lightColor: ColorsManager.dividerColorLight,
-                ),
-                title: Text(
-                  'payment_way'.tr,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
-                ),
-                trailing: Icon(Icons.arrow_forward_ios, size: 16),
-              ),
-              Divider(
-                color: Get.isDarkMode
-                    ? ColorsManager.dividerColorDark
-                    : ColorsManager.dividerColorLight,
-              ),},
-              if (userType == UserRole.CAMPAIGN_CREATOR.name) ...{
                 ListTile(
-                  //  onTap: ()=> Get.toNamed(RoutesManager.wallet),
+                  onTap: () =>
+                      Get.toNamed(RoutesManager.choosePaymentMethodScreen),
                   leading: IconWithBackground(
-                    icon: ImagesManager.emptyWallet,
+                    icon: ImagesManager.moneys,
                     lightColor: ColorsManager.dividerColorLight,
                   ),
                   title: Text(
-                    'wallet'.tr,
+                    'payment_way'.tr,
                     style: Theme.of(
                       context,
                     ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
@@ -202,7 +180,28 @@ class DetailsInfoCard extends StatelessWidget {
                       : ColorsManager.dividerColorLight,
                 ),
               },
+               if (userType == UserRole.CAMPAIGN_CREATOR.name) ...{
+              ListTile(
+                onTap: () => Get.toNamed(RoutesManager.walletScreen),
+                leading: IconWithBackground(
+                  icon: ImagesManager.emptyWallet,
+                  lightColor: ColorsManager.dividerColorLight,
+                ),
+                title: Text(
+                  'wallet'.tr,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
+                ),
+                trailing: Icon(Icons.arrow_forward_ios, size: 16),
+              ),
+              Divider(
+                color: Get.isDarkMode
+                    ? ColorsManager.dividerColorDark
+                    : ColorsManager.dividerColorLight,
+              ),
             },
+             },
             ListTile(
               //     onTap: ()=> Get.toNamed(RoutesManager.s),
               leading: IconWithBackground(
@@ -217,8 +216,8 @@ class DetailsInfoCard extends StatelessWidget {
               ),
               trailing: Icon(Icons.arrow_forward_ios, size: 16),
             ),
-            if (userType == UserRole.GUEST.name)...{
-                          SizedBox(height: 20.h),
+            if (userType == UserRole.GUEST.name) ...{
+              SizedBox(height: 20.h),
 
               SecondaryButton(
                 label: 'Create_an_account_to_track_your_progress'.tr,
@@ -226,7 +225,8 @@ class DetailsInfoCard extends StatelessWidget {
                 color: ColorsManager.secondaryThanksColor.withValues(
                   alpha: 0.10,
                 ),
-              ),},
+              ),
+            },
             SizedBox(height: 10.h),
           ],
         ),
