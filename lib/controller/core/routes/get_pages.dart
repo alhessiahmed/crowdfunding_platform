@@ -2,6 +2,7 @@ import 'package:crowdfunding_platform/controller/getx/bindings/auth/forgot_passw
 import 'package:crowdfunding_platform/controller/getx/bindings/auth/user_type_selection_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/auth/verification_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/add_update_to_campaign_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/change_pass_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/control_campaign_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/campaign/campaign_step_five_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/campaign/campaign_step_four_binding.dart';
@@ -38,6 +39,7 @@ import 'package:crowdfunding_platform/view/screens/campaign_create_screens/campa
 import 'package:crowdfunding_platform/view/screens/campaign_create_screens/campaign_step_three_screen.dart';
 import 'package:crowdfunding_platform/view/screens/campaign_create_screens/campaign_step_two_screen.dart';
 import 'package:crowdfunding_platform/view/screens/campaign_details_screen.dart';
+import 'package:crowdfunding_platform/view/screens/change_pass/change_pass_screen.dart';
 import 'package:crowdfunding_platform/view/screens/discover_screen.dart';
 import 'package:crowdfunding_platform/view/screens/creator/creator_verfication_screen.dart';
 import 'package:crowdfunding_platform/view/screens/creator/creator_verification_success_screen.dart';
@@ -323,6 +325,11 @@ final List<GetPage<dynamic>> getPages = [
     name: RoutesManager.securityPrivacyScreen,
     page: () => const SecurityPrivacy(),
     binding: SecurityPrivactBinding(),
+  ),
+   GetPage(
+    name: RoutesManager.changePasswordScreen,
+    page: () => const ChangePassScreen(),
+    binding: ChangePassBinding(),
   ),
   // GetPage(
   //   name: RoutesManager.homeScreen,

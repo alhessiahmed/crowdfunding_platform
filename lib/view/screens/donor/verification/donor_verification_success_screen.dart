@@ -58,7 +58,7 @@ class DonorVerificationSuccessScreen extends StatelessWidget {
             SizedBox(height: 10.h),
             AlternativeButton(
               onPressed: () {
-                Get.offAllNamed(RoutesManager.homeScreen);
+                Get.offAllNamed(RoutesManager.mainScreen);
               },
               text: 'discover_campains'.tr,
             ),

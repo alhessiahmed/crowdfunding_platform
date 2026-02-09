@@ -1,5 +1,7 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
+import 'package:crowdfunding_platform/controller/core/routes/index.dart';
+import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_controller.dart';
 import 'package:crowdfunding_platform/view/screens/discover_screen.dart';
 import 'package:crowdfunding_platform/view/screens/home_screen.dart';
 import 'package:crowdfunding_platform/view/screens/my_campaigns.dart';
@@ -43,6 +45,8 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Widget _BottomBar() {
+    final String? userType = SharedPrefController().userType;
+
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return SafeArea(
       bottom: false,
@@ -69,22 +73,39 @@ class _MainScreenState extends State<MainScreen> {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                //   _TabItem(
-                //     activeIcon: ImagesManager.activeHome,
-                //     unActiveIcon: ImagesManager.home,
-                //     index: 3,
-                //   ),
-                //   _TabItem(
-                //     activeIcon: ImagesManager.clipboard,
-                //     unActiveIcon: ImagesManager.unActiveClipboard,
-                //     index: 2,
-                //   ),
-                //  _CenterActionButton(isDark: isDark),
-                _TabItem(
-                  activeIcon: ImagesManager.discover,
-                  unActiveIcon: ImagesManager.discover,
-                  index: 1,
-                ),
+                if (userType != UserRole.GUEST.name) ...{
+                  _TabItem(
+                    activeIcon: ImagesManager.activeHome,
+                    unActiveIcon: ImagesManager.home,
+                    index: 3,
+                  ),
+                  if (userType == UserRole.CAMPAIGN_CREATOR.name)
+                    _TabItem(
+                      activeIcon: ImagesManager.clipboard,
+                      unActiveIcon: ImagesManager.unActiveClipboard,
+                      index: 2,
+                    ),
+
+                  _CenterActionButton(
+                    index: userType == UserRole.CAMPAIGN_CREATOR.name ? -1 :1,
+                    isDark: isDark,
+                    icon: userType == UserRole.CAMPAIGN_CREATOR.name
+                        ? ImagesManager.addSquare
+                        : ImagesManager.discover,
+                    // onTap: () {
+                    //   userType == UserRole.CAMPAIGN_CREATOR.name
+                    //       ? Get.toNamed(RoutesManager.CampaignStepOneScreen)
+                    //       : Get.to(Ro);
+                    // },
+                  ),
+                },
+                  if (userType != UserRole.DONOR.name)
+                     _TabItem(
+                        activeIcon: ImagesManager.discover,
+                        unActiveIcon: ImagesManager.discover,
+                        index: 1,
+                      )
+                    ,
 
                 _TabItem(
                   activeIcon: ImagesManager.activeProfile,
@@ -143,25 +164,36 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  Widget _CenterActionButton({required bool isDark}) {
+  Widget _CenterActionButton({
+    required int index,
+
+    required bool isDark,
+    required String icon,
+   // required void Function()? onTap,
+  }) {
+    final bool isSelected = index == currentIndex ;
     return InkWell(
-      onTap: () {},
+  onTap: () {
+       index != -1
+       ? setState(() => currentIndex = index) 
+       :Get.toNamed(RoutesManager.CampaignStepOneScreen)
+       ;
+      },
       child: Container(
         height: 54.h,
         width: 54.w,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: isDark ? ColorsManager.bgGoogle : ColorsManager.white,
-          border: Border.all(color: ColorsManager.secondaryLight, width: 1.5),
+          border: Border.all(color:isSelected ? ColorsManager.primaryCTA: ColorsManager.secondaryLight, width: 1.5),
         ),
         child: Center(
           child: SvgPicture.asset(
-            ImagesManager.addSquare,
+            icon,
+            // ImagesManager.addSquare,
             width: 24.w,
             height: 24.h,
-            color: isDark
-                ? ColorsManager.secondaryDark
-                : ColorsManager.secondaryLight,
+           color:isSelected ? ColorsManager.primaryCTA: ColorsManager.secondaryLight
           ),
         ),
       ),
