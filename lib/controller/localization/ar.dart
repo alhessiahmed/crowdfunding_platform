@@ -502,5 +502,5 @@ Map<String, String> arLocale = {
   'Verified': 'متحقق',
   'current_pass':'كلمة المرور الحالية'
 
-  
+
 };
