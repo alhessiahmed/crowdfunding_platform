@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
           themeMode: ThemeController.to.themeMode,
           // themeMode: ThemeMode.dark,
           // initialRoute: RoutesManager.launchScreen,
-          initialRoute: RoutesManager.donorVerificationShellScreen,
+          initialRoute: RoutesManager.walletScreen,
           getPages: getPages,
           unknownRoute: GetPage(
             name: RoutesManager.launchScreen,

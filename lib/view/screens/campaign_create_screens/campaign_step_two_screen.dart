@@ -13,7 +13,7 @@ import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CampaignStepTwoScreen extends GetView<CampaignStepTwoController> {
-  CampaignStepTwoScreen({super.key});
+  const CampaignStepTwoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
