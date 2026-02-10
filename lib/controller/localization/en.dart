@@ -102,7 +102,7 @@ Map<String, String> enLocale = {
   'account_updates': 'Account Updates',
   'accouunt_updates_desc':
       'We will inform you of any necessary updates related to your account or its settings.',
-
+'payment_way' : 'Payment Ways'
   // '': '',
   // '': '',
   // '': '',

@@ -1,6 +1,8 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
+import 'package:crowdfunding_platform/controller/core/routes/index.dart';
 import 'package:crowdfunding_platform/model/my_campagins_model.dart';
+import 'package:crowdfunding_platform/view/screens/update_campaign/edit_campaign_details_screen.dart';
 import 'package:crowdfunding_platform/view/widgets/step_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,15 +17,17 @@ class MyCampaginsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal:  16.w , vertical: 10.h),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
       child: Container(
         padding: EdgeInsets.all(8.w),
         decoration: BoxDecoration(
-          boxShadow: [BoxShadow( 
-            color: Colors.black26 , 
-            blurRadius: 2, 
-            offset: Offset(0, 0)
-          )],
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 2,
+              offset: Offset(0, 0),
+            ),
+          ],
           color: Get.isDarkMode
               ? ColorsManager.bgSectionDark
               : ColorsManager.bgSectionLight,
@@ -35,67 +39,65 @@ class MyCampaginsCard extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12.r),
                   child: Image.asset(
-                  //  myCampaign.image.isNotEmpty
-                       // ? myCampaign.image
-                         ImagesManager.test,
+                    //  myCampaign.image.isNotEmpty
+                    // ? myCampaign.image
+                    ImagesManager.test,
                     height: 96.h,
                     width: 91.w,
                     fit: BoxFit.cover,
                   ),
                 ),
-                                 SizedBox(width: 12.w),
+                SizedBox(width: 12.w),
 
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Align( 
+                      Align(
                         alignment: Alignment.topLeft,
-                        child: _StatusPill(status: myCampaign.status)),
+                        child: _StatusPill(status: myCampaign.status),
+                      ),
                       SizedBox(height: 8.h),
                       Text(
                         myCampaign.title,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyLarge!
-                            .copyWith(fontSize: 13.sp),
+                        style: Theme.of(
+                          context,
+                        ).textTheme.bodyLarge!.copyWith(fontSize: 13.sp),
                       ),
-                       SizedBox(height: 12.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'progress_achieved'.tr,
-                  style: TextStyle(fontSize: 12.sp ,),
-                ),
-                Text(
-                  '${myCampaign.progress}%',
-                  style: TextStyle(
-                    color: ColorsManager.primaryCTA,
-                    fontWeight: FontWeight.w800,
-                    fontSize: 12.sp
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 8.h),
-            SizedBox(
-              width: double.infinity,
-              child: StepIndicator(progress: myCampaign.progress),
-            ),
+                      SizedBox(height: 12.h),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'progress_achieved'.tr,
+                            style: TextStyle(fontSize: 12.sp),
+                          ),
+                          Text(
+                            '${myCampaign.progress}%',
+                            style: TextStyle(
+                              color: ColorsManager.primaryCTA,
+                              fontWeight: FontWeight.w800,
+                              fontSize: 12.sp,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 8.h),
+                      SizedBox(
+                        width: double.infinity,
+                        child: StepIndicator(progress: myCampaign.progress),
+                      ),
                     ],
                   ),
                 ),
-               
               ],
             ),
-           
+
             SizedBox(height: 12.h),
-            Container(color: ColorsManager.grey.withOpacity(.2) ,height: 2.h,),
+            Container(color: ColorsManager.grey.withOpacity(.2), height: 2.h),
             //Divider(),
             SizedBox(height: 8.h),
             ButtonsRow(status: myCampaign.status),
@@ -120,24 +122,26 @@ class _StatusPill extends StatelessWidget {
             ? ColorsManager.dividerColorDark
             : ColorsManager.dividerColorLight,
         borderRadius: BorderRadius.circular(16.r),
-        boxShadow:[ BoxShadow( 
-          color: Colors.black26 , 
-          blurRadius: 1, 
-          offset: Offset(0, 0)
-        )]
+        boxShadow: [
+          BoxShadow(color: Colors.black26, blurRadius: 1, offset: Offset(0, 0)),
+        ],
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           SvgPicture.asset(
             _statusIcon(status),
-           // size: 16.sp,
+            // size: 16.sp,
             color: _statusColor(status),
           ),
           SizedBox(width: 4.w),
           Text(
             _statusText(status),
-            style: Theme.of(context).textTheme.bodySmall!.copyWith(color:Get.isDarkMode ?ColorsManager.primaryTextDark: ColorsManager.iconDefaultLight),
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+              color: Get.isDarkMode
+                  ? ColorsManager.primaryTextDark
+                  : ColorsManager.iconDefaultLight,
+            ),
           ),
         ],
       ),
@@ -151,56 +155,106 @@ class ButtonsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      spacing: 3.w,
-      runSpacing: 8.h,
-      children: _buildButtons(status),
-    );
+    return Wrap(spacing: 3.w, runSpacing: 8.h, children: _buildButtons(status));
   }
 
   List<Widget> _buildButtons(CampaignStatus status) {
     switch (status) {
       case CampaignStatus.completed:
         return [
-          _btn(ColorsManager.blueButton, 'campaign_management'.tr, ImagesManager.settings2),
-          _btn(ColorsManager.primaryCTA, 'add_update'.tr, ImagesManager.addCircle),
+          _btn(
+            ColorsManager.blueButton,
+            'campaign_management'.tr,
+            ImagesManager.settings2,
+            () {},
+          ),
+          _btn(
+            ColorsManager.primaryCTA,
+            'add_update'.tr,
+            ImagesManager.addCircle,
+            () {Get.toNamed(RoutesManager.addUpdateToCampaignScreen);},
+          ),
         ];
 
       case CampaignStatus.active:
         return [
-          _btn(ColorsManager.secondaryThanksColor, 'edit_campaign'.tr, ImagesManager.edit),
-          _btn(ColorsManager.blueButton, 'campaign_management'.tr, ImagesManager.settings2),
-          _btn(ColorsManager.danger2, 'stop_compagin'.tr,ImagesManager.pauseCircle),
+          _btn(
+            ColorsManager.secondaryThanksColor,
+            'edit_campaign'.tr,
+            ImagesManager.edit,
+            () => Get.toNamed(RoutesManager.editCampaignDetailsScreen),
+          ),
+          _btn(
+            ColorsManager.blueButton,
+            'campaign_management'.tr,
+            ImagesManager.settings2,
+            () {},
+          ),
+          _btn(
+            ColorsManager.danger2,
+            'stop_compagin'.tr,
+            ImagesManager.pauseCircle,
+            () {},
+          ),
         ];
 
       case CampaignStatus.paused:
         return [
-          _btn(ColorsManager.danger2
-          , 'resume_the campaign'.tr, ImagesManager.videoCircle),
+          _btn(
+            ColorsManager.danger2,
+            'resume_the campaign'.tr,
+            ImagesManager.videoCircle,
+            () {},
+          ),
         ];
 
       case CampaignStatus.draft:
         return [
-          _btn(ColorsManager.secondaryThanksColor, 'edit_campaign'.tr, ImagesManager.edit),
-          _btn(ColorsManager.danger2, 'delete_campagin'.tr, ImagesManager.trash),
+          _btn(
+            ColorsManager.secondaryThanksColor,
+            'edit_campaign'.tr,
+            ImagesManager.edit,
+            () {},
+          ),
+          _btn(
+            ColorsManager.danger2,
+            'delete_campagin'.tr,
+            ImagesManager.trash,
+            () {},
+          ),
         ];
 
       case CampaignStatus.deleted:
         return [
-          _btn(ColorsManager.primaryCTA, 'repost_the_campaign'.tr, ImagesManager.send),
+          _btn(
+            ColorsManager.primaryCTA,
+            'repost_the_campaign'.tr,
+            ImagesManager.send,
+            () {},
+          ),
         ];
 
       case CampaignStatus.stopped:
         return [
-          _btn(ColorsManager.success, 'resume_the campaign'.tr, ImagesManager.videoCircle),
+          _btn(
+            ColorsManager.success,
+            'resume_the campaign'.tr,
+            ImagesManager.videoCircle,
+            () {},
+          ),
         ];
     }
   }
 
-  Widget _btn(Color color, String text, String icon) {
+  Widget _btn(
+    Color color,
+    String text,
+    String icon,
+    void Function()? onPressed,
+  ) {
     return ElevatedButton.icon(
-      onPressed: () {},
-      icon: SvgPicture.asset(icon, color: Colors.white,),
+      onPressed: onPressed,
+      icon: SvgPicture.asset(icon, color: Colors.white),
       label: Text(
         text,
         style: TextStyle(fontSize: 12.sp, color: ColorsManager.white),
@@ -208,9 +262,7 @@ class ButtonsRow extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: color,
         padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.r),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
         minimumSize: Size(0, 32.h),
       ),
     );
@@ -243,7 +295,7 @@ String _statusIcon(CampaignStatus status) {
     case CampaignStatus.paused:
       return ImagesManager.pauseCircle;
     case CampaignStatus.stopped:
-      return  ImagesManager.starIcon;
+      return ImagesManager.starIcon;
     case CampaignStatus.draft:
       return ImagesManager.note2;
     case CampaignStatus.deleted:
@@ -267,5 +319,3 @@ Color _statusColor(CampaignStatus status) {
       return ColorsManager.danger;
   }
 }
-
-

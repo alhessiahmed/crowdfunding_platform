@@ -1,5 +1,6 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
+import 'package:crowdfunding_platform/controller/core/routes/index.dart';
 import 'package:crowdfunding_platform/view/widgets/icon_with_background.dart';
 import 'package:crowdfunding_platform/view/widgets/idea_box_app.dart';
 import 'package:flutter/material.dart';
@@ -70,6 +71,8 @@ class SecurityPrivacy extends StatelessWidget {
               child: Column(
                 children: [
                   ListTile(
+                    onTap: () => Get.toNamed(RoutesManager.changePasswordScreen),
+
                     leading: IconWithBackground(
                       icon: ImagesManager.profile2,
                       lightColor: ColorsManager.dividerColorLight,
@@ -88,6 +91,7 @@ class SecurityPrivacy extends StatelessWidget {
                         : ColorsManager.dividerColorLight,
                   ),
                   ListTile(
+                    onTap: () => Get.toNamed(RoutesManager.loginActivityScreen),
                     leading: IconWithBackground(
                       icon: ImagesManager.lockIcon,
                       lightColor: ColorsManager.dividerColorLight,
@@ -129,6 +133,7 @@ class SecurityPrivacy extends StatelessWidget {
               ),
               padding: EdgeInsets.symmetric(vertical: 8.h),
               child: ListTile(
+              //  onTap: ()=> Get.toNamed(RoutesManager.twoS),
                 leading: IconWithBackground(
                   icon: ImagesManager.lockIcon,
                   lightColor: ColorsManager.dividerColorLight,

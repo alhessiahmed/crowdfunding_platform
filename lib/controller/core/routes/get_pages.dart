@@ -1,4 +1,5 @@
 import 'package:crowdfunding_platform/controller/getx/bindings/add_update_to_campaign_binding.dart';
+import 'package:crowdfunding_platform/controller/getx/bindings/change_pass_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/control_campaign_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/edit_campaign_details_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/donar_home_binding.dart';
@@ -261,6 +262,11 @@ final List<GetPage<dynamic>> getPages = [
     name: RoutesManager.securityPrivacyScreen,
     page: () => const SecurityPrivacy(),
     binding: SecurityPrivactBinding(),
+  ),
+   GetPage(
+    name: RoutesManager.changePasswordScreen,
+    page: () => const ChangePassScreen(),
+    binding: ChangePassBinding(),
   ),
   // GetPage(
   //   name: RoutesManager.homeScreen,

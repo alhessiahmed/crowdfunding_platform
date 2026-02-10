@@ -1,6 +1,7 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/text_styles_manager.dart';
+import 'package:crowdfunding_platform/controller/core/routes/index.dart';
 import 'package:crowdfunding_platform/controller/getx/controllers/donation_history/donation_history_controller.dart';
 import 'package:crowdfunding_platform/model/donation_summary.dart';
 import 'package:flutter/material.dart';
@@ -365,7 +366,7 @@ class DonationHistoryScreen extends GetView<DonationHistoryController> {
             borderRadius: BorderRadius.circular(15.r),
           ),
         ),
-        onPressed: () {},
+        onPressed: () {Get.toNamed(RoutesManager.mainScreen);},
         icon: Image.asset(ImagesManager.discoverButton),
         label: Text(
           'explore_campaigns'.tr,
