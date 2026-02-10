@@ -54,10 +54,10 @@ class ProfileScreen extends GetView<ProfileController> {
                      controller.deleteAccount();
 
                     },
-                    child: Text('delete_account'.tr),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: ColorsManager.danger2,
                     ),
+                    child: Text('delete_account'.tr),
                   ),
                 ),
                 },

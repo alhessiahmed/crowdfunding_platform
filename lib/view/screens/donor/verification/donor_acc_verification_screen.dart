@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/view/widgets/information_widget.dart';
