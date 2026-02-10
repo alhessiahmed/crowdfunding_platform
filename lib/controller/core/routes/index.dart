@@ -47,7 +47,6 @@ export '../../../view/screens/auth/sign_in_screen.dart';
 export '../../../view/screens/auth/sign_up_screen.dart';
 export '../../../view/screens/auth/user_type_selection_screen.dart';
 export '../../../view/screens/auth/user_welcome_screen.dart';
-export '../../../view/screens/intro/launch_screen.dart';
 export '../../../view/screens/intro/onboarding_screen.dart';
 export '../../../view/screens/payment/confirm_payment_screen.dart';
 export '../../../view/screens/payment/credit_card_payment_screen.dart';
