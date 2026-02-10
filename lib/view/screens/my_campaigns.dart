@@ -17,7 +17,7 @@ class MyCampaignsScreen extends GetView<MyCampaginsController> {
         children: [ 
           HeaderWithSearch(title: 'my_campaigns'.tr , subTitle: 'manage_campaigns_and_track'.tr,), 
           SizedBox(height: 15.h,),
-          Obx (()=>  FilterSection(filters: controller.filtersMock , selectedIndex: controller.selectedFilterIndex.value , onSelect: controller.selectFilter, ),),
+          Obx (()=>  FilterSection(filters: controller.filtersMock , selectedIndex: controller.selectedFilterIndex.value , onSelect: controller.selectFilter),),
           SizedBox(height: 20.h,),
           Expanded(
             child: ListView.builder(
