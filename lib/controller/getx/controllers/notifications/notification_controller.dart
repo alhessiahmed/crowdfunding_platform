@@ -9,12 +9,6 @@ class NotificationsController extends GetxController {
       : ImagesManager.notificationLight;
   var notifications = <NotificationModel>[].obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-    // لغايات التجربة، يمكنك استدعاء بيانات وهمية
-    //_loadMockNotifications();
-  }
 
   // الدالة التي تحول التاريخ لنص مترجم حسب الحاجة
   String formatNotificationTime(DateTime dateTime) {

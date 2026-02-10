@@ -10,7 +10,7 @@ import '../../../controller/core/constants/images_manager.dart';
 import '../../../controller/core/routes/routes_manager.dart';
 
 class LaunchScreen extends StatefulWidget {
-  const LaunchScreen({Key? key}) : super(key: key);
+  const LaunchScreen({super.key});
 
   @override
   State<LaunchScreen> createState() => _LaunchScreenState();

@@ -48,7 +48,8 @@ class MyApp extends StatelessWidget {
           darkTheme: AppTheme.dark(),
           themeMode: ThemeController.to.themeMode,
           // themeMode: ThemeMode.dark,
-           initialRoute: RoutesManager.launchScreen,
+          // initialRoute: RoutesManager.launchScreen,
+          initialRoute: RoutesManager.walletScreen,
           getPages: getPages,
           unknownRoute: GetPage(
             name: RoutesManager.launchScreen,

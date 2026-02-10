@@ -106,10 +106,6 @@ class CampaignStepThreeController extends GetxController {
     }
   }
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
 
   // تعيين تاريخ انتهاء
   void setEndDate(String date) {

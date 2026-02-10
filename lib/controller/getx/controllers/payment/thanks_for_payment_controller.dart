@@ -1,5 +1,4 @@
 import 'package:crowdfunding_platform/controller/core/routes/index.dart';
-import 'package:get/get.dart';
 
 import '../../../../model/donation_summary.dart';
 import '../../../core/constants/images_manager.dart';
