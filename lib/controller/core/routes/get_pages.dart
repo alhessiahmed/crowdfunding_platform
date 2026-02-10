@@ -13,7 +13,9 @@ import 'package:crowdfunding_platform/controller/getx/bindings/summer_of_withdra
 import 'package:crowdfunding_platform/controller/getx/bindings/wallet_binding.dart';
 import 'package:crowdfunding_platform/view/screens/add_pymaent_method/add_payment_method_page.dart';
 import 'package:crowdfunding_platform/view/screens/add_pymaent_method/choose_payment_method_page.dart';
+import 'package:crowdfunding_platform/view/screens/change_pass/change_pass_screen.dart';
 import 'package:crowdfunding_platform/view/screens/doner_home/donar_home_screen.dart';
+import 'package:crowdfunding_platform/view/screens/intro/launch_screen.dart';
 import 'package:crowdfunding_platform/view/screens/login_activity/login_activity_screen.dart';
 import 'package:crowdfunding_platform/view/screens/notification/notification_setting_screen.dart';
 import 'package:crowdfunding_platform/view/screens/update_campaign/add_update_to_campagin_screen.dart';

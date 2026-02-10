@@ -2,13 +2,10 @@ import 'package:crowdfunding_platform/controller/core/constants/colors_manager.d
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/controller/core/routes/index.dart';
 import 'package:crowdfunding_platform/model/my_campagins_model.dart';
-import 'package:crowdfunding_platform/view/screens/update_campaign/edit_campaign_details_screen.dart';
 import 'package:crowdfunding_platform/view/widgets/step_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:get/route_manager.dart';
 
 class MyCampaginsCard extends StatelessWidget {
   const MyCampaginsCard({super.key, required this.myCampaign});
@@ -166,13 +163,17 @@ class ButtonsRow extends StatelessWidget {
             ColorsManager.blueButton,
             'campaign_management'.tr,
             ImagesManager.settings2,
-            () {},
+            () {
+              Get.toNamed(RoutesManager.controlCampaignScreen);
+            },
           ),
           _btn(
             ColorsManager.primaryCTA,
             'add_update'.tr,
             ImagesManager.addCircle,
-            () {Get.toNamed(RoutesManager.addUpdateToCampaignScreen);},
+            () {
+              Get.toNamed(RoutesManager.addUpdateToCampaignScreen);
+            },
           ),
         ];
 
@@ -188,7 +189,9 @@ class ButtonsRow extends StatelessWidget {
             ColorsManager.blueButton,
             'campaign_management'.tr,
             ImagesManager.settings2,
-            () {},
+            () {
+              Get.toNamed(RoutesManager.controlCampaignScreen);
+            },
           ),
           _btn(
             ColorsManager.danger2,
@@ -214,7 +217,9 @@ class ButtonsRow extends StatelessWidget {
             ColorsManager.secondaryThanksColor,
             'edit_campaign'.tr,
             ImagesManager.edit,
-            () {},
+            () {
+              Get.toNamed(RoutesManager.editCampaignDetailsScreen);
+            },
           ),
           _btn(
             ColorsManager.danger2,
@@ -272,9 +277,9 @@ class ButtonsRow extends StatelessWidget {
 String _statusText(CampaignStatus status) {
   switch (status) {
     case CampaignStatus.completed:
-      return 'completed'.tr;
+      return 'Complete_campaign'.tr;
     case CampaignStatus.active:
-      return 'active'.tr;
+      return 'Active'.tr;
     case CampaignStatus.paused:
       return 'paused'.tr;
     case CampaignStatus.stopped:

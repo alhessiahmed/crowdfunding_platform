@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
-import 'package:crowdfunding_platform/controller/getx/controllers/auth/user_type_selection_controller.dart';
 import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_controller.dart';
 import 'package:crowdfunding_platform/view/widgets/icon_with_background.dart';
 import 'package:crowdfunding_platform/view/widgets/secondary_button.dart';

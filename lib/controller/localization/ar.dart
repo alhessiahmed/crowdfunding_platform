@@ -378,7 +378,7 @@ Map<String, String> arLocale = {
   'verification_failed_description':
       'لم نتمكن من توثيق حسابك في الوقت الحالي بسبب نقص أو عدم وضوح بعض المعلومات.',
   'verification_failed_reason': 'سبب عدم التوثيق',
-  'payment_way' : 'طرق الدفع',
+  'payment_way': 'طرق الدفع',
   'Here_you_can_track_your_impact_and_support_new_campaigns_with_stars':
       'هنا يمكنك متابعة أثرك ودعم حملات جديدة بالنجوم',
   'Your_current_impact': 'أثرك الحالي',
@@ -500,7 +500,8 @@ Map<String, String> arLocale = {
   'Save_card': 'حفظ البطاقة',
   'bank_accounts': 'الحسابات البنكية',
   'Verified': 'متحقق',
-  'current_pass':'كلمة المرور الحالية'
-
-
+  'current_pass': 'كلمة المرور الحالية',
+  'paused': 'موقوفة مؤقتاً',
+  'draft': 'مسودة',
+  'deleted': 'محذوفة',
 };
