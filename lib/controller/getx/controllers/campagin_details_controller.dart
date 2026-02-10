@@ -2,24 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CampaignDetailsController extends GetxController{ 
-  var selectedIndex = 0.obs; 
-    final List<int> stars = [50, 100, 250, 500];
-    TextEditingController? controller ;
-    @override
-  void onInit() {
-    // TODO: implement onInit
-    super.onInit();
-    controller =TextEditingController();
-  }
+
+
+  final List<int> stars = [500, 250, 100, 50];
+  late final RxInt selectedIndex;
+  final TextEditingController customStarsController = TextEditingController();
+
   void selectStarIndex(int index) {
+    if (index < 0 || index >= stars.length) return;
     selectedIndex.value = index;
+  }
+
+  int get selectedStars => stars[selectedIndex.value];
+
+  @override
+  void onInit() {
+    selectedIndex = (stars.length - 1).obs;
+    super.onInit();
   }
 
   @override
   void onClose() {
-    controller?.dispose();
-    controller = null;
+    customStarsController.dispose();
     super.onClose();
   }
-
 }
