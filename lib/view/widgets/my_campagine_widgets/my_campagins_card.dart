@@ -277,9 +277,9 @@ class ButtonsRow extends StatelessWidget {
 String _statusText(CampaignStatus status) {
   switch (status) {
     case CampaignStatus.completed:
-      return 'completed'.tr;
+      return 'Complete_campaign'.tr;
     case CampaignStatus.active:
-      return 'active'.tr;
+      return 'Active'.tr;
     case CampaignStatus.paused:
       return 'paused'.tr;
     case CampaignStatus.stopped:
