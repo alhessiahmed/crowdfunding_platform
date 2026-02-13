@@ -18,4 +18,5 @@ class ApiSettings {
 
   // DONOR
   static const String donor = '$_baseUrl/donor';
+  static const String campaign = '$_baseUrl/campaign';
 }

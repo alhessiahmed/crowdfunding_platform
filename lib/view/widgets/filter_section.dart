@@ -9,11 +9,13 @@ class FilterSection extends StatelessWidget {
     required this.filters,
     required this.selectedIndex,
     required this.onSelect,
+   // required this.campaignNo
   });
 
   final List<FilterItem> filters;
   final int selectedIndex;
   final Function(int index) onSelect;
+  //final int campaignNo ;
 
   @override
   Widget build(BuildContext context) {

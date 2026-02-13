@@ -41,7 +41,8 @@ class ImagesManager {
       '$mainPath/bg_account_not_verified.png';
   static const String lightVerified = '$mainPath/light_verified.png';
   static const String lightWarning = '$mainPath/light_warning.png';
-  static const String hourVerified = '$mainPath/hour_verified.png';
+  static const String placeHolder2 = '$mainPath/placeholder.png';
+
   //assets\images\light_verified.png
 
   //assets\images\bg_account_not_verified.png
