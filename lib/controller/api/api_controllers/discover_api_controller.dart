@@ -23,7 +23,7 @@ class CampaginApiController with ApiHelper {
       if(response.statusCode == 200 || response.statusCode == 201){ 
         final List data = jsonDecode(response.body);
         final campagins =  data.map((e) => CampaignModel.fromJson(e)).toList();
-        log(campagins.toString());
+        log('discover campagins////////${data.toList()}');
         return campagins;
       }else{ 
          throw Exception(

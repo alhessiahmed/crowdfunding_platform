@@ -14,16 +14,20 @@ class DiscoverController extends GetxController {
   final int limit = 15;
 int selectedFilterIndex =0 ;
   bool isLoading = false;
+  bool isCountsLoading = false;
   bool hasMore = true;
 dynamic categoryCounts  ;
 CampaignCategory selectedCategory = CampaignCategory.ALL;
 List<FilterItem> filters = [];
+Map<CampaignCategory, int> _globalCategoryCounts = {};
 
   List<CampaignModel> campaigns = [];
 
   @override
   void onInit() {
     super.onInit();
+    _buildInitialFilters();
+    refreshGlobalCategoryCounts();
     getCampaigns();
   }
 void selectCategory(int index) {
@@ -99,20 +103,76 @@ Map<CampaignCategory, int> calculateCategoryCounts(
 
   return counts;
 }
+Future<void> refreshGlobalCategoryCounts() async {
+  if (isCountsLoading) return;
+  isCountsLoading = true;
+  update();
+
+  try {
+    final Map<CampaignCategory, int> counts = {
+      for (final category in CampaignCategory.values) category: 0,
+    };
+
+    for (final category in CampaignCategory.values) {
+      if (category == CampaignCategory.ALL) continue;
+
+      int page = 1;
+      int totalForCategory = 0;
+
+      while (true) {
+        final result = await _api.getCampaignsByCategory(
+          category: category,
+          page: page,
+          limit: limit,
+        );
+
+        totalForCategory += result.length;
+
+        if (result.length < limit) break;
+        page++;
+      }
+
+      counts[category] = totalForCategory;
+    }
+
+    counts[CampaignCategory.ALL] = counts.entries
+        .where((entry) => entry.key != CampaignCategory.ALL)
+        .fold<int>(0, (sum, entry) => sum + entry.value);
+
+    _globalCategoryCounts = counts;
+    updateFiltersCount();
+  } catch (_) {
+    // Keep existing counters if count refresh fails.
+  } finally {
+    isCountsLoading = false;
+    update();
+  }
+}
+
 void updateFiltersCount() {
-  final counts = calculateCategoryCounts(campaigns);
+  final counts = _globalCategoryCounts.isNotEmpty
+      ? _globalCategoryCounts
+      : calculateCategoryCounts(campaigns);
 
   filters = CampaignCategory.values.map((category) {
     return FilterItem(
       id: category.index.toString(),
       title: category.labelAr,
-      count: category == CampaignCategory.ALL
-          ? campaigns.length 
-          : counts[category] ?? 0,
+      count: counts[category] ?? 0,
     );
   }).toList();
 
   update();
+}
+
+void _buildInitialFilters() {
+  filters = CampaignCategory.values.map((category) {
+    return FilterItem(
+      id: category.index.toString(),
+      title: category.labelAr,
+      count: 0,
+    );
+  }).toList();
 }
 
 
