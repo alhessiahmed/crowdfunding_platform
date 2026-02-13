@@ -5,7 +5,6 @@ import 'package:crowdfunding_platform/view/widgets/my_campagine_widgets/my_campa
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_utils/src/extensions/export.dart';
 
 class MyCampaignsScreen extends GetView<MyCampaginsController> {
   const MyCampaignsScreen({super.key});

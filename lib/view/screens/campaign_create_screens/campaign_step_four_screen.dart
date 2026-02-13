@@ -160,9 +160,9 @@ class CampaignStepFourScreen extends GetView<CampaignStepFourController> {
             },
             child: Container(
               decoration: BoxDecoration(color: Colors.white),
-              child: Image.asset(controller.editImage),
               height: 30.h,
               width: 30.w,
+              child: Image.asset(controller.editImage),
             ),
           ),
         ),

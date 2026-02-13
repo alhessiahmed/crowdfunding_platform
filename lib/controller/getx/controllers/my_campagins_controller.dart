@@ -55,6 +55,13 @@ class MyCampaginsController extends GetxController {
         progress: 0,
         status: CampaignStatus.draft,
       ),
+      MyCampaignsModel(
+        id: 5,
+        title: 'قطرة حياة: مياه نظيفة لأطفال غزة',
+        image: 'assets/images/campaign.png',
+        progress: 0,
+        status: CampaignStatus.deleted,
+      ),
     ];
   }
 }

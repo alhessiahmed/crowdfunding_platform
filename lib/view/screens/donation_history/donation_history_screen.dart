@@ -6,10 +6,9 @@ import 'package:crowdfunding_platform/controller/getx/controllers/donation_histo
 import 'package:crowdfunding_platform/model/donation_summary.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
 class DonationHistoryScreen extends GetView<DonationHistoryController> {
-  const DonationHistoryScreen({Key? key}) : super(key: key);
+  const DonationHistoryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

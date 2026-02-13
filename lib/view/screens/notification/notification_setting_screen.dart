@@ -8,6 +8,8 @@ import 'package:get/get.dart';
 
 class NotificationSettingsScreen
     extends GetView<NotificationSettingsController> {
+  const NotificationSettingsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

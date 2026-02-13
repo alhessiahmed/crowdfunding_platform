@@ -1,4 +1,3 @@
-import 'package:crowdfunding_platform/controller/getx/controllers/auth/reset_password_controller.dart';
 import 'package:crowdfunding_platform/controller/getx/controllers/change_pass_controller.dart';
 import 'package:crowdfunding_platform/view/widgets/custom_app_bar.dart';
 import 'package:crowdfunding_platform/view/widgets/password_rule.dart';
