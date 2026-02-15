@@ -1,6 +1,7 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
+import 'package:crowdfunding_platform/controller/getx/controllers/discover_controller.dart';
 import 'package:crowdfunding_platform/model/campagin_models/campagin_model.dart';
 import 'package:crowdfunding_platform/view/widgets/campaign_details_widget/popup_to_donate.dart';
 import 'package:flutter/material.dart';
@@ -90,7 +91,8 @@ class CampaignCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12.r),
                       ),
                       child: Text(
-                        campaign.category,
+                        campaignCategoryFromString( campaign.category).labelAr ,
+                       
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               fontWeight: FontWeight.w600,
                               color: isDark

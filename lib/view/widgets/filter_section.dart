@@ -14,7 +14,7 @@ class FilterSection extends StatelessWidget {
 
   final List<FilterItem> filters;
   final int selectedIndex;
-  final Function(int index) onSelect;
+  final Function(int index ,FilterItem item) onSelect;
   //final int campaignNo ;
 
   @override
@@ -36,7 +36,7 @@ class FilterSection extends StatelessWidget {
 
             showCheckmark: false,
             selected: isSelected,
-            onSelected: (_) => onSelect(index),
+            onSelected: (_) => onSelect( index , item),
 
             labelStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
               color: isSelected
@@ -60,8 +60,8 @@ class FilterSection extends StatelessWidget {
                   Text(item.title),
                   SizedBox(width: 2.w),
                   Container(
-                    height: 22.h,
-                    padding: EdgeInsets.symmetric(horizontal: 10.w),
+                    height: 18.h,
+                    padding: EdgeInsets.symmetric(horizontal: 7.w),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: isSelected

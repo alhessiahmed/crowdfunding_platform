@@ -30,7 +30,7 @@ Map<CampaignCategory, int> _globalCategoryCounts = {};
     refreshGlobalCategoryCounts();
     getCampaigns();
   }
-void selectCategory(int index) {
+void selectCategory(int index , item ) {
   selectedFilterIndex = index;
   selectedCategory = CampaignCategory.values[index];
 

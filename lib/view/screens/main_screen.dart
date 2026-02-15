@@ -1,13 +1,14 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/controller/core/routes/index.dart';
+import 'package:crowdfunding_platform/controller/getx/controllers/my_campagins_controller.dart';
 import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  MainScreen({super.key});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -15,13 +16,29 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int currentIndex = 1;
+  late final String creatorId;
 
-  final screens = [
+  @override
+  void initState() {
+    super.initState();
+    final id = SharedPrefController().user?['id'];
+    creatorId = id is String ? id : '';
+  }
+
+  late final List<Widget> screens = [
     const ProfileScreen(),
     const DiscoverScreen(),
-    const MyCampaignsScreen(),
+    MyCampaignsScreen(creatorId: creatorId),
     const HomeScreen(),
   ];
+
+  void _openTab(int index) {
+    setState(() => currentIndex = index);
+
+    if (index == 2 && creatorId.isNotEmpty && Get.isRegistered<MyCampaginsController>()) {
+      Get.find<MyCampaginsController>().refreshCampaigns();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +59,6 @@ class _MainScreenState extends State<MainScreen> {
 
   Widget _BottomBar() {
     final String? userType = SharedPrefController().userType;
-
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return SafeArea(
       bottom: false,
@@ -83,7 +99,7 @@ class _MainScreenState extends State<MainScreen> {
                     ),
 
                   _CenterActionButton(
-                    index: userType == UserRole.CAMPAIGN_CREATOR.name ? -1 :1,
+                    index: userType == UserRole.CAMPAIGN_CREATOR.name ? -1 : 1,
                     isDark: isDark,
                     icon: userType == UserRole.CAMPAIGN_CREATOR.name
                         ? ImagesManager.addSquare
@@ -95,13 +111,12 @@ class _MainScreenState extends State<MainScreen> {
                     // },
                   ),
                 },
-                  if (userType != UserRole.DONOR.name)
-                     _TabItem(
-                        activeIcon: ImagesManager.discover,
-                        unActiveIcon: ImagesManager.discover,
-                        index: 1,
-                      )
-                    ,
+                if (userType != UserRole.DONOR.name)
+                  _TabItem(
+                    activeIcon: ImagesManager.discover,
+                    unActiveIcon: ImagesManager.discover,
+                    index: 1,
+                  ),
 
                 _TabItem(
                   activeIcon: ImagesManager.activeProfile,
@@ -125,9 +140,7 @@ class _MainScreenState extends State<MainScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return InkWell(
-      onTap: () {
-        setState(() => currentIndex = index);
-      },
+      onTap: () => _openTab(index),
       child: Container(
         height: 54.h,
         width: 54.w,
@@ -144,15 +157,15 @@ class _MainScreenState extends State<MainScreen> {
                 isSelected
                     ? ColorsManager.primaryCTA
                     : isDark
-                    ? ColorsManager.secondaryDark
-                    : ColorsManager.secondaryLight,
+                        ? ColorsManager.secondaryDark
+                        : ColorsManager.secondaryLight,
                 BlendMode.srcIn,
               ),
               color: isSelected
                   ? ColorsManager.primaryCTA
                   : isDark
-                  ? ColorsManager.secondaryDark
-                  : ColorsManager.secondaryLight,
+                      ? ColorsManager.secondaryDark
+                      : ColorsManager.secondaryLight,
             ),
           ),
         ),
@@ -165,15 +178,12 @@ class _MainScreenState extends State<MainScreen> {
 
     required bool isDark,
     required String icon,
-   // required void Function()? onTap,
+    // required void Function()? onTap,
   }) {
-    final bool isSelected = index == currentIndex ;
+    final bool isSelected = index == currentIndex;
     return InkWell(
-  onTap: () {
-       index != -1
-       ? setState(() => currentIndex = index) 
-       :Get.toNamed(RoutesManager.CampaignStepOneScreen)
-       ;
+      onTap: () {
+        index != -1 ? _openTab(index) : Get.toNamed(RoutesManager.CampaignStepOneScreen);
       },
       child: Container(
         height: 54.h,
@@ -181,7 +191,10 @@ class _MainScreenState extends State<MainScreen> {
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: isDark ? ColorsManager.bgGoogle : ColorsManager.white,
-          border: Border.all(color:isSelected ? ColorsManager.primaryCTA: ColorsManager.secondaryLight, width: 1.5),
+          border: Border.all(
+            color: isSelected ? ColorsManager.primaryCTA : ColorsManager.secondaryLight,
+            width: 1.5,
+          ),
         ),
         child: Center(
           child: SvgPicture.asset(
@@ -189,7 +202,7 @@ class _MainScreenState extends State<MainScreen> {
             // ImagesManager.addSquare,
             width: 24.w,
             height: 24.h,
-           color:isSelected ? ColorsManager.primaryCTA: ColorsManager.secondaryLight
+            color: isSelected ? ColorsManager.primaryCTA : ColorsManager.secondaryLight,
           ),
         ),
       ),

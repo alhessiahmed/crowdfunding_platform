@@ -11,6 +11,7 @@ import 'package:crowdfunding_platform/controller/getx/bindings/payment/choose_pa
 import 'package:crowdfunding_platform/controller/getx/bindings/request_to_withdraw_profits_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/summer_of_withdraw_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/wallet_binding.dart';
+import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_controller.dart';
 import 'package:crowdfunding_platform/view/screens/add_pymaent_method/add_payment_method_page.dart';
 import 'package:crowdfunding_platform/view/screens/add_pymaent_method/choose_payment_method_page.dart';
 import 'package:crowdfunding_platform/view/screens/change_pass/change_pass_screen.dart';
@@ -83,7 +84,7 @@ final List<GetPage<dynamic>> getPages = [
   ),
   GetPage(
     name: RoutesManager.mainScreen,
-    page: () => const MainScreen(),
+    page: () =>  MainScreen(),
     binding: MainBinding(),
   ),
   GetPage(
@@ -219,7 +220,10 @@ final List<GetPage<dynamic>> getPages = [
   ),
   GetPage(
     name: RoutesManager.myCampaignsScreen,
-    page: () => const MyCampaignsScreen(),
+    page: () {
+      final userId = SharedPrefController().user?['id'];
+      return MyCampaignsScreen(creatorId: userId is String ? userId : '');
+    },
     binding: MyCampaginsBinding(),
   ),
   GetPage(
