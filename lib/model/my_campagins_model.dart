@@ -3,8 +3,10 @@ enum CampaignStatus {
   active,
   paused,
   stopped,
-  draft,
-  deleted
+  deleted,
+  draft ,
+  pending
+  
 }
 class MyCampaignsModel {
   final int id;
@@ -26,4 +28,6 @@ class MyCampaignsModel {
   bool get isPaused => status == CampaignStatus.paused;
   bool get isStopped => status == CampaignStatus.stopped;
   bool get isDraft => status == CampaignStatus.draft;
+    bool get isPending => status == CampaignStatus.pending;
+
 }

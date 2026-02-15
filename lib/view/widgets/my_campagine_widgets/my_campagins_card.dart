@@ -1,15 +1,17 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/controller/core/routes/index.dart';
+import 'package:crowdfunding_platform/model/campagin_models/campagin_model.dart';
 import 'package:crowdfunding_platform/model/my_campagins_model.dart';
 import 'package:crowdfunding_platform/view/widgets/step_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class MyCampaginsCard extends StatelessWidget {
   const MyCampaginsCard({super.key, required this.myCampaign});
-  final MyCampaignsModel myCampaign;
+  final CampaignModel myCampaign;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +57,9 @@ class MyCampaginsCard extends StatelessWidget {
                     children: [
                       Align(
                         alignment: Alignment.topLeft,
-                        child: _StatusPill(status: myCampaign.status),
+                        child: _StatusPill(
+              status:campaignStatus(myCampaign.status)
+                          ),
                       ),
                       SizedBox(height: 8.h),
                       Text(
@@ -73,7 +77,7 @@ class MyCampaginsCard extends StatelessWidget {
                             style: TextStyle(fontSize: 12.sp),
                           ),
                           Text(
-                            '${myCampaign.progress}%',
+                            '${myCampaign.goal}%',
                             style: TextStyle(
                               color: ColorsManager.primaryCTA,
                               fontWeight: FontWeight.w800,
@@ -85,7 +89,7 @@ class MyCampaginsCard extends StatelessWidget {
                       SizedBox(height: 8.h),
                       SizedBox(
                         width: double.infinity,
-                        child: StepIndicator(progress: myCampaign.progress),
+                        child: StepIndicator(progress: myCampaign.goal),
                       ),
                     ],
                   ),
@@ -97,7 +101,10 @@ class MyCampaginsCard extends StatelessWidget {
             Container(color: ColorsManager.grey.withOpacity(.2), height: 2.h),
             //Divider(),
             SizedBox(height: 8.h),
-            ButtonsRow(status: myCampaign.status),
+            ButtonsRow(
+              status:campaignStatus(myCampaign.status)
+           
+             ),
           ],
         ),
       ),
@@ -126,10 +133,12 @@ class _StatusPill extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SvgPicture.asset(
-            _statusIcon(status),
-            // size: 16.sp,
-            color: _statusColor(status),
+    Skeleton.ignore(
+            child: SvgPicture.asset(
+              _statusIcon(status),
+              // size: 16.sp,
+              color: _statusColor(status),
+            ),
           ),
           SizedBox(width: 4.w),
           Text(
@@ -248,7 +257,17 @@ class ButtonsRow extends StatelessWidget {
             () {},
           ),
         ];
+      default:
+        return [
+           _btn(
+            ColorsManager.danger2,
+            'delete_campagin'.tr,
+            ImagesManager.trash,
+            () {},
+          ),
+        ];
     }
+    
   }
 
   Widget _btn(
@@ -274,6 +293,31 @@ class ButtonsRow extends StatelessWidget {
   }
 }
 
+CampaignStatus campaignStatus(String status) {
+  switch (status) {
+    case 'completed':
+      return CampaignStatus.completed;
+
+    case 'active':
+      return CampaignStatus.active;
+
+    case 'deleted':
+      return CampaignStatus.deleted;
+
+    case 'draft':
+      return CampaignStatus.draft;
+
+    case 'paused':
+      return CampaignStatus.paused;
+       case 'pending':
+      return CampaignStatus.pending;
+
+    default:
+      return CampaignStatus.stopped;
+  }
+}
+
+
 String _statusText(CampaignStatus status) {
   switch (status) {
     case CampaignStatus.completed:
@@ -288,6 +332,8 @@ String _statusText(CampaignStatus status) {
       return 'draft'.tr;
     case CampaignStatus.deleted:
       return 'deleted'.tr;
+      case CampaignStatus.pending:
+      return 'pending'.tr;
   }
 }
 
@@ -305,6 +351,8 @@ String _statusIcon(CampaignStatus status) {
       return ImagesManager.note2;
     case CampaignStatus.deleted:
       return ImagesManager.trash;
+      case CampaignStatus.pending: 
+      return ImagesManager.note2;
   }
 }
 
@@ -322,5 +370,7 @@ Color _statusColor(CampaignStatus status) {
       return ColorsManager.primaryCTA;
     case CampaignStatus.deleted:
       return ColorsManager.danger;
+      case CampaignStatus.pending:
+      return ColorsManager.boarder;
   }
 }

@@ -1,67 +1,172 @@
+import 'package:crowdfunding_platform/controller/api/api_controllers/mycampagin_api_controller.dart';
+import 'package:crowdfunding_platform/model/campagin_models/campagin_model.dart';
 import 'package:crowdfunding_platform/model/filter_item.dart';
 import 'package:crowdfunding_platform/model/my_campagins_model.dart';
+import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 
 class MyCampaginsController extends GetxController {
-  List<FilterItem> filtersMock = [];
-  RxInt selectedFilterIndex = 0.obs;
-  List<MyCampaignsModel> myCampaignsMock = [];
+  final String creatorId;
+
+  MyCampaginsController(this.creatorId);
+
+  final RxList<FilterItem> filters = <FilterItem>[].obs;
+  final RxInt selectedFilterIndex = 0.obs;
+  final RxString selectedFilterId = 'all'.obs;
+  final RxList<CampaignModel> filteredCampaigns = <CampaignModel>[].obs;
+
+  final List<CampaignModel> _allCampaigns = <CampaignModel>[];
+  final RxBool isLoading = false.obs;
+  final MycampaginApiController _myCampaginsController =
+      MycampaginApiController();
+
+  Future<void>? _ongoingFetch;
+
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
-    getMyCampaginData();
+    if (creatorId.isEmpty) {
+      _clearAllData();
+      return;
+    }
+
+    getMyCampaginData(creatorId);
   }
 
-  void selectFilter(int index) {
+  Future<void> refreshCampaigns() {
+    return getMyCampaginData(creatorId);
+  }
+
+  void selectFilter(int index, FilterItem item) {
     selectedFilterIndex.value = index;
+    selectedFilterId.value = item.id;
+    applyFilter(item.id);
   }
 
-  getMyCampaginData() {
-    //api request
-    filtersMock = [
-      FilterItem(id: 'all', title: 'كل الحملات', count: 12),
-      FilterItem(id: 'education', title: 'مكتملة', count: 4),
-      FilterItem(id: 'health', title: 'نشطة', count: 1),
-      FilterItem(id: 'relief', title: 'مسودة', count: 5),
-    ];
+  Future<void> getMyCampaginData(String creatorId) async {
+    if (creatorId.isEmpty) {
+      _clearAllData();
+      return;
+    }
 
-    myCampaignsMock = [
-      MyCampaignsModel(
-        id: 1,
-        title: 'قطرة حياة: مياه نظيفة لأطفال غزة',
-        image: 'assets/images/campaign.png',
-        progress: 100,
-        status: CampaignStatus.completed,
+    if (_ongoingFetch != null) {
+      return _ongoingFetch!;
+    }
+
+    final fetch = _fetchCampaigns(creatorId);
+    _ongoingFetch = fetch;
+
+    await fetch;
+
+    if (identical(_ongoingFetch, fetch)) {
+      _ongoingFetch = null;
+    }
+  }
+
+  Future<void> _fetchCampaigns(String creatorId) async {
+    isLoading.value = true;
+    try {
+      final campaigns = await _myCampaginsController.getCampaignsByCreator(
+        creatorId,
+      );
+
+      _allCampaigns
+        ..clear()
+        ..addAll(campaigns);
+
+      _buildFiltersFromCampaigns();
+      applyFilter(selectedFilterId.value);
+    } catch (e) {
+      _clearAllData();
+      Get.log('getMyCampaginData error: $e');
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  void applyFilter(String filterId) {
+    final normalized = filterId.trim().toLowerCase();
+
+    if (normalized == 'all') {
+      filteredCampaigns.assignAll(_allCampaigns);
+      return;
+    }
+
+    filteredCampaigns.assignAll(
+      _allCampaigns.where((c) => c.status.trim().toLowerCase() == normalized),
+    );
+  }
+
+  void _buildFiltersFromCampaigns() {
+    final Map<String, int> counts = {
+      'completed': 0,
+      'active': 0,
+      'stopped': 0,
+      'pending': 0,
+      'draft': 0,
+      'paused': 0,
+      'deleted': 0,
+    };
+
+    for (final c in _allCampaigns) {
+      final key = c.status.trim().toLowerCase();
+      if (counts.containsKey(key)) {
+        counts[key] = counts[key]! + 1;
+      }
+    }
+
+    filters.assignAll([
+      FilterItem(id: 'all', title: 'كل الحملات', count: _allCampaigns.length),
+      FilterItem(
+        id: 'completed',
+        title: 'completed'.tr,
+        count: counts['completed']!,
       ),
-      MyCampaignsModel(
-        id: 2,
-        title: 'قطرة حياة: مياه نظيفة لأطفال غزة',
-        image: 'assets/images/campaign.png',
-        progress: 50,
-        status: CampaignStatus.active,
-      ),
-      MyCampaignsModel(
-        id: 3,
-        title: 'قطرة حياة: مياه نظيفة لأطفال غزة',
-        image: 'assets/images/campaign.png',
-        progress: 50,
-        status: CampaignStatus.paused,
-      ),
-      MyCampaignsModel(
-        id: 4,
-        title: 'قطرة حياة: مياه نظيفة لأطفال غزة',
-        image: 'assets/images/campaign.png',
-        progress: 0,
-        status: CampaignStatus.draft,
-      ),
-      MyCampaignsModel(
-        id: 5,
-        title: 'قطرة حياة: مياه نظيفة لأطفال غزة',
-        image: 'assets/images/campaign.png',
-        progress: 0,
-        status: CampaignStatus.deleted,
-      ),
-    ];
+      FilterItem(id: 'active', title: 'Active'.tr, count: counts['active']!),
+      FilterItem(id: 'stopped', title: 'stopped'.tr, count: counts['stopped']!),
+      FilterItem(id: 'pending', title: 'pending'.tr, count: counts['pending']!),
+      FilterItem(id: 'draft', title: 'draft'.tr, count: counts['draft']!),
+      FilterItem(id: 'paused', title: 'paused'.tr, count: counts['paused']!),
+    ]);
+
+    final selectedId = selectedFilterId.value;
+    final selectedIndex = filters.indexWhere((f) => f.id == selectedId);
+
+    if (selectedIndex == -1) {
+      selectedFilterIndex.value = 0;
+      selectedFilterId.value = 'all';
+    } else {
+      selectedFilterIndex.value = selectedIndex;
+    }
+  }
+
+  void _clearAllData() {
+    _allCampaigns.clear();
+    filteredCampaigns.clear();
+    filters.clear();
+    selectedFilterIndex.value = 0;
+    selectedFilterId.value = 'all';
   }
 }
+
+extension CampaignStatusLabelAr on CampaignStatus {
+  String get labelAr {
+    switch (this) {
+      case CampaignStatus.completed:
+        return 'completed'.tr;
+      case CampaignStatus.active:
+        return 'active'.tr;
+      case CampaignStatus.stopped:
+        return 'stopped'.tr;
+      case CampaignStatus.deleted:
+        return 'deleted'.tr;
+      case CampaignStatus.draft:
+        return 'draft'.tr;
+      case CampaignStatus.paused:
+        return 'paused'.tr;
+      case CampaignStatus.pending:
+        return 'pending'.tr;
+    }
+  }
+}
+
