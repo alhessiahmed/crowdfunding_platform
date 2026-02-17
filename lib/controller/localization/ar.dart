@@ -504,4 +504,8 @@ Map<String, String> arLocale = {
   'paused': 'موقوفة مؤقتاً',
   'draft': 'مسودة',
   'deleted': 'محذوفة',
+  'pending' : 'قيد المراجعة', 
+  'completed' : 'مكتملة', 
+  'stopped' : 'موقوفة'
+
 };
