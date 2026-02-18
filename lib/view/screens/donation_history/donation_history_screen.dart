@@ -117,7 +117,8 @@ class DonationHistoryScreen extends GetView<DonationHistoryController> {
           SizedBox(width: 10.w),
           Text(
             'supported_campaigns'.trParams({
-              'count': controller.donations.length.toString(),
+              'count': controller.totalCount.value
+                  .toString(), // استخدمنا القيمة الحقيقية 57
             }),
             style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
           ),
@@ -365,7 +366,9 @@ class DonationHistoryScreen extends GetView<DonationHistoryController> {
             borderRadius: BorderRadius.circular(15.r),
           ),
         ),
-        onPressed: () {Get.toNamed(RoutesManager.mainScreen);},
+        onPressed: () {
+          Get.toNamed(RoutesManager.mainScreen);
+        },
         icon: Image.asset(ImagesManager.discoverButton),
         label: Text(
           'explore_campaigns'.tr,
