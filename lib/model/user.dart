@@ -27,14 +27,13 @@ class User {
       firstName: json['firstName'] as String,
       lastName: json['lastName'] as String,
       email: json['email'] as String,
-
       dateOfBirth: json['dateOfBirth'] != null
           ? DateTime.tryParse(json['dateOfBirth'])
           : null,
-
       role: json['role'] as String,
       isVerified: json['isVerified'] as bool?,
       verificationStatus: json['verificationStatus'] as String?,
+      country: json['country'] as String?,
     );
   }
 

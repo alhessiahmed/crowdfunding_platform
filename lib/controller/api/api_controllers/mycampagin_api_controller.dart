@@ -31,4 +31,19 @@ class MycampaginApiController {
       rethrow;
     }
   }
+
+  Future<String> deleteCampagin(String campaignId)async{ 
+    try{ 
+      final url = Uri.parse(ApiSettings.deleteCampaign(campaignId)) ;
+      final response =await http.delete(url); 
+      if(response.statusCode == 200 || response.statusCode == 201){
+        return 'Campaign deleted successfely';
+      }
+      else{ 
+        return 'faild delete campaign';
+      }
+    }catch(e){ 
+      rethrow;
+    }
+  }
 }

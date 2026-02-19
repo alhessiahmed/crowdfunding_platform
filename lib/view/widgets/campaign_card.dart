@@ -70,7 +70,7 @@ class CampaignCard extends StatelessWidget {
   errorBuilder: (context, error, stackTrace) {
     return Image.asset(
       ImagesManager.placeHolder2,
-      fit: BoxFit.cover,
+      fit: BoxFit.scaleDown,
     );
   },
 )

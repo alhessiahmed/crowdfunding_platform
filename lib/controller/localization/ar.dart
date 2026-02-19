@@ -367,7 +367,7 @@ Map<String, String> arLocale = {
   'two_factor_authentication_description':
       'قم بتأمين حسابك باستخدام رمز إضافي عند تسجيل الدخول لزيادة مستوى الحماية',
   'update_password_description':
-      'تحديث كلمة المرور بسكل دوري يساعد في حماية حسابك من الاختراقات المحتملة',
+      'تحديث كلمة المرور بشكل دوري يساعد في حماية حسابك من الاختراقات المحتملة',
   'required': 'مطلوب',
   'email_required': 'يرجى ادخال البريد الالكتروني',
   'invalid_email': 'يرجى ادخال بريد الكتروني صالح',
@@ -506,6 +506,13 @@ Map<String, String> arLocale = {
   'deleted': 'محذوفة',
   'pending' : 'قيد المراجعة', 
   'completed' : 'مكتملة', 
-  'stopped' : 'موقوفة'
+  'stopped' : 'موقوفة',
+  'campaign' : 'حملة',
+  "title_delete_campaign": "حذف الحملة",
+  "msg_delete_campaign": "هل أنت متأكد أنك تريد حذف هذه الحملة؟",
+  "btn_cancel": "إلغاء",
+  "btn_delete": "حذف",
+  "success_delete_campaign": "تم حذف الحملة بنجاح",
+  "error_delete_campaign": "فشل حذف الحملة"
 
 };
