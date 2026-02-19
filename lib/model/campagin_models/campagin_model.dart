@@ -47,27 +47,36 @@ class CampaignModel {
   });
 
   factory CampaignModel.fromJson(Map<String, dynamic> json) {
+    final creatorJson = json['creator'];
+    final assetsJson = json['assets'];
+
     return CampaignModel(
-      id: json['id'] as String,
-      creatorId: json['creatorId'] as String,
-      title: json['title'] as String,
-      description: json['description'] as String,
-      category: json['category'] as String,
-      goal: (json['goal'] as num).toDouble(),
-      startDate: DateTime.parse(json['startDate'] as String),
-      endDate: DateTime.parse(json['endDate'] as String),
-      motivationMessage: json['motivationMessage'] as String,
-      status: json['status'] as String,
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      updatedAt: DateTime.parse(json['updatedAt'] as String),
-      isVerified: json['isVerified'] as bool,
-      verificationStatus: json['verificationStatus'] as String,
-      isActive: json['isActive'] as bool,
-      notes: json['notes'] as String,
-      isDeleted: json['isDeleted'] as bool,
-      likes: json['likes'] as int,
-      creator: Creator.fromJson(json['creator'] as Map<String, dynamic>),
-      assets: (json['assets'] as List<dynamic>)
+      id: (json['id'] ?? '').toString(),
+      creatorId: (json['creatorId'] ?? '').toString(),
+      title: (json['title'] ?? '').toString(),
+      description: (json['description'] ?? '').toString(),
+      category: (json['category'] ?? '').toString(),
+      goal: (json['goal'] as num?)?.toDouble() ?? 0,
+      startDate: DateTime.tryParse((json['startDate'] ?? '').toString()) ??
+          DateTime.now(),
+      endDate:
+          DateTime.tryParse((json['endDate'] ?? '').toString()) ?? DateTime.now(),
+      motivationMessage: (json['motivationMessage'] ?? '').toString(),
+      status: (json['status'] ?? '').toString(),
+      createdAt: DateTime.tryParse((json['createdAt'] ?? '').toString()) ??
+          DateTime.now(),
+      updatedAt: DateTime.tryParse((json['updatedAt'] ?? '').toString()) ??
+          DateTime.now(),
+      isVerified: json['isVerified'] as bool? ?? false,
+      verificationStatus: (json['verificationStatus'] ?? '').toString(),
+      isActive: json['isActive'] as bool? ?? true,
+      notes: (json['notes'] ?? '').toString(),
+      isDeleted: json['isDeleted'] as bool? ?? false,
+      likes: json['likes'] as int? ?? 0,
+      creator: creatorJson is Map<String, dynamic>
+          ? Creator.fromJson(creatorJson)
+          : Creator(id: '', firstName: '', lastName: '', country: ''),
+      assets: (assetsJson is List ? assetsJson : const <dynamic>[])
           .map((asset) => Asset.fromJson(asset as Map<String, dynamic>))
           .toList(),
     );

@@ -1,3 +1,4 @@
+import 'package:crowdfunding_platform/controller/api/api_settings.dart';
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
@@ -8,10 +9,7 @@ import 'package:crowdfunding_platform/view/widgets/profile_widgets/header_profil
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:get/get.dart';
 
 class ProfileScreen extends GetView<ProfileController> {
   const ProfileScreen({super.key});
@@ -26,42 +24,53 @@ class ProfileScreen extends GetView<ProfileController> {
               children: [
                 HeaderProfile(),
                 DetailsInfoCard(),
-                            if( SharedPrefController().userType != UserRole.GUEST.name)...{
-
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      SharedPrefController().clearUser();
-                      Get.offAllNamed(RoutesManager.welcomeScreen);
-
-                    },
-                    child: Row(
-                      spacing: 10.w,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(ImagesManager.logout),
-                        Text('logout'.tr),
-                      ],
+                if (SharedPrefController().userType != UserRole.GUEST.name) ...{
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.w),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        SharedPrefController().clearUser();
+                        Get.offAllNamed(RoutesManager.welcomeScreen);
+                      },
+                      child: Row(
+                        spacing: 10.w,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(ImagesManager.logout),
+                          Text('logout'.tr),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(height: 10.h),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  child: ElevatedButton(
-                    onPressed: () { 
-                     controller.deleteAccount();
-
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: ColorsManager.danger2,
+                  SizedBox(height: 10.h),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.w),
+                    child: Obx(
+                      () => ElevatedButton(
+                        onPressed: controller.isDeleting.value
+                            ? null
+                            : () {
+                                final userId = SharedPrefController().user?['id'];
+                                controller.deleteAccount(userId is String ? userId : null);
+                              },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: ColorsManager.danger2,
+                        ),
+                        child: controller.isDeleting.value
+                            ? SizedBox(
+                                height: 18.h,
+                                width: 18.w,
+                                child: const CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: Colors.white,
+                                ),
+                              )
+                            : Text('delete_account'.tr),
+                      ),
                     ),
-                    child: Text('delete_account'.tr),
                   ),
-                ),
                 },
-                 SizedBox(height: 130.h),
+                SizedBox(height: 130.h),
               ],
             ),
           ),

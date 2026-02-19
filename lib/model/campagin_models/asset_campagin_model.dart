@@ -38,22 +38,24 @@ class Asset {
 
   factory Asset.fromJson(Map<String, dynamic> json) {
     return Asset(
-      id: json['id'] as String,
-      storageProviderName: json['storageProviderName'] as String,
-      fileId: json['fileId'] as String,
-      url: json['url'] as String,
-      fileType: json['fileType'] as String,
-      fileSizeInKB: json['fileSizeInKB'] as int,
-      kind: json['kind'] as String,
-      ownerId: json['ownerId'] as String,
+      id: (json['id'] ?? '').toString(),
+      storageProviderName: (json['storageProviderName'] ?? '').toString(),
+      fileId: (json['fileId'] ?? '').toString(),
+      url: (json['url'] ?? '').toString(),
+      fileType: (json['fileType'] ?? '').toString(),
+      fileSizeInKB: json['fileSizeInKB'] as int? ?? 0,
+      kind: (json['kind'] ?? '').toString(),
+      ownerId: (json['ownerId'] ?? '').toString(),
       userId: json['userId'] as String?,
-      campaignId: json['campaignId'] as String,
+      campaignId: (json['campaignId'] ?? '').toString(),
       campaignUpdateId: json['campaignUpdateId'] as String?,
       creatorId: json['creatorId'] as String?,
       bankAccountId: json['bankAccountId'] as String?,
       donorIdentityId: json['donorIdentityId'] as String?,
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      updatedAt: DateTime.parse(json['updatedAt'] as String),
+      createdAt: DateTime.tryParse((json['createdAt'] ?? '').toString()) ??
+          DateTime.now(),
+      updatedAt: DateTime.tryParse((json['updatedAt'] ?? '').toString()) ??
+          DateTime.now(),
     );
   }
 

@@ -14,10 +14,10 @@ class Creator {
 
   factory Creator.fromJson(Map<String, dynamic> json) {
     return Creator(
-      id: json['id'] as String,
-      firstName: json['firstName'] as String,
-      lastName: json['lastName'] as String,
-      country: json['country'] as String,
+      id: (json['id'] ?? '').toString(),
+      firstName: (json['firstName'] ?? '').toString(),
+      lastName: (json['lastName'] ?? '').toString(),
+      country: (json['country'] ?? '').toString(),
     );
   }
 
