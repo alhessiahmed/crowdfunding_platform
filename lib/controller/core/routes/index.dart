@@ -26,7 +26,7 @@ export 'package:crowdfunding_platform/view/screens/campaign_create_screens/campa
 export 'package:crowdfunding_platform/view/screens/campaign_create_screens/campaign_step_two_screen.dart';
 export 'package:crowdfunding_platform/view/screens/campaign_details_screen.dart';
 export 'package:crowdfunding_platform/view/screens/discover_screen.dart';
-export 'package:crowdfunding_platform/view/screens/creator/creator_verfication_screen.dart';
+export 'package:crowdfunding_platform/view/screens/creator/creator_verification_screen.dart';
 export 'package:crowdfunding_platform/view/screens/creator/creator_verification_success_screen.dart';
 export 'package:crowdfunding_platform/view/screens/donor/donor_personal_info_screen.dart';
 export 'package:crowdfunding_platform/view/screens/donor/verification/donor_acc_verification_screen.dart';
