@@ -522,4 +522,8 @@ Map<String, String> arLocale = {
   'institution_acc': 'اسم صاحب الحساب ( مطابق للرخصة )',
   'institution_iban': 'رقم الايبان (IBAN) للمؤسسة',
   '': '',
+  'pending' : 'قيد المراجعة', 
+  'completed' : 'مكتملة', 
+  'stopped' : 'موقوفة'
+
 };
