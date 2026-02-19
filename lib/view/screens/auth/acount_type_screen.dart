@@ -50,16 +50,6 @@ class AccountTypeScreen extends GetView<CreatorOnboardingController> {
                 controller.accountType.value == AccountType.organization,
             onTap: () => controller.selectAccountType(AccountType.organization),
           ),
-          SizedBox(height: 12.h),
-          SelectionCard(
-            iconPath: Get.isDarkMode
-                ? ImagesManager.teamIconDark
-                : ImagesManager.teamIcon,
-            title: 'team'.tr,
-            subtitle: 'team_info'.tr,
-            isSelected: controller.accountType.value == AccountType.team,
-            onTap: () => controller.selectAccountType(AccountType.team),
-          ),
         ],
       ),
     );

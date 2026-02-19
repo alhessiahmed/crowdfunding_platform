@@ -5,6 +5,5 @@ class CreatorOnboardingBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => CreatorOnboardingController());
-    Get.put(CreatorOnboardingController());
   }
 }

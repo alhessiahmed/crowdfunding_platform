@@ -41,7 +41,7 @@ class CreatorIdInformationScreen
             ),
             SizedBox(height: 16.h),
             TextFieldWidget(
-              controller: controller.nameController,
+              controller: controller.idController,
               hintText: '',
               label: 'id'.tr,
             ),

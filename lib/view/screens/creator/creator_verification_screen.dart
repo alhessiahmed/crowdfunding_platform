@@ -5,9 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../../../controller/core/constants/images_manager.dart';
+import '../../../model/account_type.dart';
 import '../../widgets/step_indicator.dart';
 import 'creator_bank_information_screen.dart';
 import 'creator_id_information_screen.dart';
+import 'creator_organization_bank_information_screen.dart';
+import 'creator_organization_id_information_screen.dart';
 
 class CreatorVerficationScreen extends GetView<CreatorVerificationController> {
   const CreatorVerficationScreen({super.key});
@@ -29,7 +32,7 @@ class CreatorVerficationScreen extends GetView<CreatorVerificationController> {
                     ),
                     Spacer(),
                     Text(
-                      '${'step'.tr} ${controller.currentPage.value + 1} ${'of'.tr} 3',
+                      '${'step'.tr} ${controller.currentPage.value + 1} ${'of'.tr} ${controller.totalSteps}',
                       style: Theme.of(
                         context,
                       ).textTheme.bodyMedium!.copyWith(fontSize: 12.sp),
@@ -47,11 +50,18 @@ class CreatorVerficationScreen extends GetView<CreatorVerificationController> {
                     controller: controller.pageController,
                     physics: const NeverScrollableScrollPhysics(),
                     onPageChanged: controller.onPageChanged,
-                    children: const [
-                      CreatorAccountVerificationScreen(),
-                      CreatorIdInformationScreen(),
-                      CreatorBankInformationScreen(),
-                    ],
+                    children: controller.accountType.value ==
+                            AccountType.organization
+                        ? const [
+                            CreatorAccountVerificationScreen(),
+                            CreatorOrganizationIdInformationScreen(),
+                            CreatorOrganizationBankInformationScreen(),
+                          ]
+                        : const [
+                            CreatorAccountVerificationScreen(),
+                            CreatorIdInformationScreen(),
+                            CreatorBankInformationScreen(),
+                          ],
                   ),
                 ),
                 Padding(
@@ -60,13 +70,15 @@ class CreatorVerficationScreen extends GetView<CreatorVerificationController> {
                     width: double.infinity,
                     height: 56,
                     child: ElevatedButton(
-                      onPressed: controller.currentPage.value == 2
+                      onPressed: controller.currentPage.value ==
+                              controller.totalSteps - 1
                           ? controller.finish
                           // : controller.canProceed
                           : controller.next,
                       // : null,
                       child: Text(
-                        controller.currentPage.value == 2
+                        controller.currentPage.value ==
+                                controller.totalSteps - 1
                             ? 'send_to_verify'.tr
                             : 'next'.tr,
                       ),

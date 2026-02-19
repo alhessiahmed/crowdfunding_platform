@@ -11,6 +11,7 @@ static String? get token => SharedPrefController().token;
   static const String login = '$_auth/login';
   static const String _register = '$_auth/register';
   static const String registerDonor = '$_register/donor';
+  static const String registerCreator = '$_register/campaign-creator';
   // static const String verify = '$_auth/verify';
   // static const String resendCode = '$_auth/resendCode';
   // static const String resetPassword = '$_auth/passwordReset';

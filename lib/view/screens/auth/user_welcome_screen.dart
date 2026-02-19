@@ -11,11 +11,11 @@ class UserWelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final SignUpDraft draft = Get.arguments as SignUpDraft;
+    final SignUpDraft? draft = Get.arguments as SignUpDraft?;
     // final UserType? userType = Get.arguments == null
     //     ? null
     //     : Get.arguments as UserType;
-    final UserType? userType = draft.userType;
+    final UserType? userType = draft?.userType;
     print(userType?.name ?? 'empty');
 
     final String welcomeTitle = userType == UserType.donor
@@ -51,9 +51,12 @@ class UserWelcomeScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 if (userType == UserType.donor) {
-                  Get.offAllNamed(RoutesManager.discoverScreen);
+                  Get.offAllNamed(RoutesManager.mainScreen);
                 } else {
-                  Get.toNamed(RoutesManager.onboardingShellScreen);
+                  Get.toNamed(
+                    RoutesManager.onboardingShellScreen,
+                    arguments: draft,
+                  );
                 }
               },
               child: Text(

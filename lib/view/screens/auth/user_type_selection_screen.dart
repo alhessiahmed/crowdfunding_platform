@@ -13,7 +13,7 @@ class UserTypeSelectionScreen extends GetView<UserTypeSelectionController> {
 
   @override
   Widget build(BuildContext context) {
-    final SignUpDraft draft = Get.arguments as SignUpDraft;
+    final SignUpDraft? draft = Get.arguments as SignUpDraft?;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -72,11 +72,11 @@ class UserTypeSelectionScreen extends GetView<UserTypeSelectionController> {
                     height: 56.h,
                     child: ElevatedButton(
                       onPressed: () => controller.submit(
-                        firstName: draft.firstName,
-                        lastName: draft.lastName,
-                        email: draft.email,
-                        password: draft.password,
-                        dateOfBirth: draft.dateOfBirth,
+                        firstName: draft?.firstName ?? '',
+                        lastName: draft?.lastName ?? '',
+                        email: draft?.email ?? '',
+                        password: draft?.password ?? '',
+                        dateOfBirth: draft?.dateOfBirth ?? DateTime.now(),
                       ),
                       child: Text('continue'.tr),
                     ),
