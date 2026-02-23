@@ -36,6 +36,8 @@ class DiscoverScreen extends StatelessWidget {
                     context,
                     ctrl.campaigns,
                     ctrl.isLoading,
+                    ctrl.hasNoInternet,
+                    onRetry: () => ctrl.getCampaigns(refresh: true),
                   ),
                 ),
               ],
@@ -50,7 +52,46 @@ Widget campaignsList(
   BuildContext context,
   List<CampaignModel> campaigns,
   bool isLoading,
+  bool hasNoInternet, {
+  required VoidCallback onRetry,
+}
 ) {
+  // Offline State
+  if (hasNoInternet && campaigns.isEmpty) {
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 24.w),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.wifi_off_rounded,
+              size: 56.sp,
+              color: Colors.grey.shade500,
+            ),
+            SizedBox(height: 12.h),
+            Text(
+              'لا يوجد اتصال بالإنترنت',
+              style: Theme.of(context).textTheme.bodyLarge,
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 8.h),
+            Text(
+              'تحقق من اتصالك ثم حاول مرة أخرى',
+              style: Theme.of(context).textTheme.bodyMedium,
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 14.h),
+            OutlinedButton(
+              onPressed: onRetry,
+              child: const Text('إعادة المحاولة'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   // Skeleton
   if (isLoading && campaigns.isEmpty) {
     return Skeletonizer(

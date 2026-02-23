@@ -1,13 +1,21 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
+import 'package:crowdfunding_platform/controller/api/api_helper.dart';
 import 'package:crowdfunding_platform/controller/api/api_settings.dart';
 import 'package:crowdfunding_platform/model/campagin_models/campagin_model.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class MycampaginApiController {
+class MycampaginApiController with ApiHelper {
   Future<List<CampaignModel>> getCampaignsByCreator(String creatorId) async {
     try {
+      final hasInternet = await hasInternetConnection() ;
+      if(!hasInternet) { 
+                throw const SocketException('No internet connection');
+
+      }
       final uri = Uri.parse(ApiSettings.creatorCampaigns(creatorId));
       final response = await http.get(
         uri,

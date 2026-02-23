@@ -20,6 +20,11 @@ class CampaginApiController with ApiHelper {
     required int limit,
   }) async {
     try {
+      final hasInternet = await hasInternetConnection();
+      if (!hasInternet) {
+        throw const SocketException('No internet connection');
+      }
+
       final uri = Uri.parse('${ApiSettings.campaign}?page=$page&limit=$limit');
       final response = await http.get(
         uri,
@@ -50,6 +55,11 @@ class CampaginApiController with ApiHelper {
     required int page,
     required int limit,
   }) async {
+    final hasInternet = await hasInternetConnection();
+    if (!hasInternet) {
+      throw const SocketException('No internet connection');
+    }
+
     final uri = Uri.parse(
       '${ApiSettings.campaign}/category/${category.apiValue}?page=$page&limit=$limit',
     );
@@ -70,6 +80,7 @@ log(uri.toString());
       throw Exception('Failed to load campaigns');
     }
   }
+
 
 }
 //ENVIROMENT

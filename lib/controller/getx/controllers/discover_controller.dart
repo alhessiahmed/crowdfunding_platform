@@ -1,6 +1,7 @@
 
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:crowdfunding_platform/controller/api/api_controllers/discover_api_controller.dart';
 import 'package:crowdfunding_platform/controller/api/api_settings.dart';
@@ -16,6 +17,7 @@ class DiscoverController extends GetxController {
   final int limit = 15;
 int selectedFilterIndex =0 ;
   bool isLoading = false;
+  bool hasNoInternet = false;
   bool isCountsLoading = false;
   bool hasMore = true;
 dynamic categoryCounts  ;
@@ -44,9 +46,21 @@ void selectCategory(int index , item ) {
 
 
 Future<void> getCampaigns({bool refresh = false}) async {
+  final hasInternet = await _api.hasInternetConnection();
+  if (!hasInternet) {
+    hasNoInternet = true;
+    if (campaigns.isEmpty) {
+      isLoading = false;
+    }
+    update();
+    Get.snackbar('No Internet', 'Please check your connection and try again');
+    return;
+  }
+
   if (isLoading) return;
   if (!hasMore && !refresh) return;
 
+  hasNoInternet = false;
   isLoading = true;
   update();
 
@@ -80,7 +94,11 @@ Future<void> getCampaigns({bool refresh = false}) async {
     campaigns.addAll(result);
     
     _page++;
+  } on SocketException {
+    hasNoInternet = true;
+    Get.snackbar('No Internet', 'Please check your connection and try again');
   } catch (e) {
+    hasNoInternet = false;
     Get.snackbar('Error', 'Failed to load campaigns');
   }
 
@@ -157,6 +175,14 @@ Map<CampaignCategory, int> calculateCategoryCounts(
   return counts;
 }
 Future<void> refreshGlobalCategoryCounts() async {
+  final hasInternet = await _api.hasInternetConnection();
+  if (!hasInternet) {
+    hasNoInternet = true;
+    update();
+    return;
+  }
+
+  hasNoInternet = false;
   if (isCountsLoading) return;
   isCountsLoading = true;
   update();
