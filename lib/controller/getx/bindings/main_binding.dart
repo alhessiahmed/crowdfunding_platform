@@ -8,8 +8,12 @@ class MainBinding implements Bindings {
   @override
   void dependencies() {
     final userId = SharedPrefController().user?['id'];
-    Get.lazyPut(() => DiscoverController());
+    Get.put(DiscoverController(), permanent: true);
     Get.lazyPut(() => MyCampaginsController(userId is String ? userId : ''));
+    if(SharedPrefController().userType == UserRole.CAMPAIGN_CREATOR.name && Get.isRegistered<MyCampaginsController>())  {
+      Get.find<MyCampaginsController>().refreshCampaigns();
+//  MyCampaginsController(SharedPrefController().user!['id']).getMyCampaginData(SharedPrefController().user!['id']);
+}
     Get.lazyPut(() => ProfileController());
   }
 }

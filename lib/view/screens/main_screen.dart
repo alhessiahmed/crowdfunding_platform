@@ -3,6 +3,7 @@ import 'package:crowdfunding_platform/controller/core/constants/images_manager.d
 import 'package:crowdfunding_platform/controller/core/routes/index.dart';
 import 'package:crowdfunding_platform/controller/getx/controllers/my_campagins_controller.dart';
 import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_controller.dart';
+import 'package:crowdfunding_platform/view/screens/doner_home/donar_home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -29,7 +30,9 @@ class _MainScreenState extends State<MainScreen> {
     const ProfileScreen(),
     const DiscoverScreen(),
     MyCampaignsScreen(creatorId: creatorId),
-    const HomeScreen(),
+   SharedPrefController().userType == UserRole.CAMPAIGN_CREATOR.name
+   ? HomeScreen()
+   : DonarHomeScreen()
   ];
 
   void _openTab(int index) {

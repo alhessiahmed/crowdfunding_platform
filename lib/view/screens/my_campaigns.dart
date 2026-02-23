@@ -45,7 +45,7 @@ class MyCampaignsScreen extends GetView<MyCampaginsController> {
                       padding: EdgeInsets.only(bottom: 120.h),
                       itemBuilder: (_, __) {
                         return MyCampaginsCard(
-                          myCampaign: CampaignModel.skelton(),
+                          myCampaign: CampaignModel.skeleton(),
                         );
                       },
                     ),

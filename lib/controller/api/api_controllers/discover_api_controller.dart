@@ -41,6 +41,7 @@ class CampaginApiController with ApiHelper {
         );
       }
     } catch (e) {
+      print("ERROR ===== $e");
       rethrow;
     }
   }
@@ -69,5 +70,6 @@ log(uri.toString());
       throw Exception('Failed to load campaigns');
     }
   }
+
 }
 //ENVIROMENT

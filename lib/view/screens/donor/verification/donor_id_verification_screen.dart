@@ -59,13 +59,13 @@ class DonorIdVerificationScreen extends GetView<DonorVerificationController> {
                     ),
                     child: Row(
                       children: [
-                        _item(
+                        tabItem(
                           label: 'personal_id'.tr,
                           selected: controller.isId.value,
                           onTap: () => controller.selectId(true),
                           context: context,
                         ),
-                        _item(
+                        tabItem(
                           label: 'passport'.tr,
                           selected: !controller.isId.value,
                           onTap: () => controller.selectId(false),
@@ -103,8 +103,8 @@ class DonorIdVerificationScreen extends GetView<DonorVerificationController> {
       ),
     );
   }
-
-  Widget _item({
+}
+  Widget tabItem({
     required String label,
     required bool selected,
     required VoidCallback onTap,
@@ -145,4 +145,4 @@ class DonorIdVerificationScreen extends GetView<DonorVerificationController> {
       ),
     );
   }
-}
+

@@ -5,25 +5,30 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class StatsRow extends StatelessWidget {
-  const StatsRow({super.key});
+class StatusRow extends StatelessWidget {
+   StatusRow({super.key , this.donoorsNo , this.goalsStarNo , required this.remaiaingDats});
+String? goalsStarNo ; 
+String? donoorsNo ;
+String  remaiaingDats ;
+
+
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: const [
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children:  [
         _StatItem(
-          value: '21',
-          label: 'أيام الحملة',
-          icon: ImagesManager.calender2,
+          value: goalsStarNo ?? '0',
+          label: 'النجوم المستهدفة',
+          icon: ImagesManager.cup,
         ),
         _StatItem(
-          value: '400',
+          value: donoorsNo ?? '0',
           label: 'عدد الداعمين',
           icon: ImagesManager.profile2user,
         ),
-        _StatItem(value: '10k', label: 'أثر المبادرة', icon: ImagesManager.cup),
+        _StatItem(value: calculateRemainingDays(remaiaingDats).toString() ?? 'unKnown', label: 'الايام المتبقية', icon: ImagesManager.calender2),
       ],
     );
   }
@@ -45,8 +50,8 @@ class _StatItem extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final cardColor = isDark ? ColorsManager.bgGoogle : ColorsManager.white;
     return Container(
-      width: 105.w,
-      height: 127.h,
+    width: 104.w,
+      //height: 127.h,
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
 
       decoration: BoxDecoration(
@@ -54,9 +59,9 @@ class _StatItem extends StatelessWidget {
         color: cardColor,
         boxShadow: [
           BoxShadow(
-            color: Colors.black12,
-            blurRadius: 12.r,
-            offset: const Offset(0, 4),
+            color: Colors.black.withOpacity(.25),
+            blurRadius: 4.r,
+            offset: const Offset(0, 0),
           ),
         ],
       ),
@@ -85,15 +90,16 @@ class _StatItem extends StatelessWidget {
             value,
             style: TextStyle(
               fontWeight: FontWeight.w700,
-              fontSize: 14.sp,
+              fontSize: 24.sp,
               color: ColorsManager.primaryCTA,
             ),
           ),
           // SizedBox(height: 2.h),
           Text(
+            textAlign: TextAlign.center,
             label,
             style: TextStyle(
-              fontSize: 11.sp,
+              fontSize: 8.sp,
               color: Get.isDarkMode
                   ? ColorsManager.secondaryDark
                   : ColorsManager.secondaryLight,
@@ -103,4 +109,12 @@ class _StatItem extends StatelessWidget {
       ),
     );
   }
+}
+int calculateRemainingDays(String endDate) {
+  final end = DateTime.parse(endDate).toLocal();
+  final now = DateTime.now();
+
+  final difference = end.difference(now).inDays;
+
+  return difference > 0 ? difference : 0;
 }

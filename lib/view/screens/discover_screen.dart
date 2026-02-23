@@ -13,7 +13,6 @@ class DiscoverScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<DiscoverController>(
-      init: DiscoverController(),
       builder: (ctrl) {
         return Scaffold(
           body: SafeArea(
@@ -33,7 +32,7 @@ class DiscoverScreen extends StatelessWidget {
                 SizedBox(height: 12.h),
 
                 Expanded(
-                  child: CampaignsList(
+                  child: campaignsList(
                     context,
                     ctrl.campaigns,
                     ctrl.isLoading,
@@ -47,7 +46,7 @@ class DiscoverScreen extends StatelessWidget {
     );
   }
 
-Widget CampaignsList(
+Widget campaignsList(
   BuildContext context,
   List<CampaignModel> campaigns,
   bool isLoading,
@@ -61,7 +60,7 @@ Widget CampaignsList(
         itemCount: 5,
         itemBuilder: (_, __) {
           return CampaignCard(
-            campaign: CampaignModel.skelton(),
+            campaign: CampaignModel.skeleton(),
           );
         },
       ),

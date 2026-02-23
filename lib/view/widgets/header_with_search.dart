@@ -43,7 +43,7 @@ final String? subTitle;
               backgroundColor: Theme.of(context).colorScheme.onSurface,
               radius: 22.r,
               child: SvgPicture.asset(
-                ImagesManager.search,
+                ImagesManager.star,
                 fit: BoxFit.scaleDown,
                 color: 
                  Get.isDarkMode

@@ -16,6 +16,7 @@ class DonorPersonalInfoController extends GetxController {
   final countryController = TextEditingController();
   final cityController = TextEditingController();
   final Rxn<XFile> img = Rxn<XFile>();
+  static String? profileImg ;
   final ImagePicker _imagePicker = ImagePicker();
 
   final phoneController = TextEditingController();
@@ -79,6 +80,7 @@ class DonorPersonalInfoController extends GetxController {
 
     if (image != null) {
       target.value = image;
+      profileImg = image.path;
       print('img saved successfully');
     }
   }

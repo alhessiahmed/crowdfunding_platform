@@ -11,7 +11,8 @@ class MycampaginApiController {
       final uri = Uri.parse(ApiSettings.creatorCampaigns(creatorId));
       final response = await http.get(
         uri,
-        headers: {'accept': 'application/json' , 
+        headers: {
+          'accept': 'application/json' , 
         'Authorization': 'Bearer ${ApiSettings.token}'},
       
       );

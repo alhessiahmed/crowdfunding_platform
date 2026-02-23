@@ -6,8 +6,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class WhyDonateSection extends StatelessWidget {
-  const WhyDonateSection({super.key});
-
+  const WhyDonateSection({super.key ,  this.motiviation});
+final String? motiviation ;
   @override
   Widget build(BuildContext context) {
     // final cardColor = Theme.of(context).brightness == Brightness.dark
@@ -22,7 +22,8 @@ class WhyDonateSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+        if(  motiviation != null) 
+      ...{   Text(
             'لماذا نحتاج دعمك ؟',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               fontWeight: FontWeight.w700,
@@ -34,20 +35,21 @@ class WhyDonateSection extends StatelessWidget {
           SizedBox(height: 15.h),
           _BulletItem(
             icon: checkIcon,
-            text: 'نوفر مياه نظيفة تدعم النمو الصحي للأطفال',
+            text: motiviation ?? '',
           ),
-          _BulletItem(
-            icon: checkIcon,
-            text: 'نقلل مخاطر الأمراض المرتبطة بتلوث المياه',
-          ),
-          _BulletItem(
-            icon: checkIcon,
-            text: 'نعيد الأمل ونحسن الصحة العامة للأسر',
-          ),
-          _BulletItem(
-            icon: checkIcon,
-            text: 'نساعد المدارس والمراكز الطبية والمخيمات',
-          ),
+          // _BulletItem(
+          //   icon: checkIcon,
+          //   text: 'نقلل مخاطر الأمراض المرتبطة بتلوث المياه',
+          // ),
+          // _BulletItem(
+          //   icon: checkIcon,
+          //   text: 'نعيد الأمل ونحسن الصحة العامة للأسر',
+          // ),
+          // _BulletItem(
+          //   icon: checkIcon,
+          //   text: 'نساعد المدارس والمراكز الطبية والمخيمات',
+          // ),
+      }
         ],
       ),
     );

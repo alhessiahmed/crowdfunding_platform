@@ -22,12 +22,12 @@ class ProfileController extends GetxController {
     //getUserData();
   }
 
-  String get fullName {
+   String get fullName {
     final user = currentUser.value;
     if (user == null) return '';
     return '${user.firstName} ${user.lastName}'.trim();
   }
-
+ 
   
 
   void _loadUserFromCache() {

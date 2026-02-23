@@ -11,12 +11,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class PopupToDonate extends StatelessWidget {
-  const PopupToDonate({super.key});
-
+   PopupToDonate({super.key , required this.campaignId});
+String campaignId ;
   void openBottomSheet(BuildContext context) {
     Get.bottomSheet(
       GetBuilder<CampaignDetailsController>(
-        init: CampaignDetailsController(),
+        init: CampaignDetailsController(campaignId: campaignId),
         builder: (controller) {
           return Container(
             height: 480.h,
