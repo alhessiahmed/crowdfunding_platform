@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import '/model/api_response.dart';
 
@@ -21,6 +22,19 @@ mixin ApiHelper {
     HttpHeaders.acceptHeader: 'application/json',
     'Accept-Language': lang,
   };
+
+  Future<bool> hasInternetConnection() async {
+    try {
+      final result = await InternetAddress.lookup(
+        'google.com',
+      ).timeout(const Duration(seconds: 2));
+      return result.isNotEmpty && result.first.rawAddress.isNotEmpty;
+    } on SocketException {
+      return false;
+    } on TimeoutException {
+      return false;
+    }
+  }
 }
 
 // // import 'dart:io';

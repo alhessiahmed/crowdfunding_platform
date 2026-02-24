@@ -1,12 +1,15 @@
+
 import 'dart:convert';
+import 'dart:developer';
+import 'dart:io';
 
 import 'package:crowdfunding_platform/controller/api/api_controllers/discover_api_controller.dart';
 import 'package:crowdfunding_platform/controller/api/api_settings.dart';
 import 'package:crowdfunding_platform/model/campagin_models/campagin_model.dart';
 import 'package:crowdfunding_platform/model/filter_item.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 import 'package:http/http.dart' as http;
+
 class DiscoverController extends GetxController {
   final CampaginApiController _api = CampaginApiController();
 
@@ -14,14 +17,17 @@ class DiscoverController extends GetxController {
   final int limit = 15;
 int selectedFilterIndex =0 ;
   bool isLoading = false;
+  bool hasNoInternet = false;
   bool isCountsLoading = false;
   bool hasMore = true;
 dynamic categoryCounts  ;
 CampaignCategory selectedCategory = CampaignCategory.ALL;
 List<FilterItem> filters = [];
 Map<CampaignCategory, int> _globalCategoryCounts = {};
+  final RxSet<String> _favoriteLoadingIds = <String>{}.obs;
 
   List<CampaignModel> campaigns = [];
+  RxList<String> favoriteIds  = <String>[].obs ;
 
   @override
   void onInit() {
@@ -40,9 +46,21 @@ void selectCategory(int index , item ) {
 
 
 Future<void> getCampaigns({bool refresh = false}) async {
+  final hasInternet = await _api.hasInternetConnection();
+  if (!hasInternet) {
+    hasNoInternet = true;
+    if (campaigns.isEmpty) {
+      isLoading = false;
+    }
+    update();
+    Get.snackbar('No Internet', 'Please check your connection and try again');
+    return;
+  }
+
   if (isLoading) return;
   if (!hasMore && !refresh) return;
 
+  hasNoInternet = false;
   isLoading = true;
   update();
 
@@ -76,7 +94,11 @@ Future<void> getCampaigns({bool refresh = false}) async {
     campaigns.addAll(result);
     
     _page++;
+  } on SocketException {
+    hasNoInternet = true;
+    Get.snackbar('No Internet', 'Please check your connection and try again');
   } catch (e) {
+    hasNoInternet = false;
     Get.snackbar('Error', 'Failed to load campaigns');
   }
 
@@ -85,6 +107,55 @@ updateFiltersCount();
   update();
 }
 
+   Future<void> toggleFavorite(String campaignId) async {
+    if (_favoriteLoadingIds.contains(campaignId)) return;
+    _favoriteLoadingIds.add(campaignId);
+
+    final url = Uri.parse(ApiSettings.toggleLikeCampaign(campaignId));
+
+    try {
+      final response = await http.post(
+        url,
+        headers: {
+          'accept': 'application/json',
+          'Authorization': 'Bearer ${ApiSettings.token}',
+        },
+      );
+
+      log(response.body.toString());
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final body = response.body.trim();
+        bool? liked;
+
+        if (body.isNotEmpty) {
+          try {
+            final dynamic decoded = jsonDecode(body);
+            if (decoded is Map<String, dynamic> && decoded['liked'] is bool) {
+              liked = decoded['liked'] as bool;
+            }
+          } catch (_) {
+            // Ignore parse errors and fallback to local toggle.
+          }
+        }
+
+        final currentIsFav = favoriteIds.contains(campaignId);
+        final shouldLike = liked ?? !currentIsFav;
+
+        if (shouldLike) {
+          if (!currentIsFav) {
+            favoriteIds.add(campaignId);
+          }
+        } else {
+          favoriteIds.remove(campaignId);
+        }
+      }
+    } catch (e) {
+      log('toggleFavorite error: $e');
+    } finally {
+      _favoriteLoadingIds.remove(campaignId);
+    }
+  }
 Map<CampaignCategory, int> calculateCategoryCounts(
   List<CampaignModel> campaigns,
 ) {
@@ -96,7 +167,7 @@ Map<CampaignCategory, int> calculateCategoryCounts(
 
   for (final campaign in campaigns) {
     final category =
-        campaignCategoryFromString(campaign.category);
+        campaignCategoryFromString(campaign.category.name);
 
     counts[category] = (counts[category] ?? 0) + 1;
   }
@@ -104,6 +175,14 @@ Map<CampaignCategory, int> calculateCategoryCounts(
   return counts;
 }
 Future<void> refreshGlobalCategoryCounts() async {
+  final hasInternet = await _api.hasInternetConnection();
+  if (!hasInternet) {
+    hasNoInternet = true;
+    update();
+    return;
+  }
+
+  hasNoInternet = false;
   if (isCountsLoading) return;
   isCountsLoading = true;
   update();
@@ -150,15 +229,21 @@ Future<void> refreshGlobalCategoryCounts() async {
 }
 
 void updateFiltersCount() {
+  final hasGlobalCounts = _globalCategoryCounts.isNotEmpty;
   final counts = _globalCategoryCounts.isNotEmpty
       ? _globalCategoryCounts
       : calculateCategoryCounts(campaigns);
 
   filters = CampaignCategory.values.map((category) {
+    final isAllLoading = category == CampaignCategory.ALL &&
+        isCountsLoading &&
+        !hasGlobalCounts;
+
     return FilterItem(
       id: category.index.toString(),
       title: category.labelAr,
-      count: counts[category] ?? 0,
+      count: isAllLoading ? 0 : (counts[category] ?? 0),
+      isLoading: isAllLoading,
     );
   }).toList();
 
@@ -171,6 +256,7 @@ void _buildInitialFilters() {
       id: category.index.toString(),
       title: category.labelAr,
       count: 0,
+      isLoading: category == CampaignCategory.ALL,
     );
   }).toList();
 }
@@ -185,16 +271,7 @@ void _buildInitialFilters() {
 //////////////////////////////////////////////////////
 //               CampaignCategory
 /////////////////////////////////////////////////////
-enum CampaignCategory {
-   ALL,
-  WATER,
-  HEALTH,
-  ENVIROMENT,
-  FOOD,
-  EDUCATION,
-  SHELTER,
-  ANIMALS,
-}
+
 extension CampaignCategoryX on CampaignCategory {
   String get apiValue => name;
 }

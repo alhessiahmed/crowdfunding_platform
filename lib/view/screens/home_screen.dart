@@ -2,6 +2,7 @@
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
 import 'package:crowdfunding_platform/controller/getx/controllers/home_controller.dart';
+import 'package:crowdfunding_platform/controller/getx/controllers/profile_controller.dart';
 import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_controller.dart';
 import 'package:crowdfunding_platform/view/widgets/icon_with_background.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +13,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends GetView<HomeController> {
   const HomeScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
+    final user = SharedPrefController().user;
+    final userName = user!['firstName'] +' ' + user['lastName'];
+final userType = SharedPrefController().userType ;
     return Scaffold(
       backgroundColor: Get.isDarkMode
           ? ColorsManager.scaffoldBgDark
@@ -25,9 +28,12 @@ class HomeScreen extends GetView<HomeController> {
           child: Column(
             children: [
               HomeHeader(
-                userName: 'مرحباً محمد 👋',
+                userName: 'مرحباً $userName 👋',
                 subtitle:
-                    'لإنشاء حملات وجمع التبرعات، نحتاج أولًا إلى توثيق حسابك.',
+                 userType == UserRole.CAMPAIGN_CREATOR.name
+                 ?   'لإنشاء حملات وجمع التبرعات، نحتاج أولًا إلى توثيق حسابك.'
+                 :'هنا يمكنك متابعة أثرك ودعم حملات جديدة بالنجوم'
+                 ,
                 avatar: ImagesManager.test,
                 onNotificationTap: () {
                   // navigate to notifications

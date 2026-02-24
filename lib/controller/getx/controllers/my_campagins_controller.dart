@@ -97,7 +97,7 @@ class MyCampaginsController extends GetxController {
     }
 
     filteredCampaigns.assignAll(
-      _allCampaigns.where((c) => c.status.trim().toLowerCase() == normalized),
+      _allCampaigns.where((c) => c.status.name == normalized),
     );
   }
 
@@ -113,7 +113,7 @@ class MyCampaginsController extends GetxController {
     };
 
     for (final c in _allCampaigns) {
-      final key = c.status.trim().toLowerCase();
+      final key = c.status.name;
       if (counts.containsKey(key)) {
         counts[key] = counts[key]! + 1;
       }
@@ -160,21 +160,23 @@ void deleteCampaignDialog( String campaignId) {
         Icon(
           Icons.warning_rounded,
           color: Colors.red,
-          size: 60,
+          size: 60.w,
         ),
-        SizedBox(height: 16),
+        SizedBox(height: 16.h),
         Text(
           'title_delete_campaign'.tr,
           style: TextStyle(
-            fontSize: 18,
+            fontSize: 18.sp,
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 8),
+        SizedBox(height: 8.h),
         Text(
           'msg_delete_campaign'.tr,
           textAlign: TextAlign.center,
         ),
+                SizedBox(height: 30.h),
+
       ],
     ),
     textCancel: 'btn_cancel'.tr,

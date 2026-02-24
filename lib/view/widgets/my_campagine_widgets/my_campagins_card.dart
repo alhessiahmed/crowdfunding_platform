@@ -4,6 +4,7 @@ import 'package:crowdfunding_platform/controller/core/routes/index.dart';
 import 'package:crowdfunding_platform/controller/getx/controllers/my_campagins_controller.dart';
 import 'package:crowdfunding_platform/model/campagin_models/campagin_model.dart';
 import 'package:crowdfunding_platform/model/my_campagins_model.dart';
+import 'package:crowdfunding_platform/view/widgets/campaign_card.dart';
 import 'package:crowdfunding_platform/view/widgets/step_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,6 +17,9 @@ class MyCampaginsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+       final imageUrl = myCampaign.assets.isNotEmpty
+        ? myCampaign.assets.first.url
+        : null;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
       child: Container(
@@ -41,14 +45,28 @@ class MyCampaginsCard extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12.r),
-                  child: Image.asset(
-                    //  myCampaign.image.isNotEmpty
-                    // ? myCampaign.image
-                    ImagesManager.test,
-                    height: 96.h,
-                    width: 91.w,
-                    fit: BoxFit.cover,
-                  ),
+                  child:
+                  (imageUrl != null && imageUrl.isNotEmpty)
+                        ? Image.network(
+                          width: 91.w , 
+                          height: 96.h,
+                            myCampaign.assets.first.url,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return buildCategoryPlaceholder(Get.isDarkMode , myCampaign);
+                            },
+                          )
+                       : 
+                        buildCategoryPlaceholder(Get.isDarkMode , myCampaign),
+                  //  Image.asset(
+                  //   myCampaign.assets.
+                  //   //  myCampaign.image.isNotEmpty
+                  //   // ? myCampaign.image
+                  //  // ImagesManager.test,
+                  //   height: 96.h,
+                  //   width: 91.w,
+                  //   fit: BoxFit.cover,
+                  // ),
                 ),
                 SizedBox(width: 12.w),
 
@@ -59,7 +77,7 @@ class MyCampaginsCard extends StatelessWidget {
                       Align(
                         alignment: Alignment.topLeft,
                         child: _StatusPill(
-              status:campaignStatus(myCampaign.status)
+              status:campaignStatus(myCampaign.status.name)
                           ),
                       ),
                       SizedBox(height: 8.h),
@@ -78,7 +96,7 @@ class MyCampaginsCard extends StatelessWidget {
                             style: TextStyle(fontSize: 12.sp),
                           ),
                           Text(
-                            '${myCampaign.goal}%',
+                            (myCampaign.progress * 100).toStringAsFixed(1) + '%',
                             style: TextStyle(
                               color: ColorsManager.primaryCTA,
                               fontWeight: FontWeight.w800,
@@ -88,9 +106,27 @@ class MyCampaginsCard extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: 8.h),
-                      SizedBox(
+                      Container(
+                        decoration: BoxDecoration( 
+                          boxShadow:[
+                            BoxShadow( 
+                              offset: Offset(-2, 0),
+                              blurRadius: 4, 
+                              color: Colors.black.withOpacity(.05)
+                            )
+                          ]
+                        ),
                         width: double.infinity,
-                        child: StepIndicator(progress: myCampaign.goal),
+                        child: LinearProgressIndicator(
+                          borderRadius: BorderRadius.circular(40.r),
+                  value: myCampaign.progress,
+                  minHeight: 8.h,
+                  backgroundColor: Get.isDarkMode
+              ? ColorsManager.bgSectionDark
+              : ColorsManager.bgSectionLight,
+                  valueColor: AlwaysStoppedAnimation(ColorsManager.primaryCTA),
+                ),
+                        //StepIndicator(progress: myCampaign.progress),
                       ),
                     ],
                   ),
@@ -103,7 +139,7 @@ class MyCampaginsCard extends StatelessWidget {
             //Divider(),
             SizedBox(height: 8.h),
             ButtonsRow(
-              status:campaignStatus(myCampaign.status), 
+              status:campaignStatus(myCampaign.status.name), 
               campaignId: myCampaign.id,
            
              ),

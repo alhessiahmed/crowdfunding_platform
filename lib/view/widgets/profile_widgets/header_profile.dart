@@ -1,5 +1,6 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
+import 'package:crowdfunding_platform/controller/getx/controllers/donor/donor_personal_info_controller.dart';
 import 'package:crowdfunding_platform/controller/getx/controllers/my_campagins_controller.dart';
 import 'package:crowdfunding_platform/controller/getx/controllers/profile_controller.dart';
 import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_controller.dart';
@@ -13,6 +14,7 @@ class HeaderProfile extends GetView<ProfileController> {
 
   @override
   Widget build(BuildContext context) {
+    final String? img = DonorPersonalInfoController.profileImg ;
     return Obx(() {
       final fullName = controller.fullName.isNotEmpty
           ? controller.fullName
@@ -34,7 +36,8 @@ class HeaderProfile extends GetView<ProfileController> {
           if (SharedPrefController().userType != UserRole.GUEST.name) ...{
             CircleAvatar(
               radius: 35.r,
-              backgroundImage: AssetImage(ImagesManager.logo),
+              backgroundImage: AssetImage(
+                img ?? ImagesManager.logo),
             ),
             SizedBox(height: 10.h),
 
@@ -73,22 +76,22 @@ class HeaderProfile extends GetView<ProfileController> {
                   ),
                   SizedBox(width: 10.h),
 
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 12.w,
-                      vertical: 6.h,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Get.isDarkMode
-                          ? ColorsManager.bgSectionDark
-                          : ColorsManager.bgSectionLight,
-                      borderRadius: BorderRadius.circular(20.r),
-                    ),
-                    child: Text(
-                      '1.2 الف متابع',
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                  ),
+                  // Container(
+                  //   padding: EdgeInsets.symmetric(
+                  //     horizontal: 12.w,
+                  //     vertical: 6.h,
+                  //   ),
+                  //   decoration: BoxDecoration(
+                  //     color: Get.isDarkMode
+                  //         ? ColorsManager.bgSectionDark
+                  //         : ColorsManager.bgSectionLight,
+                  //     borderRadius: BorderRadius.circular(20.r),
+                  //   ),
+                  //   child: Text(
+                  //     '1.2 الف متابع',
+                  //     style: Theme.of(context).textTheme.bodySmall,
+                  //   ),
+                  // ),
                 ],
               ),
             },

@@ -27,6 +27,8 @@ static String? get token => SharedPrefController().token;
   static const String campaign = '$_baseUrl/campaign';
   static  String creatorCampaigns (String creatorId) => '$_baseUrl/campaign/creator/$creatorId';
   static  String deleteCampaign (String campaignId) => '$_baseUrl/campaign/creator/$campaignId';
+  static  String toggleLikeCampaign (String campaignId) => '$_baseUrl/campaign/$campaignId/like';
+  static  String getUpdatesCampaign (String campaignId) => '$_baseUrl/campaign-update/campaign/$campaignId';
 
   // user 
   static String user(String id) => '$_baseUrl/user/$id';
