@@ -11,6 +11,7 @@ static String? get token => SharedPrefController().token;
   static const String login = '$_auth/login';
   static const String _register = '$_auth/register';
   static const String registerDonor = '$_register/donor';
+  static const String registerCreator = '$_register/campaign-creator';
   // static const String verify = '$_auth/verify';
   // static const String resendCode = '$_auth/resendCode';
   // static const String resetPassword = '$_auth/passwordReset';
@@ -25,5 +26,9 @@ static String? get token => SharedPrefController().token;
   //campaigns
   static const String campaign = '$_baseUrl/campaign';
   static  String creatorCampaigns (String creatorId) => '$_baseUrl/campaign/creator/$creatorId';
+  static  String deleteCampaign (String campaignId) => '$_baseUrl/campaign/creator/$campaignId';
+
+  // user 
+  static String user(String id) => '$_baseUrl/user/$id';
 
 }

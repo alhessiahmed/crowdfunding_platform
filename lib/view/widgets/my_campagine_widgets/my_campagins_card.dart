@@ -1,6 +1,7 @@
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
 import 'package:crowdfunding_platform/controller/core/routes/index.dart';
+import 'package:crowdfunding_platform/controller/getx/controllers/my_campagins_controller.dart';
 import 'package:crowdfunding_platform/model/campagin_models/campagin_model.dart';
 import 'package:crowdfunding_platform/model/my_campagins_model.dart';
 import 'package:crowdfunding_platform/view/widgets/step_indicator.dart';
@@ -102,7 +103,8 @@ class MyCampaginsCard extends StatelessWidget {
             //Divider(),
             SizedBox(height: 8.h),
             ButtonsRow(
-              status:campaignStatus(myCampaign.status)
+              status:campaignStatus(myCampaign.status), 
+              campaignId: myCampaign.id,
            
              ),
           ],
@@ -155,16 +157,17 @@ class _StatusPill extends StatelessWidget {
   }
 }
 
-class ButtonsRow extends StatelessWidget {
-  const ButtonsRow({super.key, required this.status});
+class ButtonsRow extends GetView<MyCampaginsController> {
+  const ButtonsRow({super.key, required this.status , required this.campaignId});
   final CampaignStatus status;
+  final String campaignId ;
 
   @override
   Widget build(BuildContext context) {
     return Wrap(spacing: 3.w, runSpacing: 8.h, children: _buildButtons(status));
   }
 
-  List<Widget> _buildButtons(CampaignStatus status) {
+  List<Widget> _buildButtons(CampaignStatus status , ) {
     switch (status) {
       case CampaignStatus.completed:
         return [
@@ -263,7 +266,9 @@ class ButtonsRow extends StatelessWidget {
             ColorsManager.danger2,
             'delete_campagin'.tr,
             ImagesManager.trash,
-            () {},
+            () { 
+              controller.deleteCampaignDialog( campaignId);
+            },
           ),
         ];
     }

@@ -367,7 +367,7 @@ Map<String, String> arLocale = {
   'two_factor_authentication_description':
       'قم بتأمين حسابك باستخدام رمز إضافي عند تسجيل الدخول لزيادة مستوى الحماية',
   'update_password_description':
-      'تحديث كلمة المرور بسكل دوري يساعد في حماية حسابك من الاختراقات المحتملة',
+      'تحديث كلمة المرور بشكل دوري يساعد في حماية حسابك من الاختراقات المحتملة',
   'required': 'مطلوب',
   'email_required': 'يرجى ادخال البريد الالكتروني',
   'invalid_email': 'يرجى ادخال بريد الكتروني صالح',
@@ -504,8 +504,33 @@ Map<String, String> arLocale = {
   'paused': 'موقوفة مؤقتاً',
   'draft': 'مسودة',
   'deleted': 'محذوفة',
+  'institution_name': 'اسم المؤسسة الرسمي',
+  'institution_example': 'مثال : جمعية الأمل الخيرية',
+  'license_number': 'رقم الترخيص / السجل',
+  'license_example': '1010xXXXX',
+  'foundation_date': 'تاريخ التأسيس',
+  'required_files': 'الوثائق المطلوبة ',
+  'license_certificate': 'شهادة التسجيل او الرخصة',
+  'manager_id': 'هوية المفوض (مدير الحساب)',
+  'add_license': 'ارفق شهادة التسجيل أو الرخصة',
+  'only_front_id': ' صورة الوجه الأمامي من الهوية شخصية فقط',
+  'authorization_letter': 'خطاب التفويض',
+  'add_authorization_letter': 'ارفق خطاب التفويض الرسمي للمؤسسة',
+  'manager_personal_pic': 'صورة شخصية للمفوض',
+  'only_bank_account':
+      'يجب أن يكون الحساب البنكي باسم المؤسسة فقط لن يتم قبول الحسابات الشخصية',
+  'institution_acc': 'اسم صاحب الحساب ( مطابق للرخصة )',
+  'institution_iban': 'رقم الايبان (IBAN) للمؤسسة',
+  '': '',
   'pending' : 'قيد المراجعة', 
   'completed' : 'مكتملة', 
-  'stopped' : 'موقوفة'
+  'stopped' : 'موقوفة',
+  'campaign' : 'حملة',
+  "title_delete_campaign": "حذف الحملة",
+  "msg_delete_campaign": "هل أنت متأكد أنك تريد حذف هذه الحملة؟",
+  "btn_cancel": "إلغاء",
+  "btn_delete": "حذف",
+  "success_delete_campaign": "تم حذف الحملة بنجاح",
+  "error_delete_campaign": "فشل حذف الحملة"
 
 };

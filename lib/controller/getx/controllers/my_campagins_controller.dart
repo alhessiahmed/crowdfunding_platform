@@ -2,6 +2,8 @@ import 'package:crowdfunding_platform/controller/api/api_controllers/mycampagin_
 import 'package:crowdfunding_platform/model/campagin_models/campagin_model.dart';
 import 'package:crowdfunding_platform/model/filter_item.dart';
 import 'package:crowdfunding_platform/model/my_campagins_model.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 
@@ -16,6 +18,7 @@ class MyCampaginsController extends GetxController {
   final RxList<CampaignModel> filteredCampaigns = <CampaignModel>[].obs;
 
   final List<CampaignModel> _allCampaigns = <CampaignModel>[];
+  static int  campaignsLenght = 0 ;
   final RxBool isLoading = false.obs;
   final MycampaginApiController _myCampaginsController =
       MycampaginApiController();
@@ -69,6 +72,7 @@ class MyCampaginsController extends GetxController {
       final campaigns = await _myCampaginsController.getCampaignsByCreator(
         creatorId,
       );
+      campaignsLenght = campaigns.length;
 
       _allCampaigns
         ..clear()
@@ -147,6 +151,45 @@ class MyCampaginsController extends GetxController {
     selectedFilterIndex.value = 0;
     selectedFilterId.value = 'all';
   }
+void deleteCampaignDialog( String campaignId) {
+  Get.defaultDialog(
+    title: '',
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(
+          Icons.warning_rounded,
+          color: Colors.red,
+          size: 60,
+        ),
+        SizedBox(height: 16),
+        Text(
+          'title_delete_campaign'.tr,
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        SizedBox(height: 8),
+        Text(
+          'msg_delete_campaign'.tr,
+          textAlign: TextAlign.center,
+        ),
+      ],
+    ),
+    textCancel: 'btn_cancel'.tr,
+    textConfirm: 'btn_delete'.tr,
+    confirmTextColor: Colors.white,
+    buttonColor: Colors.red,
+    onConfirm: () async {
+    String message = await _myCampaginsController.deleteCampagin(campaignId);// close dialog first
+
+      Get.back(); 
+      Get.snackbar("", message);
+    },
+  );
+}
+
 }
 
 extension CampaignStatusLabelAr on CampaignStatus {

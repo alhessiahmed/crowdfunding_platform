@@ -175,7 +175,14 @@ class DonorPersonalInfoScreen extends GetView<DonorPersonalInfoController> {
               ),
             ),
             SizedBox(height: 24.h),
-            ElevatedButton(onPressed: () {}, child: Text('save_changes'.tr)),
+            Obx(
+              () => ElevatedButton(
+                onPressed: controller.isSaving.value
+                    ? null
+                    : controller.saveChanges,
+                child: Text('save_changes'.tr),
+              ),
+            ),
           ],
         ),
       ),

@@ -54,6 +54,59 @@ class AuthApiController with ApiHelper {
     }
   }
 
+  Future<ApiResponse<AuthResult>> registerCreator({
+    required String firstName,
+    required String lastName,
+    required String email,
+    required String password,
+    required DateTime dateOfBirth,
+    required String type,
+  }) async {
+    try {
+      final url = Uri.parse(ApiSettings.registerCreator);
+
+      final response = await http.post(
+        url,
+        headers: {...acceptHeader, 'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'firstName': firstName,
+          'lastName': lastName,
+          'email': email,
+          'password': password,
+          'dateOfBirth': dateOfBirth.toIso8601String().split('T').first,
+          'type': type,
+        }),
+      );
+      print('registerCreator statusCode: ${response.statusCode}');
+      print('registerCreator responseBody: ${response.body}');
+
+      final Map<String, dynamic> json = jsonDecode(response.body);
+
+      if (response.statusCode == 201 || response.statusCode == 200) {
+        // TODO(creator-register): adjust parsing once backend response contract is confirmed.
+        final authPayload = (json['data'] is Map<String, dynamic>)
+            ? json['data'] as Map<String, dynamic>
+            : json;
+
+        return ApiResponse<AuthResult>(
+          success: true,
+          statusCode: response.statusCode,
+          message: json['message'] ?? 'Registration successful',
+          object: AuthResult.fromJson(authPayload),
+        );
+      }
+
+      return ApiResponse<AuthResult>(
+        success: false,
+        statusCode: response.statusCode,
+        message: json['message'] ?? 'Registration failed',
+      );
+    } catch (e) {
+      print('registerCreator exception: $e');
+      return failedResponse<AuthResult>();
+    }
+  }
+
   Future<ApiResponse<AuthResult>> login({
     required String email,
     required String password,
