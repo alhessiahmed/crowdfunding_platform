@@ -4,7 +4,7 @@ class ApiSettings {
   // BASE
   static const String _baseUrl =
       'https://gsg-project-group-2-production.up.railway.app/api/v1';
-static String? get token => SharedPrefController().token;
+  static String? get token => SharedPrefController().token;
 
   // AUTH
   static const String _auth = '$_baseUrl/auth';
@@ -12,6 +12,10 @@ static String? get token => SharedPrefController().token;
   static const String _register = '$_auth/register';
   static const String registerDonor = '$_register/donor';
   static const String registerCreator = '$_register/campaign-creator';
+  static const String _password = '$_auth/password';
+  static const String forgot = '$_password/forgot';
+  static const String verifyOtp = '$_password/verify-otp';
+  static const String reset = '$_password/reset';
   // static const String verify = '$_auth/verify';
   // static const String resendCode = '$_auth/resendCode';
   // static const String resetPassword = '$_auth/passwordReset';
@@ -25,10 +29,11 @@ static String? get token => SharedPrefController().token;
 
   //campaigns
   static const String campaign = '$_baseUrl/campaign';
-  static  String creatorCampaigns (String creatorId) => '$_baseUrl/campaign/creator/$creatorId';
-  static  String deleteCampaign (String campaignId) => '$_baseUrl/campaign/creator/$campaignId';
+  static String creatorCampaigns(String creatorId) =>
+      '$_baseUrl/campaign/creator/$creatorId';
+  static String deleteCampaign(String campaignId) =>
+      '$_baseUrl/campaign/creator/$campaignId';
 
-  // user 
+  // user
   static String user(String id) => '$_baseUrl/user/$id';
-
 }

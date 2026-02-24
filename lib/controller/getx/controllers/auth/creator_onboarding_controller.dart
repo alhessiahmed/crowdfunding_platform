@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 
 import '../../../../model/sign_up_draft.dart';
 import '../../../../model/account_type.dart';
+import '../../../../model/auth_result.dart';
 import '../../../api/api_controllers/auth_api_controller.dart';
 import '../../../core/constants/colors_manager.dart';
 import '../../../core/routes/routes_manager.dart';
@@ -235,10 +236,20 @@ class CreatorOnboardingController extends GetxController
     experienceLevel.value = level;
   }
 
+  Future<void> _persistAuth(AuthResult auth) async {
+    await SharedPrefController().saveToken(auth.token);
+    await SharedPrefController().saveUser(auth.user.toJson());
+    await SharedPrefController().saveUserType(auth.user.role);
+  }
+
   Future<void> finish() async {
     if (accountType.value == AccountType.organization) {
-      final institutionValid = institutionFormKey.currentState?.validate() ?? false;
-      if (!institutionValid || !hasInstitutionFiles) {
+      final institutionValid =
+          institutionController.text.trim().isNotEmpty &&
+          licenseController.text.trim().isNotEmpty &&
+          dateController.text.trim().isNotEmpty;
+      final bankValid = bankFormKey.currentState?.validate() ?? false;
+      if (!institutionValid || !hasInstitutionFiles || !bankValid) {
         Get.snackbar('Error', 'Please complete institution information');
         return;
       }
@@ -255,25 +266,39 @@ class CreatorOnboardingController extends GetxController
     if (isRegistering.value) return;
 
     final String creatorType = accountType.value == AccountType.individual
-        ? 'INDIVIDSUAL'
+        ? 'INDIVIDUAL'
         : 'INSTITUTION';
+    final String formattedDob = DateFormat(
+      'yyyy-MM-dd',
+    ).format(_draft!.dateOfBirth);
 
     isRegistering.value = true;
-    final response = await _authApi.registerCreator(
-      firstName: _draft!.firstName,
-      lastName: _draft!.lastName,
-      email: _draft!.email,
-      password: _draft!.password,
-      dateOfBirth: _draft!.dateOfBirth,
-      type: creatorType,
-    );
+    final response = accountType.value == AccountType.organization
+        ? await _authApi.registerInstitution(
+            firstName: _draft!.firstName,
+            lastName: _draft!.lastName,
+            email: _draft!.email,
+            password: _draft!.password,
+            dateOfBirth: formattedDob,
+            type: creatorType,
+            institutionName: institutionController.text.trim(),
+            institutionRegistrationNumber: licenseController.text.trim(),
+            institutionDateOfEstablishment: dateController.text.trim(),
+            registrationCertificate: licenseImg.value!.path,
+            representativeIdPhoto: idImg.value!.path,
+            authorizationLetter: authorizationImg.value!.path,
+            commissionerImage: personalImg.value!.path,
+          )
+        : await _authApi.registerCreator(
+            firstName: _draft!.firstName,
+            lastName: _draft!.lastName,
+            email: _draft!.email,
+            password: _draft!.password,
+            dateOfBirth: formattedDob,
+            type: creatorType,
+            country: '${countryController.text} / ${cityController.text}',
+          );
     isRegistering.value = false;
-
-    print('registerCreator parsed success: ${response.success}');
-    print('registerCreator parsed statusCode: ${response.statusCode}');
-    print('registerCreator parsed message: ${response.message}');
-    print('registerCreator parsed token: ${response.object?.token}');
-    print('registerCreator parsed user: ${response.object?.user.toJson()}');
 
     if (!response.success || response.object == null) {
       Get.snackbar('Error', response.message);
@@ -281,8 +306,7 @@ class CreatorOnboardingController extends GetxController
     }
 
     final auth = response.object!;
-    await SharedPrefController().saveToken(auth.token);
-    await SharedPrefController().saveUser(auth.user.toJson());
+    await _persistAuth(auth);
 
     Get.offAllNamed(RoutesManager.setupSuccessScreen);
   }

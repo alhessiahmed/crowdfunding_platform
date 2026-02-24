@@ -45,6 +45,8 @@ class User {
       'email': email,
       'role': role,
       'country': country,
+      'isVerified': isVerified,
+      'verificationStatus': verificationStatus,
     };
   }
 }

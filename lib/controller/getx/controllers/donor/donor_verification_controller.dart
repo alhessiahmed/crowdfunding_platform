@@ -2,8 +2,11 @@ import 'dart:async';
 import 'dart:io';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart' as path;
+import 'package:path_provider/path_provider.dart';
 import 'package:crowdfunding_platform/controller/api/api_controllers/donor_api_controller.dart';
 import 'package:crowdfunding_platform/model/api_response.dart';
 import '../../../core/routes/routes_manager.dart';
@@ -128,7 +131,9 @@ class DonorVerificationController extends GetxController {
   final nameController = TextEditingController();
   final idController = TextEditingController();
   final isId = true.obs;
-  final Rxn<XFile> idFile = Rxn<XFile>();
+  final Rxn<XFile> idFrontFile = Rxn<XFile>();
+  final Rxn<XFile> idBackFile = Rxn<XFile>();
+  final Rxn<XFile> selfieWithIdFile = Rxn<XFile>();
   final ImagePicker _imagePicker = ImagePicker();
 
   void selectId(bool isId) {
@@ -145,8 +150,25 @@ class DonorVerificationController extends GetxController {
     );
 
     if (image != null) {
-      target.value = image;
-      print('img saved successfully');
+      try {
+        Directory baseDir;
+        try {
+          baseDir = await getApplicationDocumentsDirectory();
+        } on PlatformException {
+          baseDir = await getTemporaryDirectory();
+        }
+
+        final fileName =
+            '${DateTime.now().millisecondsSinceEpoch}_${path.basename(image.path)}';
+        final savedPath = path.join(baseDir.path, fileName);
+        final copied = await File(image.path).copy(savedPath);
+        target.value = XFile(copied.path);
+        print('img saved successfully: ${copied.path}');
+      } catch (e) {
+        // Keep original path as fallback if persistent copy fails.
+        target.value = image;
+        print('img save fallback to source path: ${image.path}, error: $e');
+      }
     }
   }
   // Step 4
@@ -213,7 +235,6 @@ class DonorVerificationController extends GetxController {
   Future<ApiResponse<Map<String, dynamic>>> verifyDonor() async {
     final user = SharedPrefController().user;
     final userId = user?['id'] as String?;
-    print(userId);
     if (userId == null || userId.isEmpty) {
       return ApiResponse<Map<String, dynamic>>(
         success: false,
@@ -234,7 +255,11 @@ class DonorVerificationController extends GetxController {
       idNumber: idController.text.trim().isEmpty
           ? null
           : idController.text.trim(),
-      idFront: idFile.value != null ? File(idFile.value!.path) : null,
+      idFront: idFrontFile.value != null ? File(idFrontFile.value!.path) : null,
+      idBack: idBackFile.value != null ? File(idBackFile.value!.path) : null,
+      selfieWithId: selfieWithIdFile.value != null
+          ? File(selfieWithIdFile.value!.path)
+          : null,
     );
   }
 }
