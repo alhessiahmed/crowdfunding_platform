@@ -7,8 +7,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 class TopCampaignCard extends StatelessWidget {
-  const TopCampaignCard({super.key});
-
+  const TopCampaignCard({super.key, required this.campaignGoal, required this.rasidStars, required this.donorsNoWeekly , required this.progress, required this.motivation});
+ final String campaignGoal ;
+ final String rasidStars ;
+ final String donorsNoWeekly ;
+ final double progress ;
+ final String motivation ;
   @override
   Widget build(BuildContext context) {
     final cardColor = Get.isDarkMode
@@ -36,7 +40,7 @@ class TopCampaignCard extends StatelessWidget {
                   SvgPicture.asset(ImagesManager.star, width: 16.w),
                   SizedBox(width: 6.w),
                   Text(
-                    '5,000',
+                    rasidStars,
                     style: TextStyle(
                       color: ColorsManager.primaryCTA,
                       fontWeight: FontWeight.bold,
@@ -45,7 +49,7 @@ class TopCampaignCard extends StatelessWidget {
                   ),
                   Spacer(),
                   Text(
-                    'الهدف: 10,000 نجمة',
+                    'الهدف: $campaignGoal نجمة',
                     style: TextStyle(
                       color: Get.isDarkMode
                           ? ColorsManager.secondaryDark
@@ -84,7 +88,7 @@ class TopCampaignCard extends StatelessWidget {
                         AnimatedContainer(
                           duration: const Duration(milliseconds: 900),
                           curve: Curves.easeInOut,
-                          width: constraints.maxWidth * .5,
+                          width: constraints.maxWidth * progress.clamp(0,1),
                           decoration: BoxDecoration(
                             color: ColorsManager.primaryCTA,
                             borderRadius: BorderRadius.circular(12.r),
@@ -109,7 +113,7 @@ class TopCampaignCard extends StatelessWidget {
                   ),
                   SizedBox(width: 6.w),
                   Text(
-                    '135 داعمًا حتى الآن (هذا الأسبوع)',
+                    motivation,
                     style: TextStyle(
                       fontSize: 11.sp,
                       color: Get.isDarkMode

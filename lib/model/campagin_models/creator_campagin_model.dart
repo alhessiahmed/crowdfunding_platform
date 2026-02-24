@@ -29,6 +29,13 @@ class Creator {
       'country': country,
     };
   }
-
+  factory Creator.skeleton() {
+    return Creator(
+      id: '',
+      firstName: 'Loading',
+      lastName: 'User',
+      country: '',
+    );
+  }
   String get fullName => '$firstName $lastName';
 }

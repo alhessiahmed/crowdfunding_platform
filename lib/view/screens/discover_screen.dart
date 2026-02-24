@@ -13,7 +13,6 @@ class DiscoverScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<DiscoverController>(
-      init: DiscoverController(),
       builder: (ctrl) {
         return Scaffold(
           body: SafeArea(
@@ -33,10 +32,12 @@ class DiscoverScreen extends StatelessWidget {
                 SizedBox(height: 12.h),
 
                 Expanded(
-                  child: CampaignsList(
+                  child: campaignsList(
                     context,
                     ctrl.campaigns,
                     ctrl.isLoading,
+                    ctrl.hasNoInternet,
+                    onRetry: () => ctrl.getCampaigns(refresh: true),
                   ),
                 ),
               ],
@@ -47,11 +48,50 @@ class DiscoverScreen extends StatelessWidget {
     );
   }
 
-Widget CampaignsList(
+Widget campaignsList(
   BuildContext context,
   List<CampaignModel> campaigns,
   bool isLoading,
+  bool hasNoInternet, {
+  required VoidCallback onRetry,
+}
 ) {
+  // Offline State
+  if (hasNoInternet && campaigns.isEmpty) {
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 24.w),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.wifi_off_rounded,
+              size: 56.sp,
+              color: Colors.grey.shade500,
+            ),
+            SizedBox(height: 12.h),
+            Text(
+              'لا يوجد اتصال بالإنترنت',
+              style: Theme.of(context).textTheme.bodyLarge,
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 8.h),
+            Text(
+              'تحقق من اتصالك ثم حاول مرة أخرى',
+              style: Theme.of(context).textTheme.bodyMedium,
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 14.h),
+            OutlinedButton(
+              onPressed: onRetry,
+              child: const Text('إعادة المحاولة'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   // Skeleton
   if (isLoading && campaigns.isEmpty) {
     return Skeletonizer(
@@ -61,7 +101,7 @@ Widget CampaignsList(
         itemCount: 5,
         itemBuilder: (_, __) {
           return CampaignCard(
-            campaign: CampaignModel.skelton(),
+            campaign: CampaignModel.skeleton(),
           );
         },
       ),

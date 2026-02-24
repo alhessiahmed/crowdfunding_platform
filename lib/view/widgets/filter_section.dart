@@ -71,12 +71,24 @@ class FilterSection extends StatelessWidget {
                           : ColorsManager.iconDefaultLight,
                       borderRadius: BorderRadius.circular(20.r),
                     ),
-                    child: Text(
-                      item.count.toString(),
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: isSelected ? Colors.black : Colors.white,
-                      ),
-                    ),
+                    child: item.isLoading
+                        ? SizedBox(
+                            width: 12.w,
+                            height: 12.w,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 1,
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                isSelected ? Colors.white : Colors.white,
+                              ),
+                            ),
+                          )
+                        : Text(
+                            item.count.toString(),
+                            style: Theme.of(context).textTheme.bodySmall!
+                                .copyWith(
+                                  color: isSelected ? Colors.black : Colors.white,
+                                ),
+                          ),
                   ),
                 ],
               ),

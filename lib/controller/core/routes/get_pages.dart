@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:crowdfunding_platform/controller/getx/bindings/add_update_to_campaign_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/change_pass_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/control_campaign_binding.dart';
@@ -11,6 +13,7 @@ import 'package:crowdfunding_platform/controller/getx/bindings/payment/choose_pa
 import 'package:crowdfunding_platform/controller/getx/bindings/request_to_withdraw_profits_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/summer_of_withdraw_binding.dart';
 import 'package:crowdfunding_platform/controller/getx/bindings/wallet_binding.dart';
+import 'package:crowdfunding_platform/model/campagin_models/campagin_model.dart';
 import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_controller.dart';
 import 'package:crowdfunding_platform/view/screens/add_pymaent_method/add_payment_method_page.dart';
 import 'package:crowdfunding_platform/view/screens/add_pymaent_method/choose_payment_method_page.dart';
@@ -114,8 +117,22 @@ final List<GetPage<dynamic>> getPages = [
     binding: DonarHomeBinding(),
   ),
   GetPage(
+    
     name: RoutesManager.campaignDetailsScreen,
-    page: () => const CampaignDetailsScreen(),
+    page: () {
+      final args = Get.arguments;
+      final campaign = args is CampaignModel
+          ? args
+          : (args is Map<String, dynamic> && args['campaign'] is CampaignModel)
+          ? args['campaign'] as CampaignModel
+          : CampaignModel.skeleton(
+              // id: args is Map<String, dynamic>
+              //     ? (args['campaignId'] ?? '').toString()
+              //     : '',
+            );
+      log('campaignDetails :////////${(campaign.toJson())}');
+      return CampaignDetailsScreen(campaign: campaign);
+    },
     binding: CampaignDetailsBinding(),
   ),
 
