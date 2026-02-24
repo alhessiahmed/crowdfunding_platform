@@ -87,9 +87,29 @@ class DonorIdVerificationScreen extends GetView<DonorVerificationController> {
                     subtitle: 'add_clear_id'.tr,
                     onTap: () => controller.pickImage(
                       source: ImageSource.gallery,
-                      target: controller.idFile,
+                      target: controller.idFrontFile,
                     ),
                     imgPath: ImagesManager.galleryIcon,
+                  ),
+                  SizedBox(height: 16.h),
+                  UploadCard(
+                    title: 'add_id'.tr,
+                    subtitle: 'add_clear_id'.tr,
+                    onTap: () => controller.pickImage(
+                      source: ImageSource.gallery,
+                      target: controller.idBackFile,
+                    ),
+                    imgPath: ImagesManager.galleryIcon,
+                  ),
+                  SizedBox(height: 16.h),
+                  UploadCard(
+                    title: 'take_pic'.tr,
+                    subtitle: 'take_pic_info'.tr,
+                    onTap: () => controller.pickImage(
+                      source: ImageSource.camera,
+                      target: controller.selfieWithIdFile,
+                    ),
+                    imgPath: ImagesManager.cameraIcon,
                   ),
                 ],
               ),

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:http/http.dart' as http;
 import '../../../model/api_response.dart';
 import '../../../model/auth_result.dart';
@@ -59,8 +60,9 @@ class AuthApiController with ApiHelper {
     required String lastName,
     required String email,
     required String password,
-    required DateTime dateOfBirth,
+    required String dateOfBirth,
     required String type,
+    required String country,
   }) async {
     try {
       final url = Uri.parse(ApiSettings.registerCreator);
@@ -73,8 +75,9 @@ class AuthApiController with ApiHelper {
           'lastName': lastName,
           'email': email,
           'password': password,
-          'dateOfBirth': dateOfBirth.toIso8601String().split('T').first,
+          'dateOfBirth': dateOfBirth,
           'type': type,
+          'country': country,
         }),
       );
       print('registerCreator statusCode: ${response.statusCode}');
@@ -83,16 +86,11 @@ class AuthApiController with ApiHelper {
       final Map<String, dynamic> json = jsonDecode(response.body);
 
       if (response.statusCode == 201 || response.statusCode == 200) {
-        // TODO(creator-register): adjust parsing once backend response contract is confirmed.
-        final authPayload = (json['data'] is Map<String, dynamic>)
-            ? json['data'] as Map<String, dynamic>
-            : json;
-
         return ApiResponse<AuthResult>(
           success: true,
           statusCode: response.statusCode,
           message: json['message'] ?? 'Registration successful',
-          object: AuthResult.fromJson(authPayload),
+          object: AuthResult.fromJson(json),
         );
       }
 
@@ -103,6 +101,93 @@ class AuthApiController with ApiHelper {
       );
     } catch (e) {
       print('registerCreator exception: $e');
+      return failedResponse<AuthResult>();
+    }
+  }
+
+  Future<ApiResponse<AuthResult>> registerInstitution({
+    required String firstName,
+    required String lastName,
+    required String email,
+    required String password,
+    required String dateOfBirth,
+    required String type,
+    required String institutionName,
+    required String institutionRegistrationNumber,
+    required String institutionDateOfEstablishment,
+    required String registrationCertificate,
+    required String representativeIdPhoto,
+    required String authorizationLetter,
+    required String commissionerImage,
+  }) async {
+    try {
+      final url = Uri.parse(ApiSettings.registerCreator);
+      final request = http.MultipartRequest('POST', url);
+
+      request.headers.addAll({...acceptHeader});
+      request.fields.addAll({
+        'firstName': firstName,
+        'lastName': lastName,
+        'email': email,
+        'password': password,
+        'dateOfBirth': dateOfBirth,
+        'type': type,
+        'institutionName': institutionName,
+        'institutionRegistrationNumber': institutionRegistrationNumber,
+        'institutionDateOfEstablishment': institutionDateOfEstablishment,
+      });
+
+      request.files.add(
+        await http.MultipartFile.fromPath(
+          'registrationCertificate',
+          registrationCertificate,
+        ),
+      );
+      request.files.add(
+        await http.MultipartFile.fromPath(
+          'representativeIdPhoto',
+          representativeIdPhoto,
+        ),
+      );
+      request.files.add(
+        await http.MultipartFile.fromPath(
+          'authorizationLetter',
+          authorizationLetter,
+        ),
+      );
+      request.files.add(
+        await http.MultipartFile.fromPath(
+          'commissionerImage',
+          commissionerImage,
+        ),
+      );
+
+      final streamedResponse = await request.send();
+      final response = await http.Response.fromStream(streamedResponse);
+
+      print('registerInstitution statusCode: ${response.statusCode}');
+      print('registerInstitution responseBody: ${response.body}');
+
+      final Map<String, dynamic> json = response.body.isNotEmpty
+          ? jsonDecode(response.body) as Map<String, dynamic>
+          : <String, dynamic>{};
+
+      if (response.statusCode == 201 || response.statusCode == 200) {
+        return ApiResponse<AuthResult>(
+          success: true,
+          statusCode: response.statusCode,
+          message: json['message'] ?? 'Registration successful',
+          object: AuthResult.fromJson(json),
+        );
+      }
+
+      return ApiResponse<AuthResult>(
+        success: false,
+        statusCode: response.statusCode,
+        message: json['message'] ?? 'Registration failed',
+      );
+    } catch (e) {
+      print('registerInstitution exception: $e');
       return failedResponse<AuthResult>();
     }
   }

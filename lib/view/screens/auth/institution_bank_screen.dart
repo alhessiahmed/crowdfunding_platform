@@ -14,10 +14,12 @@ class InstitutionBankScreen extends GetView<CreatorOnboardingController> {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+      () => Form(
+        key: controller.bankFormKey,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
             SizedBox(height: 10.h),
             Text(
               'transactions_info'.tr,
@@ -37,12 +39,16 @@ class InstitutionBankScreen extends GetView<CreatorOnboardingController> {
               hintText: 'institution_example',
               label: 'institution_acc'.tr,
               labelImgPath: ImagesManager.lockIcon,
+              validator: (value) =>
+                  controller.requiredField(value, 'institution_acc'.tr),
             ),
             SizedBox(height: 16.h),
             TextFieldWidget(
               controller: controller.ibanController,
               hintText: 'iban_hint'.tr,
               label: 'institution_iban'.tr,
+              validator: (value) =>
+                  controller.requiredField(value, 'institution_iban'.tr),
             ),
             SizedBox(height: 4.h),
             Text(
@@ -104,7 +110,8 @@ class InstitutionBankScreen extends GetView<CreatorOnboardingController> {
               imgPath: ImagesManager.lightIcon,
             ),
             SizedBox(height: 10.h),
-          ],
+            ],
+          ),
         ),
       ),
     );

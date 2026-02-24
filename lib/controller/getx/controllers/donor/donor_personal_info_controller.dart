@@ -4,8 +4,11 @@ import 'package:crowdfunding_platform/controller/api/api_controllers/donor_api_c
 import 'package:crowdfunding_platform/model/api_response.dart';
 import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart' as path;
+import 'package:path_provider/path_provider.dart';
 
 class DonorPersonalInfoController extends GetxController {
   final DonorApiController _donorApiController = DonorApiController();
@@ -79,9 +82,25 @@ class DonorPersonalInfoController extends GetxController {
     );
 
     if (image != null) {
-      target.value = image;
-      profileImg = image.path;
-      print('img saved successfully');
+      try {
+        Directory baseDir;
+        try {
+          baseDir = await getApplicationDocumentsDirectory();
+        } on PlatformException {
+          baseDir = await getTemporaryDirectory();
+        }
+
+        final fileName =
+            '${DateTime.now().millisecondsSinceEpoch}_${path.basename(image.path)}';
+        final savedPath = path.join(baseDir.path, fileName);
+        final copied = await File(image.path).copy(savedPath);
+        target.value = XFile(copied.path);
+        print('img saved successfully: ${copied.path}');
+      } catch (e) {
+        // Keep original path as fallback if persistent copy fails.
+        target.value = image;
+        print('img save fallback to source path: ${image.path}, error: $e');
+      }
     }
   }
 
@@ -108,7 +127,7 @@ class DonorPersonalInfoController extends GetxController {
       email: emailController.text.trim().isEmpty ? null : emailController.text,
       phoneNumber: phoneController.text.trim().isEmpty ? null : fullPhoneNumber,
       country: countrCity,
-      selfieWithId: img.value != null ? File(img.value!.path) : null,
+      avatar: img.value != null ? File(img.value!.path) : null,
     );
   }
 

@@ -51,7 +51,7 @@ class DonorVerificationSuccessScreen extends StatelessWidget {
             SizedBox(height: 24.h),
             ElevatedButton(
               onPressed: () {
-                Get.offAllNamed(RoutesManager.homeScreen);
+                Get.offAllNamed(RoutesManager.mainScreen);
               },
               child: Text('go_to_dash'.tr),
             ),

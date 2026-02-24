@@ -67,6 +67,7 @@ class DonorApiController with ApiHelper {
     String? preferredCampaignVisibility,
     String? fullNameOnId,
     String? idNumber,
+    File? avatar,
     File? idFront,
     File? idBack,
     File? selfieWithId,
@@ -111,28 +112,46 @@ class DonorApiController with ApiHelper {
               'Bearer ${SharedPrefController().token}',
         if (headers != null) ...headers,
       });
+      print('patchDonorMultipart url: $url');
+      print('patchDonorMultipart fields: ${request.fields}');
+      print(
+        'patchDonorMultipart hasAuth: ${SharedPrefController().token != null}',
+      );
 
-      if (idFront != null) {
+      Future<void> attachFileIfExists(String fieldName, File? file) async {
+        if (file == null) return;
+        if (!await file.exists()) {
+          print(
+            'patchDonorMultipart skipped missing file for $fieldName: ${file.path}',
+          );
+          return;
+        }
         request.files.add(
-          await http.MultipartFile.fromPath('idFront', idFront.path),
+          await http.MultipartFile.fromPath(fieldName, file.path),
         );
       }
-      if (idBack != null) {
-        request.files.add(
-          await http.MultipartFile.fromPath('idBack', idBack.path),
-        );
-      }
-      if (selfieWithId != null) {
-        request.files.add(
-          await http.MultipartFile.fromPath('selfieWithId', selfieWithId.path),
-        );
-      }
+
+      await attachFileIfExists('avatar', avatar);
+      await attachFileIfExists('idFront', idFront);
+      await attachFileIfExists('idBack', idBack);
+      await attachFileIfExists('selfieWithId', selfieWithId);
 
       final streamedResponse = await request.send();
       final response = await http.Response.fromStream(streamedResponse);
-      final Map<String, dynamic> json = response.body.isNotEmpty
-          ? jsonDecode(response.body) as Map<String, dynamic>
-          : <String, dynamic>{};
+      print('patchDonorMultipart statusCode: ${response.statusCode}');
+      print('patchDonorMultipart body: ${response.body}');
+
+      Map<String, dynamic> json = <String, dynamic>{};
+      if (response.body.isNotEmpty) {
+        try {
+          final decoded = jsonDecode(response.body);
+          if (decoded is Map<String, dynamic>) {
+            json = decoded;
+          }
+        } catch (_) {
+          // Keep json empty and use raw body as fallback message below.
+        }
+      }
 
       if (response.statusCode >= 200 && response.statusCode < 300) {
         return ApiResponse<Map<String, dynamic>>(
@@ -146,10 +165,13 @@ class DonorApiController with ApiHelper {
       return ApiResponse<Map<String, dynamic>>(
         success: false,
         statusCode: response.statusCode,
-        message: json['message'] ?? 'Request failed',
+        message: (json['message']?.toString().isNotEmpty ?? false)
+            ? json['message'].toString()
+            : (response.body.isNotEmpty ? response.body : 'Request failed'),
         object: json,
       );
     } catch (e) {
+      print('patchDonorMultipart exception: $e');
       return failedResponse<Map<String, dynamic>>();
     }
   }
