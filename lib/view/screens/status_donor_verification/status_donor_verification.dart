@@ -17,8 +17,8 @@ class StatusDonorVerificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = SharedPrefController().user;
-  // String  verificationStatus = user!['verificationStatus'];
-       String  verificationStatus = 'failed';
+   String  verificationStatus = user!['verificationStatus'];
+      // String  verificationStatus = 'failed';
 
     bool isConfirmd = verificationStatus == 'confirmed';
     bool isPending = verificationStatus == 'pending';
