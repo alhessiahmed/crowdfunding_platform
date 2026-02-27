@@ -1,4 +1,6 @@
 import 'package:crowdfunding_platform/controller/core/constants/images_manager.dart';
+import 'package:crowdfunding_platform/controller/core/routes/routes_manager.dart';
+import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_controller.dart';
 import 'package:crowdfunding_platform/view/widgets/alternative_button.dart';
 import 'package:crowdfunding_platform/view/widgets/idea_box_app.dart';
 import 'package:crowdfunding_platform/view/widgets/information_card.dart';
@@ -14,6 +16,14 @@ class StatusDonorVerificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = SharedPrefController().user;
+  // String  verificationStatus = user!['verificationStatus'];
+       String  verificationStatus = 'failed';
+
+    bool isConfirmd = verificationStatus == 'confirmed';
+    bool isPending = verificationStatus == 'pending';
+    bool isFailed = verificationStatus == 'failed';
+
     return Scaffold(
       // backgroundColor: Get.isDarkMode
       //     ? ColorsManager.scaffoldBgDark
@@ -49,13 +59,28 @@ class StatusDonorVerificationScreen extends StatelessWidget {
               style: Theme.of(context).textTheme.bodySmall,
             ),
             SizedBox(height: 24.h),
+            if(isFailed)
             StatusCard(
               title: 'verification_failed'.tr,
               icon: ImagesManager.danger,
               description: 'verification_failed_description'.tr,
             ),
+
+            if(isConfirmd)
+            StatusCard(
+              title: 'account_verified'.tr,
+              icon: ImagesManager.verified,
+              description: 'account_verified_descriton'.tr,
+            ),
+
+            if(isPending)
+            StatusCard(
+              title: 'verification_pending'.tr,
+              icon: ImagesManager.clockIcon,
+              description: 'account_under_review'.tr,
+            ),
             SizedBox(height: 16.h),
-            ExpectedTimeBox(),
+            ExpectedTimeBox(verificationStatus: verificationStatus,),
             SizedBox(height: 16.h),
             Text(
               'verified_account_benefits'.tr,
@@ -81,17 +106,30 @@ class StatusDonorVerificationScreen extends StatelessWidget {
               subTitle: 'special_support'.tr,
               imgPath: ImagesManager.supportIcon,
             ),
-            SizedBox(height: 24.h),
-            IdeaBoxApp(text: 'notification_when_verified'.tr,),
+            if(!isConfirmd)...{ 
+ SizedBox(height: 24.h),
+            IdeaBoxApp(text: 
+            isPending
+            ?
+            'notification_when_verified'.tr
+            : 'ability_reverification'.tr
+            ,),
+            },
+           
             SizedBox(height: 24.h),
 
             //faild verified buttons
-            ElevatedButton(
-              onPressed: () {},
+            if(isFailed)...{ 
+ ElevatedButton(
+              onPressed: () {
+                Get.toNamed(RoutesManager.donorAccVerificationScreen);
+              },
               child: Text('retry_verification'.tr),
             ),
             SizedBox(height: 8.h),
             AlternativeButton(text: 'contact_wit_support'.tr, onPressed: () {}),
+            }
+           
           ],
         ),
       ),

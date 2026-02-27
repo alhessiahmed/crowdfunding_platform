@@ -3,7 +3,7 @@ import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_control
 class ApiSettings {
   // BASE
   static const String _baseUrl =
-      'https://gsg-project-group-2-production.up.railway.app/api/v1';
+'https://gsg-project-group-2-production-9e17.up.railway.app/api/v1';
   static String? get token => SharedPrefController().token;
 
   // AUTH

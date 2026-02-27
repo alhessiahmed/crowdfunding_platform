@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:crowdfunding_platform/controller/api/api_settings.dart';
 import 'package:crowdfunding_platform/controller/core/constants/colors_manager.dart';
@@ -19,7 +20,6 @@ class ProfileController extends GetxController {
   void onInit() {
     super.onInit();
     _loadUserFromCache();
-    //getUserData();
   }
 
    String get fullName {
@@ -41,44 +41,7 @@ class ProfileController extends GetxController {
     }
   }
 
-  // Future<void> getUserData([String? id]) async {
-  //   final userId =
-  //       id ?? currentUser.value?.id ?? (SharedPrefController().user?['id'] as String?);
-
-  //   if (userId == null || userId.trim().isEmpty) return;
-
-  //   final token = ApiSettings.token;
-  //   if (token == null || token.isEmpty) return;
-
-  //   isLoadingUser.value = true;
-
-  //   try {
-  //     final uri = Uri.parse(ApiSettings.user(userId));
-  //     final response = await http.get(
-  //       uri,
-  //       headers: {
-  //         'accept': 'application/json',
-  //         'Authorization': 'Bearer $token',
-  //       },
-  //     );
-
-  //     if (response.statusCode == 200 || response.statusCode == 201) {
-  //       final body = jsonDecode(response.body);
-  //       if (body is Map<String, dynamic>) {
-  //         currentUser.value = User.fromJson(body);
-  //         await SharedPrefController().saveUser(body);
-  //       }
-  //       return;
-  //     }
-
-  //     Get.log('getUserData failed: ${response.statusCode} ${response.body}');
-  //   } catch (e) {
-  //     Get.log('getUserData error: $e');
-  //   } finally {
-  //     isLoadingUser.value = false;
-  //   }
-  // }
-
+ 
   void deleteAccount(String? id) {
     final userId = id ?? currentUser.value?.id ?? (SharedPrefController().user?['id'] as String?);
 

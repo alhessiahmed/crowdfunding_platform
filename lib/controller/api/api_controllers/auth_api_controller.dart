@@ -1,5 +1,8 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
+import 'package:crowdfunding_platform/controller/shared_pref/shared_pref_controller.dart';
+import 'package:crowdfunding_platform/model/user.dart';
 import 'package:http/http.dart' as http;
 import '../../../model/api_response.dart';
 import '../../../model/auth_result.dart';
@@ -224,4 +227,38 @@ class AuthApiController with ApiHelper {
       return failedResponse<AuthResult>();
     }
   }
+
+ Future<void> getUserById(String id) async {
+
+    final token = ApiSettings.token;
+    if (token == null || token.isEmpty) return;
+    try {
+      final uri = Uri.parse(ApiSettings.user(id));
+      final response = await http.get(
+        uri,
+        headers: {
+          'accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final body = jsonDecode(response.body);
+        if (body is! Map<String, dynamic>) return;
+
+        final dynamic data = body['data'];
+        final userData = data is Map<String, dynamic> ? data : body;
+        await SharedPrefController().saveUser(userData);
+        log('/////////user data//////////\n  $userData');
+        return;
+      }
+
+    log('getUserData failed: ${response.statusCode} ${response.body}');
+    } catch (e) {
+  log('getUserData error: $e');
+    } finally {
+    //  isLoadingUser.value = false;
+    }
+  }
+
 }

@@ -26,18 +26,28 @@ class _LaunchScreenState extends State<LaunchScreen> {
 
   Future<void> _initAndNavigate() async {
     await Future.delayed(const Duration(seconds: 3));
-if(SharedPrefController().hasSeenOnboarding){ 
-  if(SharedPrefController().user != null){ 
-    log('user data ${SharedPrefController().user.toString()}') ;
-    Get.offAllNamed(RoutesManager.mainScreen);
-  }else{ 
+    final pref = SharedPrefController();
+    if (!pref.hasSeenOnboarding) {
+      Get.offAllNamed(RoutesManager.onboardingScreen);
+      return;
+    }
+
+    final token = pref.token;
+    final user = pref.user;
+    final userId = user?['id']?.toString();
+    final hasSession =
+        token != null &&
+        token.isNotEmpty &&
+        userId != null &&
+        userId.isNotEmpty;
+
+    if (hasSession) {
+      log('user data ${user.toString()}');
+      Get.offAllNamed(RoutesManager.mainScreen);
+      return;
+    }
+
     Get.offAllNamed(RoutesManager.welcomeScreen);
-
-  }
-}else{ 
-    Get.offAllNamed(RoutesManager.onboardingScreen);
-
-}
     // final hasSeenOnboarding = SharedPrefController.to.hasSeenOnboarding;
 
     // if (hasSeenOnboarding) {
