@@ -16,6 +16,14 @@ class DetailsInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userType = SharedPrefController().userType;
+    final user = SharedPrefController().user;
+    log(user.toString());
+    String verificationStatus = '';
+    if (user != null) {
+      verificationStatus = user['verificationStatus'];
+      log('verificationStatus/// $verificationStatus');
+    }
+
     log('////////// user type $userType ');
     return Padding(
       padding: const EdgeInsets.all(20.0),
@@ -117,7 +125,12 @@ class DetailsInfoCard extends StatelessWidget {
               ),
               ListTile(
                 onTap: () => userType == UserRole.DONOR.name
-                    ? Get.toNamed(RoutesManager.donorAccVerificationScreen)
+                    ? (
+                      verificationStatus.isEmpty
+                      ? Get.toNamed(RoutesManager.donorAccVerificationScreen)
+                      : Get.toNamed(RoutesManager.statusDonorverificationScreen)
+ 
+                    )
                     : Get.toNamed(RoutesManager.creatorVerificationScreen),
                 leading: IconWithBackground(
                   icon: ImagesManager.verified,
@@ -179,28 +192,28 @@ class DetailsInfoCard extends StatelessWidget {
                       : ColorsManager.dividerColorLight,
                 ),
               },
-               if (userType == UserRole.CAMPAIGN_CREATOR.name) ...{
-              ListTile(
-                onTap: () => Get.toNamed(RoutesManager.walletScreen),
-                leading: IconWithBackground(
-                  icon: ImagesManager.emptyWallet,
-                  lightColor: ColorsManager.dividerColorLight,
+              if (userType == UserRole.CAMPAIGN_CREATOR.name) ...{
+                ListTile(
+                  onTap: () => Get.toNamed(RoutesManager.walletScreen),
+                  leading: IconWithBackground(
+                    icon: ImagesManager.emptyWallet,
+                    lightColor: ColorsManager.dividerColorLight,
+                  ),
+                  title: Text(
+                    'wallet'.tr,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
+                  ),
+                  trailing: Icon(Icons.arrow_forward_ios, size: 16),
                 ),
-                title: Text(
-                  'wallet'.tr,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodyLarge!.copyWith(fontSize: 12.sp),
+                Divider(
+                  color: Get.isDarkMode
+                      ? ColorsManager.dividerColorDark
+                      : ColorsManager.dividerColorLight,
                 ),
-                trailing: Icon(Icons.arrow_forward_ios, size: 16),
-              ),
-              Divider(
-                color: Get.isDarkMode
-                    ? ColorsManager.dividerColorDark
-                    : ColorsManager.dividerColorLight,
-              ),
+              },
             },
-             },
             ListTile(
               //     onTap: ()=> Get.toNamed(RoutesManager.s),
               leading: IconWithBackground(

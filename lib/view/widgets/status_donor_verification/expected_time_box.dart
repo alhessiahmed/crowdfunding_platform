@@ -6,10 +6,15 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class ExpectedTimeBox extends StatelessWidget {
-  const ExpectedTimeBox({super.key});
+   ExpectedTimeBox({super.key , required this.verificationStatus});
+String verificationStatus ;
+ 
 
   @override
   Widget build(BuildContext context) {
+    bool isConfirmd = verificationStatus == 'confirmed';
+    bool isPending = verificationStatus == 'pending';
+    bool isFailed = verificationStatus == 'failed';
     return Container(
               padding: EdgeInsets.all(8.r),
               width: 345.w,
@@ -27,7 +32,12 @@ class ExpectedTimeBox extends StatelessWidget {
               child: Row(
                 children: [
                   SvgPicture.asset(
-                    ImagesManager.timerIcon,
+                  isConfirmd
+                  ?ImagesManager.calender2
+                 : isPending
+                   ?ImagesManager.timerIcon
+                   :ImagesManager.danger
+                   ,
                     height: 24.h,
                     width: 24.w,
                   ),
@@ -35,15 +45,26 @@ class ExpectedTimeBox extends StatelessWidget {
                   SizedBox(
                     width: 152.w,
                     child: Text(
-                      'expected_time'.tr,
+                      isConfirmd ? 
+                      'verification_time'.tr
+                      : isPending 
+                      ? 
+                      'expected_time'.tr
+                      : 'verification_failed_reason'.tr,
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),
+                  Spacer(),
                   Text(
-                    'expected_time_description'.tr,
+                    isConfirmd 
+                    ? '24 أكتوبر 2025'
+                    :isPending 
+                    ? 
+                    'expected_time_description'.tr 
+                     : 'رقم الهاتف غير مؤكّد',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       fontSize: 12.sp,
                       color:Get.isDarkMode? Colors.white: ColorsManager.primaryLight,

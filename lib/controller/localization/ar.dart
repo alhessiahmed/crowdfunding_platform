@@ -351,6 +351,10 @@ Map<String, String> arLocale = {
   'verification_account_description':
       'يساعد التوثيق في تعزيز ثقة الآخرين بتفاعلك داخل المنصة.',
   'account_verified': 'حسابك موثق',
+  'account_verified_descriton': 'حسابك موثّق ويمكنك الاستفادة من جميع ميزات المنصة بثقة.',
+  'verification_pending': 'حسابك قيد المراجعة',
+  'verification_time': 'تاريخ التوثيق',
+  'ability_reverification':'يمكنك تحديث المعلومات المطلوبة وإعادة إرسال طلب التوثيق.',
   'account_under_review': 'تم استلام معلوماتك وجارٍ مراجعتها.',
   'expected_time': 'الوقت المتوقع',
   'expected_time_description': 'عادة خلال 24–48 ساعة',

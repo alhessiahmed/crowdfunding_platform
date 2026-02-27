@@ -238,7 +238,7 @@ class CreatorOnboardingController extends GetxController
 
   Future<void> _persistAuth(AuthResult auth) async {
     await SharedPrefController().saveToken(auth.token);
-    await SharedPrefController().saveUser(auth.user.toJson());
+    await _authApi.getUserById(auth.user.id);
     await SharedPrefController().saveUserType(auth.user.role);
   }
 

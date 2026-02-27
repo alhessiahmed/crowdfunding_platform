@@ -45,9 +45,8 @@ class UserTypeSelectionController extends GetxController {
 
       /// SAVE TOKEN
       await SharedPrefController().saveToken(auth.token);
-
-      /// OPTIONAL: save user
-      await SharedPrefController().saveUser(auth.user.toJson());
+      await AuthApiController().getUserById(auth.user.id);
+      await SharedPrefController().saveUserType(auth.user.role);
     }
     SignUpDraft draft = SignUpDraft(
       firstName: firstName,
